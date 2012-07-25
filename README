@@ -1,0 +1,76 @@
+Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen
+=======================================
+
+The purpose of this plugin is to provide calculating and mathematical expression parsing capability to OpenCPN
+
+Help
+=========
+
+Examples (comments are in brackets, some results depend on other example calculations):
+=========
+Hull speed:
+	LWL=48 			(water line lenght in feet)
+	vhull=1.34*LWL^(1/2)	(hull speed in knots)
+
+Conversions:
+	ftm=0.3048		(feet to metres)
+	km_to_nm=0.539957	(Kilometre to nautical Mile)
+	ftm*LWL			(waterline lenght in metres)
+
+Distance to horizon
+	R=6378.1*1000		(Radius of the earth in m)
+	H=2.5			(Height of the eye above sealevel in m)
+	d = R * acos(R/(R + h))	(Distance to horizon in m)	
+	ans*km_to_nm		(Distance to horizon in nm)
+
+Distance to lighthouse
+	H1=200			(height of lighthouse in m)
+	d1 = R*acos(R/(R + H1))	(Distance to horizon in m)
+	distance=d1+d		(visability range of lighthouse in m)
+
+Operators:
+          & | << >> 
+          = <> < > <= >=
+          + -
+          * / % ||
+          ^ (NB use ^(1/2) for square root)
+          ! (Factorial)
+ 
+Functions:
+          Abs, Exp, Sign, Sqrt, Log, Log10
+          Sin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)
+          Factorial
+ 
+Variables:
+          Pi, e
+	  dtr is the conversion factor from degrees to radians
+	  Ans is the result of the previous calulation		
+          you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans) 
+ 
+Other:
+         Scientific notation supported
+         Error handling supported
+
+
+Compiling
+=========
+You have to be able to compile OpenCPN itself - Get the info at http://opencpn.org/ocpn/developers_manual
+
+* go to the plugin subdirectory in your OpenCPN source tree
+* git clone https://github.com/SaltyPaws/route_pi.git
+
+Build as normally:
+
+* cd ..
+* cd build
+* cmake ../
+* make
+* sudo make install
+
+You will have to place the folder "bitmaps" into your build directory to see the images. I have yet to embed these into the sourcecode.
+
+License
+=======
+The plugin is licensed under the terms of GPL v2 or, at your will, later. 
+The expression_parser library is by Jos the Jong and under apache license: http://www.apache.org/licenses/LICENSE-2.0
+
