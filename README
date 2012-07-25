@@ -6,27 +6,27 @@ The purpose of this plugin is to provide calculating and mathematical expression
 Help
 =========
 
-Examples (comments are in brackets, some results depend on other example calculations):
+Examples of expression that work in the calculator are: (comments are in brackets, some results depend on other example calculations):
 =========
 Hull speed:
-	LWL=48 			(water line lenght in feet)
-	vhull=1.34*LWL^(1/2)	(hull speed in knots)
+    LWL=48			(water line lenght in feet)
+    vhull=1.34*LWL^(1/2)	(hull speed in knots)
 
 Conversions:
-	ftm=0.3048		(feet to metres)
-	km_to_nm=0.539957	(Kilometre to nautical Mile)
-	ftm*LWL			(waterline lenght in metres)
+    ftm=0.3048			(feet to meters)
+    km_to_nm=0.539957		(Kilometers to nautical Mile)
+    ftm*LWL			(waterline length in meters)
 
 Distance to horizon
-	R=6378.1*1000		(Radius of the earth in m)
-	H=2.5			(Height of the eye above sealevel in m)
-	d = R * acos(R/(R + h))	(Distance to horizon in m)	
-	ans*km_to_nm		(Distance to horizon in nm)
+    R=6378.1*1000		(Radius of the earth in m)
+    H=2.5			(Height of the eye above sea-level in m)
+    d = R * acos(R/(R + h))	(Distance to horizon in m)   
+    ans*km_to_nm		(Distance to horizon in nm)
 
 Distance to lighthouse
-	H1=200			(height of lighthouse in m)
-	d1 = R*acos(R/(R + H1))	(Distance to horizon in m)
-	distance=d1+d		(visability range of lighthouse in m)
+    H1=200			(height of lighthouse in m)
+    d1 = R*acos(R/(R + H1))	(Distance to horizon in m)
+    distance=d1+d		(visibility range of lighthouse in m)
 
 Operators:
           & | << >> 
