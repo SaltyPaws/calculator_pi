@@ -33,10 +33,11 @@
 using namespace std;
 
 //Added the 3 lines below to enable building in windows.
-#ifndef snprintf
-  #define snprintf  _snprintf
+#ifdef OS_WINDOWS
+    #ifndef snprintf
+        #define snprintf  _snprintf
+    #endif
 #endif
-
 
 /*
  * constructor.

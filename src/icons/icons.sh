@@ -5,6 +5,7 @@ path=$(dirname $0)
 # Require icotool from package icoutils
 # Require convert from package ImageMagick
 # Require inkscape
+# Require optipng
 
 for pic in $path/*.svg
 do
