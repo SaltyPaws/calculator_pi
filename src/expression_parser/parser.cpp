@@ -32,6 +32,10 @@
 
 using namespace std;
 
+//Added the 3 lines below to enable compiling in windows.
+#ifndef snprintf
+  #define snprintf  _snprintf
+#endif
 
 
 /*
