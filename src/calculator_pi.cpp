@@ -73,8 +73,8 @@ int calculator_pi::Init(void)
       // Set some default private member parameters
       m_calculator_dialog_x = 0;
       m_calculator_dialog_y = 0;
-      m_calculator_dialog_width = 0;
-      m_calculator_dialog_height = 0;
+      m_calculator_dialog_width = 20;
+      m_calculator_dialog_height = 20;
 
       ::wxDisplaySize(&m_display_width, &m_display_height);
 
@@ -183,8 +183,16 @@ void calculator_pi::OnToolbarToolCallback(int id)
             m_pDialog = new Dlg(m_parent_window);
             m_pDialog->plugin = this;
             m_pDialog->Move(wxPoint(m_calculator_dialog_x, m_calculator_dialog_y));
-            if ((m_calculator_dialog_width>10)|(m_calculator_dialog_height>10))
-            m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
+            if ((m_calculator_dialog_width>60)||(m_calculator_dialog_height>25))
+            {
+                m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
+                //printf("setting size to: %d %d\n", m_calculator_dialog_x,m_calculator_dialog_y);
+            }
+
+            else{
+                m_pDialog->Fit();
+                //printf("Just fitting window");
+                }
       }
 
       m_pDialog->Show(!m_pDialog->IsShown());
