@@ -32,8 +32,16 @@
 
 using namespace std;
 
-//Added the 3 lines below to enable building in windows.
-#ifdef OS_WINDOWS
+/*
+snprintf does cause compiler error in windows if not declared. In linux it causes compiler error if declared.
+This is a modification from original code
+Identification	_WIN32	Defined for both 32-bit and 64-bit environments
+Identification	_WIN64	Defined for 64-bit environments.
+Identification	__WIN32__	Defined by Borland C++
+Identification	__TOS_WIN__	Defined by xlC
+Identification	__WINDOWS__	Defined by Watcom C/C++ */
+
+#if defined (_WIN32) || defined (_WIN64) || defined (__WIN32__) || defined (__TOS_WIN__) || defined (__WINDOWS__) || defined (_WIN64)
     #ifndef snprintf
         #define snprintf  _snprintf
     #endif
