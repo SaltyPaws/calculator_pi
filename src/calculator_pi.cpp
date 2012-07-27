@@ -155,12 +155,12 @@ wxString calculator_pi::GetCommonName()
 
 wxString calculator_pi::GetShortDescription()
 {
-      return _("Calculator");
+      return _("Symbolic Calculator Plugin");
 }
 
 wxString calculator_pi::GetLongDescription()
 {
-      return _("This is a calculator & mathematical expression parsing plugin. Would you like to know your hull speed?");
+      return _("This is a calculator & mathematical expression parsing plugin.\nWould you like to know your hull speed?");
 }
 
 int calculator_pi::GetToolbarToolCount(void)
