@@ -36,6 +36,7 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     prs.parse("dtr=0.0174532925"); //define degree to radians conversion factor
     this->HelpPanel->Show(false);
     this->m_Overview->Layout();
+    this->Layout();
     this->Fit();
 }
 
