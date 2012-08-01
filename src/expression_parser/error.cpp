@@ -43,7 +43,11 @@ Error::Error(const int row, const int col, const int id, ...)
     const char* msg_desc = msgdesc(id);
 
     va_list args;
+#if(__WIN32__)
+    va_start(args, id);
+#else
     va_start(args, msg_desc);
+#endif
     vsnprintf(msg, sizeof(msg)-1, msg_desc, args);
     msg[sizeof(msg)-1] = '\0';
     va_end(args);
