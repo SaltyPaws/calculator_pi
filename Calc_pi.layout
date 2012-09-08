@@ -5,21 +5,21 @@
 		<Cursor position="5139" topLine="125" />
 	</File>
 	<File name="src/calculator_pi.h" open="1" top="0" tabpos="4">
-		<Cursor position="1829" topLine="29" />
+		<Cursor position="1980" topLine="29" />
 	</File>
-	<File name="src/calculatorgui.cpp" open="0" top="0" tabpos="0">
+	<File name="src/calculatorgui.cpp" open="1" top="0" tabpos="7">
 		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="src/calculatorgui.h" open="0" top="0" tabpos="0">
 		<Cursor position="7896" topLine="0" />
 	</File>
 	<File name="src/calculatorgui_impl.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="2438" topLine="22" />
+		<Cursor position="2203" topLine="9" />
 	</File>
 	<File name="src/calculatorgui_impl.h" open="1" top="0" tabpos="2">
-		<Cursor position="2702" topLine="20" />
+		<Cursor position="2642" topLine="9" />
 	</File>
-	<File name="src/expression_parser/parser.cpp" open="1" top="1" tabpos="5">
+	<File name="src/expression_parser/parser.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="1026" topLine="9" />
 	</File>
 	<File name="src/icons.cpp" open="1" top="0" tabpos="6">

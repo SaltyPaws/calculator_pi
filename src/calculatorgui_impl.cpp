@@ -69,16 +69,25 @@ void Dlg::OnToggle( wxCommandEvent& event )
     wxMilliSleep(50);
 }
 
+
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
     char* test;
     wxString Text = m_result->GetValue();
-    //  wxMessageBox(_("User entered text:\n") + Text);
-    test = prs.parse((const char*)Text.mb_str());
-    //printf("\t%s\n", test);
-    wxString mystring = wxString::FromUTF8(test);
-    wxLogMessage(_("Calculator output:") + mystring);
-    wxString Foobar;
-    m_result->SetValue(mystring.c_str());
-    event.Skip();
+    bool error_check=false;
+    if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
+        //wxMessageBox(_("User entered text:\n") + Text);
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if (!error_check)
+        {
+        test = prs.parse((const char*)Text.mb_str());
+        //printf("\t%s\n", test);
+        wxString mystring = wxString::FromUTF8(test);
+        wxLogMessage(_("Calculator output:") + mystring);
+        wxString Foobar;
+        m_result->SetValue(mystring.c_str());
+        //event.Skip();
+        }
 }
