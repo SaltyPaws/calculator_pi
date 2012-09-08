@@ -30,7 +30,7 @@
             <property name="bg"></property>
             <property name="center">wxBOTH</property>
             <property name="context_help"></property>
-            <property name="context_menu">1</property>
+            <property name="context_menu">0</property>
             <property name="enabled">1</property>
             <property name="event_handler">impl_virtual</property>
             <property name="extra_style"></property>
@@ -233,7 +233,7 @@
                                             <property name="resize">Resizable</property>
                                             <property name="show">1</property>
                                             <property name="size">420,40</property>
-                                            <property name="style"></property>
+                                            <property name="style">wxTE_DONTWRAP|wxTE_MULTILINE|wxTE_PROCESS_ENTER</property>
                                             <property name="subclass"></property>
                                             <property name="toolbar_pane">0</property>
                                             <property name="tooltip"></property>
@@ -268,7 +268,7 @@
                                             <event name="OnSetFocus"></event>
                                             <event name="OnSize"></event>
                                             <event name="OnText"></event>
-                                            <event name="OnTextEnter"></event>
+                                            <event name="OnTextEnter">OnCalculate</event>
                                             <event name="OnTextMaxLen"></event>
                                             <event name="OnTextURL"></event>
                                             <event name="OnUpdateUI"></event>

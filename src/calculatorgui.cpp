@@ -23,7 +23,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), 0 );
+	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_DONTWRAP|wxTE_MULTILINE|wxTE_PROCESS_ENTER );
 	m_result->SetFont( wxFont( 20, 70, 90, 90, false, wxEmptyString ) );
 	m_result->SetMinSize( wxSize( 200,40 ) );
 	m_result->SetMaxSize( wxSize( -1,40 ) );
@@ -78,6 +78,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	this->Centre( wxBOTH );
 	
 	// Connect Events
+	m_result->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	Calculate->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
 	HelpText->Connect( wxEVT_LEFT_UP, wxMouseEventHandler( DlgDef::OnToggle ), NULL, this );
@@ -86,6 +87,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 DlgDef::~DlgDef()
 {
 	// Disconnect Events
+	m_result->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	Calculate->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
 	HelpText->Disconnect( wxEVT_LEFT_UP, wxMouseEventHandler( DlgDef::OnToggle ), NULL, this );
