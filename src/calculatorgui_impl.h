@@ -52,10 +52,18 @@ public:
         Parser prs; //The calculator class. Here all the functions and variables are stored.
         void OnCalculate( wxCommandEvent& event );
         void OnToggle( wxCommandEvent& event );
+        void key_shortcut(wxKeyEvent& event);
+        void down(void);
+        void up (void);
+        void i_plus(int &counter_test);
+        void i_min(int &counter_test);
         calculator_pi *plugin;
 private:
         wxPoint xy;
         wxSize  wh;
+        wxString buffer[41];
+        int i_buffer;
+        int i_counter;
 };
 
 #endif

@@ -38,6 +38,8 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     this->m_Overview->Layout();
     this->Layout();
     this->Fit();
+    i_buffer=0;
+    i_counter=0;
 }
 
 void Dlg::OnToggle( wxCommandEvent& event )
@@ -74,6 +76,11 @@ void Dlg::OnCalculate( wxCommandEvent& event )
 {
     char* test;
     wxString Text = m_result->GetValue();
+
+    buffer[i_buffer]=Text; //store input
+    i_plus(i_buffer);
+    i_counter=i_buffer;
+
     bool error_check=false;
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
         //wxMessageBox(_("User entered text:\n") + Text);
@@ -86,8 +93,114 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         //printf("\t%s\n", test);
         wxString mystring = wxString::FromUTF8(test);
         wxLogMessage(_("Calculator output:") + mystring);
-        wxString Foobar;
+        //wxString Foobar;
+
+        buffer[i_buffer]=mystring; //store input
+        i_plus(i_buffer);
+        i_counter=i_buffer;
+
         m_result->SetValue(mystring.c_str());
         //event.Skip();
         }
+}
+
+void Dlg::key_shortcut(wxKeyEvent& event) {
+    // of course, it doesn't have to be the control key. You can use others:
+    // http://docs.wxwidgets.org/stable/wx_wxkeyevent.html
+   // if(event.GetModifiers() == wxMOD_CONTROL) {
+        switch(event.GetKeyCode()) {
+            case WXK_DOWN: // can return the upper ASCII value of a key
+                // do whatever you like for a Ctrl+G event here!
+                //wxMessageBox(_("down") );
+                down();
+                //OnCursor();
+                break;
+            case WXK_UP: // we also have special keycodes for non-ascii values.
+                // get a full list of special keycodes here:
+                // http://docs.wxwidgets.org/stable/wx_keycodes.html
+                //wxMessageBox(_("up") );
+                up();
+
+                break;
+            default: // do nothing
+
+                break;
+      //  }
+   }
+   event.Skip();
+}
+
+void Dlg::up()
+{
+    i_plus(i_counter);
+    if (buffer[i_counter].Len()>1) {
+        m_result->SetValue(buffer[i_counter].c_str());
+                        //wxMessageBox(_("Not Empty") );
+    }
+    else{
+        i_min(i_counter);
+        //wxMessageBox(_("Empty") );
+
+    }
+
+}
+
+void Dlg::down()
+{
+    i_min(i_counter);
+    if (buffer[i_counter].Len()>1) {
+        m_result->SetValue(buffer[i_counter].c_str());
+                        //wxMessageBox(_("Not Empty") );
+    }
+    else{
+        i_plus(i_counter);
+       // wxMessageBox(_("Empty") );
+
+    }
+
+}
+/*
+void Dlg::down()
+{
+    //printf("Down");
+    int count_this=0;
+    do {
+    i_min(i_counter);
+    count_this++;
+
+    } while ( buffer[i_counter].IsEmpty() || count_this>40 );
+
+    if (buffer[i_counter].Len() >1) {
+        m_result->SetValue(buffer[i_counter].c_str());
+                                wxMessageBox(_("Not Empty") );
+    }
+    else{
+        i_plus(i_counter);
+                wxMessageBox(_("Empty") );
+    }
+}*/
+/*
+void Dlg::i_plus(bool buffer_test){
+ if (buffer_test){
+    i_buffer++;
+    if (i_buffer>40) i_counter=0;
+ }
+ else
+    i_counter++;
+    if (i_counter>40) i_counter=0;
+}
+
+void Dlg::i_min(void){
+    i_counter--;
+    if (i_counter<0) i_counter=40;
+}*/
+
+void Dlg::i_plus(int &counter_test){
+    counter_test++;
+    if (counter_test>40) counter_test=0;
+}
+
+void Dlg::i_min(int &counter_test){
+    counter_test--;
+    if (counter_test<0) counter_test=40;
 }

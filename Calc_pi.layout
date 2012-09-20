@@ -2,9 +2,9 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="src/calculator_pi.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="5139" topLine="125" />
+		<Cursor position="5139" topLine="95" />
 	</File>
-	<File name="src/calculator_pi.h" open="1" top="0" tabpos="4">
+	<File name="src/calculator_pi.h" open="1" top="1" tabpos="4">
 		<Cursor position="1980" topLine="29" />
 	</File>
 	<File name="src/calculatorgui.cpp" open="1" top="0" tabpos="7">
@@ -14,10 +14,10 @@
 		<Cursor position="7896" topLine="0" />
 	</File>
 	<File name="src/calculatorgui_impl.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="2203" topLine="9" />
+		<Cursor position="3092" topLine="36" />
 	</File>
 	<File name="src/calculatorgui_impl.h" open="1" top="0" tabpos="2">
-		<Cursor position="2642" topLine="9" />
+		<Cursor position="1779" topLine="0" />
 	</File>
 	<File name="src/expression_parser/parser.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="1026" topLine="9" />

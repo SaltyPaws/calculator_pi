@@ -45,9 +45,10 @@ class DlgDef : public wxDialog
 		wxStaticText* HelpText;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnToggle( wxMouseEvent& event ) { event.Skip(); }
+		virtual void Update( wxMouseEvent& event ) { event.Skip(); }
 		
 	
 	public:
