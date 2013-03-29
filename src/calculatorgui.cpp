@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Apr 11 2012)
+// C++ code generated with wxFormBuilder (version Oct  8 2012)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
@@ -23,8 +23,9 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_DONTWRAP|wxTE_MULTILINE|wxTE_PROCESS_ENTER );
-	m_result->SetFont( wxFont( 20, 70, 90, 90, false, wxEmptyString ) );
+	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_DONTWRAP|wxTE_PROCESS_ENTER );
+	m_result->SetMaxLength( 0 ); 
+	m_result->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 90, false, wxEmptyString ) );
 	m_result->SetMinSize( wxSize( 200,40 ) );
 	m_result->SetMaxSize( wxSize( -1,40 ) );
 	
@@ -37,8 +38,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer41->Add( Calculate, 0, wxALL|wxEXPAND, 5 );
 	
 	m_Help = new wxCheckBox( m_Overview, wxID_ANY, _("Help"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_Help->SetMinSize( wxSize( 58,30 ) );
-	
 	bSizer41->Add( m_Help, 0, wxALL|wxEXPAND, 5 );
 	
 	
@@ -113,6 +112,13 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	fgSizer3 = new wxFlexGridSizer( 0, 2, 0, 0 );
 	fgSizer3->SetFlexibleDirection( wxBOTH );
 	fgSizer3->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+	
+	m_Font_Size_txt = new wxStaticText( this, wxID_ANY, _("Font Size"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Font_Size_txt->Wrap( -1 );
+	fgSizer3->Add( m_Font_Size_txt, 0, wxALL, 5 );
+	
+	m_FontSize = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 20 );
+	fgSizer3->Add( m_FontSize, 0, wxALL, 5 );
 	
 	
 	sbSizer4->Add( fgSizer3, 1, wxEXPAND, 5 );

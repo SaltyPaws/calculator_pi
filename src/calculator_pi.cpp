@@ -206,6 +206,8 @@ bool calculator_pi::LoadConfig(void)
       {
             pConf->SetPath ( _T( "/Settings/Calculator" ) );
             pConf->Read ( _T ( "Opacity" ),  &m_iOpacity, 255 );
+            //pConf->Read ( _T ( "FontSize" ),  &m_iFontSize, 255 );
+            //printf("Reading Fontsize %i \n",m_iFontSize);
            // pConf->Read       dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
             m_calculator_dialog_x =  pConf->Read ( _T ( "DialogPosX" ), 20L );
             m_calculator_dialog_y =  pConf->Read ( _T ( "DialogPosY" ), 20L );
@@ -220,6 +222,8 @@ bool calculator_pi::LoadConfig(void)
                   m_calculator_dialog_width = 5;
             if((m_calculator_dialog_width < 0) || ((m_calculator_dialog_y + m_calculator_dialog_height) > m_display_height))
                   m_calculator_dialog_width = 5;
+            //if((m_iFontSize < 1) || (m_iFontSize >95))
+            //      m_iFontSize = 20;
 
 
             return true;
@@ -236,6 +240,8 @@ bool calculator_pi::SaveConfig(void)
       {
             pConf->SetPath ( _T ( "/Settings/Calculator" ) );
             pConf->Write ( _T ( "Opacity" ), m_iOpacity );
+            //pConf->Write ( _T ( "FontSize" ), m_iFontSize );
+            //printf("Writing Fontsize %i \n",m_iFontSize);
             pConf->Write ( _T ( "DialogPosX" ),   m_calculator_dialog_x );
             pConf->Write ( _T ( "DialogPosY" ),   m_calculator_dialog_y );
             pConf->Write ( _T ( "DialogPosW" ),   m_calculator_dialog_width );
@@ -255,10 +261,14 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       wxColour cl;
       DimeWindow(dialog);
       dialog->m_sOpacity->SetValue(m_iOpacity);
+      //dialog->m_FontSize->SetValue(m_iFontSize);
+      //printf("Setting dialog value Fontsize %i \n",m_iFontSize);
 
       if(dialog->ShowModal() == wxID_OK)
       {
             m_iOpacity = dialog->m_sOpacity->GetValue();
+            //m_iFontSize = dialog->m_FontSize->GetValue();
+            //printf("Just got Fontsize %i \n",m_FontSize);
             SaveConfig();
       }
       delete dialog;

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Apr 11 2012)
+// C++ code generated with wxFormBuilder (version Oct  8 2012)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
@@ -23,6 +23,7 @@
 #include <wx/stattext.h>
 #include <wx/panel.h>
 #include <wx/dialog.h>
+#include <wx/spinctrl.h>
 #include <wx/slider.h>
 #include <wx/statbox.h>
 
@@ -66,12 +67,14 @@ class CfgDlgDef : public wxDialog
 	private:
 	
 	protected:
+		wxStaticText* m_Font_Size_txt;
 		wxStaticText* m_staticText17;
 		wxStdDialogButtonSizer* m_sdbSizer1;
 		wxButton* m_sdbSizer1OK;
 		wxButton* m_sdbSizer1Cancel;
 	
 	public:
+		wxSpinCtrl* m_FontSize;
 		wxSlider* m_sOpacity;
 		
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE ); 

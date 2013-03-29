@@ -41,7 +41,7 @@
 #include "calculatorgui_impl.h"
 
 #define     PLUGIN_VERSION_MAJOR    1
-#define     PLUGIN_VERSION_MINOR    1
+#define     PLUGIN_VERSION_MINOR    2
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
@@ -100,6 +100,7 @@ private:
       int               m_calculator_dialog_x, m_calculator_dialog_y,m_calculator_dialog_width,m_calculator_dialog_height;
       int               m_display_width, m_display_height;
       int               m_iOpacity;
+      //int               m_iFontSize;
       int               m_leftclick_tool_id;
       bool              m_ShowHelp;
 ;

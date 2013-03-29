@@ -74,6 +74,11 @@ void Dlg::OnToggle( wxCommandEvent& event )
 
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
+    //this->m_result->SetDefaultStyle(wxTextAttr(*wxBLUE));
+    //m_result->SetNewStyle(wxTextAttr(*wxRED));
+    //m_result->AppendText("Red text\n");
+
+
     char* test;
     wxString Text = m_result->GetValue();
 
