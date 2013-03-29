@@ -67,6 +67,11 @@ Build as normally:
 * make
 * sudo make install
 
+Executables
+=========
+Compiled library files can be downloaded/uploaded here.
+https://sourceforge.net/projects/opencpnplugins/
+
 License
 =======
 The plugin is licensed under the terms of GPL v2 or, at your will, later. 
