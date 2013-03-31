@@ -33,10 +33,12 @@
 		</Compiler>
 		<Unit filename="src/calculator_pi.cpp" />
 		<Unit filename="src/calculator_pi.h" />
-		<Unit filename="src/calculatorgui.cpp" />
-		<Unit filename="src/calculatorgui.h" />
 		<Unit filename="src/calculatorgui_impl.cpp" />
 		<Unit filename="src/calculatorgui_impl.h" />
+		<Unit filename="src/calculatorgui_linux.cpp" />
+		<Unit filename="src/calculatorgui_linux.h" />
+		<Unit filename="src/calculatorgui_windows.cpp" />
+		<Unit filename="src/calculatorgui_windows.h" />
 		<Unit filename="src/expression_parser/constants.h" />
 		<Unit filename="src/expression_parser/error.cpp" />
 		<Unit filename="src/expression_parser/error.h" />

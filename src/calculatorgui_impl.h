@@ -33,7 +33,13 @@
 
 #include "parser.h"
 
-#include "calculatorgui.h"
+#if defined (_WIN32) || defined (_WIN64) || defined (__WIN32__) || defined (__TOS_WIN__) || defined (__WINDOWS__) || defined (_WIN64)
+    #include "calculatorgui_windows.h"
+#else
+    #include "calculatorgui_linux.h"
+#endif
+
+
 #include "calculator_pi.h"
 using namespace std;
 

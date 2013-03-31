@@ -64,6 +64,7 @@ FIND_PACKAGE(Gettext REQUIRED)
 # For convenience we define the sources as a variable. You can add
 # header files and cpp/c files and CMake will sort them out
 
+IF(WIN32)
 
 
 SET(SRC_CALCULATOR
@@ -71,11 +72,23 @@ SET(SRC_CALCULATOR
             src/calculator_pi.cpp
             src/icons.h
             src/icons.cpp
-	    src/calculatorgui.h
-	    src/calculatorgui.cpp
+	    src/calculatorgui_windows.h
+	    src/calculatorgui_windows.cpp
 	    src/calculatorgui_impl.cpp
 	    src/calculatorgui_impl.h
 	)
+ELSE(WIN32)
+SET(SRC_CALCULATOR
+            src/calculator_pi.h
+            src/calculator_pi.cpp
+            src/icons.h
+            src/icons.cpp
+	    src/calculatorgui_linux.h
+	    src/calculatorgui_linux.cpp
+	    src/calculatorgui_impl.cpp
+	    src/calculatorgui_impl.h
+	)
+ENDIF(WIN32)
 
 SET(SRC_EXPPARS 	
 	src/expression_parser/constants.h
@@ -96,7 +109,6 @@ IF(WIN32)
   SET(OPENCPN_IMPORT_LIB "../../${CMAKE_CFG_INTDIR}/${PARENT}")
   TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} ${OPENCPN_IMPORT_LIB} )
   ADD_DEPENDENCIES(${PACKAGE_NAME} ${PARENT})
-  #TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} C:/OSGeo4W/lib/iconv.lib )
 ENDIF(WIN32)
 
 TARGET_LINK_LIBRARIES( ${PACKAGE_NAME} ${ICONV_LIBRARIES} )

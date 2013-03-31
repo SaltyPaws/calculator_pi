@@ -5,7 +5,7 @@
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
 
-#include "calculatorgui.h"
+#include "calculatorgui_windows.h"
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -23,17 +23,17 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_DONTWRAP|wxTE_PROCESS_ENTER );
+	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_PROCESS_ENTER );
 	m_result->SetMaxLength( 0 ); 
 	m_result->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 90, false, wxEmptyString ) );
-	m_result->SetMinSize( wxSize( 200,40 ) );
-	m_result->SetMaxSize( wxSize( -1,40 ) );
+	m_result->SetMinSize( wxSize( 100,30 ) );
+	m_result->SetMaxSize( wxSize( -1,80 ) );
 	
 	bSizer41->Add( m_result, 1, wxALL|wxEXPAND, 5 );
 	
-	Calculate = new wxButton( m_Overview, wxID_ANY, _("Calculate"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	Calculate->SetMinSize( wxSize( 80,30 ) );
-	Calculate->SetMaxSize( wxSize( 80,40 ) );
+	Calculate = new wxButton( m_Overview, wxID_ANY, _("Calc"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	Calculate->SetMinSize( wxSize( 40,20 ) );
+	Calculate->SetMaxSize( wxSize( 80,20 ) );
 	
 	bSizer41->Add( Calculate, 0, wxALL|wxEXPAND, 5 );
 	
@@ -72,7 +72,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	
 	this->SetSizer( bSizer7 );
 	this->Layout();
-	bSizer7->Fit( this );
 	
 	this->Centre( wxBOTH );
 	

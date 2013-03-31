@@ -11,7 +11,7 @@
         <property name="embedded_files_path">res</property>
         <property name="encoding">UTF-8</property>
         <property name="event_generation">connect</property>
-        <property name="file">calculatorgui</property>
+        <property name="file">calculatorgui_windows</property>
         <property name="first_id">1000</property>
         <property name="help_provider">none</property>
         <property name="internationalize">1</property>
@@ -42,7 +42,7 @@
             <property name="minimum_size">-1,-1</property>
             <property name="name">DlgDef</property>
             <property name="pos"></property>
-            <property name="size">-1,-1</property>
+            <property name="size">741,758</property>
             <property name="style">wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER</property>
             <property name="subclass"></property>
             <property name="title">Calculator</property>
@@ -217,11 +217,11 @@
                                             <property name="id">wxID_ANY</property>
                                             <property name="max_size"></property>
                                             <property name="maximize_button">0</property>
-                                            <property name="maximum_size">-1,40</property>
+                                            <property name="maximum_size">-1,80</property>
                                             <property name="maxlength">0</property>
                                             <property name="min_size"></property>
                                             <property name="minimize_button">0</property>
-                                            <property name="minimum_size">200,40</property>
+                                            <property name="minimum_size">100,30</property>
                                             <property name="moveable">1</property>
                                             <property name="name">m_result</property>
                                             <property name="pane_border">1</property>
@@ -233,7 +233,7 @@
                                             <property name="resize">Resizable</property>
                                             <property name="show">1</property>
                                             <property name="size">420,40</property>
-                                            <property name="style">wxTE_DONTWRAP|wxTE_PROCESS_ENTER</property>
+                                            <property name="style">wxTE_PROCESS_ENTER</property>
                                             <property name="subclass"></property>
                                             <property name="toolbar_pane">0</property>
                                             <property name="tooltip"></property>
@@ -307,13 +307,13 @@
                                             <property name="gripper">0</property>
                                             <property name="hidden">0</property>
                                             <property name="id">wxID_ANY</property>
-                                            <property name="label">Calculate</property>
+                                            <property name="label">Calc</property>
                                             <property name="max_size"></property>
                                             <property name="maximize_button">0</property>
-                                            <property name="maximum_size">80,40</property>
+                                            <property name="maximum_size">80,20</property>
                                             <property name="min_size"></property>
                                             <property name="minimize_button">0</property>
-                                            <property name="minimum_size">80,30</property>
+                                            <property name="minimum_size">40,20</property>
                                             <property name="moveable">1</property>
                                             <property name="name">Calculate</property>
                                             <property name="pane_border">1</property>

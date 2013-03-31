@@ -5,8 +5,8 @@
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
 
-#ifndef __CALCULATORGUI_H__
-#define __CALCULATORGUI_H__
+#ifndef __CALCULATORGUI_LINUX_H__
+#define __CALCULATORGUI_LINUX_H__
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
@@ -82,4 +82,4 @@ class CfgDlgDef : public wxDialog
 	
 };
 
-#endif //__CALCULATORGUI_H__
+#endif //__CALCULATORGUI_LINUX_H__
