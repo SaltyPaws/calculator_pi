@@ -64,31 +64,17 @@ FIND_PACKAGE(Gettext REQUIRED)
 # For convenience we define the sources as a variable. You can add
 # header files and cpp/c files and CMake will sort them out
 
-IF(WIN32)
-
 
 SET(SRC_CALCULATOR
             src/calculator_pi.h
             src/calculator_pi.cpp
             src/icons.h
             src/icons.cpp
-	    src/calculatorgui_windows.h
-	    src/calculatorgui_windows.cpp
+	    src/calculatorgui.h
+	    src/calculatorgui.cpp
 	    src/calculatorgui_impl.cpp
 	    src/calculatorgui_impl.h
 	)
-ELSE(WIN32)
-SET(SRC_CALCULATOR
-            src/calculator_pi.h
-            src/calculator_pi.cpp
-            src/icons.h
-            src/icons.cpp
-	    src/calculatorgui_linux.h
-	    src/calculatorgui_linux.cpp
-	    src/calculatorgui_impl.cpp
-	    src/calculatorgui_impl.h
-	)
-ENDIF(WIN32)
 
 SET(SRC_EXPPARS 	
 	src/expression_parser/constants.h

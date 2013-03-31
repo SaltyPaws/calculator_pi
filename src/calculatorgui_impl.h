@@ -34,9 +34,9 @@
 #include "parser.h"
 
 #if defined (_WIN32) || defined (_WIN64) || defined (__WIN32__) || defined (__TOS_WIN__) || defined (__WINDOWS__) || defined (_WIN64)
-    #include "calculatorgui_windows.h"
+    #include "calculatorgui.h"
 #else
-    #include "calculatorgui_linux.h"
+    #include "calculatorgui.h"
 #endif
 
 
@@ -57,6 +57,7 @@ public:
         Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator by SaltyPaws"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         Parser prs; //The calculator class. Here all the functions and variables are stored.
         void OnCalculate( wxCommandEvent& event );
+        void OnHelp( wxCommandEvent& event );
         void OnToggle( wxCommandEvent& event );
         void key_shortcut(wxKeyEvent& event);
         void down(void);

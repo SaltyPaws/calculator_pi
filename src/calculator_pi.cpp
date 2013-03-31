@@ -274,3 +274,4 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       delete dialog;
 }
 
+
