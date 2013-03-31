@@ -20,9 +20,10 @@
 #include <wx/button.h>
 #include <wx/checkbox.h>
 #include <wx/sizer.h>
-#include <wx/stattext.h>
 #include <wx/panel.h>
+#include <wx/listctrl.h>
 #include <wx/dialog.h>
+#include <wx/stattext.h>
 #include <wx/spinctrl.h>
 #include <wx/slider.h>
 #include <wx/statbox.h>
@@ -43,13 +44,12 @@ class DlgDef : public wxDialog
 		wxButton* Calculate;
 		wxCheckBox* m_Help;
 		wxPanel* HelpPanel;
-		wxStaticText* HelpText;
+		wxListCtrl* m_listCtrl;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
-		virtual void Update( wxMouseEvent& event ) { event.Skip(); }
 		
 	
 	public:

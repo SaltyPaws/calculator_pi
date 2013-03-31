@@ -40,6 +40,8 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     this->Fit();
     i_buffer=0;
     i_counter=0;
+    item_counter=0;
+
 }
 
 void Dlg::OnToggle( wxCommandEvent& event )
@@ -88,7 +90,7 @@ void Dlg::OnCalculate( wxCommandEvent& event )
 
     bool error_check=false;
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
-        //wxMessageBox(_("User entered text:\n") + Text);
+        wxMessageBox(_("User entered erroneous text:\n") + Text);
         m_result->SetValue(_(""));
         error_check=true;
     }
@@ -105,6 +107,15 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         i_counter=i_buffer;
 
         m_result->SetValue(mystring.c_str());
+        //m_listCtrl->SetItem(itemIndex, item_counter, "hallo"); //want this for col. 2
+        Text.Right(Text.Length()-3);
+        //wxLogMessage(_("test") + Text.Length());
+        //wxLogMessage(Text.Length());
+        //mystring.replace(_("Ans"),_(""));
+        //wxLogMessage(mystring);
+        if (!mystring.StartsWith(_("Error"))) {
+        itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
+        item_counter++;}
         //event.Skip();
         }
 }

@@ -37,7 +37,7 @@ snprintf does cause compiler error in windows if not declared. In linux it cause
 This is a modification from original code
 Identification	_WIN32	Defined for both 32-bit and 64-bit environments
 Identification	_WIN64	Defined for 64-bit environments.
-Identification	__WIN32__	Defined by Borland C++
+Identification	__WIN32__	Defined by Borlandand C++
 Identification	__TOS_WIN__	Defined by xlC
 Identification	__WINDOWS__	Defined by Watcom C/C++ */
 
@@ -106,7 +106,7 @@ char* Parser::parse(const char new_expr[])
         // add the answer to memory as variable "Ans"
         user_var.add("Ans", ans);
 
-        snprintf(ans_str, sizeof(ans_str), "Ans = %g", ans);
+        snprintf(ans_str, sizeof(ans_str), "%g", ans);
     }
     catch (Error err)
     {

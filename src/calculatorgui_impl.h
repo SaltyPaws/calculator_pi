@@ -70,6 +70,9 @@ private:
         wxString buffer[41];
         int i_buffer;
         int i_counter;
+        long item_counter;
+        long itemIndex;
+
 };
 
 #endif

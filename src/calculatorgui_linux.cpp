@@ -37,7 +37,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	
 	bSizer41->Add( Calculate, 0, wxALL|wxEXPAND, 5 );
 	
-	m_Help = new wxCheckBox( m_Overview, wxID_ANY, _("Help"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Help = new wxCheckBox( m_Overview, wxID_ANY, _("History"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer41->Add( m_Help, 0, wxALL|wxEXPAND, 5 );
 	
 	
@@ -47,18 +47,16 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	HelpSizer = new wxBoxSizer( wxVERTICAL );
 	
 	HelpPanel = new wxPanel( m_Overview, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer11;
-	bSizer11 = new wxBoxSizer( wxVERTICAL );
+	HelpSizer->Add( HelpPanel, 0, wxALL|wxEXPAND, 5 );
 	
-	HelpText = new wxStaticText( HelpPanel, wxID_ANY, _("Use up and down keys, while cursor is in input box, to recall previous input and results.\nExamples of expression that work in the calculator are: (comments are in brackets, some results depend on other example calculations):\n=========\nHull speed:\n    LWL=48\t\t\t\t\t(water line lenght in feet)\n    vhull=1.34*LWL^(1/2)\t(hull speed in knots)\n\nConversions:\n    ftm=0.3048\t\t\t\t(feet to meters)\n    km_to_nm=0.539957\t(Kilometers to nautical Mile)\n    ftm*LWL\t\t\t\t(waterline length in meters)\n\nDistance to horizon\n    R=6378.1*1000\t\t\t(Radius of the earth in m)\n    H=2.5\t\t\t\t\t(Height of the eye above sea-level in m)\n    d = R * acos(R/(R + h))\t(Distance to horizon in m)   \n    ans*km_to_nm\t\t\t(Distance to horizon in nm)\n\nDistance to lighthouse\n    H1=200\t\t\t\t\t(height of lighthouse in m)\n    d1 = R*acos(R/(R + H1))(Distance to horizon in m)\n    distance=d1+d\t\t\t(visibility range of lighthouse in m)\n\nOperators:\n          & | << >> \n          = <> < > <= >=\n          + -\n          * / % ||\n          ^ (NB use ^(1/2) for square root)\n          ! (Factorial)\n \nFunctions:\n          Abs, Exp, Sign, Sqrt, Log, Log10\n          Sin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)\n          Factorial\n \nVariables:\n          Pi, e\n\t  dtr is the conversion factor from degrees to radians\n\t  Ans is the result of the previous calulation\t\t\n          you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)"), wxDefaultPosition, wxDefaultSize, 0 );
-	HelpText->Wrap( -1 );
-	bSizer11->Add( HelpText, 0, wxALL, 5 );
+	wxBoxSizer* bSizer8;
+	bSizer8 = new wxBoxSizer( wxVERTICAL );
+	
+	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer8->Add( m_listCtrl, 3, wxALL|wxEXPAND, 5 );
 	
 	
-	HelpPanel->SetSizer( bSizer11 );
-	HelpPanel->Layout();
-	bSizer11->Fit( HelpPanel );
-	HelpSizer->Add( HelpPanel, 1, wxEXPAND | wxALL, 5 );
+	HelpSizer->Add( bSizer8, 1, wxEXPAND, 5 );
 	
 	
 	bSizer45->Add( HelpSizer, 1, wxEXPAND, 5 );
@@ -81,7 +79,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_result->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	Calculate->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
-	HelpText->Connect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( DlgDef::Update ), NULL, this );
 }
 
 DlgDef::~DlgDef()
@@ -91,7 +88,6 @@ DlgDef::~DlgDef()
 	m_result->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	Calculate->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
-	HelpText->Disconnect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( DlgDef::Update ), NULL, this );
 	
 }
 
