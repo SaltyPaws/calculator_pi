@@ -35,7 +35,7 @@ CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
     prs.parse("dtr=0.0174532925"); //define degree to radians conversion factor
-    this->HelpPanel->Show(false);
+    this->m_listCtrl->Show(false);
     this->m_Overview->Layout();
     this->Layout();
     this->Fit();
@@ -58,18 +58,18 @@ void Dlg::OnToggle( wxCommandEvent& event )
         //Capture dialog size
         wh=this->GetSize();
         wh.y=-1; //Set default dialog height
-    	this->HelpPanel->Show(true);
     	this->m_listCtrl->Show(true);
-    	this->HelpPanel->Fit();
+    	this->m_listCtrl->Show(true);
+    	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
         this->Fit();
         this->Layout();
     }
     else
     {
-    	this->HelpPanel->Show(false);
     	this->m_listCtrl->Show(false);
-    	this->HelpPanel->Fit();
+    	this->m_listCtrl->Show(false);
+    	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
         this->Fit();
         this->Layout();

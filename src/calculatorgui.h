@@ -17,11 +17,11 @@
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/button.h>
 #include <wx/checkbox.h>
+#include <wx/button.h>
 #include <wx/sizer.h>
-#include <wx/panel.h>
 #include <wx/listctrl.h>
+#include <wx/panel.h>
 #include <wx/dialog.h>
 #include <wx/stattext.h>
 #include <wx/spinctrl.h>
@@ -41,10 +41,9 @@ class DlgDef : public wxDialog
 	protected:
 		wxPanel* m_Overview;
 		wxTextCtrl* m_result;
-		wxButton* Calculate;
 		wxCheckBox* m_Help;
 		wxButton* m_HelpButton;
-		wxPanel* HelpPanel;
+		wxButton* Calculate;
 		wxListCtrl* m_listCtrl;
 		
 		// Virtual event handlers, overide them in your derived class
@@ -56,7 +55,7 @@ class DlgDef : public wxDialog
 	
 	public:
 		
-		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
+		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 670,213 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~DlgDef();
 	
 };
