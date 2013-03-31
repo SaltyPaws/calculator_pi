@@ -97,7 +97,7 @@ void Dlg::OnCalculate( wxCommandEvent& event )
 
     bool error_check=false;
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
-        wxMessageBox(_("User entered erroneous text:\n") + Text);
+        //wxMessageBox(_("User entered erroneous text:\n") + Text);
         m_result->SetValue(_(""));
         error_check=true;
     }

@@ -49,7 +49,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* HelpPanel;
 	HelpPanel = new wxBoxSizer( wxVERTICAL );
 	
-	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST );
 	HelpPanel->Add( m_listCtrl, 3, wxALL|wxEXPAND, 5 );
 	
 	
