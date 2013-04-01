@@ -65,8 +65,18 @@ public:
         void i_plus(int &counter_test);
         void i_min(int &counter_test);
         calculator_pi *plugin;
-        int Max_Results;
+
         void SetMaxResults         (int x){Max_Results = x;};
+
+        void setm_bshowhelpB         (bool x){m_bshowhelpB = x; };
+        void setm_bshowhistoryB         (bool x){m_bshowhistoryB = x;};
+        void setm_bCalculateB         (bool x){m_bCalculateB = x;};
+        void setm_bshowhistory         (bool x){m_bshowhistory = x;};
+        void setm_bcapturehidden         (bool x){m_bcapturehidden = x;};
+        void setm_blogresults         (bool x){m_blogresults = x;};
+        void set_Buttons (void);
+        void set_History(void);
+
 private:
         wxPoint xy;
         wxSize  wh;
@@ -76,6 +86,13 @@ private:
         int item_counter;
         long itemIndex;
         bool MemoryFull;
+        int Max_Results;
+      bool              m_bshowhelpB;
+      bool              m_bshowhistoryB;
+      bool              m_bCalculateB;
+      bool              m_bshowhistory;
+      bool              m_bcapturehidden;
+      bool              m_blogresults;
 
 
 };

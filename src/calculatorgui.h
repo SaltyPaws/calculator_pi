@@ -23,10 +23,10 @@
 #include <wx/listctrl.h>
 #include <wx/panel.h>
 #include <wx/dialog.h>
+#include <wx/statbox.h>
 #include <wx/stattext.h>
 #include <wx/spinctrl.h>
 #include <wx/slider.h>
-#include <wx/statbox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -75,8 +75,14 @@ class CfgDlgDef : public wxDialog
 		wxButton* m_sdbSizer1Cancel;
 	
 	public:
+		wxCheckBox* m_showhelpB;
+		wxCheckBox* m_showhistoryB;
+		wxCheckBox* m_CalculateB;
 		wxSpinCtrl* m_MaxResults;
 		wxSlider* m_sOpacity;
+		wxCheckBox* m_showhistory;
+		wxCheckBox* m_capturehidden;
+		wxCheckBox* m_logresults;
 		
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE ); 
 		~CfgDlgDef();

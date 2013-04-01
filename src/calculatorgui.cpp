@@ -98,8 +98,31 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 	
+	wxStaticBoxSizer* sbSizer3;
+	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Show/Hide Buttons") ), wxVERTICAL );
+	
+	m_showhelpB = new wxCheckBox( this, wxID_ANY, _("Help Button"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showhelpB->SetToolTip( _("Show/Hide help button (you can always type \"help\" from input window).") );
+	
+	sbSizer3->Add( m_showhelpB, 0, wxALL, 5 );
+	
+	m_showhistoryB = new wxCheckBox( this, wxID_ANY, _("History Toggle"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showhistoryB->SetValue(true); 
+	m_showhistoryB->SetToolTip( _("Show/Hide history toggle (you can always type \"history\" from input window).") );
+	
+	sbSizer3->Add( m_showhistoryB, 0, wxALL, 5 );
+	
+	m_CalculateB = new wxCheckBox( this, wxID_ANY, _("Calculate Button"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_CalculateB->SetValue(true); 
+	m_CalculateB->SetToolTip( _("Show/Hide Calculate button (you can always press enter at the end of input).") );
+	
+	sbSizer3->Add( m_CalculateB, 0, wxALL, 5 );
+	
+	
+	bSizer2->Add( sbSizer3, 1, wxEXPAND, 5 );
+	
 	wxStaticBoxSizer* sbSizer4;
-	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("General settings") ), wxVERTICAL );
+	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("History Settings") ), wxVERTICAL );
 	
 	wxFlexGridSizer* fgSizer3;
 	fgSizer3 = new wxFlexGridSizer( 0, 2, 0, 0 );
@@ -112,8 +135,8 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	fgSizer3->Add( m_Font_Size_txt, 0, wxALL, 5 );
 	
-	m_MaxResults = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 20 );
-	m_MaxResults->SetToolTip( _("More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations).") );
+	m_MaxResults = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 30000, 30000 );
+	m_MaxResults->SetToolTip( _("More results use more memory. Memory will be cleared if Max Results is reached. NB variables are kept") );
 	
 	fgSizer3->Add( m_MaxResults, 0, wxALL, 5 );
 	
@@ -122,13 +145,39 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	m_staticText17 = new wxStaticText( this, wxID_ANY, _("Opacity"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText17->Wrap( -1 );
+	m_staticText17->Hide();
+	
 	sbSizer4->Add( m_staticText17, 0, wxALL, 5 );
 	
 	m_sOpacity = new wxSlider( this, wxID_ANY, 50, 0, 255, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL );
+	m_sOpacity->Hide();
+	
 	sbSizer4->Add( m_sOpacity, 0, wxALL|wxEXPAND, 5 );
+	
+	m_showhistory = new wxCheckBox( this, wxID_ANY, _("Show History Window"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showhistory->SetToolTip( _("Show/Hide history") );
+	
+	sbSizer4->Add( m_showhistory, 0, wxALL, 5 );
+	
+	m_capturehidden = new wxCheckBox( this, wxID_ANY, _("Capture when Hidden"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_capturehidden->SetValue(true); 
+	m_capturehidden->SetToolTip( _("Capture results in history, even when the history box is hidden. Uncheck this box to save some memory when history is hidden.") );
+	
+	sbSizer4->Add( m_capturehidden, 0, wxALL, 5 );
 	
 	
 	bSizer2->Add( sbSizer4, 0, wxALL|wxEXPAND, 5 );
+	
+	wxStaticBoxSizer* sbSizer41;
+	sbSizer41 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Other") ), wxVERTICAL );
+	
+	m_logresults = new wxCheckBox( this, wxID_ANY, _("Log results to opencpn"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_logresults->SetToolTip( _("Log calculator results in OpenCPN log file") );
+	
+	sbSizer41->Add( m_logresults, 0, wxALL, 5 );
+	
+	
+	bSizer2->Add( sbSizer41, 0, wxEXPAND, 5 );
 	
 	
 	bSizer1->Add( bSizer2, 1, wxEXPAND, 5 );

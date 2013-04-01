@@ -35,6 +35,19 @@ CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
     prs.parse("dtr=0.0174532925"); //define degree to radians conversion factor
+
+
+
+    /*printf("This is what the Dialog got\n");
+    printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+    printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+    printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+    printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+    printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+    printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
+
+    //implement settings
+
     this->m_listCtrl->Show(false);
     this->m_Overview->Layout();
     this->Layout();
@@ -56,7 +69,7 @@ void Dlg::OnHelp( wxCommandEvent& event )
     wxMessageBox(_("Use up and down keys, while cursor is in input box, to recall previous input and results.\nExamples of expression that work in the calculator are: (comments are in brackets, some results depend on other example calculations):\n=========\nHull speed:\n    LWL=48\t\t\t\t\t(water line lenght in feet)\n    vhull=1.34*LWL^(1/2)\t(hull speed in knots)\n\nConversions:\n    ftm=0.3048\t\t\t\t(feet to meters)\n    km_to_nm=0.539957\t(Kilometers to nautical Mile)\n    ftm*LWL\t\t\t\t(waterline length in meters)\n\nDistance to horizon\n    R=6378.1*1000\t\t\t(Radius of the earth in m)\n    H=2.5\t\t\t\t\t(Height of the eye above sea-level in m)\n    d = R * acos(R/(R + h))\t(Distance to horizon in m)   \n    ans*km_to_nm\t\t\t(Distance to horizon in nm)\n\nDistance to lighthouse\n    H1=200\t\t\t\t\t(height of lighthouse in m)\n    d1 = R*acos(R/(R + H1))(Distance to horizon in m)\n    distance=d1+d\t\t\t(visibility range of lighthouse in m)\n\nOperators:\n          & | << >> \n          = <> < > <= >=\n          + -\n          * / % ||\n          ^ (NB use ^(1/2) for square root)\n          ! (Factorial)\n \nFunctions:\n          Abs, Exp, Sign, Sqrt, Log, Log10\n          Sin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)\n          Factorial\n \nVariables:\n          Pi, e\n\t  dtr is the conversion factor from degrees to radians\n\t  Ans is the result of the previous calulation\t\t\n          you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)"));
 
 }
-void Dlg::OnToggle( wxCommandEvent& event )
+void Dlg::set_History(void)
 {
     if(this->m_Help->GetValue())
     {
@@ -87,8 +100,33 @@ void Dlg::OnToggle( wxCommandEvent& event )
     wxMilliSleep(50);
 }
 
+void Dlg::OnToggle( wxCommandEvent& event )
+{
+        this->set_History();
+}
+
+void Dlg::set_Buttons(void){
+        m_HelpButton->Show(m_bshowhelpB);
+        m_Help->Show(m_bshowhistoryB);
+        Calculate->Show(m_bCalculateB);
+        this->m_Overview->Fit();
+        this->m_Overview->Layout();
+        this->m_Help->SetValue(m_bshowhistory);
+        this->set_History();
+
+}
+
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
+
+                printf("this is what we have post constructor\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
     char* test;
     wxString Text = m_result->GetValue();
 
@@ -98,18 +136,15 @@ void Dlg::OnCalculate( wxCommandEvent& event )
 
     bool error_check=false;
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
-        //wxMessageBox(_("User entered erroneous text:\n") + Text);
         m_result->SetValue(_(""));
         error_check=true;
     }
     if ((Text.StartsWith(_("clear"))) || (Text.StartsWith(_("Clear")))|| (Text.StartsWith(_("CLEAR")))){
-        //wxMessageBox(_("User entered erroneous text:\n") + Text);
         m_listCtrl->ClearAll();
         m_result->SetValue(_(""));
         error_check=true;
     }
     if ((Text.StartsWith(_("HideHelp"))) || (Text.StartsWith(_("hidehelp")))|| (Text.StartsWith(_("HIDEHELP")))){
-       // wxMessageBox(_("Hiding Help:\n") + Text);
         m_HelpButton->Show(false);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -117,7 +152,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
     if ((Text.StartsWith(_("ShowHelp"))) || (Text.StartsWith(_("showhelp")))|| (Text.StartsWith(_("SHOWHELP")))){
-        //wxMessageBox(_("Hiding Help:\n") + Text);
         m_HelpButton->Show(true);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -125,7 +159,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
         if ((Text.StartsWith(_("HideHistory"))) || (Text.StartsWith(_("hidehistory")))|| (Text.StartsWith(_("HIDEHISTORY")))){
-       // wxMessageBox(_("Hiding Help:\n") + Text);
         m_Help->Show(false);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -133,7 +166,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
     if ((Text.StartsWith(_("ShowHistory"))) || (Text.StartsWith(_("showhistory")))|| (Text.StartsWith(_("SHOWHISTORY")))){
-        //wxMessageBox(_("Hiding Help:\n") + Text);
         m_Help->Show(true);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -141,7 +173,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
     if ((Text.StartsWith(_("HideCalculate"))) || (Text.StartsWith(_("hidecalculate")))|| (Text.StartsWith(_("HIDECALCULATE")))){
-       // wxMessageBox(_("Hiding Help:\n") + Text);
         Calculate->Show(false);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -149,7 +180,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
     if ((Text.StartsWith(_("ShowCalculate"))) || (Text.StartsWith(_("showcalculate")))|| (Text.StartsWith(_("SHOWCALCULATE")))){
-        //wxMessageBox(_("Hiding Help:\n") + Text);
         Calculate->Show(true);
     	this->m_listCtrl->Fit();
         this->m_Overview->Layout();
@@ -157,7 +187,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         error_check=true;
     }
     if ((Text.StartsWith(_("Help"))) || (Text.StartsWith(_("HELP")))|| (Text.StartsWith(_("help")))){
-       // wxMessageBox(_("Hiding Help:\n") + Text);
         this->OnHelp (event);
         m_result->SetValue(_(""));
         error_check=true;
@@ -180,7 +209,7 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         test = prs.parse((const char*)Text.mb_str());
         //printf("\t%s\n", test);
         wxString mystring = wxString::FromUTF8(test);
-        wxLogMessage(_("Calculator output:") + mystring);
+        if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring);
         //wxString Foobar;
 
         buffer[i_buffer]=mystring; //store input
@@ -191,9 +220,15 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         //m_listCtrl->SetItem(itemIndex, item_counter, "hallo"); //want this for col. 2
         Text.Right(Text.Length()-3);
         //wxLogMessage(mystring);
-        if (!mystring.StartsWith(_("Error")))
+        //mhelp  capture hidden
+        //false  false  --dont capture
+        printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+        printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");
+
+
+        if (!mystring.StartsWith(_("Error")) )
             {
-            //if (MemoryFull)
+            if ((this->m_Help->GetValue()) || (m_bcapturehidden)){
             //     m_listCtrl->DeleteItem(item_counter);
 
             itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
@@ -201,12 +236,12 @@ void Dlg::OnCalculate( wxCommandEvent& event )
             item_counter++;
             if (item_counter>Max_Results){
                 item_counter=0;
-                //m_listCtrl->ClearAll();
+                m_listCtrl->ClearAll();
                 }
-            printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
+            //printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
             }
         //event.Skip();
-        }
+        }}
 }
 
 void Dlg::key_shortcut(wxKeyEvent& event) {

@@ -183,6 +183,25 @@ void calculator_pi::OnToolbarToolCallback(int id)
             m_pDialog = new Dlg(m_parent_window);
             //m_pDialog.Max_Results=;
             m_pDialog->SetMaxResults(m_iMaxResults);
+
+            m_pDialog->setm_bshowhelpB(m_bshowhelpB);
+            m_pDialog->setm_bshowhistoryB(m_bshowhistoryB);
+            m_pDialog->setm_bCalculateB(m_bCalculateB);
+            m_pDialog->setm_bshowhistory(m_bshowhistory);
+            m_pDialog->setm_bcapturehidden(m_bcapturehidden);
+            m_pDialog->setm_blogresults(m_blogresults);
+
+            m_pDialog->set_Buttons();
+
+            printf("This is what we are sending to the window\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
+
             m_pDialog->plugin = this;
             m_pDialog->Move(wxPoint(m_calculator_dialog_x, m_calculator_dialog_y));
             if ((m_calculator_dialog_width>60)||(m_calculator_dialog_height>25))
@@ -215,6 +234,22 @@ bool calculator_pi::LoadConfig(void)
             m_calculator_dialog_y =  pConf->Read ( _T ( "DialogPosY" ), 20L );
             m_calculator_dialog_width = pConf->Read ( _T ( "DialogPosW" ), 20L );
             m_calculator_dialog_height = pConf->Read ( _T ( "DialogPosH" ), 20L );
+
+            m_bshowhelpB = pConf->Read ( _T ( "m_bshowhelpB" ), 20L );
+            m_bshowhistoryB = pConf->Read ( _T ( "m_bshowhistoryB" ), 20L );
+            m_bCalculateB = pConf->Read ( _T ( "m_bCalculateB" ), 20L );
+            m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 20L );
+            m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
+            m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 20L );
+
+            printf("Just got some results to the config file\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
 
             if((m_calculator_dialog_x < 0) || (m_calculator_dialog_x > m_display_width))
                   m_calculator_dialog_x = 5;
@@ -249,6 +284,21 @@ bool calculator_pi::SaveConfig(void)
             pConf->Write ( _T ( "DialogPosW" ),   m_calculator_dialog_width );
             pConf->Write ( _T ( "DialogPosH" ),   m_calculator_dialog_height );
 
+            pConf->Write ( _T ( "m_bshowhelpB" ),   m_bshowhelpB );
+            pConf->Write ( _T ( "m_bshowhistoryB" ),   m_bshowhistoryB );
+            pConf->Write ( _T ( "m_bCalculateB" ),   m_bCalculateB );
+            pConf->Write ( _T ( "m_bshowhistory" ),   m_bshowhistory );
+            pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
+            pConf->Write ( _T ( "m_blogresults" ),   m_blogresults );
+
+
+            printf("Just wrote some results to the config file\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
 
             return true;
       }
@@ -264,12 +314,38 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       DimeWindow(dialog);
       dialog->m_sOpacity->SetValue(m_iOpacity);
       dialog->m_MaxResults->SetValue(m_iMaxResults);
+
+      dialog->m_showhelpB->SetValue(m_bshowhelpB);
+      dialog->m_showhistoryB->SetValue(m_bshowhistoryB);
+      dialog->m_CalculateB->SetValue(m_bCalculateB);
+      dialog->m_showhistory->SetValue(m_bshowhistory);
+      dialog->m_capturehidden->SetValue(m_bcapturehidden);
+      dialog->m_logresults->SetValue(m_blogresults);
+
       //printf("Setting dialog value MaxResults %i \n",m_iMaxResults);
 
       if(dialog->ShowModal() == wxID_OK)
       {
             m_iOpacity = dialog->m_sOpacity->GetValue();
             m_iMaxResults = dialog->m_MaxResults->GetValue();
+            m_bshowhelpB= dialog->m_showhelpB->GetValue();
+            m_bshowhistoryB= dialog->m_showhistoryB->GetValue();
+            m_bCalculateB= dialog->m_CalculateB->GetValue();
+            m_bshowhistory= dialog->m_showhistory->GetValue();
+            m_bcapturehidden= dialog->m_capturehidden->GetValue();
+            m_blogresults= dialog->m_logresults->GetValue();
+
+
+            printf("Just got Results from config window\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
+
+
             //printf("Just got MaxResults %i \n",m_MaxResults);
             SaveConfig();
       }
