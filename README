@@ -47,9 +47,10 @@ Functions:
  
 Variables:
 	Pi, e
-	dtr is the conversion factor from degrees to radians
-	Ans is the result of the previous calulation		
+	Ans is the result of the previous calulation
+	dtr is the conversion factor from degrees to radians		
 	you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)
+	clear removes results in the history, but leaves your defined variables in tact
 
 User Interface - type these commands in the command window:
 	history - Toggle the history panel
