@@ -39,9 +39,16 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     this->m_Overview->Layout();
     this->Layout();
     this->Fit();
+    this->m_Overview->Fit();
+    this->m_Overview->Layout();
+     this->SetSize(wh);
     i_buffer=0;
     i_counter=0;
     item_counter=0;
+    MemoryFull=false;
+    /*this->OnToggle(true);
+    this->OnToggle(false);*/
+    //Max_Results=calculator_pi.GetMaxResults();
 
 }
 void Dlg::OnHelp( wxCommandEvent& event )
@@ -80,14 +87,8 @@ void Dlg::OnToggle( wxCommandEvent& event )
     wxMilliSleep(50);
 }
 
-
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
-    //this->m_result->SetDefaultStyle(wxTextAttr(*wxBLUE));
-    //m_result->SetNewStyle(wxTextAttr(*wxRED));
-    //m_result->AppendText("Red text\n");
-
-
     char* test;
     wxString Text = m_result->GetValue();
 
@@ -101,6 +102,79 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         m_result->SetValue(_(""));
         error_check=true;
     }
+    if ((Text.StartsWith(_("clear"))) || (Text.StartsWith(_("Clear")))|| (Text.StartsWith(_("CLEAR")))){
+        //wxMessageBox(_("User entered erroneous text:\n") + Text);
+        m_listCtrl->ClearAll();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("HideHelp"))) || (Text.StartsWith(_("hidehelp")))|| (Text.StartsWith(_("HIDEHELP")))){
+       // wxMessageBox(_("Hiding Help:\n") + Text);
+        m_HelpButton->Show(false);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("ShowHelp"))) || (Text.StartsWith(_("showhelp")))|| (Text.StartsWith(_("SHOWHELP")))){
+        //wxMessageBox(_("Hiding Help:\n") + Text);
+        m_HelpButton->Show(true);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+        if ((Text.StartsWith(_("HideHistory"))) || (Text.StartsWith(_("hidehistory")))|| (Text.StartsWith(_("HIDEHISTORY")))){
+       // wxMessageBox(_("Hiding Help:\n") + Text);
+        m_Help->Show(false);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("ShowHistory"))) || (Text.StartsWith(_("showhistory")))|| (Text.StartsWith(_("SHOWHISTORY")))){
+        //wxMessageBox(_("Hiding Help:\n") + Text);
+        m_Help->Show(true);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("HideCalculate"))) || (Text.StartsWith(_("hidecalculate")))|| (Text.StartsWith(_("HIDECALCULATE")))){
+       // wxMessageBox(_("Hiding Help:\n") + Text);
+        Calculate->Show(false);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("ShowCalculate"))) || (Text.StartsWith(_("showcalculate")))|| (Text.StartsWith(_("SHOWCALCULATE")))){
+        //wxMessageBox(_("Hiding Help:\n") + Text);
+        Calculate->Show(true);
+    	this->m_listCtrl->Fit();
+        this->m_Overview->Layout();
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+    if ((Text.StartsWith(_("Help"))) || (Text.StartsWith(_("HELP")))|| (Text.StartsWith(_("help")))){
+       // wxMessageBox(_("Hiding Help:\n") + Text);
+        this->OnHelp (event);
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+
+    if ((Text.StartsWith(_("history"))) || (Text.StartsWith(_("History")))|| (Text.StartsWith(_("HISTORY")))){
+        if(this->m_Help->GetValue()) {
+            this->m_Help->SetValue(false);}
+        else {
+            this->m_Help->SetValue(true);}
+
+        this->OnToggle(event);
+        m_result->SetValue(_(""));
+        error_check=true;
+    }
+
+
     if (!error_check)
         {
         test = prs.parse((const char*)Text.mb_str());
@@ -116,13 +190,21 @@ void Dlg::OnCalculate( wxCommandEvent& event )
         m_result->SetValue(mystring.c_str());
         //m_listCtrl->SetItem(itemIndex, item_counter, "hallo"); //want this for col. 2
         Text.Right(Text.Length()-3);
-        //wxLogMessage(_("test") + Text.Length());
-        //wxLogMessage(Text.Length());
-        //mystring.replace(_("Ans"),_(""));
         //wxLogMessage(mystring);
-        if (!mystring.StartsWith(_("Error"))) {
-        itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
-        item_counter++;}
+        if (!mystring.StartsWith(_("Error")))
+            {
+            //if (MemoryFull)
+            //     m_listCtrl->DeleteItem(item_counter);
+
+            itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
+
+            item_counter++;
+            if (item_counter>Max_Results){
+                item_counter=0;
+                //m_listCtrl->ClearAll();
+                }
+            printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
+            }
         //event.Skip();
         }
 }
@@ -182,41 +264,6 @@ void Dlg::down()
     }
 
 }
-/*
-void Dlg::down()
-{
-    //printf("Down");
-    int count_this=0;
-    do {
-    i_min(i_counter);
-    count_this++;
-
-    } while ( buffer[i_counter].IsEmpty() || count_this>40 );
-
-    if (buffer[i_counter].Len() >1) {
-        m_result->SetValue(buffer[i_counter].c_str());
-                                wxMessageBox(_("Not Empty") );
-    }
-    else{
-        i_plus(i_counter);
-                wxMessageBox(_("Empty") );
-    }
-}*/
-/*
-void Dlg::i_plus(bool buffer_test){
- if (buffer_test){
-    i_buffer++;
-    if (i_buffer>40) i_counter=0;
- }
- else
-    i_counter++;
-    if (i_counter>40) i_counter=0;
-}
-
-void Dlg::i_min(void){
-    i_counter--;
-    if (i_counter<0) i_counter=40;
-}*/
 
 void Dlg::i_plus(int &counter_test){
     counter_test++;

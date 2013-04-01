@@ -87,6 +87,7 @@ public:
       void SetCalculatorDialogY         (int x){ m_calculator_dialog_y = x;};
       void SetCalculatorDialogWidth     (int x){ m_calculator_dialog_width = x;};
       void SetCalculatorDialogHeight    (int x){ m_calculator_dialog_height = x;};
+      //void GetMaxResults                (int x){ m_iMaxResults = x;};
 
 
       void OnSurveyDialogClose();
@@ -100,7 +101,7 @@ private:
       int               m_calculator_dialog_x, m_calculator_dialog_y,m_calculator_dialog_width,m_calculator_dialog_height;
       int               m_display_width, m_display_height;
       int               m_iOpacity;
-      //int               m_iFontSize;
+      int               m_iMaxResults;
       int               m_leftclick_tool_id;
       bool              m_ShowHelp;
 ;

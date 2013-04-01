@@ -181,11 +181,13 @@ void calculator_pi::OnToolbarToolCallback(int id)
       if(NULL == m_pDialog)
       {
             m_pDialog = new Dlg(m_parent_window);
+            //m_pDialog.Max_Results=;
+            m_pDialog->SetMaxResults(m_iMaxResults);
             m_pDialog->plugin = this;
             m_pDialog->Move(wxPoint(m_calculator_dialog_x, m_calculator_dialog_y));
             if ((m_calculator_dialog_width>60)||(m_calculator_dialog_height>25))
             {
-                m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
+                //m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
                 //printf("setting size to: %d %d\n", m_calculator_dialog_x,m_calculator_dialog_y);
             }
 
@@ -206,8 +208,8 @@ bool calculator_pi::LoadConfig(void)
       {
             pConf->SetPath ( _T( "/Settings/Calculator" ) );
             pConf->Read ( _T ( "Opacity" ),  &m_iOpacity, 255 );
-            //pConf->Read ( _T ( "FontSize" ),  &m_iFontSize, 255 );
-            //printf("Reading Fontsize %i \n",m_iFontSize);
+            pConf->Read ( _T ( "MaxResults" ),  &m_iMaxResults, 255 );
+            //printf("Reading MaxResults %i \n",m_iMaxResults);
            // pConf->Read       dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
             m_calculator_dialog_x =  pConf->Read ( _T ( "DialogPosX" ), 20L );
             m_calculator_dialog_y =  pConf->Read ( _T ( "DialogPosY" ), 20L );
@@ -222,8 +224,8 @@ bool calculator_pi::LoadConfig(void)
                   m_calculator_dialog_width = 5;
             if((m_calculator_dialog_width < 0) || ((m_calculator_dialog_y + m_calculator_dialog_height) > m_display_height))
                   m_calculator_dialog_width = 5;
-            //if((m_iFontSize < 1) || (m_iFontSize >95))
-            //      m_iFontSize = 20;
+            if(m_iMaxResults < 1)
+                   m_iMaxResults = 3;
 
 
             return true;
@@ -240,8 +242,8 @@ bool calculator_pi::SaveConfig(void)
       {
             pConf->SetPath ( _T ( "/Settings/Calculator" ) );
             pConf->Write ( _T ( "Opacity" ), m_iOpacity );
-            //pConf->Write ( _T ( "FontSize" ), m_iFontSize );
-            //printf("Writing Fontsize %i \n",m_iFontSize);
+            pConf->Write ( _T ( "MaxResults" ), m_iMaxResults );
+            //printf("Writing MaxResults %i \n",m_iMaxResults);
             pConf->Write ( _T ( "DialogPosX" ),   m_calculator_dialog_x );
             pConf->Write ( _T ( "DialogPosY" ),   m_calculator_dialog_y );
             pConf->Write ( _T ( "DialogPosW" ),   m_calculator_dialog_width );
@@ -261,14 +263,14 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       wxColour cl;
       DimeWindow(dialog);
       dialog->m_sOpacity->SetValue(m_iOpacity);
-      //dialog->m_FontSize->SetValue(m_iFontSize);
-      //printf("Setting dialog value Fontsize %i \n",m_iFontSize);
+      dialog->m_MaxResults->SetValue(m_iMaxResults);
+      //printf("Setting dialog value MaxResults %i \n",m_iMaxResults);
 
       if(dialog->ShowModal() == wxID_OK)
       {
             m_iOpacity = dialog->m_sOpacity->GetValue();
-            //m_iFontSize = dialog->m_FontSize->GetValue();
-            //printf("Just got Fontsize %i \n",m_FontSize);
+            m_iMaxResults = dialog->m_MaxResults->GetValue();
+            //printf("Just got MaxResults %i \n",m_MaxResults);
             SaveConfig();
       }
       delete dialog;

@@ -49,7 +49,9 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* HelpPanel;
 	HelpPanel = new wxBoxSizer( wxVERTICAL );
 	
-	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST );
+	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST|wxLC_SINGLE_SEL );
+	m_listCtrl->Hide();
+	
 	HelpPanel->Add( m_listCtrl, 3, wxALL|wxEXPAND, 5 );
 	
 	
@@ -104,12 +106,16 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	fgSizer3->SetFlexibleDirection( wxBOTH );
 	fgSizer3->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 	
-	m_Font_Size_txt = new wxStaticText( this, wxID_ANY, _("Font Size"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Font_Size_txt = new wxStaticText( this, wxID_ANY, _("Max Results"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_Font_Size_txt->Wrap( -1 );
+	m_Font_Size_txt->SetToolTip( _("More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations).") );
+	
 	fgSizer3->Add( m_Font_Size_txt, 0, wxALL, 5 );
 	
-	m_FontSize = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 20 );
-	fgSizer3->Add( m_FontSize, 0, wxALL, 5 );
+	m_MaxResults = new wxSpinCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 20 );
+	m_MaxResults->SetToolTip( _("More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations).") );
+	
+	fgSizer3->Add( m_MaxResults, 0, wxALL, 5 );
 	
 	
 	sbSizer4->Add( fgSizer3, 1, wxEXPAND, 5 );

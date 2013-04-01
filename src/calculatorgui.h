@@ -55,7 +55,7 @@ class DlgDef : public wxDialog
 	
 	public:
 		
-		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 670,213 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
+		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 665,91 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~DlgDef();
 	
 };
@@ -75,7 +75,7 @@ class CfgDlgDef : public wxDialog
 		wxButton* m_sdbSizer1Cancel;
 	
 	public:
-		wxSpinCtrl* m_FontSize;
+		wxSpinCtrl* m_MaxResults;
 		wxSlider* m_sOpacity;
 		
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE ); 

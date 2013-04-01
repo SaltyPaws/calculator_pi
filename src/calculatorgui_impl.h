@@ -65,14 +65,18 @@ public:
         void i_plus(int &counter_test);
         void i_min(int &counter_test);
         calculator_pi *plugin;
+        int Max_Results;
+        void SetMaxResults         (int x){Max_Results = x;};
 private:
         wxPoint xy;
         wxSize  wh;
         wxString buffer[41];
         int i_buffer;
         int i_counter;
-        long item_counter;
+        int item_counter;
         long itemIndex;
+        bool MemoryFull;
+
 
 };
 
