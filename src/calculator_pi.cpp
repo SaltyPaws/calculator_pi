@@ -182,14 +182,8 @@ void calculator_pi::OnToolbarToolCallback(int id)
       {
             m_pDialog = new Dlg(m_parent_window);
             //m_pDialog.Max_Results=;
-            m_pDialog->SetMaxResults(m_iMaxResults);
 
-            m_pDialog->setm_bshowhelpB(m_bshowhelpB);
-            m_pDialog->setm_bshowhistoryB(m_bshowhistoryB);
-            m_pDialog->setm_bCalculateB(m_bCalculateB);
-            m_pDialog->setm_bshowhistory(m_bshowhistory);
-            m_pDialog->setm_bcapturehidden(m_bcapturehidden);
-            m_pDialog->setm_blogresults(m_blogresults);
+            this->SettingsPropagate();
 
             m_pDialog->set_Buttons();
 
@@ -292,14 +286,14 @@ bool calculator_pi::SaveConfig(void)
             pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
             pConf->Write ( _T ( "m_blogresults" ),   m_blogresults );
 
-
+/*
             printf("Just wrote some results to the config file\n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
             printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
 
             return true;
       }
@@ -335,6 +329,8 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             m_bshowhistory= dialog->m_showhistory->GetValue();
             m_bcapturehidden= dialog->m_capturehidden->GetValue();
             m_blogresults= dialog->m_logresults->GetValue();
+            if (m_pDialog != NULL )
+                this->SettingsPropagate(); //this will make a segfault if the plugin wasnt opened because the class doesn't exist yet.
 
 /*
             printf("Just got Results from config window\n");
@@ -351,6 +347,28 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             SaveConfig();
       }
       delete dialog;
+}
+
+void calculator_pi::SettingsPropagate(void){
+            m_pDialog->SetMaxResults(m_iMaxResults);
+
+            m_pDialog->setm_bshowhelpB(m_bshowhelpB);
+            m_pDialog->setm_bshowhistoryB(m_bshowhistoryB);
+            m_pDialog->setm_bCalculateB(m_bCalculateB);
+            m_pDialog->setm_bshowhistory(m_bshowhistory);
+            m_pDialog->setm_bcapturehidden(m_bcapturehidden);
+            m_pDialog->setm_blogresults(m_blogresults);
+            m_pDialog->set_Buttons();
+            m_pDialog->set_History();
+
+            printf("Just got Results from config window\n");
+            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
 }
 
 

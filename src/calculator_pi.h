@@ -93,6 +93,7 @@ public:
       void OnSurveyDialogClose();
 
 private:
+      void              SettingsPropagate(void);
       wxFileConfig      *m_pconfig;
       wxWindow          *m_parent_window;
       bool              LoadConfig(void);
