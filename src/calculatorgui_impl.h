@@ -51,6 +51,12 @@ public:
       CfgDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 };
 
+class HlpDlg : public HlpDlgDef
+{
+public:
+      HlpDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Help!!!!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+};
+
 class Dlg : public DlgDef
 {
 public:
@@ -76,6 +82,7 @@ public:
         void setm_blogresults         (bool x){m_blogresults = x;};
         void set_Buttons (void);
         void set_History(void);
+        //void set_Parentwindow(wxwindow *x){*m_parent_windowref = *x;};
 
 private:
         wxPoint xy;
@@ -87,14 +94,13 @@ private:
         long itemIndex;
         bool MemoryFull;
         int Max_Results;
-      bool              m_bshowhelpB;
-      bool              m_bshowhistoryB;
-      bool              m_bCalculateB;
-      bool              m_bshowhistory;
-      bool              m_bcapturehidden;
-      bool              m_blogresults;
-
-
+        bool              m_bshowhelpB;
+        bool              m_bshowhistoryB;
+        bool              m_bCalculateB;
+        bool              m_bshowhistory;
+        bool              m_bcapturehidden;
+        bool              m_blogresults;
+        HlpDlg            *m_pHelpdialog;
 };
 
 #endif

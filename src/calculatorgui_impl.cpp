@@ -31,6 +31,10 @@ CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 {
 }
 
+HlpDlg::HlpDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : HlpDlgDef( parent, id, title, pos, size, style )
+{
+}
+
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
@@ -46,8 +50,6 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
     printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
 
-    //implement settings
-
     this->m_listCtrl->Show(false);
     this->m_Overview->Layout();
     this->Layout();
@@ -59,15 +61,16 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     i_counter=0;
     item_counter=0;
     MemoryFull=false;
-    /*this->OnToggle(true);
-    this->OnToggle(false);*/
-    //Max_Results=calculator_pi.GetMaxResults();
+    m_pHelpdialog=NULL;
 
 }
+
 void Dlg::OnHelp( wxCommandEvent& event )
 {
-    wxMessageBox(_("Use up and down keys, while cursor is in input box, to recall previous input and results.\nExamples of expression that work in the calculator are: (comments are in brackets, some results depend on other example calculations):\n=========\nHull speed:\n    LWL=48\t\t\t\t\t(water line lenght in feet)\n    vhull=1.34*LWL^(1/2)\t(hull speed in knots)\n\nConversions:\n    ftm=0.3048\t\t\t\t(feet to meters)\n    km_to_nm=0.539957\t(Kilometers to nautical Mile)\n    ftm*LWL\t\t\t\t(waterline length in meters)\n\nDistance to horizon\n    R=6378.1*1000\t\t\t(Radius of the earth in m)\n    H=2.5\t\t\t\t\t(Height of the eye above sea-level in m)\n    d = R * acos(R/(R + h))\t(Distance to horizon in m)   \n    ans*km_to_nm\t\t\t(Distance to horizon in nm)\n\nDistance to lighthouse\n    H1=200\t\t\t\t\t(height of lighthouse in m)\n    d1 = R*acos(R/(R + H1))(Distance to horizon in m)\n    distance=d1+d\t\t\t(visibility range of lighthouse in m)\n\nOperators:\n          & | << >> \n          = <> < > <= >=\n          + -\n          * / % ||\n          ^ (NB use ^(1/2) for square root)\n          ! (Factorial)\n \nFunctions:\n          Abs, Exp, Sign, Sqrt, Log, Log10\n          Sin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)\n          Factorial\n \nVariables:\n          Pi, e\n\t  dtr is the conversion factor from degrees to radians\n\t  Ans is the result of the previous calulation\t\t\n          you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)"));
-
+        HlpDlg *m_pHelpdialog = new HlpDlg(this);m_pHelpdialog->Show(true);
+        m_pHelpdialog->HelpPanel->Fit();
+        m_pHelpdialog->m_textCtrl3->Fit();
+        m_pHelpdialog->m_textCtrl3->Layout();
 }
 void Dlg::set_History(void)
 {
@@ -118,15 +121,6 @@ void Dlg::set_Buttons(void){
 
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
-
-           /*     printf("this is what we have post constructor\n");
-            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
-            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
-            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
-            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
-
     char* test;
     wxString Text = m_result->GetValue();
 
@@ -138,6 +132,13 @@ void Dlg::OnCalculate( wxCommandEvent& event )
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
         error_check=true;
     }
+
+
+  /*  if (Text.StartsWith(_("font"))){ //clear old results
+        //m_result->SetDefaultStyle(wxTextAttr(*wxBLUE));
+        m_result->SetFont(wxSWISS_FONT);
+        error_check=true;}*/
+
 
     if ((Text.StartsWith(_("clear"))) || (Text.StartsWith(_("Clear")))|| (Text.StartsWith(_("CLEAR")))){ //clear old results
         m_listCtrl->ClearAll();
@@ -194,8 +195,8 @@ if (error_check)
         //wxLogMessage(mystring);
         //mhelp  capture hidden
         //false  false  --dont capture
-        printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-        printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");
+        /*printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+        printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
 
 
         if (!mystring.StartsWith(_("Error")) )

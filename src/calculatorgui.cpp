@@ -202,3 +202,56 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 CfgDlgDef::~CfgDlgDef()
 {
 }
+
+HlpDlgDef::HlpDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer7;
+	bSizer7 = new wxBoxSizer( wxVERTICAL );
+	
+	HelpPanel = new wxPanel( this, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer11;
+	bSizer11 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer10;
+	bSizer10 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_textCtrl3 = new wxTextCtrl( HelpPanel, wxID_ANY, _("Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen\n=======================================\n\nThis is a light weight yet powerful calculator plugin for OpenCPN.  Would you like to know your hull speed?\n\nKey features are:\n* Storing results in variables\n* Shows historic calculations\n* Full scientific functions\n* Screen footprint can be optimised & minimised as required\n\nExamples of expression that work in the calculator are: (comments are in brackets, some results depend on other example calculations):\n=========\nHull speed:\n\tLWL=48\t\t\t(water line lenght in feet)\n\tvhull=1.34*LWL^(1/2)\t(hull speed in knots)\n\nConversions:\n\tftm=0.3048\t\t\t(feet to meters)\n\tkm_to_nm=0.539957\t\t(Kilometers to nautical Mile)\n\tftm*LWL\t\t\t(waterline length in meters)\n\nDistance to horizon\n\tR=6378.1*1000\t\t(Radius of the earth in m)\n\tH=2.5\t\t\t(Height of the eye above sea-level in m)\n\td = R * acos(R/(R + h))\t(Distance to horizon in m)   \n\tans*km_to_nm\t\t(Distance to horizon in nm)\n\nDistance to lighthouse\n\tH1=200\t\t\t(height of lighthouse in m)\n\td1 = R*acos(R/(R + H1))\t(Distance to horizon in m)\n\tdistance=d1+d\t\t(visibility range of lighthouse in m)\n\nOperators:\n\t+ - * / ^ (NB use ^(1/2) for square root)         \n\t% & | << >> = <> < > <= >= ||\n\t! (Factorial)\n \nFunctions:\n\tAbs, Exp, Sign, Sqrt, Log, Log10\n\tSin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)\n\tFactorial\n \nVariables:\n\tPi, e\n\tAns is the result of the previous calulation\n\tdtr is the conversion factor from degrees to radians\t\t\n\tyou can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)\n\tclear removes results in the history, but leaves your defined variables in tact\n\nUser Interface - type these commands in the command window:\n\thistory - Toggle the history panel\n\tshowhelp - Show/Hide the Help button\n\tshowcalculate - Show/Hide the Calculate button\n\tshowhistory - Show/Hide the history toggle\n\thelp - show the help menu\n\nSettings/Plugins/Preferences:\n\tShow/Hide Calculate, Help and History toggle buttons\n\tHistory Settings: max Results - History will be cleared after this many results have been stored to save memory. Max 30000.\n\tShow history window: Show/Hide default state\n\tCapture when hidden: disable capturing of history when history panel is hidden - this will save some memory\n\tLog to opencpn: Enable/Disable logging of results to opencpn logfile."), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+	m_textCtrl3->SetMinSize( wxSize( 600,400 ) );
+	
+	bSizer10->Add( m_textCtrl3, 100, wxALL|wxEXPAND, 5 );
+	
+	
+	bSizer11->Add( bSizer10, 5, wxEXPAND, 5 );
+	
+	m_sdbSizer2 = new wxStdDialogButtonSizer();
+	m_sdbSizer2OK = new wxButton( HelpPanel, wxID_OK );
+	m_sdbSizer2->AddButton( m_sdbSizer2OK );
+	m_sdbSizer2->Realize();
+	
+	bSizer11->Add( m_sdbSizer2, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	HelpPanel->SetSizer( bSizer11 );
+	HelpPanel->Layout();
+	bSizer11->Fit( HelpPanel );
+	bSizer7->Add( HelpPanel, 3, wxALL|wxBOTTOM|wxEXPAND|wxTOP, 5 );
+	
+	
+	this->SetSizer( bSizer7 );
+	this->Layout();
+	bSizer7->Fit( this );
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_sdbSizer2OK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( HlpDlgDef::OnClose ), NULL, this );
+}
+
+HlpDlgDef::~HlpDlgDef()
+{
+	// Disconnect Events
+	m_sdbSizer2OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( HlpDlgDef::OnClose ), NULL, this );
+	
+}

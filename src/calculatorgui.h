@@ -89,4 +89,28 @@ class CfgDlgDef : public wxDialog
 	
 };
 
+///////////////////////////////////////////////////////////////////////////////
+/// Class HlpDlgDef
+///////////////////////////////////////////////////////////////////////////////
+class HlpDlgDef : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxStdDialogButtonSizer* m_sdbSizer2;
+		wxButton* m_sdbSizer2OK;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnClose( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		wxPanel* HelpPanel;
+		wxTextCtrl* m_textCtrl3;
+		
+		HlpDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
+		~HlpDlgDef();
+	
+};
+
 #endif //__CALCULATORGUI_H__
