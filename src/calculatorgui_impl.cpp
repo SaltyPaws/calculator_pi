@@ -208,6 +208,7 @@ if (error_check)
             //     m_listCtrl->DeleteItem(item_counter);
 
             itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
+            m_listCtrl->EnsureVisible(itemIndex);
 
             item_counter++;
             if (item_counter>Max_Results){
