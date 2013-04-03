@@ -44,16 +44,18 @@ class DlgDef : public wxDialog
 		wxButton* Calculate;
 		wxCheckBox* m_Help;
 		wxButton* m_HelpButton;
-		wxListCtrl* m_listCtrl;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnHelp( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnKey( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnItem( wxListEvent& event ) { event.Skip(); }
 		
 	
 	public:
+		wxListCtrl* m_listCtrl;
 		
 		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 665,91 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~DlgDef();

@@ -63,9 +63,17 @@ public:
         Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator by SaltyPaws"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         Parser prs; //The calculator class. Here all the functions and variables are stored.
         void OnCalculate( wxCommandEvent& event );
+        void OnCalculate( void );
         void OnHelp( wxCommandEvent& event );
+        void OnHelp( void );
+        void OnTest( wxMouseEvent& event );
+        void OnTest( wxCommandEvent& event );
+        void OnTest( wxListEvent& event );
+
         void OnToggle( wxCommandEvent& event );
         void key_shortcut(wxKeyEvent& event);
+        void OnKey (wxKeyEvent& event);
+        void OnItem( wxListEvent& event );
         void down(void);
         void up (void);
         void i_plus(int &counter_test);
@@ -101,6 +109,7 @@ private:
         bool              m_bcapturehidden;
         bool              m_blogresults;
         HlpDlg            *m_pHelpdialog;
+
 };
 
 #endif

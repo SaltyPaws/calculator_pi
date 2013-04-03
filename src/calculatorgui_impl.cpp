@@ -56,7 +56,7 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     this->Fit();
     this->m_Overview->Fit();
     this->m_Overview->Layout();
-     this->SetSize(wh);
+    this->SetSize(wh);
     i_buffer=0;
     i_counter=0;
     item_counter=0;
@@ -65,7 +65,11 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
 
 }
 
-void Dlg::OnHelp( wxCommandEvent& event )
+
+void Dlg::OnHelp( wxCommandEvent& event ){
+    OnHelp();}
+
+void Dlg::OnHelp( void )
 {
         HlpDlg *m_pHelpdialog = new HlpDlg(this);m_pHelpdialog->Show(true);
         m_pHelpdialog->HelpPanel->Fit();
@@ -103,6 +107,42 @@ void Dlg::set_History(void)
     wxMilliSleep(50);
 }
 
+void Dlg::OnTest(wxCommandEvent& event){
+   wxMessageBox(_("Test"));
+}
+
+void Dlg::OnTest(wxMouseEvent& event){
+   wxMessageBox(_("Mouse"));
+}
+
+void Dlg::OnTest(wxListEvent& event){
+   wxMessageBox(_("List"));
+}
+
+
+
+
+void Dlg::OnItem(wxListEvent& event){
+
+   //wxMessageBox(_("Test"));
+
+   long item = -1;
+    wxString ItemText;
+    for ( ;; )
+    {
+        item = this->m_listCtrl->GetNextItem(item,
+                                     wxLIST_NEXT_ALL,
+                                     wxLIST_STATE_SELECTED);
+        if ( item == -1 )
+            break;
+
+        ItemText=this->m_listCtrl->GetItemText(item);
+        ItemText=ItemText.AfterLast('=');
+        ItemText=ItemText.AfterLast(' ');
+        m_result->AppendText(ItemText);
+    }
+}
+
 void Dlg::OnToggle( wxCommandEvent& event )
 {
         this->set_History();
@@ -118,9 +158,13 @@ void Dlg::set_Buttons(void){
         this->set_History();
 
 }
-
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
+    OnCalculate();
+}
+void Dlg::OnCalculate( void )
+{
+
     char* test;
     wxString Text = m_result->GetValue();
 
@@ -132,12 +176,6 @@ void Dlg::OnCalculate( wxCommandEvent& event )
     if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
         error_check=true;
     }
-
-
-  /*  if (Text.StartsWith(_("font"))){ //clear old results
-        //m_result->SetDefaultStyle(wxTextAttr(*wxBLUE));
-        m_result->SetFont(wxSWISS_FONT);
-        error_check=true;}*/
 
 
     if ((Text.StartsWith(_("clear"))) || (Text.StartsWith(_("Clear")))|| (Text.StartsWith(_("CLEAR")))){ //clear old results
@@ -163,7 +201,7 @@ void Dlg::OnCalculate( wxCommandEvent& event )
     }
 
     if ((Text.StartsWith(_("Help"))) || (Text.StartsWith(_("HELP")))|| (Text.StartsWith(_("help")))){
-        this->OnHelp (event);
+        this->OnHelp ();
         error_check=true;
     }
 
@@ -220,6 +258,24 @@ if (error_check)
         //event.Skip();
         }}
 }
+
+void Dlg::OnKey (wxKeyEvent& event){
+ wxChar uc = event.GetUnicodeKey();
+
+// It's a "normal" character. Notice that this includes
+// control characters in 1..31 range, e.g. WXK_RETURN or
+// WXK_BACK, so check for them explicitly.
+    if ( ((uc >= 32) && (uc<=127))  )
+        m_result->AppendText(uc);
+    else if ( uc == 13 )
+        OnCalculate();
+    else if ( uc == 8 ){
+    wxString Text = m_result->GetValue();
+    m_result->SetValue(Text.Left(Text.Len()-1 ));
+    }
+
+}
+
 
 void Dlg::key_shortcut(wxKeyEvent& event) {
     // of course, it doesn't have to be the control key. You can use others:

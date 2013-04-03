@@ -49,7 +49,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* HelpPanel;
 	HelpPanel = new wxBoxSizer( wxVERTICAL );
 	
-	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST|wxLC_SINGLE_SEL );
+	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST );
 	m_listCtrl->Hide();
 	
 	HelpPanel->Add( m_listCtrl, 3, wxALL|wxEXPAND, 5 );
@@ -75,6 +75,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	Calculate->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
 	m_HelpButton->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnHelp ), NULL, this );
+	m_listCtrl->Connect( wxEVT_CHAR, wxKeyEventHandler( DlgDef::OnKey ), NULL, this );
+	m_listCtrl->Connect( wxEVT_COMMAND_LIST_ITEM_SELECTED, wxListEventHandler( DlgDef::OnItem ), NULL, this );
 }
 
 DlgDef::~DlgDef()
@@ -85,6 +87,8 @@ DlgDef::~DlgDef()
 	Calculate->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 	m_Help->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DlgDef::OnToggle ), NULL, this );
 	m_HelpButton->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnHelp ), NULL, this );
+	m_listCtrl->Disconnect( wxEVT_CHAR, wxKeyEventHandler( DlgDef::OnKey ), NULL, this );
+	m_listCtrl->Disconnect( wxEVT_COMMAND_LIST_ITEM_SELECTED, wxListEventHandler( DlgDef::OnItem ), NULL, this );
 	
 }
 
