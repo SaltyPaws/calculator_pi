@@ -189,7 +189,10 @@ if (error_check)
         i_plus(i_buffer);
         i_counter=i_buffer;
 
-        m_result->SetValue(mystring.c_str());
+        if((!this->m_Help->GetValue()) || (mystring.StartsWith(_("Error")) )) //print result in messagebox if not history box or error
+            m_result->SetValue(mystring.c_str());
+        else
+            m_result->SetValue(_(""));
         //m_listCtrl->SetItem(itemIndex, item_counter, "hallo"); //want this for col. 2
         Text.Right(Text.Length()-3);
         //wxLogMessage(mystring);
