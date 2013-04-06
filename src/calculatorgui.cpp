@@ -259,3 +259,306 @@ HlpDlgDef::~HlpDlgDef()
 	m_sdbSizer2OK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( HlpDlgDef::OnClose ), NULL, this );
 	
 }
+
+ConvDlgDev::ConvDlgDev( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	
+	wxBoxSizer* bSizer10;
+	bSizer10 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer35;
+	bSizer35 = new wxBoxSizer( wxVERTICAL );
+	
+	m_wxNotebook234 = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	m_panel11 = new wxPanel( m_wxNotebook234, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer40;
+	bSizer40 = new wxBoxSizer( wxVERTICAL );
+	
+	wxStaticBoxSizer* sbSizer7;
+	sbSizer7 = new wxStaticBoxSizer( new wxStaticBox( m_panel11, wxID_ANY, _("DD.dddddd° (no limit to decimals)") ), wxVERTICAL );
+	
+	wxBoxSizer* bSizer1321;
+	bSizer1321 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer1431;
+	bSizer1431 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText3231 = new wxStaticText( m_panel11, wxID_ANY, _("Lattitude  "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3231->Wrap( -1 );
+	bSizer1431->Add( m_staticText3231, 1, wxALL|wxEXPAND, 5 );
+	
+	m_Lat1 = new wxTextCtrl( m_panel11, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_Lat1->SetMaxLength( 0 ); 
+	bSizer1431->Add( m_Lat1, 3, wxALIGN_CENTER_VERTICAL|wxEXPAND|wxTOP|wxBOTTOM|wxLEFT, 5 );
+	
+	m_staticText3331 = new wxStaticText( m_panel11, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331->Wrap( -1 );
+	bSizer1431->Add( m_staticText3331, 0, wxTOP|wxBOTTOM|wxLEFT, 5 );
+	
+	
+	bSizer1321->Add( bSizer1431, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer14311;
+	bSizer14311 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText32311 = new wxStaticText( m_panel11, wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32311->Wrap( -1 );
+	bSizer14311->Add( m_staticText32311, 1, wxALL|wxEXPAND, 5 );
+	
+	m_Lon1 = new wxTextCtrl( m_panel11, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_Lon1->SetMaxLength( 0 ); 
+	bSizer14311->Add( m_Lon1, 3, wxALIGN_CENTER_VERTICAL|wxEXPAND|wxTOP|wxBOTTOM|wxLEFT, 5 );
+	
+	m_staticText33311 = new wxStaticText( m_panel11, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText33311->Wrap( -1 );
+	bSizer14311->Add( m_staticText33311, 0, wxTOP|wxBOTTOM|wxLEFT, 5 );
+	
+	
+	bSizer1321->Add( bSizer14311, 0, 0, 5 );
+	
+	
+	sbSizer7->Add( bSizer1321, 0, wxEXPAND, 5 );
+	
+	
+	bSizer40->Add( sbSizer7, 0, wxEXPAND, 5 );
+	
+	m_button4 = new wxButton( m_panel11, wxID_ANY, _("Convert"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer40->Add( m_button4, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	m_panel11->SetSizer( bSizer40 );
+	m_panel11->Layout();
+	bSizer40->Fit( m_panel11 );
+	m_wxNotebook234->AddPage( m_panel11, _("Degrees"), false );
+	m_panel151 = new wxPanel( m_wxNotebook234, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer4011;
+	bSizer4011 = new wxBoxSizer( wxVERTICAL );
+	
+	wxStaticBoxSizer* sbSizer721;
+	sbSizer721 = new wxStaticBoxSizer( new wxStaticBox( m_panel151, wxID_ANY, _("DD.dddddd° (no limit to decimals)") ), wxVERTICAL );
+	
+	wxBoxSizer* bSizer132121;
+	bSizer132121 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer143131;
+	bSizer143131 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText323131 = new wxStaticText( m_panel151, wxID_ANY, _("Lat "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText323131->Wrap( -1 );
+	bSizer143131->Add( m_staticText323131, 0, wxALL, 5 );
+	
+	m_Lat1_d1 = new wxTextCtrl( m_panel151, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lat1_d1->SetMaxLength( 0 ); 
+	bSizer143131->Add( m_Lat1_d1, 0, wxALL, 5 );
+	
+	m_staticText333131 = new wxStaticText( m_panel151, wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText333131->Wrap( -1 );
+	bSizer143131->Add( m_staticText333131, 0, wxALL, 5 );
+	
+	m_Lat1_m1 = new wxTextCtrl( m_panel151, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lat1_m1->SetMaxLength( 0 ); 
+	bSizer143131->Add( m_Lat1_m1, 0, wxALL, 5 );
+	
+	m_staticText11431 = new wxStaticText( m_panel151, wxID_ANY, _("'"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11431->Wrap( -1 );
+	bSizer143131->Add( m_staticText11431, 0, wxALL, 5 );
+	
+	wxString m_Lat1_NS1Choices[] = { _("N"), _("S") };
+	int m_Lat1_NS1NChoices = sizeof( m_Lat1_NS1Choices ) / sizeof( wxString );
+	m_Lat1_NS1 = new wxChoice( m_panel151, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Lat1_NS1NChoices, m_Lat1_NS1Choices, 0 );
+	m_Lat1_NS1->SetSelection( 0 );
+	bSizer143131->Add( m_Lat1_NS1, 0, wxALL, 5 );
+	
+	
+	bSizer132121->Add( bSizer143131, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer1431121;
+	bSizer1431121 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText3231121 = new wxStaticText( m_panel151, wxID_ANY, _("Lon"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3231121->Wrap( -1 );
+	bSizer1431121->Add( m_staticText3231121, 0, wxALL, 5 );
+	
+	m_Lon1_d1 = new wxTextCtrl( m_panel151, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lon1_d1->SetMaxLength( 0 ); 
+	bSizer1431121->Add( m_Lon1_d1, 0, wxALL, 5 );
+	
+	m_staticText3331121 = new wxStaticText( m_panel151, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331121->Wrap( -1 );
+	bSizer1431121->Add( m_staticText3331121, 0, wxALL, 5 );
+	
+	m_Lon1_m1 = new wxTextCtrl( m_panel151, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lon1_m1->SetMaxLength( 0 ); 
+	bSizer1431121->Add( m_Lon1_m1, 0, wxALL, 5 );
+	
+	m_staticText114121 = new wxStaticText( m_panel151, wxID_ANY, _("'"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText114121->Wrap( -1 );
+	bSizer1431121->Add( m_staticText114121, 0, wxALL, 5 );
+	
+	wxString m_Lon1_EW1Choices[] = { _("E"), _("W") };
+	int m_Lon1_EW1NChoices = sizeof( m_Lon1_EW1Choices ) / sizeof( wxString );
+	m_Lon1_EW1 = new wxChoice( m_panel151, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Lon1_EW1NChoices, m_Lon1_EW1Choices, 0 );
+	m_Lon1_EW1->SetSelection( 0 );
+	bSizer1431121->Add( m_Lon1_EW1, 0, wxALL, 5 );
+	
+	
+	bSizer132121->Add( bSizer1431121, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	sbSizer721->Add( bSizer132121, 0, 0, 5 );
+	
+	
+	bSizer4011->Add( sbSizer721, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer4811;
+	bSizer4811 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_button811 = new wxButton( m_panel151, wxID_ANY, _("Convert"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer4811->Add( m_button811, 0, wxALL, 5 );
+	
+	
+	bSizer4011->Add( bSizer4811, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	m_panel151->SetSizer( bSizer4011 );
+	m_panel151->Layout();
+	bSizer4011->Fit( m_panel151 );
+	m_wxNotebook234->AddPage( m_panel151, _("Degree, Minute"), false );
+	m_panel15 = new wxPanel( m_wxNotebook234, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer401;
+	bSizer401 = new wxBoxSizer( wxVERTICAL );
+	
+	wxStaticBoxSizer* sbSizer72;
+	sbSizer72 = new wxStaticBoxSizer( new wxStaticBox( m_panel15, wxID_ANY, _("DD°MM’SS.s (no limit to digits)") ), wxVERTICAL );
+	
+	wxBoxSizer* bSizer13212;
+	bSizer13212 = new wxBoxSizer( wxVERTICAL );
+	
+	wxBoxSizer* bSizer14313;
+	bSizer14313 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText32313 = new wxStaticText( m_panel15, wxID_ANY, _("Lat "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32313->Wrap( -1 );
+	bSizer14313->Add( m_staticText32313, 0, wxALL, 5 );
+	
+	m_Lat1_d = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lat1_d->SetMaxLength( 0 ); 
+	bSizer14313->Add( m_Lat1_d, 0, wxALL, 5 );
+	
+	m_staticText33313 = new wxStaticText( m_panel15, wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText33313->Wrap( -1 );
+	bSizer14313->Add( m_staticText33313, 0, wxALL, 5 );
+	
+	m_Lat1_m = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lat1_m->SetMaxLength( 0 ); 
+	bSizer14313->Add( m_Lat1_m, 0, wxALL, 5 );
+	
+	m_staticText1143 = new wxStaticText( m_panel15, wxID_ANY, _("'"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1143->Wrap( -1 );
+	bSizer14313->Add( m_staticText1143, 0, wxALL, 5 );
+	
+	m_Lat1_s = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lat1_s->SetMaxLength( 0 ); 
+	bSizer14313->Add( m_Lat1_s, 0, wxALL, 5 );
+	
+	m_staticText1153 = new wxStaticText( m_panel15, wxID_ANY, _("\""), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1153->Wrap( -1 );
+	bSizer14313->Add( m_staticText1153, 0, wxALL, 5 );
+	
+	wxString m_Lat1_NSChoices[] = { _("N"), _("S") };
+	int m_Lat1_NSNChoices = sizeof( m_Lat1_NSChoices ) / sizeof( wxString );
+	m_Lat1_NS = new wxChoice( m_panel15, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Lat1_NSNChoices, m_Lat1_NSChoices, 0 );
+	m_Lat1_NS->SetSelection( 0 );
+	bSizer14313->Add( m_Lat1_NS, 0, wxALL, 5 );
+	
+	
+	bSizer13212->Add( bSizer14313, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer143112;
+	bSizer143112 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_staticText323112 = new wxStaticText( m_panel15, wxID_ANY, _("Lon"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText323112->Wrap( -1 );
+	bSizer143112->Add( m_staticText323112, 0, wxALL, 5 );
+	
+	m_Lon1_d = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lon1_d->SetMaxLength( 0 ); 
+	bSizer143112->Add( m_Lon1_d, 0, wxALL, 5 );
+	
+	m_staticText333112 = new wxStaticText( m_panel15, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText333112->Wrap( -1 );
+	bSizer143112->Add( m_staticText333112, 0, wxALL, 5 );
+	
+	m_Lon1_m = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lon1_m->SetMaxLength( 0 ); 
+	bSizer143112->Add( m_Lon1_m, 0, wxALL, 5 );
+	
+	m_staticText11412 = new wxStaticText( m_panel15, wxID_ANY, _("'"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11412->Wrap( -1 );
+	bSizer143112->Add( m_staticText11412, 0, wxALL, 5 );
+	
+	m_Lon1_s = new wxTextCtrl( m_panel15, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_Lon1_s->SetMaxLength( 0 ); 
+	bSizer143112->Add( m_Lon1_s, 0, wxALL, 5 );
+	
+	m_staticText11512 = new wxStaticText( m_panel15, wxID_ANY, _("\""), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11512->Wrap( -1 );
+	bSizer143112->Add( m_staticText11512, 0, wxALL, 5 );
+	
+	wxString m_Lon1_EWChoices[] = { _("E"), _("W") };
+	int m_Lon1_EWNChoices = sizeof( m_Lon1_EWChoices ) / sizeof( wxString );
+	m_Lon1_EW = new wxChoice( m_panel15, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Lon1_EWNChoices, m_Lon1_EWChoices, 0 );
+	m_Lon1_EW->SetSelection( 0 );
+	bSizer143112->Add( m_Lon1_EW, 0, wxALL, 5 );
+	
+	
+	bSizer13212->Add( bSizer143112, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	sbSizer72->Add( bSizer13212, 0, 0, 5 );
+	
+	
+	bSizer401->Add( sbSizer72, 0, 0, 5 );
+	
+	wxBoxSizer* bSizer481;
+	bSizer481 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_button81 = new wxButton( m_panel15, wxID_ANY, _("Convert"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer481->Add( m_button81, 0, wxALL, 5 );
+	
+	
+	bSizer401->Add( bSizer481, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	
+	
+	m_panel15->SetSizer( bSizer401 );
+	m_panel15->Layout();
+	bSizer401->Fit( m_panel15 );
+	m_wxNotebook234->AddPage( m_panel15, _("° ' \""), true );
+	
+	bSizer35->Add( m_wxNotebook234, 0, wxALL, 5 );
+	
+	
+	bSizer10->Add( bSizer35, 1, wxEXPAND, 5 );
+	
+	
+	this->SetSizer( bSizer10 );
+	this->Layout();
+	bSizer10->Fit( this );
+	
+	this->Centre( wxBOTH );
+	
+	// Connect Events
+	m_wxNotebook234->Connect( wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( ConvDlgDev::OnNoteBookFit ), NULL, this );
+	m_button811->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ConvDlgDev::OnConverttoDegree ), NULL, this );
+	m_button81->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ConvDlgDev::OnConverttoDegree ), NULL, this );
+}
+
+ConvDlgDev::~ConvDlgDev()
+{
+	// Disconnect Events
+	m_wxNotebook234->Disconnect( wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( ConvDlgDev::OnNoteBookFit ), NULL, this );
+	m_button811->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ConvDlgDev::OnConverttoDegree ), NULL, this );
+	m_button81->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( ConvDlgDev::OnConverttoDegree ), NULL, this );
+	
+}

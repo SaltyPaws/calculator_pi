@@ -51,6 +51,13 @@ public:
       CfgDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 };
 
+class ConvDlg : public ConvDlgDef
+{
+public:
+      ConvDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Coordinate conversion"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+};
+
+
 class HlpDlg : public HlpDlgDef
 {
 public:
@@ -78,6 +85,7 @@ public:
         void up (void);
         void i_plus(int &counter_test);
         void i_min(int &counter_test);
+        void OnConverttoDegree( wxCommandEvent& event );
         calculator_pi *plugin;
 
         void SetMaxResults         (int x){Max_Results = x;};
@@ -109,6 +117,7 @@ private:
         bool              m_bcapturehidden;
         bool              m_blogresults;
         HlpDlg            *m_pHelpdialog;
+        double lat1, lon1;
 
 };
 

@@ -27,6 +27,11 @@
 #include <wx/stattext.h>
 #include <wx/spinctrl.h>
 #include <wx/slider.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/icon.h>
+#include <wx/choice.h>
+#include <wx/notebook.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -112,6 +117,68 @@ class HlpDlgDef : public wxDialog
 		
 		HlpDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~HlpDlgDef();
+	
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class ConvDlgDev
+///////////////////////////////////////////////////////////////////////////////
+class ConvDlgDev : public wxDialog 
+{
+	private:
+	
+	protected:
+		wxNotebook* m_wxNotebook234;
+		wxPanel* m_panel11;
+		wxStaticText* m_staticText3231;
+		wxTextCtrl* m_Lat1;
+		wxStaticText* m_staticText3331;
+		wxStaticText* m_staticText32311;
+		wxTextCtrl* m_Lon1;
+		wxStaticText* m_staticText33311;
+		wxButton* m_button4;
+		wxPanel* m_panel151;
+		wxStaticText* m_staticText323131;
+		wxTextCtrl* m_Lat1_d1;
+		wxStaticText* m_staticText333131;
+		wxTextCtrl* m_Lat1_m1;
+		wxStaticText* m_staticText11431;
+		wxChoice* m_Lat1_NS1;
+		wxStaticText* m_staticText3231121;
+		wxTextCtrl* m_Lon1_d1;
+		wxStaticText* m_staticText3331121;
+		wxTextCtrl* m_Lon1_m1;
+		wxStaticText* m_staticText114121;
+		wxChoice* m_Lon1_EW1;
+		wxButton* m_button811;
+		wxPanel* m_panel15;
+		wxStaticText* m_staticText32313;
+		wxTextCtrl* m_Lat1_d;
+		wxStaticText* m_staticText33313;
+		wxTextCtrl* m_Lat1_m;
+		wxStaticText* m_staticText1143;
+		wxTextCtrl* m_Lat1_s;
+		wxStaticText* m_staticText1153;
+		wxChoice* m_Lat1_NS;
+		wxStaticText* m_staticText323112;
+		wxTextCtrl* m_Lon1_d;
+		wxStaticText* m_staticText333112;
+		wxTextCtrl* m_Lon1_m;
+		wxStaticText* m_staticText11412;
+		wxTextCtrl* m_Lon1_s;
+		wxStaticText* m_staticText11512;
+		wxChoice* m_Lon1_EW;
+		wxButton* m_button81;
+		
+		// Virtual event handlers, overide them in your derived class
+		virtual void OnNoteBookFit( wxNotebookEvent& event ) { event.Skip(); }
+		virtual void OnConverttoDegree( wxCommandEvent& event ) { event.Skip(); }
+		
+	
+	public:
+		
+		ConvDlgDev( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE ); 
+		~ConvDlgDev();
 	
 };
 
