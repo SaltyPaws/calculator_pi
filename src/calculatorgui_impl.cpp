@@ -35,6 +35,18 @@ HlpDlg::HlpDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 {
 }
 
+FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : FunDlgDef( parent, id, title, pos, size, style )
+{
+
+    testf.m_ShortDesc=_("Hull Speed (imperial)");
+    testf.m_LongDesc=_("Hull speed, sometimes referred to as displacement speed, can be thought of the speed at which the wavelength of the boat's bow wave (in displacement mode) is equal to the boat length. As boat speed increases, the size of the bow wave increases, and therefore so does its wavelength. When hull speed is reached, a boat in pure displacement mode will appear trapped in a trough behind its very large bow wave.");
+    testf.m_Result_Unit=_("Knots");
+    testf.m_Formula=_("vhull=1.34*sqrt(LWL)");
+    testf.m_Input_parameter[0]=_("LWL");
+    testf.m_Input_unit[0]=_("feet");
+
+}
+
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
@@ -66,6 +78,46 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
 }
 
 
+void FunDlg::OnExtraCalculate( wxCommandEvent& event )
+{
+
+    wxMessageBox(_("Calculate"));
+    // kut->OnFunctionCalc() ;
+    kut->m_result->SetValue(_("Calculate"));
+    // kut->OnHelp();
+}
+
+void FunDlg::OnFunctionSelect( wxCommandEvent& event )
+{
+   // m_pFunctiondialog->m_Function->SetValue(_("Function!!"));
+    //m_pFunctiondialog->m_Description->SetValue(_("Desctiption!!"));
+    //wxMessageBox(_("Function"));
+    // kut->OnFunctionCalc() ;
+    this->m_Function->SetLabel(testf.m_Formula);
+    this->m_Description->SetLabel(testf.m_LongDesc);
+    this->m_Description->SetLabel(testf.m_LongDesc);
+    this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit);
+    this->Parameter->SetLabel(testf.m_Input_parameter[0]);
+    this->Units->SetLabel(testf.m_Input_unit[0]);
+    this->m_Description->Wrap(400); ///Width of description can be put in settings
+    /*this->m_panel101->Fit();
+    this->m_panel101->Layout();
+    this->m_panel152->Fit();
+    this->m_panel152->Layout();*/
+    this->Fit();
+
+
+    // kut->OnHelp();
+    }
+
+
+
+void Dlg::OnFunctionCalc( void )
+{
+    //m_pFunctiondialog->m_staticText73->SetLabel(_("Dikke Piemel"));
+        // kut->OnFunctionCalc() ;
+}
+
 void Dlg::OnHelp( wxCommandEvent& event ){
     OnHelp();}
 
@@ -76,6 +128,20 @@ void Dlg::OnHelp( void )
         m_pHelpdialog->m_textCtrl3->Fit();
         m_pHelpdialog->m_textCtrl3->Layout();
 }
+
+void Dlg::OnFunction( void )
+{
+        FunDlg *m_pFunctiondialog = new FunDlg(this);m_pFunctiondialog->Show(true);
+        m_pFunctiondialog->kut = this;
+//m_staticText27->SetValue(_("dIKKERE PENIS"));
+
+
+
+ /*       m_pHelpdialog->HelpPanel->Fit();
+        m_pHelpdialog->m_textCtrl3->Fit();
+        m_pHelpdialog->m_textCtrl3->Layout();*/
+}
+
 void Dlg::set_History(void)
 {
     if(this->m_Help->GetValue())
@@ -118,9 +184,6 @@ void Dlg::OnTest(wxMouseEvent& event){
 void Dlg::OnTest(wxListEvent& event){
    wxMessageBox(_("List"));
 }
-
-
-
 
 void Dlg::OnItem(wxListEvent& event){
 
@@ -202,6 +265,11 @@ void Dlg::OnCalculate( void )
 
     if ((Text.StartsWith(_("Help"))) || (Text.StartsWith(_("HELP")))|| (Text.StartsWith(_("help")))){
         this->OnHelp ();
+        error_check=true;
+    }
+
+    if ((Text.StartsWith(_("Function"))) || (Text.StartsWith(_("function")))|| (Text.StartsWith(_("FUNCTION")))){
+        this->OnFunction ();
         error_check=true;
     }
 

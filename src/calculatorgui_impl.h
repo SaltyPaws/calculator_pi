@@ -1,3 +1,23 @@
+/*
+Make Vhull work using calculation + init button
+put functions in array
+Add 1 formula
+Make pulldown work using formulas
+change menu based on pulldown selection
+add close button
+add hide description, hide formula button
+move formulas to seperate .h file
+create bash script to generate .h file from .csv file with some error checking
+
+make coordinate conversion work
+
+
+
+*/
+
+
+
+
 /******************************************************************************
  *
  * Project:  OpenCPN
@@ -44,18 +64,43 @@
 using namespace std;
 
 class calculator_pi;
+class Dlg;
 
 class CfgDlg : public CfgDlgDef
 {
 public:
-      CfgDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+      CfgDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
 };
 
 class HlpDlg : public HlpDlgDef
 {
 public:
-      HlpDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Help!!!!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+      HlpDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Help!!!!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
 };
+
+class CFormula
+{
+   public:
+      wxString m_ShortDesc;             // Short description
+      wxString m_LongDesc;              // Long description
+      wxString m_Formula;               // Formula in a form directly understandable by calculator
+      wxString m_Result_Unit;           // Units of result (e.g. meter, feet, m/s etc)
+      wxString m_Input_parameter[9];    // Input parameter (e.g. lenght, speed, etc)
+      wxString m_Input_unit[9];         // Input unit (e.g. meter, feet, m/s etc)
+};
+
+class FunDlg : public FunDlgDef
+{
+    public:
+        FunDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Extra Functions"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
+        CFormula testf;
+        void OnExtraCalculate( wxCommandEvent& event );
+        void OnFunctionSelect( wxCommandEvent& event );
+        Dlg *kut;
+    private:
+
+};
+
 
 class Dlg : public DlgDef
 {
@@ -69,6 +114,8 @@ public:
         void OnTest( wxMouseEvent& event );
         void OnTest( wxCommandEvent& event );
         void OnTest( wxListEvent& event );
+        void OnFunction (void);
+        void OnFunctionCalc ( void );
 
         void OnToggle( wxCommandEvent& event );
         void key_shortcut(wxKeyEvent& event);
@@ -109,6 +156,7 @@ private:
         bool              m_bcapturehidden;
         bool              m_blogresults;
         HlpDlg            *m_pHelpdialog;
+        FunDlg            *m_pFunctiondialog;
 
 };
 

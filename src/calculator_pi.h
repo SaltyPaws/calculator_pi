@@ -41,7 +41,7 @@
 #include "calculatorgui_impl.h"
 
 #define     PLUGIN_VERSION_MAJOR    1
-#define     PLUGIN_VERSION_MINOR    3
+#define     PLUGIN_VERSION_MINOR    4
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
@@ -90,15 +90,17 @@ public:
       //void GetMaxResults                (int x){ m_iMaxResults = x;};
 
 
-      void OnSurveyDialogClose();
+     // void OnSurveyDialogClose();
+
 
 private:
+      Dlg               *m_pDialog;
       void              SettingsPropagate(void);
       wxFileConfig      *m_pconfig;
       wxWindow          *m_parent_window;
       bool              LoadConfig(void);
       bool              SaveConfig(void);
-      Dlg               *m_pDialog;
+
       int               m_calculator_dialog_x, m_calculator_dialog_y,m_calculator_dialog_width,m_calculator_dialog_height;
       int               m_display_width, m_display_height;
       int               m_iOpacity;
