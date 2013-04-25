@@ -1,10 +1,4 @@
 /*
-Make Vhull work using calculation + init button
-put functions in array
-Add 1 formula
-Make pulldown work using formulas
-change menu based on pulldown selection
-add close button
 add hide description, hide formula button
 move formulas to seperate .h file
 create bash script to generate .h file from .csv file with some error checking
@@ -85,21 +79,31 @@ class CFormula
       wxString m_LongDesc;              // Long description
       wxString m_Formula;               // Formula in a form directly understandable by calculator
       wxString m_Result_Unit;           // Units of result (e.g. meter, feet, m/s etc)
-      wxString m_Input_parameter[9];    // Input parameter (e.g. lenght, speed, etc)
-      wxString m_Input_unit[9];         // Input unit (e.g. meter, feet, m/s etc)
+      wxString m_Input_parameter[10];    // Input parameter (e.g. lenght, speed, etc)
+      wxString m_Input_unit[10];         // Input unit (e.g. meter, feet, m/s etc
 };
 
 class FunDlg : public FunDlgDef
 {
     public:
         FunDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Extra Functions"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
-        CFormula testf;
+        CFormula testf[100];
+        int number_of_parameters;       // size of array of input parameters in Cformula above
+        int number_of_formulas;         // size of array of formulas
+        int Selected_Formula;           // formula selected
         void OnExtraCalculate( wxCommandEvent& event );
         void OnFunctionSelect( wxCommandEvent& event );
+        void OnItemSelect( wxCommandEvent& event );
+        void OnClose( wxCommandEvent& event );
+
+        wxString NotEmpty (wxString);
         Dlg *kut;
+
     private:
 
 };
+
+
 
 
 class Dlg : public DlgDef
@@ -112,7 +116,8 @@ public:
         void OnHelp( wxCommandEvent& event );
         void OnHelp( void );
         void OnTest( wxMouseEvent& event );
-        void OnTest( wxCommandEvent& event );
+        void OnTest(wxCommandEvent& event);
+
         void OnTest( wxListEvent& event );
         void OnFunction (void);
         void OnFunctionCalc ( void );

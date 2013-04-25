@@ -600,9 +600,10 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxStaticBoxSizer* sbSizer12;
 	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function") ), wxVERTICAL );
 	
-	m_comboBox1 = new wxComboBox( m_panel152, wxID_ANY, _("Select Function"), wxDefaultPosition, wxDefaultSize, 0, NULL, 0 ); 
-	m_comboBox1->SetSelection( 0 );
-	sbSizer12->Add( m_comboBox1, 0, wxALL, 5 );
+	wxArrayString m_Function_DropdownChoices;
+	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownChoices, 0 );
+	m_Function_Dropdown->SetSelection( 0 );
+	sbSizer12->Add( m_Function_Dropdown, 0, wxALL|wxEXPAND, 5 );
 	
 	
 	bSizer26->Add( sbSizer12, 0, wxEXPAND, 5 );
@@ -638,7 +639,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer64;
 	bSizer64 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
 	bSizer64->Add( m_Function_Result, 0, wxALL, 5 );
 	
 	m_Output_Parameter = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -702,50 +703,6 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_panel1->Layout();
 	bSizer1->Fit( m_panel1 );
 	sbSizer13->Add( m_panel1, 1, wxEXPAND | wxALL, 5 );
-	
-	m_panel9 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel9->Hide();
-	
-	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
-	
-	Value9 = new wxTextCtrl( m_panel9, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer9->Add( Value9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	Parameter9 = new wxStaticText( m_panel9, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
-	Parameter9->Wrap( -1 );
-	bSizer9->Add( Parameter9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	Units9 = new wxStaticText( m_panel9, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units9->Wrap( -1 );
-	bSizer9->Add( Units9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	
-	m_panel9->SetSizer( bSizer9 );
-	m_panel9->Layout();
-	bSizer9->Fit( m_panel9 );
-	sbSizer13->Add( m_panel9, 1, wxEXPAND | wxALL, 5 );
-	
-	m_panel8 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel8->Hide();
-	
-	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
-	
-	Value8 = new wxTextCtrl( m_panel8, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer8->Add( Value8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	Parameter8 = new wxStaticText( m_panel8, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
-	Parameter8->Wrap( -1 );
-	bSizer8->Add( Parameter8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	Units8 = new wxStaticText( m_panel8, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units8->Wrap( -1 );
-	bSizer8->Add( Units8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
-	
-	
-	m_panel8->SetSizer( bSizer8 );
-	m_panel8->Layout();
-	bSizer8->Fit( m_panel8 );
-	sbSizer13->Add( m_panel8, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel2 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	m_panel2->Hide();
@@ -879,6 +836,50 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer71->Fit( m_panel7 );
 	sbSizer13->Add( m_panel7, 1, wxEXPAND | wxALL, 5 );
 	
+	m_panel8 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel8->Hide();
+	
+	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
+	
+	Value8 = new wxTextCtrl( m_panel8, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer8->Add( Value8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	Parameter8 = new wxStaticText( m_panel8, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
+	Parameter8->Wrap( -1 );
+	bSizer8->Add( Parameter8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	Units8 = new wxStaticText( m_panel8, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
+	Units8->Wrap( -1 );
+	bSizer8->Add( Units8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	
+	m_panel8->SetSizer( bSizer8 );
+	m_panel8->Layout();
+	bSizer8->Fit( m_panel8 );
+	sbSizer13->Add( m_panel8, 1, wxEXPAND | wxALL, 5 );
+	
+	m_panel9 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	m_panel9->Hide();
+	
+	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
+	
+	Value9 = new wxTextCtrl( m_panel9, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer9->Add( Value9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	Parameter9 = new wxStaticText( m_panel9, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
+	Parameter9->Wrap( -1 );
+	bSizer9->Add( Parameter9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	Units9 = new wxStaticText( m_panel9, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
+	Units9->Wrap( -1 );
+	bSizer9->Add( Units9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	
+	
+	m_panel9->SetSizer( bSizer9 );
+	m_panel9->Layout();
+	bSizer9->Fit( m_panel9 );
+	sbSizer13->Add( m_panel9, 1, wxEXPAND | wxALL, 5 );
+	
 	
 	bSizer26->Add( sbSizer13, 1, wxEXPAND, 5 );
 	
@@ -891,7 +892,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_button9 = new wxButton( m_panel152, wxID_ANY, _("Select"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_button9, 0, wxALL, 5 );
 	
-	m_button10 = new wxButton( m_panel152, wxID_ANY, _("MyButton"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button10 = new wxButton( m_panel152, wxID_ANY, _("Close"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_button10, 0, wxALL, 5 );
 	
 	
@@ -911,14 +912,18 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	this->Centre( wxBOTH );
 	
 	// Connect Events
+	m_Function_Dropdown->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button9->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnFunctionSelect ), NULL, this );
+	m_button10->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
 }
 
 FunDlgDef::~FunDlgDef()
 {
 	// Disconnect Events
+	m_Function_Dropdown->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button9->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnFunctionSelect ), NULL, this );
+	m_button10->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
 	
 }

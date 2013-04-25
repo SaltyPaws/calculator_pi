@@ -32,7 +32,6 @@
 #include <wx/icon.h>
 #include <wx/choice.h>
 #include <wx/notebook.h>
-#include <wx/combobox.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -209,7 +208,6 @@ class FunDlgDef : public wxDialog
 	
 	protected:
 		wxPanel* m_panel152;
-		wxComboBox* m_comboBox1;
 		wxPanel* m_panel101;
 		wxStaticText* m_Function;
 		wxPanel* m_panel100;
@@ -219,11 +217,14 @@ class FunDlgDef : public wxDialog
 		wxButton* m_button10;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void OnItemSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnExtraCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnFunctionSelect( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnClose( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
+		wxChoice* m_Function_Dropdown;
 		wxStaticText* m_Description;
 		wxStaticText* m_Output_Parameter;
 		wxStaticText* m_Output_Parameter_Unit;
@@ -237,16 +238,6 @@ class FunDlgDef : public wxDialog
 		wxTextCtrl* Value1;
 		wxStaticText* Parameter1;
 		wxStaticText* Units1;
-		wxPanel* m_panel9;
-		wxBoxSizer* bSizer9;
-		wxTextCtrl* Value9;
-		wxStaticText* Parameter9;
-		wxStaticText* Units9;
-		wxPanel* m_panel8;
-		wxBoxSizer* bSizer8;
-		wxTextCtrl* Value8;
-		wxStaticText* Parameter8;
-		wxStaticText* Units8;
 		wxPanel* m_panel2;
 		wxBoxSizer* bSizer2;
 		wxTextCtrl* Value2;
@@ -277,6 +268,16 @@ class FunDlgDef : public wxDialog
 		wxTextCtrl* Value7;
 		wxStaticText* Parameter7;
 		wxStaticText* Units7;
+		wxPanel* m_panel8;
+		wxBoxSizer* bSizer8;
+		wxTextCtrl* Value8;
+		wxStaticText* Parameter8;
+		wxStaticText* Units8;
+		wxPanel* m_panel9;
+		wxBoxSizer* bSizer9;
+		wxTextCtrl* Value9;
+		wxStaticText* Parameter9;
+		wxStaticText* Units9;
 		
 		FunDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~FunDlgDef();
