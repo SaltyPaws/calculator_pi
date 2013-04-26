@@ -602,7 +602,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	wxArrayString m_Function_DropdownChoices;
 	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownChoices, 0 );
-	m_Function_Dropdown->SetSelection( 0 );
+	m_Function_Dropdown->SetSelection( 1 );
 	sbSizer12->Add( m_Function_Dropdown, 0, wxALL|wxEXPAND, 5 );
 	
 	
@@ -889,11 +889,12 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_button7 = new wxButton( m_panel152, wxID_ANY, _("Calculate"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_button7, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 	
-	m_button9 = new wxButton( m_panel152, wxID_ANY, _("Select"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer39->Add( m_button9, 0, wxALL, 5 );
-	
 	m_button10 = new wxButton( m_panel152, wxID_ANY, _("Close"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_button10, 0, wxALL, 5 );
+	
+	m_checkBox8 = new wxCheckBox( m_panel152, wxID_ANY, _("Description"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox8->SetValue(true); 
+	bSizer39->Add( m_checkBox8, 0, wxALL, 5 );
 	
 	
 	bSizer26->Add( bSizer39, 0, wxEXPAND, 5 );
@@ -914,8 +915,8 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	// Connect Events
 	m_Function_Dropdown->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
-	m_button9->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnFunctionSelect ), NULL, this );
 	m_button10->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
+	m_checkBox8->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( FunDlgDef::OnToggle ), NULL, this );
 }
 
 FunDlgDef::~FunDlgDef()
@@ -923,7 +924,7 @@ FunDlgDef::~FunDlgDef()
 	// Disconnect Events
 	m_Function_Dropdown->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
-	m_button9->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnFunctionSelect ), NULL, this );
 	m_button10->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
+	m_checkBox8->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( FunDlgDef::OnToggle ), NULL, this );
 	
 }

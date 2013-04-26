@@ -1,12 +1,7 @@
 /*
-add hide description, hide formula button
 move formulas to seperate .h file
 create bash script to generate .h file from .csv file with some error checking
-
 make coordinate conversion work
-
-
-
 */
 
 
@@ -41,9 +36,6 @@ make coordinate conversion work
 
 #ifndef _CALCULATORGUI_IMPL_H_
 #define _CALCULATORGUI_IMPL_H_
-
-//#include <cstdlib>
-//#include <cstdio>
 
 #include "parser.h"
 
@@ -94,16 +86,14 @@ class FunDlg : public FunDlgDef
         void OnExtraCalculate( wxCommandEvent& event );
         void OnFunctionSelect( wxCommandEvent& event );
         void OnItemSelect( wxCommandEvent& event );
+        void SelectItem (void);
         void OnClose( wxCommandEvent& event );
-
+        void OnToggle( wxCommandEvent& event );
         wxString NotEmpty (wxString);
-        Dlg *kut;
-
+        Dlg *Plugin_Dialog;
     private:
 
 };
-
-
 
 
 class Dlg : public DlgDef

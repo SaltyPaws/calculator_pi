@@ -213,14 +213,14 @@ class FunDlgDef : public wxDialog
 		wxPanel* m_panel100;
 		wxTextCtrl* m_Function_Result;
 		wxButton* m_button7;
-		wxButton* m_button9;
 		wxButton* m_button10;
+		wxCheckBox* m_checkBox8;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnItemSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnExtraCalculate( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnFunctionSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClose( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
 		
 	
 	public:
