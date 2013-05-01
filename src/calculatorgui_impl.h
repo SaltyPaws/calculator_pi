@@ -1,10 +1,7 @@
 /*
-move formulas to seperate .h file
 create bash script to generate .h file from .csv file with some error checking
 make coordinate conversion work
 */
-
-
 
 
 /******************************************************************************
@@ -45,20 +42,8 @@ make coordinate conversion work
     #include "calculatorgui.h"
 #endif
 
-
 #include "calculator_pi.h"
 #include "functions.h"
-
-//definitions to go into function.h
-
-//Number of parameters in function
-//#define NumberOfParameters = 9
-//Number of formulas loaded
-
-//Default start formula
-//#define Selected_Formula = 1
-
-//
 
 using namespace std;
 
@@ -77,8 +62,6 @@ public:
       HlpDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Help!!!!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
 };
 
-
-
 class FunDlg : public FunDlgDef
 {
     public:
@@ -94,7 +77,6 @@ class FunDlg : public FunDlgDef
     private:
 
 };
-
 
 class Dlg : public DlgDef
 {

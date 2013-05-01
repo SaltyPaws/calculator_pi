@@ -28,6 +28,7 @@
 #include "calculatorgui_impl.h"
 
 
+
 CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : CfgDlgDef( parent, id, title, pos, size, style )
 {
 }
@@ -41,66 +42,14 @@ HlpDlg::HlpDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : FunDlgDef( parent, id, title, pos, size, style )
 {
-/*
-testf.Selected_Formula = 1;
-testf.NumberOfFormulas = 3;
-
-
-    testf.m_ShortDesc[0]=_("Hull Speed (imperial)");
-    testf.m_LongDesc[0]=_("Hull speed, sometimes referred to as displacement speed, can be thought of the speed at which the wavelength of the boat's bow wave (in displacement mode) is equal to the boat length. As boat speed increases, the size of the bow wave increases, and therefore so does its wavelength. When hull speed is reached, a boat in pure displacement mode will appear trapped in a trough behind its very large bow wave.");
-    testf.m_Result_Unit[0]=_("Knots");
-    testf.m_Formula[0]=_("vhull=1.34*sqrt(LWL)");
-    testf.m_Input_parameter[0][0]=_("LWL");
-    testf.m_Input_unit[0][0]=_("feet");
-
-    testf.m_ShortDesc[1]=_("Hull Speed (metric)");
-    testf.m_LongDesc[1]=_("Hull speed, sometimes referred to as displacement speed, can be thought of the speed at which the wavelength of the boat's bow wave (in displacement mode) is equal to the boat length. As boat speed increases, the size of the bow wave increases, and therefore so does its wavelength. When hull speed is reached, a boat in pure displacement mode will appear trapped in a trough behind its very large bow wave.");
-    testf.m_Result_Unit[1]=_("Knots");
-    testf.m_Formula[1]=_("vhull=1.34*sqrt(LWL/0.3048)");
-    testf.m_Input_parameter[1][0]=_("LWL");
-    testf.m_Input_unit[1][0]=_("meter");
-
-    testf.m_ShortDesc[2]=_("Draft of vessel when heeled");
-    testf.m_LongDesc[2]=_("Draft of vessel when heeled");
-    testf.m_Result_Unit[2]=_("as Input units");
-    testf.m_Formula[2]=_("draft_heel=draft*cos(dtr*angle)");
-    testf.m_Input_parameter[2][0]=_("draft");
-    testf.m_Input_unit[2][0]=_("as Result Units");
-    testf.m_Input_parameter[2][1]=_("angle");
-    testf.m_Input_unit[2][1]=_("degree");
-
-    testf.m_ShortDesc[3]=_("test");
-    testf.m_LongDesc[3]=_("test 1");
-    testf.m_Result_Unit[3]=_("result_u");
-    testf.m_Formula[3]=_("draft_heel=draft*cos(dtr*angle)");
-    testf.m_Input_parameter[3][0]=_("a");
-    testf.m_Input_unit[3][0]=_("a_u");
-    testf.m_Input_parameter[3][1]=_("b");
-    testf.m_Input_unit[3][1]=_("b_u");
-    testf.m_Input_parameter[3][2]=_("c");
-    testf.m_Input_unit[3][2]=_("c_u");
-    testf.m_Input_parameter[3][3]=_("d");
-    testf.m_Input_unit[3][3]=_("d_u");
-    testf.m_Input_parameter[3][4]=_("e");
-    testf.m_Input_unit[3][4]=_("e_u");
-    testf.m_Input_parameter[3][5]=_("f");
-    testf.m_Input_unit[3][5]=_("f_u");
-    testf.m_Input_parameter[3][6]=_("g");
-    testf.m_Input_unit[3][6]=_("g_u");
-    testf.m_Input_parameter[3][7]=_("h");
-    testf.m_Input_unit[3][7]=_("h_u");
-    testf.m_Input_parameter[3][8]=_("i");
-    testf.m_Input_unit[3][8]=_("i_u");
-    testf.m_Input_parameter[3][9]=_("j");
-    testf.m_Input_unit[3][9]=_("j_u");
-    */
-
-    for ( int count = 0; count <= testf.NumberOfFormulas ; count++)
+    //Load functions into pulldown
+    for ( unsigned int count = 0; count < testf.m_Formula.GetCount() ; count++)
 	{
 	 this->m_Function_Dropdown->Append(testf.m_ShortDesc[count]);
 	}
 
-this->SelectItem();
+    //Load default function in the menu
+    this->SelectItem();
 
 }
 
@@ -112,8 +61,8 @@ void FunDlg::OnClose( wxCommandEvent& event ){
 void FunDlg::OnItemSelect( wxCommandEvent& event ){
 
     wxString Selected_Result=event.GetString();
-    int n;
-        for ( n = 0; n <= testf.NumberOfFormulas ; n++)
+    unsigned int n;
+        for ( n = 0; n < testf.m_Formula.GetCount() ; n++)
         {
             if(Selected_Result==testf.m_ShortDesc[n]) break;
         }
@@ -128,63 +77,67 @@ void FunDlg::SelectItem(void){
     this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit[testf.Selected_Formula]);
     this->m_Output_Parameter->SetLabel(testf.m_Formula[testf.Selected_Formula].BeforeFirst('='));
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][0].IsEmpty()){
-        this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][0]);
-        this->Units->SetLabel(testf.m_Input_unit[testf.Selected_Formula][0]);}
+    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty()){
+        this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
+        this->Units->SetLabel(testf.m_Input_unit[testf.Selected_Formula]);}
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][1].IsEmpty()){
-        this->Parameter1->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][1]);
-        this->Units1->SetLabel(testf.m_Input_unit[testf.Selected_Formula][1]);
+    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()){
+        this->Parameter1->SetLabel(testf.m_Input_parameter1[testf.Selected_Formula]);
+        this->Units1->SetLabel(testf.m_Input_unit1[testf.Selected_Formula]);
         this->m_panel1->Show(true);
         } else this->m_panel1->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][2].IsEmpty()){
-        this->Parameter2->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][2]);
-        this->Units2->SetLabel(testf.m_Input_unit[testf.Selected_Formula][2]);
+    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()){
+        this->Parameter2->SetLabel(testf.m_Input_parameter2[testf.Selected_Formula]);
+        this->Units2->SetLabel(testf.m_Input_unit2[testf.Selected_Formula]);
         this->m_panel2->Show(true);
         } else this->m_panel2->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][3].IsEmpty()){
-        this->Parameter3->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][3]);
-        this->Units3->SetLabel(testf.m_Input_unit[testf.Selected_Formula][3]);
+    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty()){
+        this->Parameter3->SetLabel(testf.m_Input_parameter3[testf.Selected_Formula]);
+        this->Units3->SetLabel(testf.m_Input_unit3[testf.Selected_Formula]);
         this->m_panel3->Show(true);
         } else this->m_panel3->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][4].IsEmpty()){
-        this->Parameter4->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][4]);
-        this->Units4->SetLabel(testf.m_Input_unit[testf.Selected_Formula][4]);
+    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty()){
+        this->Parameter4->SetLabel(testf.m_Input_parameter4[testf.Selected_Formula]);
+        this->Units4->SetLabel(testf.m_Input_unit4[testf.Selected_Formula]);
         this->m_panel4->Show(true);
         } else this->m_panel4->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][5].IsEmpty()){
-        this->Parameter5->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][5]);
-        this->Units6->SetLabel(testf.m_Input_unit[testf.Selected_Formula][5]);
+    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty()){
+        this->Parameter5->SetLabel(testf.m_Input_parameter5[testf.Selected_Formula]);
+        this->Units5->SetLabel(testf.m_Input_unit5[testf.Selected_Formula]);
         this->m_panel5->Show(true);
         } else this->m_panel5->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][6].IsEmpty()){
-        this->Parameter6->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][6]);
-        this->Units6->SetLabel(testf.m_Input_unit[testf.Selected_Formula][6]);
+    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty()){
+        this->Parameter6->SetLabel(testf.m_Input_parameter6[testf.Selected_Formula]);
+        this->Units6->SetLabel(testf.m_Input_unit6[testf.Selected_Formula]);
         this->m_panel6->Show(true);
         } else this->m_panel6->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][7].IsEmpty()){
-        this->Parameter7->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][7]);
-        this->Units7->SetLabel(testf.m_Input_unit[testf.Selected_Formula][7]);
+    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()){
+        this->Parameter7->SetLabel(testf.m_Input_parameter7[testf.Selected_Formula]);
+        this->Units7->SetLabel(testf.m_Input_unit7[testf.Selected_Formula]);
         this->m_panel7->Show(true);
         } else this->m_panel7->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][8].IsEmpty()){
-        this->Parameter8->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][8]);
-        this->Units8->SetLabel(testf.m_Input_unit[testf.Selected_Formula][8]);
+    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()){
+        this->Parameter8->SetLabel(testf.m_Input_parameter8[testf.Selected_Formula]);
+        this->Units8->SetLabel(testf.m_Input_unit8[testf.Selected_Formula]);
         this->m_panel8->Show(true);
         } else this->m_panel8->Show(false);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula][9].IsEmpty()){
-        this->Parameter9->SetLabel(testf.m_Input_parameter[testf.Selected_Formula][9]);
-        this->Units9->SetLabel(testf.m_Input_unit[testf.Selected_Formula][9]);
+
+    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()){
+        this->Parameter9->SetLabel(testf.m_Input_parameter9[testf.Selected_Formula]);
+        this->Units9->SetLabel(testf.m_Input_unit9[testf.Selected_Formula]);
         this->m_panel9->Show(true);
         } else this->m_panel9->Show(false);
+
+
+
 
 
     this->m_Description->Wrap(400); ///Width of description can be put in settings
@@ -202,16 +155,16 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
-    if (!testf.m_Input_parameter[testf.Selected_Formula][0].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][0],this->NotEmpty(this->Value->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][1].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][1],this->NotEmpty(this->Value1->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][2].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][2],this->NotEmpty(this->Value2->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][3].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][3],this->NotEmpty(this->Value3->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][4].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][4],this->NotEmpty(this->Value4->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][5].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][5],this->NotEmpty(this->Value5->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][6].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][6],this->NotEmpty(this->Value6->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][7].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][7],this->NotEmpty(this->Value7->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][8].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][8],this->NotEmpty(this->Value8->GetValue()),false);
-    if (!testf.m_Input_parameter[testf.Selected_Formula][9].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula][9],this->NotEmpty(this->Value9->GetValue()),false);
+    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],this->NotEmpty(this->Value->GetValue()),false);
+    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
+    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
 
     Plugin_Dialog->m_result->SetValue(Result.Append('=').Append(Formula));
     //wxMessageBox(Formula);
@@ -255,9 +208,6 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     m_pHelpdialog=NULL;
 
 }
-
-
-
 
 void Dlg::OnFunctionCalc( void )
 {

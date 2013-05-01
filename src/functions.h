@@ -34,19 +34,43 @@
   #include "wx/wx.h"
 #endif //precompiled headers
 
+//#include <vector>
+
 class CFormula
 {
    public:
       CFormula (void);                       // constructor
-      int NumberOfFormulas;                  // size of array of formulas
       int Selected_Formula;                  // formula selected
-      wxString m_ShortDesc[100];             // Short description
-      wxString m_LongDesc[100];              // Long description
-      wxString m_Formula[100];               // Formula in a form directly understandable by calculator
-      wxString m_Result_Unit[100];           // Units of result (e.g. meter, feet, m/s etc)
-      wxString m_Input_parameter[100][10];   // Input parameter (e.g. lenght, speed, etc)
-      wxString m_Input_unit[100][10];        // Input unit (e.g. meter, feet, m/s etc
+      wxArrayString m_ShortDesc;             // Short description of function for pulldown menu
+      wxArrayString m_LongDesc;              // Long description
+      wxArrayString m_Formula;               // Formula in a form directly understandable by calculator
+      wxArrayString m_Result_Unit;           // Units of result (e.g. meter, feet, m/s etc)
+      wxArrayString m_Category;               // Category of formula
+      wxArrayString m_Source;                 // Source of formula
 
+      // Input parameters (e.g. lenght, speed, etc)
+      wxArrayString m_Input_parameter;
+      wxArrayString m_Input_parameter1;
+      wxArrayString m_Input_parameter2;
+      wxArrayString m_Input_parameter3;
+      wxArrayString m_Input_parameter4;
+      wxArrayString m_Input_parameter5;
+      wxArrayString m_Input_parameter6;
+      wxArrayString m_Input_parameter7;
+      wxArrayString m_Input_parameter8;
+      wxArrayString m_Input_parameter9;
+
+      // Input unit (e.g. meter, feet, m/s etc
+      wxArrayString m_Input_unit;
+      wxArrayString m_Input_unit1;
+      wxArrayString m_Input_unit2;
+      wxArrayString m_Input_unit3;
+      wxArrayString m_Input_unit4;
+      wxArrayString m_Input_unit5;
+      wxArrayString m_Input_unit6;
+      wxArrayString m_Input_unit7;
+      wxArrayString m_Input_unit8;
+      wxArrayString m_Input_unit9;
 };
 
 
