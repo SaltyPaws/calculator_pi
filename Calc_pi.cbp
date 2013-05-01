@@ -47,6 +47,8 @@
 		<Unit filename="src/expression_parser/parser.h" />
 		<Unit filename="src/expression_parser/variablelist.cpp" />
 		<Unit filename="src/expression_parser/variablelist.h" />
+		<Unit filename="src/functions.cpp" />
+		<Unit filename="src/functions.h" />
 		<Unit filename="src/icons.cpp" />
 		<Unit filename="src/icons.h" />
 		<Extensions>

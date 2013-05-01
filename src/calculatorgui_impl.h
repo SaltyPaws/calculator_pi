@@ -47,6 +47,19 @@ make coordinate conversion work
 
 
 #include "calculator_pi.h"
+#include "functions.h"
+
+//definitions to go into function.h
+
+//Number of parameters in function
+//#define NumberOfParameters = 9
+//Number of formulas loaded
+
+//Default start formula
+//#define Selected_Formula = 1
+
+//
+
 using namespace std;
 
 class calculator_pi;
@@ -64,27 +77,14 @@ public:
       HlpDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Help!!!!"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
 };
 
-class CFormula
-{
-   public:
-      wxString m_ShortDesc;             // Short description
-      wxString m_LongDesc;              // Long description
-      wxString m_Formula;               // Formula in a form directly understandable by calculator
-      wxString m_Result_Unit;           // Units of result (e.g. meter, feet, m/s etc)
-      wxString m_Input_parameter[10];    // Input parameter (e.g. lenght, speed, etc)
-      wxString m_Input_unit[10];         // Input unit (e.g. meter, feet, m/s etc
-};
+
 
 class FunDlg : public FunDlgDef
 {
     public:
         FunDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Extra Functions"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
-        CFormula testf[100];
-        int number_of_parameters;       // size of array of input parameters in Cformula above
-        int number_of_formulas;         // size of array of formulas
-        int Selected_Formula;           // formula selected
+        CFormula testf;
         void OnExtraCalculate( wxCommandEvent& event );
-        void OnFunctionSelect( wxCommandEvent& event );
         void OnItemSelect( wxCommandEvent& event );
         void SelectItem (void);
         void OnClose( wxCommandEvent& event );

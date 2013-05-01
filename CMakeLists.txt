@@ -74,6 +74,8 @@ SET(SRC_CALCULATOR
 	    src/calculatorgui.cpp
 	    src/calculatorgui_impl.cpp
 	    src/calculatorgui_impl.h
+	    src/functions.h
+	    src/functions.cpp
 	)
 
 SET(SRC_EXPPARS 	
