@@ -3,7 +3,7 @@
     use strict;
     use Spreadsheet::ParseExcel;
 
-my @array=('m_ShortDesc','m_LongDesc','m_Category','m_Source','m_Formula','m_Result_Unit','m_Input_parameter','m_Input_unit','m_Input_parameter1','m_Input_unit1','m_Input_parameter2','m_Input_unit2','m_Input_parameter2','m_Input_unit2','m_Input_parameter3','m_Input_unit3','m_Input_parameter3','m_Input_unit3','m_Input_parameter4','m_Input_unit4','m_Input_parameter4','m_Input_unit4','m_Input_parameter5','m_Input_unit5','m_Input_parameter5','m_Input_unit5','m_Input_parameter6','m_Input_unit6','m_Input_parameter6','m_Input_unit6','m_Input_parameter7','m_Input_unit7','m_Input_parameter7','m_Input_unit7','m_Input_parameter8','m_Input_unit8','m_Input_parameter8','m_Input_unit8','m_Input_parameter9','m_Input_unit9','m_Input_parameter9','m_Input_unit9'
+my @array=('m_ShortDesc','m_LongDesc','m_Category','m_Source','m_Formula','m_Result_Unit','m_Input_parameter','m_Input_unit','m_Input_parameter1','m_Input_unit1','m_Input_parameter2','m_Input_unit2','m_Input_parameter3','m_Input_unit3','m_Input_parameter4','m_Input_unit4','m_Input_parameter5','m_Input_unit5','m_Input_parameter6','m_Input_unit6','m_Input_parameter7','m_Input_unit7','m_Input_parameter8','m_Input_unit8','m_Input_parameter9','m_Input_unit9'
 );
 
 my $header = q|
@@ -53,6 +53,7 @@ open(my $fh, '>', "$filename");
 
     my $parser   = Spreadsheet::ParseExcel->new();
     my $workbook = $parser->parse('functions.xls');
+    my $empty_line="yes";
 
     if ( !defined $workbook ) {
         die $parser->error(), ".\n";
@@ -89,16 +90,13 @@ open(my $fh, '>', "$filename");
 		print "Start row sequence not found, error in spreadsheet\n";
 		exit 0;
 		}
-#---
-        #my ( $row_min, $row_max ) = $worksheet->row_range();
-        #my ( $col_min, $col_max ) = $worksheet->col_range();
-
-
         for my $row ( $row_min .. $row_max ) {
             for my $col ( $col_min .. $col_max ) {
 
                 my $cell = $worksheet->get_cell( $row, $col );
                 #next unless $cell;
+		if ($cell and $col==0) {$empty_line="no";} 
+		if (!$cell and $col==0) {$empty_line="yes";print "Empty:"} 
 		if ($cell)
 			{
 		        #print "Row, Col    = ($row, $col)\n";
@@ -106,25 +104,25 @@ open(my $fh, '>', "$filename");
 		        #print "Unformatted = ", $cell->unformatted(), "\n";
 			$a=$cell->unformatted();
 			$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
-			$a =~ s/[^\w .=\*()\^\/]//g;
-			#$a=~ s/\t* {2}/ØØ/g; #replace double space with single space
-			#$a=~ s/ +/\\t/;#replace multiple spaces with tab
-			#print "Cleaned = [", $a, "]\n";
+			$a =~ s/[^\w .:+-=\*()\^\/\\]//g;
+			$a=~ s/ {3,}/\\t/g; #replace double space with single space
+			$a=~ s/\t* {2}/ /g; #replace double space with single space
 			}
 		else
 			{
-			$a="";
+				$a="";
 			}
-		print $fh "this->$array[$col].Add(_(\"$a\"))\;\n"; 
-print  "this->$array[$col].Add(_(\"$a\"))\;\n"; 
+
+		if ($empty_line =~ /no/ and $col<@array) {
+			print $fh "this->$array[$col].Add(_(\"$a\"))\;\n"; 
+			print  "this->$array[$col].Add(_(\"$a\"))\;\n"; 
+		}
 
                 
             }
+	$empty_line="yes"; 
 	print $fh "\n";
         }
-#---xxXXXXXXX
-
-
     }
 print $fh "$footer\n";
 close ($fh); 
