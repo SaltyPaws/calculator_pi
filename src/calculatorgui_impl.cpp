@@ -38,27 +38,61 @@ HlpDlg::HlpDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 }
 
 
-
-
 FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : FunDlgDef( parent, id, title, pos, size, style )
 {
-    //Load functions into pulldown
-    for ( unsigned int count = 0; count < testf.m_Formula.GetCount() ; count++)
-	{
-	 this->m_Function_Dropdown->Append(testf.m_ShortDesc[count]);
-	}
-
-    //Load default function in the menu
-    this->SelectItem();
+    this->LoadCategories();
+    this->LoadFunctions(wxT("All"),wxT("All"));
 
 }
 
-void FunDlg::OnClose( wxCommandEvent& event ){
+void FunDlg::LoadFunctions(wxString Category, wxString Unit)
+{
+    //Clear Pulldown
+    this->m_Function_Dropdown->Clear();
+    //Load functions into pulldown
+    for ( unsigned int count = 0; count < testf.m_Formula.GetCount() ; count++)
+	{
+        if (Category.IsSameAs(testf.m_Category[count], false) || Category.IsSameAs(wxT("all"), false)   ) this->m_Function_Dropdown->Append(testf.m_ShortDesc[count]);
+	}
+
+    //Load default function in the menu
+    this->OnItemSelect();
+}
+
+void FunDlg::LoadCategories(void)
+{
+    wxArrayString Categories;
+    //Clear Pulldown
+    this->m_Function_Categories->Clear();
+    this->m_Function_Categories->Append(_("All"));
+    //Cycle through functions
+    for ( unsigned int count = 0; count < testf.m_Formula.GetCount() ; count++)
+	{
+        if (Categories.Index(testf.m_Category[count], false, false)==wxNOT_FOUND)
+        {
+            //Add Category to Wxarraystring
+            Categories.Add(testf.m_Category[count]);
+            //Add category to pulldown
+            this->m_Function_Categories->Append(testf.m_Category[count]);
+            //printf("Just added: %s\n",(const char*) testf.m_Category[count].mb_str() );
+        }
+	}
+}
+
+
+void FunDlg::OnCategorySelect( wxCommandEvent& event )
+{
+        this->LoadFunctions(event.GetString(),wxT("All"));
+}
+
+void FunDlg::OnClose( wxCommandEvent& event )
+{
     this->Destroy();
 }
 
 
-void FunDlg::OnItemSelect( wxCommandEvent& event ){
+void FunDlg::OnItemSelect( wxCommandEvent& event )
+{
 
     wxString Selected_Result=event.GetString();
     unsigned int n;
@@ -66,15 +100,13 @@ void FunDlg::OnItemSelect( wxCommandEvent& event ){
         {
             if(Selected_Result==testf.m_ShortDesc[n]) break;
         }
-
     this->testf.Selected_Formula=n;
-    this->SelectItem();
-
+    this->OnItemSelect();
     this->m_Function_Result->SetValue(_(""));
 
 }
 
-void FunDlg::SelectItem(void){
+void FunDlg::OnItemSelect(void){
     this->m_Function->SetLabel(testf.m_Formula[testf.Selected_Formula]);
     this->m_Description->SetLabel(testf.m_LongDesc[testf.Selected_Formula]);
     this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit[testf.Selected_Formula]);
@@ -172,14 +204,11 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 
 }
 
-
-
 void FunDlg::OnToggle( wxCommandEvent& event ){
     //wxMessageBox(_("toggle"));
     this->m_Description->Show(this->m_checkBox8->GetValue());
     this->Fit();
 }
-
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
@@ -223,6 +252,11 @@ void Dlg::OnHelp( void )
         m_pHelpdialog->HelpPanel->Fit();
         m_pHelpdialog->m_textCtrl3->Fit();
         m_pHelpdialog->m_textCtrl3->Layout();
+}
+
+void Dlg::OnFunction( wxCommandEvent& event )
+{
+    OnFunction();
 }
 
 void Dlg::OnFunction( void )
@@ -302,19 +336,22 @@ void Dlg::OnToggle( wxCommandEvent& event )
 
 void Dlg::set_Buttons(void)
 {
-        m_HelpButton->Show(m_bshowhelpB);
-        m_Help->Show(m_bshowhistoryB);
-        Calculate->Show(m_bCalculateB);
+        this->m_HelpButton->Show(m_bshowhelpB);
+        this->m_Help->Show(m_bshowhistoryB);
+        this->Calculate->Show(m_bCalculateB);
+        this->m_Function->Show(m_bshowFunction);
         this->m_Overview->Fit();
         this->m_Overview->Layout();
         this->m_Help->SetValue(m_bshowhistory);
         this->set_History();
 
 }
+
 void Dlg::OnCalculate( wxCommandEvent& event )
 {
     OnCalculate();
 }
+
 void Dlg::OnCalculate( void )
 {
 
@@ -348,6 +385,12 @@ void Dlg::OnCalculate( void )
 
     if ((Text.StartsWith(_("HideCalculate"))) || (Text.StartsWith(_("hidecalculate")))|| (Text.StartsWith(_("HIDECALCULATE"))) || (Text.StartsWith(_("ShowCalculate"))) || (Text.StartsWith(_("showcalculate")))|| (Text.StartsWith(_("SHOWCALCULATE")))){
         m_bCalculateB=(!m_bCalculateB);
+        this->set_Buttons();
+        error_check=true;
+    }
+
+    if ((Text.StartsWith(_("HideFunction"))) || (Text.StartsWith(_("hidefunction")))|| (Text.StartsWith(_("HIDEFUNCTION"))) || (Text.StartsWith(_("showfunction")))|| (Text.StartsWith(_("ShowFunction")))|| (Text.StartsWith(_("SHOWFUNCTION")))){
+        m_bshowFunction=(!m_bshowFunction);
         this->set_Buttons();
         error_check=true;
     }

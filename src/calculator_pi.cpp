@@ -233,6 +233,7 @@ bool calculator_pi::LoadConfig(void)
             m_bshowhelpB = pConf->Read ( _T ( "m_bshowhelpB" ), 20L );
             m_bshowhistoryB = pConf->Read ( _T ( "m_bshowhistoryB" ), 20L );
             m_bCalculateB = pConf->Read ( _T ( "m_bCalculateB" ), 20L );
+            m_bshowFunction = pConf->Read ( _T ( "m_bshowFunction" ), 20L );
             m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 20L );
             m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
             m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 20L );
@@ -282,6 +283,9 @@ bool calculator_pi::SaveConfig(void)
             pConf->Write ( _T ( "m_bshowhelpB" ),   m_bshowhelpB );
             pConf->Write ( _T ( "m_bshowhistoryB" ),   m_bshowhistoryB );
             pConf->Write ( _T ( "m_bCalculateB" ),   m_bCalculateB );
+            pConf->Write ( _T ( "m_bshowFunction" ),   m_bshowFunction );
+
+
             pConf->Write ( _T ( "m_bshowhistory" ),   m_bshowhistory );
             pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
             pConf->Write ( _T ( "m_blogresults" ),   m_blogresults );
@@ -313,6 +317,7 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       dialog->m_showhelpB->SetValue(m_bshowhelpB);
       dialog->m_showhistoryB->SetValue(m_bshowhistoryB);
       dialog->m_CalculateB->SetValue(m_bCalculateB);
+      dialog->m_showfunction->SetValue(m_bshowFunction);
       dialog->m_showhistory->SetValue(m_bshowhistory);
       dialog->m_capturehidden->SetValue(m_bcapturehidden);
       dialog->m_logresults->SetValue(m_blogresults);
@@ -326,6 +331,8 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             m_bshowhelpB= dialog->m_showhelpB->GetValue();
             m_bshowhistoryB= dialog->m_showhistoryB->GetValue();
             m_bCalculateB= dialog->m_CalculateB->GetValue();
+            m_bshowFunction= dialog->m_showfunction->GetValue();
+
             m_bshowhistory= dialog->m_showhistory->GetValue();
             m_bcapturehidden= dialog->m_capturehidden->GetValue();
             m_blogresults= dialog->m_logresults->GetValue();
@@ -355,6 +362,8 @@ void calculator_pi::SettingsPropagate(void){
             m_pDialog->setm_bshowhelpB(m_bshowhelpB);
             m_pDialog->setm_bshowhistoryB(m_bshowhistoryB);
             m_pDialog->setm_bCalculateB(m_bCalculateB);
+            m_pDialog->setm_bshowfunction(m_bshowFunction);
+
             m_pDialog->setm_bshowhistory(m_bshowhistory);
             m_pDialog->setm_bcapturehidden(m_bcapturehidden);
             m_pDialog->setm_blogresults(m_blogresults);

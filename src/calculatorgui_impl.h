@@ -1,9 +1,3 @@
-/*
-create bash script to generate .h file from .csv file with some error checking
-make coordinate conversion work
-*/
-
-
 /******************************************************************************
  *
  * Project:  OpenCPN
@@ -33,6 +27,12 @@ make coordinate conversion work
 
 #ifndef _CALCULATORGUI_IMPL_H_
 #define _CALCULATORGUI_IMPL_H_
+
+#include "wx/wxprec.h"
+
+#ifndef  WX_PRECOMP
+  #include "wx/wx.h"
+#endif //precompiled headers
 
 #include "parser.h"
 
@@ -67,12 +67,16 @@ class FunDlg : public FunDlgDef
     public:
         FunDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Extra Functions"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         CFormula testf;
-        void OnExtraCalculate( wxCommandEvent& event );
-        void OnItemSelect( wxCommandEvent& event );
-        void SelectItem (void);
         void OnClose( wxCommandEvent& event );
         void OnToggle( wxCommandEvent& event );
+        void OnExtraCalculate( wxCommandEvent& event );
+        void OnItemSelect( wxCommandEvent& event );
+        void OnItemSelect (void);
+        void LoadFunctions(wxString Category, wxString );
+        void LoadCategories(void);
+        void OnCategorySelect( wxCommandEvent& event );
         wxString NotEmpty (wxString);
+
         Dlg *Plugin_Dialog;
     private:
 
@@ -89,11 +93,10 @@ public:
         void OnHelp( void );
         void OnTest( wxMouseEvent& event );
         void OnTest(wxCommandEvent& event);
-
         void OnTest( wxListEvent& event );
-        void OnFunction (void);
+        void OnFunction( wxCommandEvent& event );
+        void OnFunction ( void );
         void OnFunctionCalc ( void );
-
         void OnToggle( wxCommandEvent& event );
         void key_shortcut(wxKeyEvent& event);
         void OnKey (wxKeyEvent& event);
@@ -104,14 +107,14 @@ public:
         void i_min(int &counter_test);
         calculator_pi *plugin;
 
-        void SetMaxResults         (int x){Max_Results = x;};
-
-        void setm_bshowhelpB         (bool x){m_bshowhelpB = x; };
-        void setm_bshowhistoryB         (bool x){m_bshowhistoryB = x;};
-        void setm_bCalculateB         (bool x){m_bCalculateB = x;};
-        void setm_bshowhistory         (bool x){m_bshowhistory = x;};
-        void setm_bcapturehidden         (bool x){m_bcapturehidden = x;};
-        void setm_blogresults         (bool x){m_blogresults = x;};
+        void SetMaxResults          (int x){Max_Results = x;};
+        void setm_bshowhelpB        (bool x){m_bshowhelpB = x; };
+        void setm_bshowhistoryB     (bool x){m_bshowhistoryB = x;};
+        void setm_bCalculateB       (bool x){m_bCalculateB = x;};
+        void setm_bshowfunction     (bool x){m_bshowFunction = x;};
+        void setm_bshowhistory      (bool x){m_bshowhistory = x;};
+        void setm_bcapturehidden    (bool x){m_bcapturehidden = x;};
+        void setm_blogresults       (bool x){m_blogresults = x;};
         void set_Buttons (void);
         void set_History(void);
         //void set_Parentwindow(wxwindow *x){*m_parent_windowref = *x;};
@@ -129,6 +132,7 @@ private:
         bool              m_bshowhelpB;
         bool              m_bshowhistoryB;
         bool              m_bCalculateB;
+        bool              m_bshowFunction;
         bool              m_bshowhistory;
         bool              m_bcapturehidden;
         bool              m_blogresults;

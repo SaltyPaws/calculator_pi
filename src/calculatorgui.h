@@ -46,12 +46,14 @@ class DlgDef : public wxDialog
 	protected:
 		wxPanel* m_Overview;
 		wxButton* Calculate;
+		wxButton* m_Function;
 		wxCheckBox* m_Help;
 		wxButton* m_HelpButton;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnFunction( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnHelp( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnKey( wxKeyEvent& event ) { event.Skip(); }
@@ -85,6 +87,7 @@ class CfgDlgDef : public wxDialog
 		wxCheckBox* m_showhelpB;
 		wxCheckBox* m_showhistoryB;
 		wxCheckBox* m_CalculateB;
+		wxCheckBox* m_showfunction;
 		wxSpinCtrl* m_MaxResults;
 		wxSlider* m_sOpacity;
 		wxCheckBox* m_showhistory;
@@ -117,22 +120,6 @@ class HlpDlgDef : public wxDialog
 		
 		HlpDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~HlpDlgDef();
-	
-};
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class FunDlgDef1
-///////////////////////////////////////////////////////////////////////////////
-class FunDlgDef1 : public wxDialog 
-{
-	private:
-	
-	protected:
-	
-	public:
-		
-		FunDlgDef1( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
-		~FunDlgDef1();
 	
 };
 
@@ -208,6 +195,8 @@ class FunDlgDef : public wxDialog
 	
 	protected:
 		wxPanel* m_panel152;
+		wxChoice* m_Function_Categories;
+		wxChoice* m_Function_Units;
 		wxPanel* m_panel101;
 		wxStaticText* m_Function;
 		wxPanel* m_panel100;
@@ -217,6 +206,8 @@ class FunDlgDef : public wxDialog
 		wxCheckBox* m_checkBox8;
 		
 		// Virtual event handlers, overide them in your derived class
+		virtual void OnCategorySelect( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnUnitSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnItemSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnExtraCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClose( wxCommandEvent& event ) { event.Skip(); }

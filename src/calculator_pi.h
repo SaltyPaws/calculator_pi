@@ -110,6 +110,7 @@ private:
       bool              m_bshowhelpB;
       bool              m_bshowhistoryB;
       bool              m_bCalculateB;
+      bool              m_bshowFunction;
       bool              m_bshowhistory;
       bool              m_bcapturehidden;
       bool              m_blogresults;
