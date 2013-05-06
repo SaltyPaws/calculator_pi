@@ -1,10 +1,12 @@
-    #!/usr/bin/perl -w
+#!/usr/bin/perl -w
 
-    use strict;
-    use Spreadsheet::ParseExcel;
+use strict;
+use Spreadsheet::ParseExcel;
 
-my @array=('m_ShortDesc','m_LongDesc','m_Category','m_Source','m_Formula','m_Result_Unit','m_Input_parameter','m_Input_unit','m_Input_parameter1','m_Input_unit1','m_Input_parameter2','m_Input_unit2','m_Input_parameter3','m_Input_unit3','m_Input_parameter4','m_Input_unit4','m_Input_parameter5','m_Input_unit5','m_Input_parameter6','m_Input_unit6','m_Input_parameter7','m_Input_unit7','m_Input_parameter8','m_Input_unit8','m_Input_parameter9','m_Input_unit9'
+my @FunctionArray=('m_ShortDesc','m_LongDesc','m_Category','m_Units','m_Source','m_Formula','m_Result_Unit','m_Input_parameter','m_Input_unit','m_Input_parameter1','m_Input_unit1','m_Input_parameter2','m_Input_unit2','m_Input_parameter3','m_Input_unit3','m_Input_parameter4','m_Input_unit4','m_Input_parameter5','m_Input_unit5','m_Input_parameter6','m_Input_unit6','m_Input_parameter7','m_Input_unit7','m_Input_parameter8','m_Input_unit8','m_Input_parameter9','m_Input_unit9'
 );
+
+my @UnitArray=('test','m_blaat','m_etc');
 
 my $header = q|
 
@@ -49,23 +51,35 @@ my $footer = q|
 |;
 
 my $filename='functions.cpp';
+my $parser = Spreadsheet::ParseExcel->new();
+my $workbook = $parser->parse('functions.xls');
+
+my $empty_line="yes";
+my $FunctionSheet="0";
+my $FunctionRow="0";
+#my $FunctionEndRow="0";
+my $UnitSheet="0";
+my $UnitRow="0";
+#my $UnitEndRow="0";
+
+my ( $row_min, $row_max ) = (1,1);
+my ( $col_min, $col_max ) = (1,1);
+
+
 open(my $fh, '>', "$filename");
 
-    my $parser   = Spreadsheet::ParseExcel->new();
-    my $workbook = $parser->parse('functions.xls');
-    my $empty_line="yes";
+if ( !defined $workbook ) {
+	die $parser->error(), ".\n";
+	}
 
-    if ( !defined $workbook ) {
-        die $parser->error(), ".\n";
-    }
+#my $Startrow_found="No";
+print $fh "$header\n";
 
-    my $Startrow_found="No";
-    print $fh "$header\n";
-
-    for my $worksheet ( $workbook->worksheets() ) {
-
-        my ( $row_min, $row_max ) = $worksheet->row_range();
-        my ( $col_min, $col_max ) = $worksheet->col_range();
+#Look for starting rows
+for my $worksheet ( $workbook->worksheets() ) {
+print "Worksheet: ",$worksheet,"\n";
+        ( $row_min, $row_max ) = $worksheet->row_range();
+        ( $col_min, $col_max ) = $worksheet->col_range();
 
         for my $row ( $row_min .. $row_max ) {
             for my $col ( $col_min .. $col_max ) {
@@ -74,37 +88,52 @@ open(my $fh, '>', "$filename");
                 next unless $cell;
 		$a=$cell->unformatted();
 
-		if ($a =~ /-------------->/)
+		if ($a =~ /Start Functions --------------------------->/)
 			{
-			print "Found Starting Row",$row,"\n";
-			$row_min=$row+3;
-			$Startrow_found="yes";
-			last;
+			print "Found Functions Tab, starting on row: ",$row,"\n";
+			$FunctionRow=$row+3;
+			#$FunctionEndRow=$row_max;
+			$FunctionSheet=$worksheet;
+			print "FunctionSheet: ",$FunctionSheet,"\n";
+
+			#$Startrow_found="yes";
+			#last;
+			}
+		if ($a =~ /Start Units --------------------------->/)
+			{
+			print "Found Units Tab, starting on row: ",$row,"\n";
+			$UnitRow=$row+3;
+			$UnitSheet=$worksheet;
+
+			#$Startrow_found="yes";
+			#last;
 			}
                 #print "\n";
             }
         }
+}
 
-	if ($Startrow_found =~ /No/)
+#Add Functions
+print "adding function. FunctionRow: ", $FunctionRow, " Row Max: ",$row_max,"\n";
+( $row_min, $row_max ) = $FunctionSheet->row_range();
+( $col_min, $col_max ) = $FunctionSheet->col_range();
+for my $row ( $FunctionRow .. $row_max )
+	{
+	for my $col ( $col_min .. $col_max )
 		{
-		print "Start row sequence not found, error in spreadsheet\n";
-		exit 0;
-		}
-        for my $row ( $row_min .. $row_max ) {
-            for my $col ( $col_min .. $col_max ) {
-
-                my $cell = $worksheet->get_cell( $row, $col );
-                #next unless $cell;
+			print "Row, Col    = ($row, $col)\n";
+		my $cell = $FunctionSheet->get_cell( $row, $col );
+		#next unless $cell;
 		if ($cell and $col==0) {$empty_line="no";} 
 		if (!$cell and $col==0) {$empty_line="yes";print "Empty:"} 
 		if ($cell)
 			{
-		        #print "Row, Col    = ($row, $col)\n";
-		        #print "Value       = ", $cell->value(),       "\n";
-		        #print "Unformatted = ", $cell->unformatted(), "\n";
+			print "Row, Col    = ($row, $col)\n";
+			print "Value       = ", $cell->value(),       "\n";
+			#print "Unformatted = ", $cell->unformatted(), "\n";
 			$a=$cell->unformatted();
 			$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
-			$a =~ s/[^\w .:+-=\*()\^\/\\]//g;
+			$a =~ s/[^\w @.:+-=\*()\^\/\\]//g;
 			$a=~ s/ {3,}/\\t/g; #replace double space with single space
 			$a=~ s/\t* {2}/ /g; #replace double space with single space
 			}
@@ -113,16 +142,55 @@ open(my $fh, '>', "$filename");
 				$a="";
 			}
 
-		if ($empty_line =~ /no/ and $col<@array) {
-			print $fh "this->$array[$col].Add(_(\"$a\"))\;\n"; 
-			print  "this->$array[$col].Add(_(\"$a\"))\;\n"; 
-		}
+		if ($empty_line =~ /no/ and $col<@FunctionArray)
+			{
+			print $fh "this->$FunctionArray[$col].Add(_(\"$a\"))\;\n"; 
+			print  "this->$FunctionArray[$col].Add(_(\"$a\"))\;\n"; 
+			}    
+	    	}
+		$empty_line="yes"; 
+		print $fh "\n";
+	}
 
-                
-            }
-	$empty_line="yes"; 
-	print $fh "\n";
-        }
-    }
+#Add units
+( $row_min, $row_max ) = $UnitSheet->row_range();
+( $col_min, $col_max ) = $UnitSheet->col_range();
+
+for my $row ( $UnitRow .. $row_max )
+	{
+	for my $col ( $col_min .. $col_max )
+		{
+		my $cell = $UnitSheet->get_cell( $row, $col );
+		#next unless $cell;
+		if ($cell and $col==0) {$empty_line="no";} 
+		if (!$cell and $col==0) {$empty_line="yes";print "Empty:"} 
+		if ($cell)
+			{
+			#print "Row, Col    = ($row, $col)\n";
+			#print "Value       = ", $cell->value(),       "\n";
+			#print "Unformatted = ", $cell->unformatted(), "\n";
+			$a=$cell->unformatted();
+			$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
+			$a =~ s/[^\w @.:+-=\*()\^\/\\]//g;
+			$a=~ s/ {3,}/\\t/g; #replace double space with single space
+			$a=~ s/\t* {2}/ /g; #replace double space with single space
+			}
+		else
+			{
+				$a="";
+			}
+
+		if ($empty_line =~ /no/ and $col<@UnitArray)
+			{
+			print $fh "this->$UnitArray[$col].Add(_(\"$a\"))\;\n"; 
+			print  "this->$UnitArray[$col].Add(_(\"$a\"))\;\n"; 
+			}    
+	    	}
+		$empty_line="yes"; 
+		print $fh "\n";
+	}
+		
+
+
 print $fh "$footer\n";
 close ($fh); 
