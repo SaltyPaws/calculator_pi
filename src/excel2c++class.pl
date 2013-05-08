@@ -9,6 +9,7 @@ my @FunctionArray=();
 my @headerc = "";
 my @footerc = "";
 my @headerh = "";
+my @headerh1 = "";
 my @footerh = "";
 my @license ="";
 my $filename="";
@@ -153,6 +154,26 @@ for my $worksheet ( $workbook->worksheets() )
 			#print "Header: ",@headerh,"\n";
 			}
 
+		#Load Header H1
+		if ($a =~ /{HEADER_H1_START}/)  
+			{
+			$count = 0;
+			$b=" ";
+			@headerh1 = '';
+			while(1)
+				{
+				last if $count == 1000;  
+				$count++;
+				$cell = $worksheet->get_cell( $row + $count, $col );
+				if ($cell) {$b=$cell->unformatted();
+				last if ($b =~ /{HEADER_H1_END}/);  
+				$b=$b."\n";
+				push (@headerh1, $b);}
+				else {push (@headerh1, "");}
+				}
+			#print "Header: ",@headerh1,"\n";
+			}
+
 		#Load Footer H
 		if ($a =~ /{FOOTER_H_START}/)  
 			{
@@ -177,7 +198,7 @@ for my $worksheet ( $workbook->worksheets() )
 		#Member, type, Description
 		if ($a =~ /{Member,_type,_Description_Start}/)  
 			{
-			$FunctionRow=$row+5;
+			$FunctionRow=$row+4;
 			$count = 0;
 			$b=" ";
 			@MemberRow=();
@@ -213,7 +234,7 @@ for my $worksheet ( $workbook->worksheets() )
 
 	#write CPP file
 	#Open file
-	open(my $fh, '>', "$filename.cpp.txt");
+	open(my $fh, '>', "$filename.cpp");
 	print $fh "@license\n";
 	print $fh "#include \"$filename.h\"\n";
 	print $fh "$Class"."::"."$Class(void)\n{\n";
@@ -259,18 +280,20 @@ for my $worksheet ( $workbook->worksheets() )
 	close ($fh); 	
 
 	#Write H file
-	open($fh, '>', "$filename.h.txt");
+	open($fh, '>', "$filename.h");
 	print $fh "@license\n";
 	print $fh "@headerh\n";
 	print $fh "class $Class\n{\n\tpublic:\n";
-	print $fh "@footerh\n";
+	print $fh "\t$Class(void);\t\t\t\t//Class constructor\n";
+	print $fh "@headerh1\n";
 
 
 
 	for my $i (0 .. $#MemberRow) {
 	    print $fh "\t\t$TypeRow[$i] $MemberRow[$i];\t\t\t\t\t//$DescriptonRow[$i]\n";
 	}
-	print $fh "}\n";
+	print $fh "};\n";
+	print $fh "@footerh\n";
 
 
 	#Close File

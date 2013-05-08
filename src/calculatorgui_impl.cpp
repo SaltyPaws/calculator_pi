@@ -171,6 +171,7 @@ void FunDlg::OnItemSelect(void){
         this->m_panel9->Show(true);
         } else this->m_panel9->Show(false);
 
+    this->m_Function->Wrap(400); ///Width of description can be put in settings
     this->m_Description->Wrap(400); ///Width of description can be put in settings
     this->Fit();
 }
@@ -186,16 +187,16 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
-    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],this->NotEmpty(this->Value->GetValue()),false);
-    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),false);
-    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],this->NotEmpty(this->Value2->GetValue()),false);
-    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],this->NotEmpty(this->Value3->GetValue()),false);
-    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],this->NotEmpty(this->Value4->GetValue()),false);
-    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],this->NotEmpty(this->Value5->GetValue()),false);
-    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],this->NotEmpty(this->Value6->GetValue()),false);
-    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],this->NotEmpty(this->Value7->GetValue()),false);
-    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],this->NotEmpty(this->Value8->GetValue()),false);
-    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value9->GetValue()),false);
+    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],this->NotEmpty(this->Value->GetValue()),true);
+    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),true);
+    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],this->NotEmpty(this->Value2->GetValue()),true);
+    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],this->NotEmpty(this->Value3->GetValue()),true);
+    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],this->NotEmpty(this->Value4->GetValue()),true);
+    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],this->NotEmpty(this->Value5->GetValue()),true);
+    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],this->NotEmpty(this->Value6->GetValue()),true);
+    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],this->NotEmpty(this->Value7->GetValue()),true);
+    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],this->NotEmpty(this->Value8->GetValue()),true);
+    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value9->GetValue()),true);
 
     Plugin_Dialog->m_result->SetValue(Result.Append('=').Append(Formula));
     //wxMessageBox(Formula);

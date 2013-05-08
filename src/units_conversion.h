@@ -26,46 +26,22 @@
   ***************************************************************************
   */
 
- #ifndef _FUNCTIONS_H_
- #define _FUNCTIONS_H_
+ #ifndef _UNITS_H_
+ #define _UNITS_H_
  #include "wx/wxprec.h"
  #ifndef  WX_PRECOMP
     #include "wx/wx.h"
  #endif //precompiled headers
 
-class CFormula
+class Units_Conversion
 {
 	public:
-	CFormula(void);				//Class constructor
-         int Selected_Formula;                  // formula selected
+	Units_Conversion(void);				//Class constructor
 
-		wxArrayString m_ShortDesc;					//Short_Description
-		wxArrayString m_LongDesc;					//Long_Description
-		wxArrayString m_Category;					//Category
-		wxArrayString m_Units;					//Units of function
-		wxArrayString m_Source;					//Source
-		wxArrayString m_Formula;					//Function
-		wxArrayString m_Result_Unit;					//Output_unit
-		wxArrayString m_Input_parameter;					//Input_param1
-		wxArrayString m_Input_unit;					//Input_unit1
-		wxArrayString m_Input_parameter1;					//Input_param2
-		wxArrayString m_Input_unit1;					//Input_unit2
-		wxArrayString m_Input_parameter2;					//Input_param3
-		wxArrayString m_Input_unit2;					//Input_unit3
-		wxArrayString m_Input_parameter3;					//Input_param4
-		wxArrayString m_Input_unit3;					//Input_unit4
-		wxArrayString m_Input_parameter4;					//Input_param5
-		wxArrayString m_Input_unit4;					//Input_unit5
-		wxArrayString m_Input_parameter5;					//Input_param6
-		wxArrayString m_Input_unit5;					//Input_unit6
-		wxArrayString m_Input_parameter6;					//Input_param7
-		wxArrayString m_Input_unit6;					//Input_unit7
-		wxArrayString m_Input_parameter7;					//Input_param8
-		wxArrayString m_Input_unit7;					//Input_unit8
-		wxArrayString m_Input_parameter8;					//Input_param9
-		wxArrayString m_Input_unit8;					//Input_unit9
-		wxArrayString m_Input_parameter9;					//Input_param10
-		wxArrayString m_Input_unit9;					//Input_unit10
+		wxArrayString m_Unit;					//Unit
+		wxArrayString m_Unit_category;					//Unit Class
+		wxArrayString m_Conversion;					//Category
+		wxArrayString m_Display;					//Part of Pulldown menu
 };
- #endif //_FUNCTIONS_H
+ #endif //_UNITS_H_
 
