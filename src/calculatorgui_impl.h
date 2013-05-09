@@ -44,6 +44,7 @@
 
 #include "calculator_pi.h"
 #include "functions.h"
+#include "units_conversion.h"
 
 using namespace std;
 
@@ -67,6 +68,7 @@ class FunDlg : public FunDlgDef
     public:
         FunDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Extra Functions"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         CFormula testf;
+        Units_Conversion Units_conv;
         void OnClose( wxCommandEvent& event );
         void OnToggle( wxCommandEvent& event );
         void OnExtraCalculate( wxCommandEvent& event );
@@ -74,6 +76,7 @@ class FunDlg : public FunDlgDef
         void OnItemSelect (void);
         void LoadFunctions(wxString Category, wxString );
         void LoadCategories(void);
+        void PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel);
         void OnCategorySelect( wxCommandEvent& event );
         wxString NotEmpty (wxString);
 

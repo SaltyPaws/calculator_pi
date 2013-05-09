@@ -54,7 +54,7 @@ void FunDlg::LoadFunctions(wxString Category, wxString Unit)
 	{
         if (Category.IsSameAs(testf.m_Category[count], false) || Category.IsSameAs(wxT("all"), false)   ) this->m_Function_Dropdown->Append(testf.m_ShortDesc[count]);
 	}
-
+    this->m_Function_Dropdown->SetSelection(this->testf.Selected_Formula);
     //Load default function in the menu
     this->OnItemSelect();
 }
@@ -77,6 +77,7 @@ void FunDlg::LoadCategories(void)
             //printf("Just added: %s\n",(const char*) testf.m_Category[count].mb_str() );
         }
 	}
+	this->m_Function_Categories->SetSelection(0);
 }
 
 
@@ -105,14 +106,88 @@ void FunDlg::OnItemSelect( wxCommandEvent& event )
     this->m_Function_Result->SetValue(_(""));
 
 }
+void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel)
+    {
+        if (Input_Units.IsEmpty())
+            {
+            Panel->Show(false);
+            }
+        else
+            {
+            //Clear Pulldown
+            Pulldown->Clear();
+
+            //Show panel
+            Panel->Show(true);
+            //Determine output units
+            int unit_index=this->Units_conv.m_Unit.Index(Input_Units, false, false);
+            if (unit_index==wxNOT_FOUND)
+                {
+                //Unit not found
+                printf("Cannot find unit: %s\n",(const char*) Input_Units.mb_str() );
+                Pulldown->Append(Input_Units);
+                }
+            else
+                {
+                //unit found
+                printf("Found unit: %s",(const char*) Input_Units.mb_str() );
+                printf(" of category: %s\n",(const char*) this->Units_conv.m_Unit_category[unit_index].mb_str() );
+
+                for ( unsigned int count = 0; count < this->Units_conv.m_Unit.GetCount() ; count++)
+                    {
+                    if (Units_conv.m_Unit_category[unit_index].IsSameAs(this->Units_conv.m_Unit_category[count], false) )
+                        {
+                            printf("Other units found in category: %s\n",(const char*) Units_conv.m_Unit[count].mb_str() );
+                            if (Units_conv.m_Display[count].IsSameAs(wxT("TRUE"), false) ) Pulldown->Append(Units_conv.m_Unit[count]);
+                        }
+                    }
+                }
+            Pulldown->SetSelection(0);
+            }
+    }
 
 void FunDlg::OnItemSelect(void){
+
+
     this->m_Function->SetLabel(testf.m_Formula[testf.Selected_Formula]);
     this->m_Description->SetLabel(testf.m_LongDesc[testf.Selected_Formula]);
-    this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit[testf.Selected_Formula]);
     this->m_Output_Parameter->SetLabel(testf.m_Formula[testf.Selected_Formula].BeforeFirst('='));
+    PopulatePuldown(testf.m_Result_Unit[testf.Selected_Formula],this->m_Output_Parameter_UnitC, m_panel9);
+    //this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit[testf.Selected_Formula]);
 
-    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty()){
+
+    this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit[testf.Selected_Formula],this->Units, m_panel9);
+
+    this->Parameter1->SetLabel(testf.m_Input_parameter1[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit1[testf.Selected_Formula],this->Units1, m_panel1);
+
+    this->Parameter2->SetLabel(testf.m_Input_parameter2[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit2[testf.Selected_Formula],this->Units2, m_panel2);
+
+    this->Parameter3->SetLabel(testf.m_Input_parameter3[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit3[testf.Selected_Formula],this->Units3, m_panel3);
+
+    this->Parameter4->SetLabel(testf.m_Input_parameter4[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit4[testf.Selected_Formula],this->Units4, m_panel4);
+
+    this->Parameter5->SetLabel(testf.m_Input_parameter5[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit5[testf.Selected_Formula],this->Units5, m_panel5);
+
+    this->Parameter6->SetLabel(testf.m_Input_parameter6[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit6[testf.Selected_Formula],this->Units6, m_panel6);
+
+    this->Parameter7->SetLabel(testf.m_Input_parameter7[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit7[testf.Selected_Formula],this->Units7, m_panel7);
+
+    this->Parameter8->SetLabel(testf.m_Input_parameter8[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit8[testf.Selected_Formula],this->Units8, m_panel8);
+
+    this->Parameter9->SetLabel(testf.m_Input_parameter9[testf.Selected_Formula]);
+    PopulatePuldown(testf.m_Input_unit9[testf.Selected_Formula],this->Units9, m_panel9);
+
+
+/*    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty()){
         this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
         this->Units->SetLabel(testf.m_Input_unit[testf.Selected_Formula]);}
 
@@ -169,7 +244,7 @@ void FunDlg::OnItemSelect(void){
         this->Parameter9->SetLabel(testf.m_Input_parameter9[testf.Selected_Formula]);
         this->Units9->SetLabel(testf.m_Input_unit9[testf.Selected_Formula]);
         this->m_panel9->Show(true);
-        } else this->m_panel9->Show(false);
+        } else this->m_panel9->Show(false);*/
 
     this->m_Function->Wrap(400); ///Width of description can be put in settings
     this->m_Description->Wrap(400); ///Width of description can be put in settings
@@ -215,7 +290,8 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
 {
     prs.parse("dtr=0.0174532925"); //define degree to radians conversion factor
 
-    /*printf("This is what the Dialog got\n");
+    /*
+    ("This is what the Dialog got\n");
     printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
     printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
     printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");

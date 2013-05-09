@@ -42,7 +42,6 @@ class CFormula
 		wxArrayString m_ShortDesc;					//Short_Description
 		wxArrayString m_LongDesc;					//Long_Description
 		wxArrayString m_Category;					//Category
-		wxArrayString m_Units;					//Units of function
 		wxArrayString m_Source;					//Source
 		wxArrayString m_Formula;					//Function
 		wxArrayString m_Result_Unit;					//Output_unit

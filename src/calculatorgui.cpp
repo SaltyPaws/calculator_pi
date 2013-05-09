@@ -655,9 +655,10 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Output_Parameter->Wrap( -1 );
 	bSizer64->Add( m_Output_Parameter, 0, wxALL, 5 );
 	
-	m_Output_Parameter_Unit = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_Output_Parameter_Unit->Wrap( -1 );
-	bSizer64->Add( m_Output_Parameter_Unit, 0, wxALL, 5 );
+	wxArrayString m_Output_Parameter_UnitCChoices;
+	m_Output_Parameter_UnitC = new wxChoice( m_panel100, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Output_Parameter_UnitCChoices, 0 );
+	m_Output_Parameter_UnitC->SetSelection( 0 );
+	bSizer64->Add( m_Output_Parameter_UnitC, 0, wxALL, 5 );
 	
 	
 	m_panel100->SetSizer( bSizer64 );
@@ -681,8 +682,9 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	Parameter->Wrap( -1 );
 	bSizer->Add( Parameter, 0, wxALL, 5 );
 	
-	Units = new wxStaticText( m_panel, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units->Wrap( -1 );
+	wxArrayString UnitsChoices;
+	Units = new wxChoice( m_panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, UnitsChoices, 0 );
+	Units->SetSelection( 0 );
 	bSizer->Add( Units, 0, wxALL, 5 );
 	
 	
@@ -692,20 +694,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel, 0, wxALL, 5 );
 	
 	m_panel1 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel1->Hide();
-	
 	bSizer1 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value1 = new wxTextCtrl( m_panel1, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer1->Add( Value1, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer1->Add( Value1, 0, wxALL, 5 );
 	
 	Parameter1 = new wxStaticText( m_panel1, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter1->Wrap( -1 );
-	bSizer1->Add( Parameter1, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer1->Add( Parameter1, 0, wxALL, 5 );
 	
-	Units1 = new wxStaticText( m_panel1, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units1->Wrap( -1 );
-	bSizer1->Add( Units1, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units1Choices;
+	Units1 = new wxChoice( m_panel1, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units1Choices, 0 );
+	Units1->SetSelection( 0 );
+	bSizer1->Add( Units1, 0, wxALL, 5 );
 	
 	
 	m_panel1->SetSizer( bSizer1 );
@@ -714,20 +715,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel1, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel2 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel2->Hide();
-	
 	bSizer2 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value2 = new wxTextCtrl( m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer2->Add( Value2, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer2->Add( Value2, 0, wxALL, 5 );
 	
 	Parameter2 = new wxStaticText( m_panel2, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter2->Wrap( -1 );
-	bSizer2->Add( Parameter2, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer2->Add( Parameter2, 0, wxALL, 5 );
 	
-	Units2 = new wxStaticText( m_panel2, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units2->Wrap( -1 );
-	bSizer2->Add( Units2, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units2Choices;
+	Units2 = new wxChoice( m_panel2, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units2Choices, 0 );
+	Units2->SetSelection( 0 );
+	bSizer2->Add( Units2, 0, wxALL, 5 );
 	
 	
 	m_panel2->SetSizer( bSizer2 );
@@ -736,20 +736,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel2, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel3 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel3->Hide();
-	
 	bSizer3 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value3 = new wxTextCtrl( m_panel3, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer3->Add( Value3, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer3->Add( Value3, 0, wxALL, 5 );
 	
 	Parameter3 = new wxStaticText( m_panel3, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter3->Wrap( -1 );
-	bSizer3->Add( Parameter3, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer3->Add( Parameter3, 0, wxALL, 5 );
 	
-	Units3 = new wxStaticText( m_panel3, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units3->Wrap( -1 );
-	bSizer3->Add( Units3, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units3Choices;
+	Units3 = new wxChoice( m_panel3, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units3Choices, 0 );
+	Units3->SetSelection( 0 );
+	bSizer3->Add( Units3, 0, wxALL, 5 );
 	
 	
 	m_panel3->SetSizer( bSizer3 );
@@ -758,20 +757,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel3, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel4 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel4->Hide();
-	
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value4 = new wxTextCtrl( m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( Value4, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer4->Add( Value4, 0, wxALL, 5 );
 	
 	Parameter4 = new wxStaticText( m_panel4, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter4->Wrap( -1 );
-	bSizer4->Add( Parameter4, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer4->Add( Parameter4, 0, wxALL, 5 );
 	
-	Units4 = new wxStaticText( m_panel4, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units4->Wrap( -1 );
-	bSizer4->Add( Units4, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units4Choices;
+	Units4 = new wxChoice( m_panel4, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units4Choices, 0 );
+	Units4->SetSelection( 0 );
+	bSizer4->Add( Units4, 0, wxALL, 5 );
 	
 	
 	m_panel4->SetSizer( bSizer4 );
@@ -780,20 +778,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel4, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel5 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel5->Hide();
-	
 	bSizer5 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value5 = new wxTextCtrl( m_panel5, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer5->Add( Value5, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer5->Add( Value5, 0, wxALL, 5 );
 	
 	Parameter5 = new wxStaticText( m_panel5, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter5->Wrap( -1 );
-	bSizer5->Add( Parameter5, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer5->Add( Parameter5, 0, wxALL, 5 );
 	
-	Units5 = new wxStaticText( m_panel5, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units5->Wrap( -1 );
-	bSizer5->Add( Units5, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units5Choices;
+	Units5 = new wxChoice( m_panel5, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units5Choices, 0 );
+	Units5->SetSelection( 0 );
+	bSizer5->Add( Units5, 0, wxALL, 5 );
 	
 	
 	m_panel5->SetSizer( bSizer5 );
@@ -802,20 +799,19 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel5, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel6 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel6->Hide();
-	
 	bSizer6 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value6 = new wxTextCtrl( m_panel6, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer6->Add( Value6, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer6->Add( Value6, 0, wxALL, 5 );
 	
 	Parameter6 = new wxStaticText( m_panel6, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter6->Wrap( -1 );
-	bSizer6->Add( Parameter6, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer6->Add( Parameter6, 0, wxALL, 5 );
 	
-	Units6 = new wxStaticText( m_panel6, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units6->Wrap( -1 );
-	bSizer6->Add( Units6, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units6Choices;
+	Units6 = new wxChoice( m_panel6, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units6Choices, 0 );
+	Units6->SetSelection( 0 );
+	bSizer6->Add( Units6, 0, wxALL, 5 );
 	
 	
 	m_panel6->SetSizer( bSizer6 );
@@ -824,69 +820,66 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	sbSizer13->Add( m_panel6, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel7 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel7->Hide();
-	
-	bSizer71 = new wxBoxSizer( wxHORIZONTAL );
+	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value7 = new wxTextCtrl( m_panel7, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer71->Add( Value7, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer8->Add( Value7, 0, wxALL, 5 );
 	
 	Parameter7 = new wxStaticText( m_panel7, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter7->Wrap( -1 );
-	bSizer71->Add( Parameter7, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer8->Add( Parameter7, 0, wxALL, 5 );
 	
-	Units7 = new wxStaticText( m_panel7, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units7->Wrap( -1 );
-	bSizer71->Add( Units7, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units7Choices;
+	Units7 = new wxChoice( m_panel7, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units7Choices, 0 );
+	Units7->SetSelection( 0 );
+	bSizer8->Add( Units7, 0, wxALL, 5 );
 	
 	
-	m_panel7->SetSizer( bSizer71 );
+	m_panel7->SetSizer( bSizer8 );
 	m_panel7->Layout();
-	bSizer71->Fit( m_panel7 );
+	bSizer8->Fit( m_panel7 );
 	sbSizer13->Add( m_panel7, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel8 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel8->Hide();
-	
-	bSizer8 = new wxBoxSizer( wxHORIZONTAL );
+	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value8 = new wxTextCtrl( m_panel8, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer8->Add( Value8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer9->Add( Value8, 0, wxALL, 5 );
 	
 	Parameter8 = new wxStaticText( m_panel8, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter8->Wrap( -1 );
-	bSizer8->Add( Parameter8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer9->Add( Parameter8, 0, wxALL, 5 );
 	
-	Units8 = new wxStaticText( m_panel8, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units8->Wrap( -1 );
-	bSizer8->Add( Units8, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units8Choices;
+	Units8 = new wxChoice( m_panel8, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units8Choices, 0 );
+	Units8->SetSelection( 0 );
+	bSizer9->Add( Units8, 0, wxALL, 5 );
 	
 	
-	m_panel8->SetSizer( bSizer8 );
+	m_panel8->SetSizer( bSizer9 );
 	m_panel8->Layout();
-	bSizer8->Fit( m_panel8 );
+	bSizer9->Fit( m_panel8 );
 	sbSizer13->Add( m_panel8, 1, wxEXPAND | wxALL, 5 );
 	
 	m_panel9 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	m_panel9->Hide();
-	
-	bSizer9 = new wxBoxSizer( wxHORIZONTAL );
+	bSizer10 = new wxBoxSizer( wxHORIZONTAL );
 	
 	Value9 = new wxTextCtrl( m_panel9, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer9->Add( Value9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer10->Add( Value9, 0, wxALL, 5 );
 	
 	Parameter9 = new wxStaticText( m_panel9, wxID_ANY, _("Parameter"), wxDefaultPosition, wxDefaultSize, 0 );
 	Parameter9->Wrap( -1 );
-	bSizer9->Add( Parameter9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer10->Add( Parameter9, 0, wxALL, 5 );
 	
-	Units9 = new wxStaticText( m_panel9, wxID_ANY, _("Units"), wxDefaultPosition, wxDefaultSize, 0 );
-	Units9->Wrap( -1 );
-	bSizer9->Add( Units9, 0, wxALL|wxEXPAND|wxALIGN_CENTER_VERTICAL, 5 );
+	wxArrayString Units9Choices;
+	Units9 = new wxChoice( m_panel9, wxID_ANY, wxDefaultPosition, wxDefaultSize, Units9Choices, 0 );
+	Units9->SetSelection( 0 );
+	bSizer10->Add( Units9, 0, wxALL, 5 );
 	
 	
-	m_panel9->SetSizer( bSizer9 );
+	m_panel9->SetSizer( bSizer10 );
 	m_panel9->Layout();
-	bSizer9->Fit( m_panel9 );
+	bSizer10->Fit( m_panel9 );
 	sbSizer13->Add( m_panel9, 1, wxEXPAND | wxALL, 5 );
 	
 	

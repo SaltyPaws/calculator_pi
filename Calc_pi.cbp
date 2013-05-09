@@ -51,6 +51,8 @@
 		<Unit filename="src/functions.h" />
 		<Unit filename="src/icons.cpp" />
 		<Unit filename="src/icons.h" />
+		<Unit filename="src/units_conversion.cpp" />
+		<Unit filename="src/units_conversion.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

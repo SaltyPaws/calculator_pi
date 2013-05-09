@@ -231,73 +231,74 @@ for my $worksheet ( $workbook->worksheets() )
 			}
 
 		} #END MYROW
+		if ($ProcessTab =~ /true/) {
+		#write CPP file
+		#Open file
+		open(my $fh, '>', "$filename.cpp");
+		print $fh "@license\n";
+		print $fh "#include \"$filename.h\"\n";
+		print $fh "$Class"."::"."$Class(void)\n{\n";
+		print $fh "@headerc\n";
 
-	#write CPP file
-	#Open file
-	open(my $fh, '>', "$filename.cpp");
-	print $fh "@license\n";
-	print $fh "#include \"$filename.h\"\n";
-	print $fh "$Class"."::"."$Class(void)\n{\n";
-	print $fh "@headerc\n";
-
-	for my $row ( $FunctionRow .. $row_max )
-		{
-		for my $col ( $col_min .. $col_max )
+		for my $row ( $FunctionRow .. $row_max )
 			{
-			my $cell = $worksheet->get_cell( $row, $col );
-			#next unless $cell;
-			if ($cell and $col==0) {$empty_line="no";} 
-			if (!$cell and $col==0) {$empty_line="yes";print "Empty:"} 
-			if ($cell)
+			for my $col ( $col_min .. $col_max )
 				{
-				#print "Row, Col    = ($row, $col)\n";
-				#print "Value       = ", $cell->value(),       "\n";
-				#print "Unformatted = ", $cell->unformatted(), "\n";
-				$a=$cell->unformatted();
-				$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
-				$a =~ s/[^\w @.:+-=\*()\^\/\\]//g;
-				$a=~ s/ {3,}/\\t/g; #replace double space with single space
-				$a=~ s/\t* {2}/ /g; #replace double space with single space
-				}
-			else
-				{
-					$a="";
-				}
+				my $cell = $worksheet->get_cell( $row, $col );
+				#next unless $cell;
+				if ($cell and $col==0) {$empty_line="no";} 
+				if (!$cell and $col==0) {$empty_line="yes";print "Empty:"} 
+				if ($cell)
+					{
+					#print "Row, Col    = ($row, $col)\n";
+					#print "Value       = ", $cell->value(),       "\n";
+					#print "Unformatted = ", $cell->unformatted(), "\n";
+					$a=$cell->unformatted();
+					$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
+					$a =~ s/[^\w @.:+-=\*()\^\/\\]//g;
+					$a=~ s/ {3,}/\\t/g; #replace double space with single space
+					$a=~ s/\t* {2}/ /g; #replace double space with single space
+					}
+				else
+					{
+						$a="";
+					}
 
-			if ($empty_line =~ /no/ and $col<@MemberRow)
-				{
-				print $fh "this->$MemberRow[$col].Add(_(\"$a\"))\;\n"; 
-				#print  "this->$MemberRow[$col].Add(_(\"$a\"))\;\n"; 
-				}    
-		    	}
-			$empty_line="yes"; 
-			print $fh "\n";
+				if ($empty_line =~ /no/ and $col<@MemberRow)
+					{
+					print $fh "this->$MemberRow[$col].Add(_(\"$a\"))\;\n"; 
+					#print  "this->$MemberRow[$col].Add(_(\"$a\"))\;\n"; 
+					}    
+			    	}
+				$empty_line="yes"; 
+				print $fh "\n";
+			}
+
+		print $fh "@footerc\n";
+		print $fh "}";
+		#Close File
+		close ($fh); 	
+
+		#Write H file
+		open($fh, '>', "$filename.h");
+		print $fh "@license\n";
+		print $fh "@headerh\n";
+		print $fh "class $Class\n{\n\tpublic:\n";
+		print $fh "\t$Class(void);\t\t\t\t//Class constructor\n";
+		print $fh "@headerh1\n";
+
+
+
+		for my $i (0 .. $#MemberRow) {
+		    print $fh "\t\t$TypeRow[$i] $MemberRow[$i];\t\t\t\t\t//$DescriptonRow[$i]\n";
 		}
-
-	print $fh "@footerc\n";
-	print $fh "}";
-	#Close File
-	close ($fh); 	
-
-	#Write H file
-	open($fh, '>', "$filename.h");
-	print $fh "@license\n";
-	print $fh "@headerh\n";
-	print $fh "class $Class\n{\n\tpublic:\n";
-	print $fh "\t$Class(void);\t\t\t\t//Class constructor\n";
-	print $fh "@headerh1\n";
+		print $fh "};\n";
+		print $fh "@footerh\n";
 
 
-
-	for my $i (0 .. $#MemberRow) {
-	    print $fh "\t\t$TypeRow[$i] $MemberRow[$i];\t\t\t\t\t//$DescriptonRow[$i]\n";
-	}
-	print $fh "};\n";
-	print $fh "@footerh\n";
-
-
-	#Close File
-	close ($fh);
+		#Close File
+		close ($fh);
+		}
 	
 	} #END WORKSHEET
 

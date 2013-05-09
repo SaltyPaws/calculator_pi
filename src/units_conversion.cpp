@@ -30,6 +30,21 @@
 Units_Conversion::Units_Conversion(void)
 {
 
+this->m_Unit.Add(_("Degree (\u00b0)"));
+this->m_Unit_category.Add(_("Angle"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Radians"));
+this->m_Unit_category.Add(_("Angle"));
+this->m_Conversion.Add(_("VAR*dtr"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Degree"));
+this->m_Unit_category.Add(_("Angle"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("FALSE"));
+
 this->m_Unit.Add(_("Meter"));
 this->m_Unit_category.Add(_("Distance"));
 this->m_Conversion.Add(_("1"));
@@ -55,7 +70,32 @@ this->m_Unit_category.Add(_("Distance"));
 this->m_Conversion.Add(_("1/1000"));
 this->m_Display.Add(_("TRUE"));
 
-this->m_Unit.Add(_("Celcius"));
+this->m_Unit.Add(_("Metre"));
+this->m_Unit_category.Add(_("Distance"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("FALSE"));
+
+this->m_Unit.Add(_("foot"));
+this->m_Unit_category.Add(_("Distance"));
+this->m_Conversion.Add(_("0.3048"));
+this->m_Display.Add(_("FALSE"));
+
+this->m_Unit.Add(_("Fathom"));
+this->m_Unit_category.Add(_("Distance"));
+this->m_Conversion.Add(_("1.8288"));
+this->m_Display.Add(_("FALSE"));
+
+this->m_Unit.Add(_("m/s"));
+this->m_Unit_category.Add(_("Speed"));
+this->m_Conversion.Add(_("1/1000"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Knots"));
+this->m_Unit_category.Add(_("Speed"));
+this->m_Conversion.Add(_("1/1852*1/3600"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Celsius"));
 this->m_Unit_category.Add(_("Temperature"));
 this->m_Conversion.Add(_("1"));
 this->m_Display.Add(_("TRUE"));
@@ -73,31 +113,6 @@ this->m_Display.Add(_("TRUE"));
 this->m_Unit.Add(_("Rankine"));
 this->m_Unit_category.Add(_("Temperature"));
 this->m_Conversion.Add(_("(VAR491.67)5 D9"));
-this->m_Display.Add(_("TRUE"));
-
-this->m_Unit.Add(_("Degree"));
-this->m_Unit_category.Add(_("Angle"));
-this->m_Conversion.Add(_("1"));
-this->m_Display.Add(_("TRUE"));
-
-this->m_Unit.Add(_("Radians"));
-this->m_Unit_category.Add(_("Angle"));
-this->m_Conversion.Add(_("VAR*dtr"));
-this->m_Display.Add(_("TRUE"));
-
-this->m_Unit.Add(_("Metre"));
-this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("1"));
-this->m_Display.Add(_("FALSE"));
-
-this->m_Unit.Add(_("foot"));
-this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("0.3048"));
-this->m_Display.Add(_("FALSE"));
-
-this->m_Unit.Add(_("Fathom"));
-this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("1.8288"));
 this->m_Display.Add(_("TRUE"));
 
  //End Class
