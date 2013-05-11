@@ -37,7 +37,7 @@ this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Radians"));
 this->m_Unit_category.Add(_("Angle"));
-this->m_Conversion.Add(_("VAR*dtr"));
+this->m_Conversion.Add(_("VAR/dtr=VAR*dtr"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Degree"));
@@ -52,7 +52,7 @@ this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Nautical Miles"));
 this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("1/1852"));
+this->m_Conversion.Add(_("1852"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("inch"));
@@ -67,7 +67,7 @@ this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("kilometer"));
 this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("1/1000"));
+this->m_Conversion.Add(_("1000"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Metre"));
@@ -87,12 +87,17 @@ this->m_Display.Add(_("FALSE"));
 
 this->m_Unit.Add(_("m/s"));
 this->m_Unit_category.Add(_("Speed"));
-this->m_Conversion.Add(_("1/1000"));
+this->m_Conversion.Add(_("1"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Knots"));
 this->m_Unit_category.Add(_("Speed"));
-this->m_Conversion.Add(_("1/1852*1/3600"));
+this->m_Conversion.Add(_("0.514444"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("km/h"));
+this->m_Unit_category.Add(_("Speed"));
+this->m_Conversion.Add(_("0.277778"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Celsius"));
@@ -102,17 +107,17 @@ this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Kelvin"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("VAR - 273.15 "));
+this->m_Conversion.Add(_("VAR - 273.15 = VAR + 273.15 "));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Fahrenheit"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("5/9 * (VAR - 32) "));
+this->m_Conversion.Add(_("(5/9) * (VAR\t32)=(9/5)* (VAR+32)"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Rankine"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("(VAR491.67)5 D9"));
+this->m_Conversion.Add(_("(VAR491.67)*5 D9=(VAR + 273.15) * (9 D5)"));
 this->m_Display.Add(_("TRUE"));
 
  //End Class

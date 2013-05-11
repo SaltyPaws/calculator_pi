@@ -255,7 +255,7 @@ for my $worksheet ( $workbook->worksheets() )
 					#print "Unformatted = ", $cell->unformatted(), "\n";
 					$a=$cell->unformatted();
 					$a=~ s/\R/\\n/g; #Re~ s/\R//g; #remove line feed, page feed, CR
-					$a =~ s/[^\w @.:+-=\*()\^\/\\]//g;
+					$a =~ s/[^\w @.:+-?=\*()\^\/\\]//g;
 					$a=~ s/ {3,}/\\t/g; #replace double space with single space
 					$a=~ s/\t* {2}/ /g; #replace double space with single space
 					}

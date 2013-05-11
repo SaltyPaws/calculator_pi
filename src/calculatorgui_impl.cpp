@@ -27,8 +27,6 @@
 
 #include "calculatorgui_impl.h"
 
-
-
 CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : CfgDlgDef( parent, id, title, pos, size, style )
 {
 }
@@ -42,6 +40,7 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 {
     this->LoadCategories();
     this->LoadFunctions(wxT("All"),wxT("All"));
+    this->dbg=true;
 
 }
 
@@ -80,17 +79,15 @@ void FunDlg::LoadCategories(void)
 	this->m_Function_Categories->SetSelection(0);
 }
 
-
 void FunDlg::OnCategorySelect( wxCommandEvent& event )
 {
-        this->LoadFunctions(event.GetString(),wxT("All"));
+    this->LoadFunctions(event.GetString(),wxT("All"));
 }
 
 void FunDlg::OnClose( wxCommandEvent& event )
 {
     this->Destroy();
 }
-
 
 void FunDlg::OnItemSelect( wxCommandEvent& event )
 {
@@ -104,8 +101,8 @@ void FunDlg::OnItemSelect( wxCommandEvent& event )
     this->testf.Selected_Formula=n;
     this->OnItemSelect();
     this->m_Function_Result->SetValue(_(""));
-
 }
+
 void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel)
     {
         if (Input_Units.IsEmpty())
@@ -124,20 +121,20 @@ void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel 
             if (unit_index==wxNOT_FOUND)
                 {
                 //Unit not found
-                printf("Cannot find unit: %s\n",(const char*) Input_Units.mb_str() );
+              //  printf("Cannot find unit: %s\n",(const char*) Input_Units.mb_str() );
                 Pulldown->Append(Input_Units);
                 }
             else
                 {
                 //unit found
-                printf("Found unit: %s",(const char*) Input_Units.mb_str() );
-                printf(" of category: %s\n",(const char*) this->Units_conv.m_Unit_category[unit_index].mb_str() );
+               // printf("Found unit: %s",(const char*) Input_Units.mb_str() );
+               // printf(" of category: %s\n",(const char*) this->Units_conv.m_Unit_category[unit_index].mb_str() );
 
                 for ( unsigned int count = 0; count < this->Units_conv.m_Unit.GetCount() ; count++)
                     {
                     if (Units_conv.m_Unit_category[unit_index].IsSameAs(this->Units_conv.m_Unit_category[count], false) )
                         {
-                            printf("Other units found in category: %s\n",(const char*) Units_conv.m_Unit[count].mb_str() );
+                           // printf("Other units found in category: %s\n",(const char*) Units_conv.m_Unit[count].mb_str() );
                             if (Units_conv.m_Display[count].IsSameAs(wxT("TRUE"), false) ) Pulldown->Append(Units_conv.m_Unit[count]);
                         }
                     }
@@ -146,15 +143,12 @@ void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel 
             }
     }
 
-void FunDlg::OnItemSelect(void){
-
-
+void FunDlg::OnItemSelect(void)
+    {
     this->m_Function->SetLabel(testf.m_Formula[testf.Selected_Formula]);
     this->m_Description->SetLabel(testf.m_LongDesc[testf.Selected_Formula]);
     this->m_Output_Parameter->SetLabel(testf.m_Formula[testf.Selected_Formula].BeforeFirst('='));
     PopulatePuldown(testf.m_Result_Unit[testf.Selected_Formula],this->m_Output_Parameter_UnitC, m_panel9);
-    //this->m_Output_Parameter_Unit->SetLabel(testf.m_Result_Unit[testf.Selected_Formula]);
-
 
     this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
     PopulatePuldown(testf.m_Input_unit[testf.Selected_Formula],this->Units, m_panel9);
@@ -186,82 +180,100 @@ void FunDlg::OnItemSelect(void){
     this->Parameter9->SetLabel(testf.m_Input_parameter9[testf.Selected_Formula]);
     PopulatePuldown(testf.m_Input_unit9[testf.Selected_Formula],this->Units9, m_panel9);
 
-
-/*    if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty()){
-        this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
-        this->Units->SetLabel(testf.m_Input_unit[testf.Selected_Formula]);}
-
-    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()){
-        this->Parameter1->SetLabel(testf.m_Input_parameter1[testf.Selected_Formula]);
-        this->Units1->SetLabel(testf.m_Input_unit1[testf.Selected_Formula]);
-        this->m_panel1->Show(true);
-        } else this->m_panel1->Show(false);
-
-    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()){
-        this->Parameter2->SetLabel(testf.m_Input_parameter2[testf.Selected_Formula]);
-        this->Units2->SetLabel(testf.m_Input_unit2[testf.Selected_Formula]);
-        this->m_panel2->Show(true);
-        } else this->m_panel2->Show(false);
-
-    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty()){
-        this->Parameter3->SetLabel(testf.m_Input_parameter3[testf.Selected_Formula]);
-        this->Units3->SetLabel(testf.m_Input_unit3[testf.Selected_Formula]);
-        this->m_panel3->Show(true);
-        } else this->m_panel3->Show(false);
-
-    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty()){
-        this->Parameter4->SetLabel(testf.m_Input_parameter4[testf.Selected_Formula]);
-        this->Units4->SetLabel(testf.m_Input_unit4[testf.Selected_Formula]);
-        this->m_panel4->Show(true);
-        } else this->m_panel4->Show(false);
-
-    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty()){
-        this->Parameter5->SetLabel(testf.m_Input_parameter5[testf.Selected_Formula]);
-        this->Units5->SetLabel(testf.m_Input_unit5[testf.Selected_Formula]);
-        this->m_panel5->Show(true);
-        } else this->m_panel5->Show(false);
-
-    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty()){
-        this->Parameter6->SetLabel(testf.m_Input_parameter6[testf.Selected_Formula]);
-        this->Units6->SetLabel(testf.m_Input_unit6[testf.Selected_Formula]);
-        this->m_panel6->Show(true);
-        } else this->m_panel6->Show(false);
-
-    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()){
-        this->Parameter7->SetLabel(testf.m_Input_parameter7[testf.Selected_Formula]);
-        this->Units7->SetLabel(testf.m_Input_unit7[testf.Selected_Formula]);
-        this->m_panel7->Show(true);
-        } else this->m_panel7->Show(false);
-
-    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()){
-        this->Parameter8->SetLabel(testf.m_Input_parameter8[testf.Selected_Formula]);
-        this->Units8->SetLabel(testf.m_Input_unit8[testf.Selected_Formula]);
-        this->m_panel8->Show(true);
-        } else this->m_panel8->Show(false);
-
-
-    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()){
-        this->Parameter9->SetLabel(testf.m_Input_parameter9[testf.Selected_Formula]);
-        this->Units9->SetLabel(testf.m_Input_unit9[testf.Selected_Formula]);
-        this->m_panel9->Show(true);
-        } else this->m_panel9->Show(false);*/
-
     this->m_Function->Wrap(400); ///Width of description can be put in settings
     this->m_Description->Wrap(400); ///Width of description can be put in settings
     this->Fit();
-}
+    }
 
 wxString FunDlg::NotEmpty(wxString Dummy)
 {
     if (Dummy.IsEmpty()) return wxT("0"); return Dummy;
 }
 
+wxString FunDlg::Unit_Conversion( wxString Output_Unit,wxString Input_Unit, wxString Var)
+{
+if (dbg) printf("\n\n------------------------------------------------------\n");
+if (dbg) printf("Input_Unit: %s\n",(const char*) Input_Unit.mb_str() );
+if (dbg) printf("Output_Unit: %s\n",(const char*) Output_Unit.mb_str() );
+if (dbg) printf("Var: %s\n",(const char*) Var.mb_str() );
+
+//If Var is empty, return 0, nothing else to do
+if (Var.IsEmpty()) return wxT("0");
+
+if (Input_Unit.CmpNoCase(Output_Unit)!=0) //Convert if input unit is not output unit
+    {
+     if (dbg) printf("Do something, return factor\n");
+     //find input unit factor
+     int to_base = this->Units_conv.m_Unit.Index(Input_Unit, false);
+     int to_output = this->Units_conv.m_Unit.Index(Output_Unit, false);
+     if (to_base==wxNOT_FOUND || to_output==wxNOT_FOUND)
+        {
+         printf("not found unit, end conversion\n");
+         return( Var );
+        }
+    else
+        {
+            if (dbg) printf("Conversion to base: %s\n",(const char*) this->Units_conv.m_Conversion[to_base].mb_str() );
+            if (dbg) printf("Conversion to output: 1/%s\n",(const char*) this->Units_conv.m_Conversion[to_output].mb_str() );
+
+            //Check if to_base contains VAR, if yes to_base= replace VAR with Var else to_base=Var*to_base
+            if (Units_conv.m_Conversion[to_base].Contains(wxT("VAR")))
+                {
+                Input_Unit = wxT("(")+Units_conv.m_Conversion[to_base].BeforeFirst('=')+wxT(")");
+                Input_Unit.Replace(wxT("VAR"), Var);
+                if (dbg) printf("Replace mode.... Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+
+                }
+            else
+            {
+                Input_Unit =wxT("(")+Var+wxT("*")+Units_conv.m_Conversion[to_base]+wxT(")");
+                if (dbg) printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+            }
+
+
+            //Check if to_output contains VAR, if yes, replace VAR with to_base string, if not devide by to_output
+            if (Units_conv.m_Conversion[to_output].Contains(wxT("VAR")))
+                {
+                Output_Unit = Units_conv.m_Conversion[to_output].AfterLast('=');
+                Output_Unit.Replace(wxT("VAR"), Input_Unit);
+                if (dbg) printf("Replace mode.... Output_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+                if (dbg)
+                    {
+                    wxString returnf=wxT("(")+Output_Unit+wxT(")");
+                    printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );
+                    }
+                return (wxT("(")+Output_Unit+wxT(")"));
+                }
+            else
+            {
+                Output_Unit =Input_Unit+wxT("/")+Units_conv.m_Conversion[to_output];
+                if (dbg) printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Output_Unit.mb_str() );
+                if (dbg)
+                    {
+                    wxString returnf=wxT("(")+Output_Unit+wxT(")");
+                    printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );
+                }
+                return (wxT("(")+Output_Unit+wxT(")"));
+            }
+        }
+    }
+else
+    {
+
+    if (dbg) printf("Nothing to do, return input variable\n");
+    return (Var);
+    }
+}
 
 void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 {
 
+
+
+
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
+    /*
     if (!testf.m_Input_parameter[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],this->NotEmpty(this->Value->GetValue()),true);
     if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],this->NotEmpty(this->Value1->GetValue()),true);
     if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],this->NotEmpty(this->Value2->GetValue()),true);
@@ -272,12 +284,26 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
     if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],this->NotEmpty(this->Value7->GetValue()),true);
     if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],this->NotEmpty(this->Value8->GetValue()),true);
     if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value9->GetValue()),true);
+    */
+    //Add input parameters converted for unit
+    if (!testf.m_Input_parameter [testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter [testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units->GetString( this->Units->GetCurrentSelection()),this->Value->GetValue()),true);
+    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units1->GetString( this->Units1->GetCurrentSelection()),this->Value1->GetValue()),true);
+    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units2->GetString( this->Units2->GetCurrentSelection()),this->Value2->GetValue()),true);
+    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units3->GetString( this->Units3->GetCurrentSelection()),this->Value3->GetValue()),true);
+    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units4->GetString( this->Units4->GetCurrentSelection()),this->Value4->GetValue()),true);
+    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units5->GetString( this->Units5->GetCurrentSelection()),this->Value5->GetValue()),true);
+    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units6->GetString( this->Units6->GetCurrentSelection()),this->Value6->GetValue()),true);
+    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units7->GetString( this->Units7->GetCurrentSelection()),this->Value7->GetValue()),true);
+    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units8->GetString( this->Units8->GetCurrentSelection()),this->Value8->GetValue()),true);
+    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units9->GetString( this->Units9->GetCurrentSelection()),this->Value9->GetValue()),true);
+
+    //Convert formula to desired output unit
+    Formula=Unit_Conversion(this->m_Output_Parameter_UnitC->GetString( this->m_Output_Parameter_UnitC->GetCurrentSelection()),testf.m_Result_Unit[testf.Selected_Formula],Formula);
 
     Plugin_Dialog->m_result->SetValue(Result.Append('=').Append(Formula));
     //wxMessageBox(Formula);
-    Plugin_Dialog->OnCalculate();
-    this->m_Function_Result->SetValue(Plugin_Dialog->m_result->GetValue());
-
+    //Plugin_Dialog->OnCalculate();
+    this->m_Function_Result->SetValue(Plugin_Dialog->OnCalculate());
 }
 
 void FunDlg::OnToggle( wxCommandEvent& event ){
@@ -386,10 +412,7 @@ void Dlg::OnTest(wxListEvent& event){
 }
 
 void Dlg::OnItem(wxListEvent& event){
-
-   //wxMessageBox(_("Test"));
-
-   long item = -1;
+    long item = -1;
     wxString ItemText;
     for ( ;; )
     {
@@ -413,15 +436,14 @@ void Dlg::OnToggle( wxCommandEvent& event )
 
 void Dlg::set_Buttons(void)
 {
-        this->m_HelpButton->Show(m_bshowhelpB);
-        this->m_Help->Show(m_bshowhistoryB);
-        this->Calculate->Show(m_bCalculateB);
-        this->m_Function->Show(m_bshowFunction);
-        this->m_Overview->Fit();
-        this->m_Overview->Layout();
-        this->m_Help->SetValue(m_bshowhistory);
-        this->set_History();
-
+    this->m_HelpButton->Show(m_bshowhelpB);
+    this->m_Help->Show(m_bshowhistoryB);
+    this->Calculate->Show(m_bCalculateB);
+    this->m_Function->Show(m_bshowFunction);
+    this->m_Overview->Fit();
+    this->m_Overview->Layout();
+    this->m_Help->SetValue(m_bshowhistory);
+    this->set_History();
 }
 
 void Dlg::OnCalculate( wxCommandEvent& event )
@@ -429,11 +451,11 @@ void Dlg::OnCalculate( wxCommandEvent& event )
     OnCalculate();
 }
 
-void Dlg::OnCalculate( void )
+wxString Dlg::OnCalculate( void )
 {
-
     char* test;
     wxString Text = m_result->GetValue();
+
 
     buffer[i_buffer]=Text; //store input
     i_plus(i_buffer);
@@ -486,19 +508,20 @@ void Dlg::OnCalculate( void )
         m_bshowhistory=(!m_bshowhistory);
         this->m_Help->SetValue(m_bshowhistory);
         this->set_History();
-
         error_check=true;
     }
 
-if (error_check)
-     m_result->SetValue(_(""));
-    if (!error_check)
+    if (error_check)
+        {
+        m_result->SetValue(_(""));
+        return wxT("");
+        }
+    else
         {
         test = prs.parse((const char*)Text.mb_str());
         //printf("\t%s\n", test);
         wxString mystring = wxString::FromUTF8(test);
         if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring);
-        //wxString Foobar;
 
         buffer[i_buffer]=mystring; //store input
         i_plus(i_buffer);
@@ -516,43 +539,46 @@ if (error_check)
         /*printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
         printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
 
-
         if (!mystring.StartsWith(_("Error")) )
             {
-            if ((this->m_Help->GetValue()) || (m_bcapturehidden)){
-            //     m_listCtrl->DeleteItem(item_counter);
+            if ((this->m_Help->GetValue()) || (m_bcapturehidden))
+                {
+                //     m_listCtrl->DeleteItem(item_counter);
 
-            itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
-            m_listCtrl->EnsureVisible(itemIndex);
+                itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
+                m_listCtrl->EnsureVisible(itemIndex);
 
-            item_counter++;
-            if (item_counter>Max_Results){
-                item_counter=0;
-                m_listCtrl->ClearAll();
+                item_counter++;
+                if (item_counter>Max_Results)
+                    {
+                    item_counter=0;
+                    m_listCtrl->ClearAll();
+                    }
+
+                //printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
                 }
-            //printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
+            //event.Skip();
             }
-        //event.Skip();
-        }}
+            return mystring;
+        }
+        return wxT("");//Just in case, should not be required
 }
 
-void Dlg::OnKey (wxKeyEvent& event){
- wxChar uc = event.GetUnicodeKey();
-
-// It's a "normal" character. Notice that this includes
-// control characters in 1..31 range, e.g. WXK_RETURN or
-// WXK_BACK, so check for them explicitly.
+void Dlg::OnKey (wxKeyEvent& event)
+{
+    wxChar uc = event.GetUnicodeKey();
+    // It's a "normal" character. Notice that this includes
+    // control characters in 1..31 range, e.g. WXK_RETURN or
+    // WXK_BACK, so check for them explicitly.
     if ( ((uc >= 32) && (uc<=127))  )
         m_result->AppendText(uc);
     else if ( uc == 13 )
         OnCalculate();
     else if ( uc == 8 ){
-    wxString Text = m_result->GetValue();
-    m_result->SetValue(Text.Left(Text.Len()-1 ));
+        wxString Text = m_result->GetValue();
+        m_result->SetValue(Text.Left(Text.Len()-1 ));
     }
-
 }
-
 
 void Dlg::key_shortcut(wxKeyEvent& event) {
     // of course, it doesn't have to be the control key. You can use others:
@@ -590,9 +616,7 @@ void Dlg::up()
     else{
         i_min(i_counter);
         //wxMessageBox(_("Empty") );
-
     }
-
 }
 
 void Dlg::down()
@@ -605,9 +629,7 @@ void Dlg::down()
     else{
         i_plus(i_counter);
        // wxMessageBox(_("Empty") );
-
     }
-
 }
 
 void Dlg::i_plus(int &counter_test){

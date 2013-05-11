@@ -78,7 +78,9 @@ class FunDlg : public FunDlgDef
         void LoadCategories(void);
         void PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel);
         void OnCategorySelect( wxCommandEvent& event );
+        wxString Unit_Conversion(wxString Input_Unit, wxString Output_Unit, wxString Var);
         wxString NotEmpty (wxString);
+        bool dbg;
 
         Dlg *Plugin_Dialog;
     private:
@@ -91,7 +93,7 @@ public:
         Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator by SaltyPaws"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         Parser prs; //The calculator class. Here all the functions and variables are stored.
         void OnCalculate( wxCommandEvent& event );
-        void OnCalculate( void );
+        wxString OnCalculate( void );
         void OnHelp( wxCommandEvent& event );
         void OnHelp( void );
         void OnTest( wxMouseEvent& event );
