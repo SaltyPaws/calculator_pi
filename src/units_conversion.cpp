@@ -70,11 +70,6 @@ this->m_Unit_category.Add(_("Distance"));
 this->m_Conversion.Add(_("1000"));
 this->m_Display.Add(_("TRUE"));
 
-this->m_Unit.Add(_("Metre"));
-this->m_Unit_category.Add(_("Distance"));
-this->m_Conversion.Add(_("1"));
-this->m_Display.Add(_("FALSE"));
-
 this->m_Unit.Add(_("foot"));
 this->m_Unit_category.Add(_("Distance"));
 this->m_Conversion.Add(_("0.3048"));
@@ -107,17 +102,107 @@ this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Kelvin"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("VAR - 273.15 = VAR + 273.15 "));
+this->m_Conversion.Add(_("VAR - 273.15=VAR + 273.15"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Fahrenheit"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("(5/9) * (VAR\t32)=(9/5)* (VAR+32)"));
+this->m_Conversion.Add(_("(5/9) * (VAR - 32)=((9/5)* VAR)+32"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Rankine"));
 this->m_Unit_category.Add(_("Temperature"));
-this->m_Conversion.Add(_("(VAR491.67)*5 D9=(VAR + 273.15) * (9 D5)"));
+this->m_Conversion.Add(_("(5/9)*(VAR-491.67)=(9/5)*(VAR + 273.15)"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("m3/s"));
+this->m_Unit_category.Add(_("Flowrate"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("US gallons per minute"));
+this->m_Unit_category.Add(_("Flowrate"));
+this->m_Conversion.Add(_("15850.3231"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("liter per minute"));
+this->m_Unit_category.Add(_("Flowrate"));
+this->m_Conversion.Add(_("60000"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Seconds"));
+this->m_Unit_category.Add(_("Time"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Minutes"));
+this->m_Unit_category.Add(_("Time"));
+this->m_Conversion.Add(_("60"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Hours"));
+this->m_Unit_category.Add(_("Time"));
+this->m_Conversion.Add(_("3600"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Newton"));
+this->m_Unit_category.Add(_("Force"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("lbs"));
+this->m_Unit_category.Add(_("Force"));
+this->m_Conversion.Add(_("4.4482216"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Square meter"));
+this->m_Unit_category.Add(_("Area"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("square feet"));
+this->m_Unit_category.Add(_("Area"));
+this->m_Conversion.Add(_("0.092903"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Centimeter"));
+this->m_Unit_category.Add(_("Distance"));
+this->m_Conversion.Add(_("0.01"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("bar"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("FALSE"));
+
+this->m_Unit.Add(_("bara"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("barg"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("VAR-1=VAR+1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("psia"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.0689475729"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("psi"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.0689475729"));
+this->m_Display.Add(_("FALSE"));
+
+this->m_Unit.Add(_("kPa"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.01"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Inches of Mercury"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.03386"));
 this->m_Display.Add(_("TRUE"));
 
  //End Class

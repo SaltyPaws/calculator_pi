@@ -23,7 +23,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_result = new wxTextCtrl( m_Overview, wxID_ANY, _("function"), wxDefaultPosition, wxSize( 420,40 ), wxTE_PROCESS_ENTER );
+	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_PROCESS_ENTER );
 	m_result->SetMaxLength( 0 ); 
 	m_result->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 90, false, wxEmptyString ) );
 	m_result->SetMinSize( wxSize( 200,40 ) );
@@ -589,7 +589,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer26 = new wxBoxSizer( wxVERTICAL );
 	
 	wxStaticBoxSizer* sbSizer11;
-	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Category and Units") ), wxHORIZONTAL );
+	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function Category") ), wxHORIZONTAL );
 	
 	wxString m_Function_CategoriesChoices[] = { _("All") };
 	int m_Function_CategoriesNChoices = sizeof( m_Function_CategoriesChoices ) / sizeof( wxString );
@@ -597,28 +597,23 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Function_Categories->SetSelection( 0 );
 	sbSizer11->Add( m_Function_Categories, 1, wxALL, 5 );
 	
-	wxString m_Function_UnitsChoices[] = { _("All") };
-	int m_Function_UnitsNChoices = sizeof( m_Function_UnitsChoices ) / sizeof( wxString );
-	m_Function_Units = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_UnitsNChoices, m_Function_UnitsChoices, 0 );
-	m_Function_Units->SetSelection( 0 );
-	sbSizer11->Add( m_Function_Units, 1, wxALL, 5 );
-	
 	
 	bSizer26->Add( sbSizer11, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer12;
-	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function") ), wxVERTICAL );
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function") ), wxHORIZONTAL );
 	
-	wxArrayString m_Function_DropdownChoices;
-	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownChoices, 0 );
+	wxString m_Function_DropdownChoices[] = { _("All") };
+	int m_Function_DropdownNChoices = sizeof( m_Function_DropdownChoices ) / sizeof( wxString );
+	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownNChoices, m_Function_DropdownChoices, 0 );
 	m_Function_Dropdown->SetSelection( 1 );
-	sbSizer12->Add( m_Function_Dropdown, 0, wxALL|wxEXPAND, 5 );
+	sbSizer12->Add( m_Function_Dropdown, 1, wxALL, 5 );
 	
 	
 	bSizer26->Add( sbSizer12, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer14;
-	sbSizer14 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Description") ), wxVERTICAL );
+	sbSizer14 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function And Description") ), wxVERTICAL );
 	
 	m_panel101 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer113;
@@ -642,14 +637,16 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer26->Add( sbSizer14, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer15;
-	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Output Parameters") ), wxVERTICAL );
+	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Result Select Units") ), wxVERTICAL );
 	
 	m_panel100 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer64;
 	bSizer64 = new wxBoxSizer( wxHORIZONTAL );
 	
 	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
-	bSizer64->Add( m_Function_Result, 0, wxALL, 5 );
+	m_Function_Result->SetBackgroundColour( wxColour( 240, 240, 240 ) );
+	
+	bSizer64->Add( m_Function_Result, 1, wxALL|wxEXPAND, 5 );
 	
 	m_Output_Parameter = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_Output_Parameter->Wrap( -1 );
@@ -664,7 +661,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_panel100->SetSizer( bSizer64 );
 	m_panel100->Layout();
 	bSizer64->Fit( m_panel100 );
-	sbSizer15->Add( m_panel100, 0, wxALL, 5 );
+	sbSizer15->Add( m_panel100, 0, wxALL|wxEXPAND, 5 );
 	
 	
 	bSizer26->Add( sbSizer15, 0, wxEXPAND, 5 );
@@ -916,7 +913,6 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	// Connect Events
 	m_Function_Categories->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnCategorySelect ), NULL, this );
-	m_Function_Units->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnUnitSelect ), NULL, this );
 	m_Function_Dropdown->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button10->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
@@ -927,7 +923,6 @@ FunDlgDef::~FunDlgDef()
 {
 	// Disconnect Events
 	m_Function_Categories->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnCategorySelect ), NULL, this );
-	m_Function_Units->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnUnitSelect ), NULL, this );
 	m_Function_Dropdown->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button10->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );

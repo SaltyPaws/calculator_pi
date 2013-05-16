@@ -196,7 +196,6 @@ class FunDlgDef : public wxDialog
 	protected:
 		wxPanel* m_panel152;
 		wxChoice* m_Function_Categories;
-		wxChoice* m_Function_Units;
 		wxPanel* m_panel101;
 		wxStaticText* m_Function;
 		wxPanel* m_panel100;
@@ -208,7 +207,6 @@ class FunDlgDef : public wxDialog
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void OnCategorySelect( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnUnitSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnItemSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnExtraCalculate( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClose( wxCommandEvent& event ) { event.Skip(); }
