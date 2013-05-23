@@ -173,7 +173,7 @@ this->m_Display.Add(_("TRUE"));
 this->m_Unit.Add(_("bar"));
 this->m_Unit_category.Add(_("Pressure"));
 this->m_Conversion.Add(_("1"));
-this->m_Display.Add(_("FALSE"));
+this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("bara"));
 this->m_Unit_category.Add(_("Pressure"));
@@ -200,9 +200,54 @@ this->m_Unit_category.Add(_("Pressure"));
 this->m_Conversion.Add(_("0.01"));
 this->m_Display.Add(_("TRUE"));
 
+this->m_Unit.Add(_("Pa"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("1e-05"));
+this->m_Display.Add(_("TRUE"));
+
 this->m_Unit.Add(_("Inches of Mercury"));
 this->m_Unit_category.Add(_("Pressure"));
 this->m_Conversion.Add(_("0.03386"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("mBar"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.001"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("atm"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("0.987"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("mmHg"));
+this->m_Unit_category.Add(_("Pressure"));
+this->m_Conversion.Add(_("750.06"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("kg"));
+this->m_Unit_category.Add(_("Weight"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("2"));
+
+this->m_Unit.Add(_("Lbs (weight)"));
+this->m_Unit_category.Add(_("Weight"));
+this->m_Conversion.Add(_("2.20462"));
+this->m_Display.Add(_("3"));
+
+this->m_Unit.Add(_("gram"));
+this->m_Unit_category.Add(_("Weight"));
+this->m_Conversion.Add(_("0.001"));
+this->m_Display.Add(_("4"));
+
+this->m_Unit.Add(_("kg/m3"));
+this->m_Unit_category.Add(_("Density"));
+this->m_Conversion.Add(_("1"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("kg/liter"));
+this->m_Unit_category.Add(_("Density"));
+this->m_Conversion.Add(_("0.001"));
 this->m_Display.Add(_("TRUE"));
 
  //End Class

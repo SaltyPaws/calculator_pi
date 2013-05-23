@@ -41,7 +41,6 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
     this->LoadCategories();
     this->LoadFunctions(wxT("All"),wxT("All"));
     this->dbg=true;
-
 }
 
 void FunDlg::LoadFunctions(wxString Category, wxString Unit)
@@ -77,7 +76,6 @@ void FunDlg::LoadCategories(void)
         }
 	}
 	this->m_Function_Categories->SetSelection(0);
-
 }
 
 void FunDlg::OnCategorySelect( wxCommandEvent& event )
@@ -97,8 +95,6 @@ void FunDlg::OnItemSelect( wxCommandEvent& event )
     this->OnItemSelect();
 
 }
-
-
 
 void FunDlg::OnItemSelect(void)
     {
@@ -189,11 +185,6 @@ void FunDlg::OnItemSelect(void)
             Pulldown->SetSelection(0);
             }
     }
-/*
-wxString FunDlg::NotEmpty(wxString Dummy)
-{
-    if (Dummy.IsEmpty()) return wxT("0"); return Dummy;
-}*/
 
 wxString FunDlg::Unit_Conversion( wxString Output_Unit,wxString Input_Unit, wxString Var)
 {
@@ -272,10 +263,6 @@ else
 
 void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 {
-
-
-
-
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
     /*
@@ -291,7 +278,7 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
     if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value9->GetValue()),true);
     */
     //Add input parameters converted for unit
-    if (!testf.m_Input_parameter [testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter [testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units->GetString( this->Units->GetCurrentSelection()),this->Value->GetValue()),true);
+    if (!testf.m_Input_parameter [testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units->GetString( this->Units->GetCurrentSelection()),this->Value->GetValue()),true);
     if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit1[testf.Selected_Formula],this->Units1->GetString( this->Units1->GetCurrentSelection()),this->Value1->GetValue()),true);
     if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit2[testf.Selected_Formula],this->Units2->GetString( this->Units2->GetCurrentSelection()),this->Value2->GetValue()),true);
     if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit3[testf.Selected_Formula],this->Units3->GetString( this->Units3->GetCurrentSelection()),this->Value3->GetValue()),true);
