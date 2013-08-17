@@ -41,7 +41,6 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
     this->LoadCategories();
     this->LoadFunctions(wxT("All"),wxT("All"));
     this->dbg=true;
-
 }
 
 void FunDlg::LoadFunctions(wxString Category, wxString Unit)
@@ -53,7 +52,7 @@ void FunDlg::LoadFunctions(wxString Category, wxString Unit)
 	{
         if (Category.IsSameAs(testf.m_Category[count], false) || Category.IsSameAs(wxT("all"), false)   ) this->m_Function_Dropdown->Append(testf.m_ShortDesc[count]);
 	}
-    this->m_Function_Dropdown->SetSelection(this->testf.Selected_Formula);
+    this->m_Function_Dropdown->SetSelection(0);
     //Load default function in the menu
     this->OnItemSelect();
 }
@@ -92,59 +91,20 @@ void FunDlg::OnClose( wxCommandEvent& event )
 void FunDlg::OnItemSelect( wxCommandEvent& event )
 {
 
-    wxString Selected_Result=event.GetString();
-    unsigned int n;
-        for ( n = 0; n < testf.m_Formula.GetCount() ; n++)
-        {
-            if(Selected_Result==testf.m_ShortDesc[n]) break;
-        }
-    this->testf.Selected_Formula=n;
+
     this->OnItemSelect();
-    this->m_Function_Result->SetValue(_(""));
+
 }
-
-void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel)
-    {
-        if (Input_Units.IsEmpty())
-            {
-            Panel->Show(false);
-            }
-        else
-            {
-            //Clear Pulldown
-            Pulldown->Clear();
-
-            //Show panel
-            Panel->Show(true);
-            //Determine output units
-            int unit_index=this->Units_conv.m_Unit.Index(Input_Units, false, false);
-            if (unit_index==wxNOT_FOUND)
-                {
-                //Unit not found
-              //  printf("Cannot find unit: %s\n",(const char*) Input_Units.mb_str() );
-                Pulldown->Append(Input_Units);
-                }
-            else
-                {
-                //unit found
-               // printf("Found unit: %s",(const char*) Input_Units.mb_str() );
-               // printf(" of category: %s\n",(const char*) this->Units_conv.m_Unit_category[unit_index].mb_str() );
-
-                for ( unsigned int count = 0; count < this->Units_conv.m_Unit.GetCount() ; count++)
-                    {
-                    if (Units_conv.m_Unit_category[unit_index].IsSameAs(this->Units_conv.m_Unit_category[count], false) )
-                        {
-                           // printf("Other units found in category: %s\n",(const char*) Units_conv.m_Unit[count].mb_str() );
-                            if (Units_conv.m_Display[count].IsSameAs(wxT("TRUE"), false) ) Pulldown->Append(Units_conv.m_Unit[count]);
-                        }
-                    }
-                }
-            Pulldown->SetSelection(0);
-            }
-    }
 
 void FunDlg::OnItemSelect(void)
     {
+    wxString Selected_Result=	this->m_Function_Dropdown->GetString( this->m_Function_Dropdown->GetCurrentSelection());
+    unsigned int n;
+    for ( n = 0; n < testf.m_Formula.GetCount() ; n++)
+    {
+        if(Selected_Result==testf.m_ShortDesc[n]) break;
+    }
+    this->testf.Selected_Formula=n;
     this->m_Function->SetLabel(testf.m_Formula[testf.Selected_Formula]);
     this->m_Description->SetLabel(testf.m_LongDesc[testf.Selected_Formula]);
     this->m_Output_Parameter->SetLabel(testf.m_Formula[testf.Selected_Formula].BeforeFirst('='));
@@ -183,12 +143,48 @@ void FunDlg::OnItemSelect(void)
     this->m_Function->Wrap(400); ///Width of description can be put in settings
     this->m_Description->Wrap(400); ///Width of description can be put in settings
     this->Fit();
+    this->m_Function_Result->SetValue(_(""));
     }
 
-wxString FunDlg::NotEmpty(wxString Dummy)
-{
-    if (Dummy.IsEmpty()) return wxT("0"); return Dummy;
-}
+    void FunDlg::PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel)
+    {
+        if (Input_Units.IsEmpty())
+            {
+            Panel->Show(false);
+            }
+        else
+            {
+            //Clear Pulldown
+            Pulldown->Clear();
+
+            //Show panel
+            Panel->Show(true);
+            //Determine output units
+            int unit_index=this->Units_conv.m_Unit.Index(Input_Units, false, false);
+            if (unit_index==wxNOT_FOUND)
+                {
+                //Unit not found
+              //  printf("Cannot find unit: %s\n",(const char*) Input_Units.mb_str() );
+                Pulldown->Append(Input_Units);
+                }
+            else
+                {
+                //unit found
+               // printf("Found unit: %s",(const char*) Input_Units.mb_str() );
+               // printf(" of category: %s\n",(const char*) this->Units_conv.m_Unit_category[unit_index].mb_str() );
+
+                for ( unsigned int count = 0; count < this->Units_conv.m_Unit.GetCount() ; count++)
+                    {
+                    if (Units_conv.m_Unit_category[unit_index].IsSameAs(this->Units_conv.m_Unit_category[count], false) )
+                        {
+                           // printf("Other units found in category: %s\n",(const char*) Units_conv.m_Unit[count].mb_str() );
+                            if (Units_conv.m_Display[count].IsSameAs(wxT("TRUE"), false) ) Pulldown->Append(Units_conv.m_Unit[count]);
+                        }
+                    }
+                }
+            Pulldown->SetSelection(0);
+            }
+    }
 
 wxString FunDlg::Unit_Conversion( wxString Output_Unit,wxString Input_Unit, wxString Var)
 {
@@ -267,10 +263,6 @@ else
 
 void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 {
-
-
-
-
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
     /*
@@ -286,16 +278,16 @@ void FunDlg::OnExtraCalculate( wxCommandEvent& event )
     if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty()) Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],this->NotEmpty(this->Value9->GetValue()),true);
     */
     //Add input parameters converted for unit
-    if (!testf.m_Input_parameter [testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter [testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units->GetString( this->Units->GetCurrentSelection()),this->Value->GetValue()),true);
-    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units1->GetString( this->Units1->GetCurrentSelection()),this->Value1->GetValue()),true);
-    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units2->GetString( this->Units2->GetCurrentSelection()),this->Value2->GetValue()),true);
-    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units3->GetString( this->Units3->GetCurrentSelection()),this->Value3->GetValue()),true);
-    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units4->GetString( this->Units4->GetCurrentSelection()),this->Value4->GetValue()),true);
-    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units5->GetString( this->Units5->GetCurrentSelection()),this->Value5->GetValue()),true);
-    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units6->GetString( this->Units6->GetCurrentSelection()),this->Value6->GetValue()),true);
-    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units7->GetString( this->Units7->GetCurrentSelection()),this->Value7->GetValue()),true);
-    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units8->GetString( this->Units8->GetCurrentSelection()),this->Value8->GetValue()),true);
-    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units9->GetString( this->Units9->GetCurrentSelection()),this->Value9->GetValue()),true);
+    if (!testf.m_Input_parameter [testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit[testf.Selected_Formula],this->Units->GetString( this->Units->GetCurrentSelection()),this->Value->GetValue()),true);
+    if (!testf.m_Input_parameter1[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter1[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit1[testf.Selected_Formula],this->Units1->GetString( this->Units1->GetCurrentSelection()),this->Value1->GetValue()),true);
+    if (!testf.m_Input_parameter2[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter2[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit2[testf.Selected_Formula],this->Units2->GetString( this->Units2->GetCurrentSelection()),this->Value2->GetValue()),true);
+    if (!testf.m_Input_parameter3[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter3[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit3[testf.Selected_Formula],this->Units3->GetString( this->Units3->GetCurrentSelection()),this->Value3->GetValue()),true);
+    if (!testf.m_Input_parameter4[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter4[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit4[testf.Selected_Formula],this->Units4->GetString( this->Units4->GetCurrentSelection()),this->Value4->GetValue()),true);
+    if (!testf.m_Input_parameter5[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter5[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit5[testf.Selected_Formula],this->Units5->GetString( this->Units5->GetCurrentSelection()),this->Value5->GetValue()),true);
+    if (!testf.m_Input_parameter6[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter6[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit6[testf.Selected_Formula],this->Units6->GetString( this->Units6->GetCurrentSelection()),this->Value6->GetValue()),true);
+    if (!testf.m_Input_parameter7[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter7[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit7[testf.Selected_Formula],this->Units7->GetString( this->Units7->GetCurrentSelection()),this->Value7->GetValue()),true);
+    if (!testf.m_Input_parameter8[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter8[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit8[testf.Selected_Formula],this->Units8->GetString( this->Units8->GetCurrentSelection()),this->Value8->GetValue()),true);
+    if (!testf.m_Input_parameter9[testf.Selected_Formula].IsEmpty())  Formula.Replace(testf.m_Input_parameter9[testf.Selected_Formula],Unit_Conversion(testf.m_Input_unit9[testf.Selected_Formula],this->Units9->GetString( this->Units9->GetCurrentSelection()),this->Value9->GetValue()),true);
 
     //Convert formula to desired output unit
     Formula=Unit_Conversion(this->m_Output_Parameter_UnitC->GetString( this->m_Output_Parameter_UnitC->GetCurrentSelection()),testf.m_Result_Unit[testf.Selected_Formula],Formula);

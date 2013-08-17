@@ -23,7 +23,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer41;
 	bSizer41 = new wxBoxSizer( wxHORIZONTAL );
 	
-	m_result = new wxTextCtrl( m_Overview, wxID_ANY, _("function"), wxDefaultPosition, wxSize( 420,40 ), wxTE_PROCESS_ENTER );
+	m_result = new wxTextCtrl( m_Overview, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 420,40 ), wxTE_PROCESS_ENTER );
 	m_result->SetMaxLength( 0 ); 
 	m_result->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), 70, 90, 90, false, wxEmptyString ) );
 	m_result->SetMinSize( wxSize( 200,40 ) );
@@ -287,7 +287,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer402 = new wxBoxSizer( wxVERTICAL );
 	
 	wxStaticBoxSizer* sbSizer7;
-	sbSizer7 = new wxStaticBoxSizer( new wxStaticBox( m_panel11, wxID_ANY, _("DD.dddddd° (no limit to decimals)") ), wxVERTICAL );
+	sbSizer7 = new wxStaticBoxSizer( new wxStaticBox( m_panel11, wxID_ANY, _("DD.dddddd\u00b0 (no limit to decimals)") ), wxVERTICAL );
 	
 	wxBoxSizer* bSizer1321;
 	bSizer1321 = new wxBoxSizer( wxVERTICAL );
@@ -303,7 +303,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lat1->SetMaxLength( 0 ); 
 	bSizer1431->Add( m_Lat1, 3, wxALIGN_CENTER_VERTICAL|wxEXPAND|wxTOP|wxBOTTOM|wxLEFT, 5 );
 	
-	m_staticText3331 = new wxStaticText( m_panel11, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331 = new wxStaticText( m_panel11, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3331->Wrap( -1 );
 	bSizer1431->Add( m_staticText3331, 0, wxTOP|wxBOTTOM|wxLEFT, 5 );
 	
@@ -321,7 +321,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lon1->SetMaxLength( 0 ); 
 	bSizer14311->Add( m_Lon1, 3, wxALIGN_CENTER_VERTICAL|wxEXPAND|wxTOP|wxBOTTOM|wxLEFT, 5 );
 	
-	m_staticText33311 = new wxStaticText( m_panel11, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText33311 = new wxStaticText( m_panel11, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33311->Wrap( -1 );
 	bSizer14311->Add( m_staticText33311, 0, wxTOP|wxBOTTOM|wxLEFT, 5 );
 	
@@ -347,7 +347,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
 	
 	wxStaticBoxSizer* sbSizer721;
-	sbSizer721 = new wxStaticBoxSizer( new wxStaticBox( m_panel151, wxID_ANY, _("DD.dddddd° (no limit to decimals)") ), wxVERTICAL );
+	sbSizer721 = new wxStaticBoxSizer( new wxStaticBox( m_panel151, wxID_ANY, _("DD.dddddd\u00b0 (no limit to decimals)") ), wxVERTICAL );
 	
 	wxBoxSizer* bSizer132121;
 	bSizer132121 = new wxBoxSizer( wxVERTICAL );
@@ -363,7 +363,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lat1_d1->SetMaxLength( 0 ); 
 	bSizer143131->Add( m_Lat1_d1, 0, wxALL, 5 );
 	
-	m_staticText333131 = new wxStaticText( m_panel151, wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText333131 = new wxStaticText( m_panel151, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText333131->Wrap( -1 );
 	bSizer143131->Add( m_staticText333131, 0, wxALL, 5 );
 	
@@ -395,7 +395,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lon1_d1->SetMaxLength( 0 ); 
 	bSizer1431121->Add( m_Lon1_d1, 0, wxALL, 5 );
 	
-	m_staticText3331121 = new wxStaticText( m_panel151, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331121 = new wxStaticText( m_panel151, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3331121->Wrap( -1 );
 	bSizer1431121->Add( m_staticText3331121, 0, wxALL, 5 );
 	
@@ -441,7 +441,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer401 = new wxBoxSizer( wxVERTICAL );
 	
 	wxStaticBoxSizer* sbSizer72;
-	sbSizer72 = new wxStaticBoxSizer( new wxStaticBox( m_panel15, wxID_ANY, _("DD°MM’SS.s (no limit to digits)") ), wxVERTICAL );
+	sbSizer72 = new wxStaticBoxSizer( new wxStaticBox( m_panel15, wxID_ANY, _("DD\u00b0MM’SS.s (no limit to digits)") ), wxVERTICAL );
 	
 	wxBoxSizer* bSizer13212;
 	bSizer13212 = new wxBoxSizer( wxVERTICAL );
@@ -457,7 +457,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lat1_d->SetMaxLength( 0 ); 
 	bSizer14313->Add( m_Lat1_d, 0, wxALL, 5 );
 	
-	m_staticText33313 = new wxStaticText( m_panel15, wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText33313 = new wxStaticText( m_panel15, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText33313->Wrap( -1 );
 	bSizer14313->Add( m_staticText33313, 0, wxALL, 5 );
 	
@@ -497,7 +497,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Lon1_d->SetMaxLength( 0 ); 
 	bSizer143112->Add( m_Lon1_d, 0, wxALL, 5 );
 	
-	m_staticText333112 = new wxStaticText( m_panel15, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText333112 = new wxStaticText( m_panel15, wxID_ANY, _("\u00b0"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText333112->Wrap( -1 );
 	bSizer143112->Add( m_staticText333112, 0, wxALL, 5 );
 	
@@ -545,7 +545,7 @@ MyDialog5::MyDialog5( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_panel15->SetSizer( bSizer401 );
 	m_panel15->Layout();
 	bSizer401->Fit( m_panel15 );
-	m_wxNotebook234->AddPage( m_panel15, _("° ' \""), true );
+	m_wxNotebook234->AddPage( m_panel15, _("\u00b0 ' \""), true );
 	
 	bSizer35->Add( m_wxNotebook234, 0, wxALL, 5 );
 	
@@ -589,7 +589,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer26 = new wxBoxSizer( wxVERTICAL );
 	
 	wxStaticBoxSizer* sbSizer11;
-	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Category and Units") ), wxHORIZONTAL );
+	sbSizer11 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function Category") ), wxHORIZONTAL );
 	
 	wxString m_Function_CategoriesChoices[] = { _("All") };
 	int m_Function_CategoriesNChoices = sizeof( m_Function_CategoriesChoices ) / sizeof( wxString );
@@ -597,28 +597,23 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_Function_Categories->SetSelection( 0 );
 	sbSizer11->Add( m_Function_Categories, 1, wxALL, 5 );
 	
-	wxString m_Function_UnitsChoices[] = { _("All") };
-	int m_Function_UnitsNChoices = sizeof( m_Function_UnitsChoices ) / sizeof( wxString );
-	m_Function_Units = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_UnitsNChoices, m_Function_UnitsChoices, 0 );
-	m_Function_Units->SetSelection( 0 );
-	sbSizer11->Add( m_Function_Units, 1, wxALL, 5 );
-	
 	
 	bSizer26->Add( sbSizer11, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer12;
-	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function") ), wxVERTICAL );
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Select Function") ), wxHORIZONTAL );
 	
-	wxArrayString m_Function_DropdownChoices;
-	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownChoices, 0 );
+	wxString m_Function_DropdownChoices[] = { _("All") };
+	int m_Function_DropdownNChoices = sizeof( m_Function_DropdownChoices ) / sizeof( wxString );
+	m_Function_Dropdown = new wxChoice( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Function_DropdownNChoices, m_Function_DropdownChoices, 0 );
 	m_Function_Dropdown->SetSelection( 1 );
-	sbSizer12->Add( m_Function_Dropdown, 0, wxALL|wxEXPAND, 5 );
+	sbSizer12->Add( m_Function_Dropdown, 1, wxALL, 5 );
 	
 	
 	bSizer26->Add( sbSizer12, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer14;
-	sbSizer14 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Description") ), wxVERTICAL );
+	sbSizer14 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function And Description") ), wxVERTICAL );
 	
 	m_panel101 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer113;
@@ -642,14 +637,16 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer26->Add( sbSizer14, 0, wxEXPAND, 5 );
 	
 	wxStaticBoxSizer* sbSizer15;
-	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Output Parameters") ), wxVERTICAL );
+	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Result Select Units") ), wxVERTICAL );
 	
 	m_panel100 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer64;
 	bSizer64 = new wxBoxSizer( wxHORIZONTAL );
 	
 	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
-	bSizer64->Add( m_Function_Result, 0, wxALL, 5 );
+	m_Function_Result->SetBackgroundColour( wxColour( 240, 240, 240 ) );
+	
+	bSizer64->Add( m_Function_Result, 1, wxALL|wxEXPAND, 5 );
 	
 	m_Output_Parameter = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_Output_Parameter->Wrap( -1 );
@@ -664,7 +661,7 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_panel100->SetSizer( bSizer64 );
 	m_panel100->Layout();
 	bSizer64->Fit( m_panel100 );
-	sbSizer15->Add( m_panel100, 0, wxALL, 5 );
+	sbSizer15->Add( m_panel100, 0, wxALL|wxEXPAND, 5 );
 	
 	
 	bSizer26->Add( sbSizer15, 0, wxEXPAND, 5 );
@@ -916,7 +913,6 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	// Connect Events
 	m_Function_Categories->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnCategorySelect ), NULL, this );
-	m_Function_Units->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnUnitSelect ), NULL, this );
 	m_Function_Dropdown->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button10->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
@@ -927,7 +923,6 @@ FunDlgDef::~FunDlgDef()
 {
 	// Disconnect Events
 	m_Function_Categories->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnCategorySelect ), NULL, this );
-	m_Function_Units->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnUnitSelect ), NULL, this );
 	m_Function_Dropdown->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( FunDlgDef::OnItemSelect ), NULL, this );
 	m_button7->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnExtraCalculate ), NULL, this );
 	m_button10->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( FunDlgDef::OnClose ), NULL, this );
