@@ -23,9 +23,9 @@ MESSAGE (STATUS "*** Building ${PACKAGE_NAME} ***")
 #SET(CMAKE_BUILD_TYPE Debug)
 
 INCLUDE_DIRECTORIES(
-	${CMAKE_SOURCE_DIR}/include 
+	${CMAKE_SOURCE_DIR}/include
 	${CMAKE_SOURCE_DIR}/src
-	${CMAKE_SOURCE_DIR}/plugins/calculator_pi/src/expression_parser
+	${CMAKE_SOURCE_DIR}/src/expression_parser
 )
 
 # require proper c++
@@ -51,8 +51,10 @@ IF(WIN32)
     ADD_DEFINITIONS( /DOMIT_GEOS /DOMIT_PROJ /DOMIT_FREEXL /DSQLITE_ENABLE_RTREE=1 /DVERSION="\\"3.0.1\\"")
 ENDIF(WIN32)
 
-
-#SET(wxWidgets_USE_LIBS base core net xml html adv)
+IF(NOT DEFINED wxWidgets_USE_FILE)
+  SET(wxWidgets_USE_LIBS base core net xml html adv aui)
+  FIND_PACKAGE(wxWidgets REQUIRED)
+ENDIF(NOT DEFINED wxWidgets_USE_FILE)
 #SET(BUILD_SHARED_LIBS TRUE)
 #FIND_PACKAGE(wxWidgets REQUIRED)
 
@@ -76,11 +78,9 @@ SET(SRC_CALCULATOR
 	    src/calculatorgui_impl.h
 	    src/functions.h
 	    src/functions.cpp
-	    src/units_conversion.h
-	    src/units_conversion.cpp
 	)
 
-SET(SRC_EXPPARS 	
+SET(SRC_EXPPARS
 	src/expression_parser/constants.h
 	src/expression_parser/error.cpp
 	src/expression_parser/error.h
@@ -113,7 +113,14 @@ IF(APPLE)
 ENDIF(APPLE)
 
 IF(UNIX AND NOT APPLE)
-	INSTALL(TARGETS ${PACKAGE_NAME} RUNTIME LIBRARY DESTINATION ${PREFIX_PLUGINS})
+      IF(NOT DEFINED PREFIX_PLUGINS)
+            SET(PREFIX_PLUGINS /usr/lib/opencpn)
+      ENDIF(NOT DEFINED PREFIX_PLUGINS)
+      IF(NOT DEFINED PREFIX_DATA)
+        SET(PREFIX_DATA /usr/share)
+      ENDIF(NOT DEFINED PREFIX_DATA)
+
+INSTALL(TARGETS ${PACKAGE_NAME} RUNTIME LIBRARY DESTINATION ${PREFIX_PLUGINS})
 ENDIF(UNIX AND NOT APPLE)
 
 IF(WIN32)
