@@ -37,7 +37,7 @@
 
 #include <wx/fileconf.h>
 
-#include <opencpn/ocpn_plugin.h>
+#include "../../../include/ocpn_plugin.h"
 #include "calculatorgui_impl.h"
 
 #define     PLUGIN_VERSION_MAJOR    1
