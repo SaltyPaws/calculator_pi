@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Oct  8 2012)
+// C++ code generated with wxFormBuilder (version Jun  6 2014)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO "NOT" EDIT THIS FILE!
@@ -43,7 +43,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Help = new wxCheckBox( m_Overview, wxID_ANY, _("History"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer41->Add( m_Help, 0, wxALL|wxEXPAND, 5 );
 	
-	m_HelpButton = new wxButton( m_Overview, wxID_ANY, _("?"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_HelpButton = new wxButton( m_Overview, wxID_ANY, _("Help"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer41->Add( m_HelpButton, 0, wxALL|wxEXPAND, 5 );
 	
 	
