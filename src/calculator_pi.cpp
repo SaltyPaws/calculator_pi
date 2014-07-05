@@ -239,23 +239,23 @@ bool calculator_pi::LoadConfig(void)
       {
             pConf->SetPath ( _T( "/Settings/Calculator" ) );
             pConf->Read ( _T ( "Opacity" ),  &m_iOpacity, 255 );
-            pConf->Read ( _T ( "MaxResults" ),  &m_iMaxResults, 255 );
+            pConf->Read ( _T ( "MaxResults" ),  &m_iMaxResults, 30 );
             m_calculator_dialog_x =  pConf->Read ( _T ( "DialogPosX" ), 20L );
-            m_calculator_dialog_y =  pConf->Read ( _T ( "DialogPosY" ), 20L );
-            m_calculator_dialog_width = pConf->Read ( _T ( "DialogPosW" ), 20L );
-            m_calculator_dialog_height = pConf->Read ( _T ( "DialogPosH" ), 20L );
+            m_calculator_dialog_y =  pConf->Read ( _T ( "DialogPosY" ), 170L );
+            m_calculator_dialog_width = pConf->Read ( _T ( "DialogPosW" ), 300L );
+            m_calculator_dialog_height = pConf->Read ( _T ( "DialogPosH" ), 540L );
 
-            m_bshowhelpB = pConf->Read ( _T ( "m_bshowhelpB" ), 20L );
-            m_bshowhistoryB = pConf->Read ( _T ( "m_bshowhistoryB" ), 20L );
-            m_bCalculateB = pConf->Read ( _T ( "m_bCalculateB" ), 20L );
-            m_bshowFunction = pConf->Read ( _T ( "m_bshowFunction" ), 20L );
-            m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 20L );
+            m_bshowhelpB = pConf->Read ( _T ( "m_bshowhelpB" ), 1 );
+            m_bshowhistoryB = pConf->Read ( _T ( "m_bshowhistoryB" ), 1 );
+            m_bCalculateB = pConf->Read ( _T ( "m_bCalculateB" ), 1 );
+            m_bshowFunction = pConf->Read ( _T ( "m_bshowFunction" ), 1 );
+            m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 1 );
             //m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
-            m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 20L );
+            m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 1 );
 
-            m_iCalc_Reporting = pConf->Read ( _T ( "m_iCalc_Reporting" ), 20L );
-            m_bshowhistoryP = pConf->Read ( _T ( "m_bshowhistoryP" ), 20L );
-            m_bshowfunction_Open_CPN_BAR = pConf->Read ( _T ( "m_bshowfunction_Open_CPN_BAR" ), 20L );
+            m_iCalc_Reporting = pConf->Read ( _T ( "m_iCalc_Reporting" ), 1 );
+            m_bshowhistoryP = pConf->Read ( _T ( "m_bshowhistoryP" ), 1 );
+            m_bshowfunction_Open_CPN_BAR = pConf->Read ( _T ( "m_bshowfunction_Open_CPN_BAR" ), 1 );
 /*
             printf("Just got some results to the config file\n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
