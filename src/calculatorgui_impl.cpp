@@ -544,7 +544,8 @@ wxString Dlg::OnCalculate( void )
             Muparser_result = MuParser.Eval();//Get the result
             mystring=wxT("ans=")+double2wxT(Muparser_result);//set ans string (borrow the mystring);
             mystring.Replace(wxT(","),wxT("."),TRUE);
-            MuParser.SetExpr((mu::string_type) mystring.mb_str()); //Store the answer in ans
+           // MuParser.SetExpr((mu::string_type) mystring.mb_str()); //Store the answer in ans
+            MuParser.SetExpr(static_cast<const char*>(mystring.mb_str()));
             mystring=Report_Value(Muparser_result,m_iCalc_Reporting);//Format result as per setting.
             Muparser_result = MuParser.Eval();//Evaluate for ans
 
