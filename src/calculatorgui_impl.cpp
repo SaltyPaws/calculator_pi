@@ -43,8 +43,6 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 {
     this->LoadCategories();
     this->LoadFunctions(wxT("All"),wxT("All"));
-    this->dbg=true;
-
 }
 
 void FunDlg::LoadFunctions(wxString Category, wxString Unit)
@@ -189,42 +187,49 @@ void FunDlg::OnItemSelect(void)
 
 wxString FunDlg::Unit_Conversion( wxString Output_Unit,wxString Input_Unit, wxString Var)
 {
-if (dbg) printf("\n\n------------------------------------------------------\n");
-if (dbg) printf("Input_Unit: %s\n",(const char*) Input_Unit.mb_str() );
-if (dbg) printf("Output_Unit: %s\n",(const char*) Output_Unit.mb_str() );
-if (dbg) printf("Var: %s\n",(const char*) Var.mb_str() );
+#ifdef DEBUG
+printf("\n\n------------------------------------------------------\n");
+printf("Input_Unit: %s\n",(const char*) Input_Unit.mb_str() );
+printf("Output_Unit: %s\n",(const char*) Output_Unit.mb_str() );
+printf("Var: %s\n",(const char*) Var.mb_str() );
+#endif // DEBUG
 
 //If Var is empty, return 0, nothing else to do
 if (Var.IsEmpty()) return wxT("0");
 
 if (Input_Unit.CmpNoCase(Output_Unit)!=0) //Convert if input unit is not output unit
     {
-     if (dbg) printf("Do something, return factor\n");
      //find input unit factor
      int to_base = this->Units_conv.m_Unit.Index(Input_Unit, false);
      int to_output = this->Units_conv.m_Unit.Index(Output_Unit, false);
      if (to_base==wxNOT_FOUND || to_output==wxNOT_FOUND)
         {
+         #ifdef DEBUG
          printf("not found unit, end conversion\n");
+         #endif // DEBUG
          return( Var );
         }
     else
         {
-            if (dbg) printf("Conversion to base: %s\n",(const char*) this->Units_conv.m_Conversion[to_base].mb_str() );
-            if (dbg) printf("Conversion to output: 1/%s\n",(const char*) this->Units_conv.m_Conversion[to_output].mb_str() );
-
+        #ifdef DEBUG
+        printf("Conversion to base: %s\n",(const char*) this->Units_conv.m_Conversion[to_base].mb_str() );
+        printf("Conversion to output: 1/%s\n",(const char*) this->Units_conv.m_Conversion[to_output].mb_str() );
+        #endif // DEBUG
             //Check if to_base contains VAR, if yes to_base= replace VAR with Var else to_base=Var*to_base
             if (Units_conv.m_Conversion[to_base].Contains(wxT("VAR")))
                 {
                 Input_Unit = wxT("(")+Units_conv.m_Conversion[to_base].BeforeFirst('=')+wxT(")");
                 Input_Unit.Replace(wxT("VAR"), Var);
-                if (dbg) printf("Replace mode.... Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
-
+                #ifdef DEBUG
+                printf("Replace mode.... Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+                #endif // DEBUG
                 }
             else
             {
                 Input_Unit =wxT("(")+Var+wxT("*")+Units_conv.m_Conversion[to_base]+wxT(")");
-                if (dbg) printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+                #ifdef DEBUG
+                printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+                #endif // DEBUG
             }
 
 
@@ -233,31 +238,30 @@ if (Input_Unit.CmpNoCase(Output_Unit)!=0) //Convert if input unit is not output 
                 {
                 Output_Unit = Units_conv.m_Conversion[to_output].AfterLast('=');
                 Output_Unit.Replace(wxT("VAR"), Input_Unit);
-                if (dbg) printf("Replace mode.... Output_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
-                if (dbg)
-                    {
-                    wxString returnf=wxT("(")+Output_Unit+wxT(")");
-                    printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );
-                    }
+                #ifdef DEBUG
+                printf("Replace mode.... Output_Unit: -->%s<--\n",(const char*) Input_Unit.mb_str() );
+                {wxString returnf=wxT("(")+Output_Unit+wxT(")");
+                printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );}
+                #endif
                 return (wxT("(")+Output_Unit+wxT(")"));
                 }
             else
             {
                 Output_Unit =Input_Unit+wxT("/")+Units_conv.m_Conversion[to_output];
-                if (dbg) printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Output_Unit.mb_str() );
-                if (dbg)
-                    {
-                    wxString returnf=wxT("(")+Output_Unit+wxT(")");
-                    printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );
-                }
+                #ifdef DEBUG
+                printf("Normal Mode: Input_Unit: -->%s<--\n",(const char*) Output_Unit.mb_str() );
+                {wxString returnf=wxT("(")+Output_Unit+wxT(")");
+                printf("Returning: -->%s<--\n",(const char*) returnf.mb_str() );}
+                #endif
                 return (wxT("(")+Output_Unit+wxT(")"));
             }
         }
     }
 else
     {
-
-    if (dbg) printf("Nothing to do, return input variable\n");
+    #ifdef DEBUG
+    printf("Nothing to do, return input variable\n");
+    #endif
     return (Var);
     }
 }
@@ -523,18 +527,16 @@ wxString Dlg::OnCalculate( void )
     else
         {
         wxString mystring;
+        #ifdef DEBUG
         printf("Input: %s\n",(const char*) Text.mb_str() );
-        /*Muparser*/
-
+        #endif // DEBUG
 
         MuParser.SetExpr((mu::string_type) Text.mb_str()); //Typecast to mu::stringtype
-
         double Muparser_result=0;
         try
         {
-        Muparser_result = MuParser.Eval();
-        mystring=Report_Value(Muparser_result,m_iCalc_Reporting);
-
+            Muparser_result = MuParser.Eval();
+            mystring=Report_Value(Muparser_result,m_iCalc_Reporting);
         }
         //catch(...)
         catch(mu::Parser::exception_type &e)
@@ -546,7 +548,7 @@ wxString Dlg::OnCalculate( void )
             mystring=wxT("Error: ")+tempstring;
             }
             error_check=true;
-            printf("Message: %s\n",(const char*) mystring.mb_str() );
+            //printf("Message: %s\n",(const char*) mystring.mb_str() );
         }
         if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring); //log into OpenCPN
 
@@ -554,20 +556,14 @@ wxString Dlg::OnCalculate( void )
             m_result->SetValue(mystring.c_str());
         else
             m_result->SetValue(_(""));
-        //m_listCtrl->SetItem(itemIndex, item_counter, "hallo"); //want this for col. 2
+
         Text.Right(Text.Length()-3);
-        //wxLogMessage(mystring);
-        //mhelp  capture hidden
-        //false  false  --dont capture
-        /*printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-        //printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
 
         if (!error_check )
             {
             if ((this->m_Help->GetValue()) || (m_bcapturehidden))
                 {
                 //     m_listCtrl->DeleteItem(item_counter);
-
                 itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //Here input+result are stored in the memory box
                 m_listCtrl->EnsureVisible(itemIndex); //make sure latest result is visible in history box
                 HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring);
@@ -647,14 +643,7 @@ void Dlg::down()
 
 
 wxString Dlg::Report_Value(double in_Value, int in_mode){
-    /*
-    Yet to implement: strip trailing 0
-    thousands separator
-    humanize
-
-    */
     wxString Temp_String=wxT("");
-    //double human_sign;
     int human_magnitude=0;
     double result=0;
     switch(in_mode) {
@@ -711,13 +700,15 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
                     case -8:Temp_String=wxT("yocto");break;
 
                     default: // do nothing
-                    Temp_String=wxT("result out of SI prefixes range");
-                    result=in_Value;
+                        Temp_String=wxT("result out of SI prefixes range");
+                        result=in_Value;
                     break;
-                    }
+                }
             }
             catch(mu::Parser::exception_type &e) {
+                #ifdef DEBUG
                 printf("Error Humanising number!!\n");
+                #endif // DEBUG
                 }
             return double2wxT(result) + wxT(" ") + Temp_String;
             break;
@@ -732,8 +723,8 @@ wxString Dlg::double2wxT(double in_Value){
 }
 
 void Dlg::OnHistoryPulldown ( wxCommandEvent& event ){
-        wxString Selected_Result=	this->m_HistoryPulldown->GetString( this->m_HistoryPulldown->GetCurrentSelection());
-        Selected_Result=Selected_Result.BeforeFirst('=');
-        //ItemText=ItemText.BeforeFirst(' ');
-        this->m_result->AppendText(Selected_Result);
+    wxString Selected_Result=	this->m_HistoryPulldown->GetString( this->m_HistoryPulldown->GetCurrentSelection());
+    Selected_Result=Selected_Result.BeforeFirst('=');
+    //ItemText=ItemText.BeforeFirst(' ');
+    this->m_result->AppendText(Selected_Result);
 }

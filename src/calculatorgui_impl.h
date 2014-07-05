@@ -85,8 +85,6 @@ class FunDlg : public FunDlgDef
         void PopulatePuldown(wxString& Input_Units, wxChoice* Pulldown, wxPanel *Panel);
         void OnCategorySelect( wxCommandEvent& event );
         wxString Unit_Conversion(wxString Input_Unit, wxString Output_Unit, wxString Var);
-       // wxString NotEmpty (wxString);
-        bool dbg;
         Dlg *Plugin_Dialog;
     private:
 
