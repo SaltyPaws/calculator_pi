@@ -111,11 +111,12 @@ public:
         void key_shortcut(wxKeyEvent& event);
         void OnKey (wxKeyEvent& event);
         void OnItem( wxListEvent& event );
+        void OnHistoryPulldown ( wxCommandEvent& event );
         void down(void);
         void up (void);
         void i_plus(int &counter_test);
         void i_min(int &counter_test);
-double* addVariable(const char *a_szName, void *pUserVariableFactory);
+
 
         calculator_pi *plugin;
 
@@ -128,12 +129,15 @@ double* addVariable(const char *a_szName, void *pUserVariableFactory);
         void setm_bcapturehidden    (bool x){m_bcapturehidden = x;};
         void setm_blogresults       (bool x){m_blogresults = x;};
 
-        void setm_iCalc_Reporting   (bool x){m_iCalc_Reporting = x;};
+        void setm_iCalc_Reporting   (int x){m_iCalc_Reporting = x;};
         void setm_bshowhistoryP     (bool x){m_bshowhistoryP = x;};
         void setm_bshowfunction_Open_CPN_BAR (bool x){m_bshowfunction_Open_CPN_BAR = x;};
 
         void set_Buttons (void);
         void set_History(void);
+
+        wxString Report_Value(double in_Value, int in_mode);
+        wxString double2wxT(double in_Value);
         //void set_Parentwindow(wxwindow *x){*m_parent_windowref = *x;};
 
 private:
@@ -144,6 +148,7 @@ private:
         int i_counter;
         int item_counter;
         long itemIndex;
+        long HistoryPulldownitemIndex;
         bool MemoryFull;
         int Max_Results;
         bool              m_bshowhelpB;

@@ -93,10 +93,7 @@ void FunDlg::OnClose( wxCommandEvent& event )
 
 void FunDlg::OnItemSelect( wxCommandEvent& event )
 {
-
-
     this->OnItemSelect();
-
 }
 
 void FunDlg::OnItemSelect(void)
@@ -315,10 +312,6 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     MuParser.DefineConst("dtr",0.0174532925199433) ;
     MuParser.SetVarFactory(AddVariable,&MuParser);
 
-//MuParser.SetVarFactory(AddVariable);
-
-
-
     /*
     ("This is what the Dialog got\n");
     printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
@@ -426,8 +419,8 @@ void Dlg::OnItem(wxListEvent& event){
             break;
 
         ItemText=this->m_listCtrl->GetItemText(item);
-        ItemText=ItemText.AfterLast('=');
-        ItemText=ItemText.AfterLast(' ');
+        ItemText=ItemText.BeforeFirst('=');
+        //ItemText=ItemText.BeforeFirst(' ');
         m_result->AppendText(ItemText);
     }
 }
@@ -443,9 +436,11 @@ void Dlg::set_Buttons(void)
     this->m_Help->Show(m_bshowhistoryB);
     this->Calculate->Show(m_bCalculateB);
     this->m_Function->Show(m_bshowFunction);
+    this->m_HistoryPulldown->Show(m_HistoryPulldown);
     this->m_Overview->Fit();
     this->m_Overview->Layout();
     this->m_Help->SetValue(m_bshowhistory);
+
     this->set_History();
 }
 
@@ -465,7 +460,7 @@ wxString Dlg::OnCalculate( void )
     i_counter=i_buffer;
 
     bool error_check=false;
-    if ((Text.StartsWith(_("Error"))) || (Text.StartsWith(_("Ans")))){
+    if ((Text.StartsWith(_("Error"))) ){
         error_check=true;
     }
 
@@ -527,27 +522,12 @@ wxString Dlg::OnCalculate( void )
 
 
         MuParser.SetExpr((mu::string_type) Text.mb_str()); //Typecast to mu::stringtype
-        //
-        //Muparser_result=MuParser.Eval();
 
-        double Muparser_result;
+        double Muparser_result=0;
         try
         {
-          Muparser_result = MuParser.Eval();
-          //mystring = wxString::Format(wxT("%i"),Muparser_result);
-
-
-          // mystring << Muparser_result; works
-          wxString s=wxString::Format(wxT("%15.15g"), Muparser_result);
-          //wxString mystring = wxString::Format(wxT("%f"), myfloat);
-          mystring=s;
-         //mystring<<ss;
-          printf("muparser result reported %s\n",(const char*) mystring.mb_str() );
-          printf("muparser result reported full precision: %.15le\n",Muparser_result ); //scientific
-          printf("muparser result reported full precision (alt): %15.15g \n",Muparser_result ); //shortest with high precision
-
-//Make output mode scientific, standard, human readable, fraction
-
+        Muparser_result = MuParser.Eval();
+        mystring=Report_Value(Muparser_result,m_iCalc_Reporting);
 
         }
         //catch(...)
@@ -557,56 +537,18 @@ wxString Dlg::OnCalculate( void )
             mu::string_type sLine;
             sLine=e.GetMsg();
             wxString tempstring(sLine.c_str(), wxConvUTF8);
-            mystring=tempstring;
+            mystring=wxT("Error: ")+tempstring;
             }
+            error_check=true;
             printf("Message: %s\n",(const char*) mystring.mb_str() );
-/*
-            {
-            mu::string_type sLine;
-            sLine=e.GetExpr();
-            wxString mystring(sLine.c_str(), wxConvUTF8);
-            Text=mystring;
-            }
-            printf("Expression: %t\n",(const char*) Text.mb_str() );
-
-            {
-            mu::string_type sLine;
-            sLine=e.GetToken() ;
-            wxString mystring(sLine.c_str(), wxConvUTF8);
-            Text=mystring;
-            }
-            printf("Token: %t\n",(const char*) Text.mb_str() );
-
-            {
-            int sLine;
-            sLine=(int) e.GetPos() ;
-            wxString mystring = wxString::Format(wxT("%i"),sLine);
-            Text=mystring;
-            }
-            printf("Position: %t\n",(const char*) Text.mb_str() );
-
-            {
-            mu::string_type sLine;
-            sLine=e.GetCode() ;
-            wxString mystring(sLine.c_str(), wxConvUTF8);
-            Text=mystring;
-            }
-            printf("Errc: %t\n",(const char*) Text.mb_str() );
-
-*/
-
         }
-
-        printf("MuParser Output: %G\n", Muparser_result);
-
-
-        if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring);
+        if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring); //log into OpenCPN
 
         buffer[i_buffer]=mystring; //store input
         i_plus(i_buffer);
         i_counter=i_buffer;
 
-        if((!this->m_Help->GetValue()) || (mystring.StartsWith(_("Error")) )) //print result in messagebox if not history box or error
+        if((!this->m_Help->GetValue()) || (error_check)) //print result in messagebox if not history box or error
             m_result->SetValue(mystring.c_str());
         else
             m_result->SetValue(_(""));
@@ -618,14 +560,16 @@ wxString Dlg::OnCalculate( void )
         /*printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
         printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
 
-        if (!mystring.StartsWith(_("Error")) )
+        if (!error_check )
             {
             if ((this->m_Help->GetValue()) || (m_bcapturehidden))
                 {
                 //     m_listCtrl->DeleteItem(item_counter);
 
-                itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //want this for col. 1
-                m_listCtrl->EnsureVisible(itemIndex);
+                itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //Here input+result are stored in the memory box
+                m_listCtrl->EnsureVisible(itemIndex); //make sure latest result is visible in history box
+                HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring);
+                m_HistoryPulldown->SetSelection(HistoryPulldownitemIndex);
 
                 item_counter++;
                 if (item_counter>Max_Results)
@@ -721,28 +665,83 @@ void Dlg::i_min(int &counter_test){
     if (counter_test<0) counter_test=40;
 }
 
+wxString Dlg::Report_Value(double in_Value, int in_mode){
+    /*
+    Yet to implement: strip trailing 0
+    thousands separator
+    humanize
 
+    */
+    wxString Temp_String=wxT("");
+    //double human_sign;
+    int human_magnitude=0;
+    double result=0;
+    switch(in_mode) {
+        case 0:
+            printf("Precise (Default)\n");
+            return wxString::Format(wxT("%15.15g"), in_Value);
+            break;
+        case 1:
+            printf("Precise, thousands separator\n");
+            Temp_String=wxString::Format(wxT("%15.15g"), in_Value);
+            human_magnitude=Temp_String.find(wxT("."));
+            printf("Search result: %i\n", human_magnitude);
 
-double* Dlg::addVariable(const char *a_szName, void *pUserVariableFactory)
-{
-    //std::cout << "Generating new variable \""
-    //    << a_szName << "\"" << std::endl;
+            return wxT("Precise, thousands separator(not yet implemented)");
+            break;
+        case 2:
+            printf("Succinct\n");
+            return wxString::Format(wxT("%15.7g"), in_Value);
+            break;
+        case 3:
+            printf("Succinct, thousands separator\n");
+            return wxT("Succinct, thousands separator(not yet implemented)");
+            break;
+        case 4:
+            printf("Scientific\n");
+            return wxString::Format(wxT("%.15le"), in_Value);
+            break;
+        case 5:
+            printf("Humanise\n");
+            //Getsign
+            try{
+                Temp_String=wxT("log10(abs(")+double2wxT(in_Value)+wxT("))/3");
+                MuParser.SetExpr((mu::string_type) Temp_String.mb_str());
+                human_magnitude=(int) MuParser.Eval();
+                if (in_Value<1) {human_magnitude--;}
+                Temp_String=double2wxT(in_Value)+wxT("*10^(-3*")+double2wxT((double)human_magnitude)+wxT(")");
+                MuParser.SetExpr((mu::string_type) Temp_String.mb_str());
+                result=MuParser.Eval();
+                if (in_Value==0) {human_magnitude=0;}
+                switch(human_magnitude){
+                    case -1:Temp_String=wxT("mili");break;
+                    case 0:Temp_String=wxT("");break;
+                    case 1:Temp_String=wxT("Kilo");break;
+                    case 2:Temp_String=wxT("Mega");break;
+                    default: // do nothing
+                    Temp_String=wxT("result out of humanizing range");
+                    result=in_Value;
+                    break;
+                    }
+            }
+            catch(mu::Parser::exception_type &e) {
+                printf("Error Humanising number!!\n");
+                }
+            return double2wxT(result) + wxT(" ") + Temp_String;
+            break;
+        default: // do nothing
+            return wxT("Mode not Implemented");
+            break;
+        }
+}
 
-  static double afValBuf[100];
-  static int iVal = 0;
+wxString Dlg::double2wxT(double in_Value){
+    return wxString::Format(wxT("%15.15g"), in_Value);
+}
 
-  std::cout << "Generating new variable \""
-            << a_szName << "\" (slots left: "
-            << 99-iVal << ")" << endl;
-
-  // you could also do:
-  // MyFactory *pFactory = (MyFactory*)pUserData;
-  // pFactory->CreateNewVariable(a_szName);
-
-  afValBuf[iVal++] = 0;
-  if (iVal>=99)
-    throw mu::Parser::exception_type("Variable buffer overflow.");
-
-  return &afValBuf[iVal];
-
+void Dlg::OnHistoryPulldown ( wxCommandEvent& event ){
+        wxString Selected_Result=	this->m_HistoryPulldown->GetString( this->m_HistoryPulldown->GetCurrentSelection());
+        Selected_Result=Selected_Result.BeforeFirst('=');
+        //ItemText=ItemText.BeforeFirst(' ');
+        this->m_result->AppendText(Selected_Result);
 }
