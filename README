@@ -1,31 +1,3 @@
-optional vectors (once multiple return values have been implemented, include basic vector functions)
-optional multiple return values 
-remove capture hidden-this is confusing....
-split Dlg and FunDlg into different C++ files
-
-degree conversion (lift onconverttodegree from route, implement conversion menu)
-optional (link to windspeed, boatspeed)-->save for next version
-
-done
-update help function in the menu (just paste readme)
-add fetch equation (via Excel)
-Spreadsheet::ParseExcel, explain in readme, also how to install (hope works with CPAN)
-set ans variable as result of calculation.
-test what happens after entering more than 20 expressions. check if it is possible to to clear all results, consider removing first from dropdown
-check if trailing spaces in history box can be removed (does seem to have dissapeared with muparser and new history)
-all printf to debug mode
-function buton (on/off with the options)
-optimise keypress calculator history (use history dropdown!)
-reporting mode option ( thousands separator)
-Populate history pulldown
-history box only to recall expression, not answer
-no errors in history window
-Implement history pulldown in calculator box
-options in settings window
-function, output below result
-reporting mode option (mega, commas for 1000)
-settings: history box, reporting mode etc
-
 Changes to version 1.6
 =======================================
 Added Willson Fetch Equation
