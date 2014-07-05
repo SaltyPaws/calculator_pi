@@ -318,16 +318,8 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     MuParser.DefineConst("dtr",0.0174532925199433) ;
     MuParser.SetVarFactory(AddVariable,&MuParser);
 
-    /*
-    ("This is what the Dialog got\n");
-    printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
-    printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
-    printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
-    printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-    printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-    printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
-
     this->m_listCtrl->Show(false);
+
     this->m_Overview->Layout();
     this->Layout();
     this->Fit();
@@ -563,20 +555,31 @@ wxString Dlg::OnCalculate( void )
             {
             if ((this->m_Help->GetValue()) || (m_bcapturehidden))
                 {
-                //     m_listCtrl->DeleteItem(item_counter);
-                itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //Here input+result are stored in the memory box
-                m_listCtrl->EnsureVisible(itemIndex); //make sure latest result is visible in history box
-                HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring);
-                m_HistoryPulldown->SetSelection(HistoryPulldownitemIndex);
+                if (this->m_HistoryPulldown->GetCount()<Max_Results){//Items in pulldown memory less than X
+                    HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring); //Append
+                }
+                else
+                {
+                    HistoryPulldownitemIndex++;
+                    if (HistoryPulldownitemIndex>=Max_Results) HistoryPulldownitemIndex=0;
+                    this->m_HistoryPulldown->SetString(HistoryPulldownitemIndex,Text + wxT(" = ") + mystring);//Overwrite previous value
+                }
+
+                m_HistoryPulldown->SetSelection(HistoryPulldownitemIndex); //Activate lastest result in pulldown
 
                 item_counter++;
-                if (item_counter>Max_Results)
-                    {
-                    item_counter=0;
-                    m_listCtrl->ClearAll();
-                    }
+                if (this->m_listCtrl->GetItemCount()<Max_Results*5){//Items in pulldown memory less than 5*max results
+                //do nothing
+                }
+                else{
+                    if (item_counter>=Max_Results*5) item_counter=0;
+                    m_listCtrl->DeleteItem(item_counter);
+                }
+                itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //Here input+result are stored in the memory box
 
-                //printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",item_counter,Max_Results,itemIndex);
+    //printf("Total items in m_listctr %ld\n",m_listCtrl->GetItemCount());
+                m_listCtrl->EnsureVisible(itemIndex); //make sure latest result is visible in history box
+                printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",HistoryPulldownitemIndex,Max_Results,itemIndex);
                 }
             //event.Skip();
             }
@@ -632,6 +635,8 @@ void Dlg::up()
     i_counter--;
     if (i_counter<0) i_counter=this->HistoryPulldownitemIndex;
     m_result->SetValue(this->m_HistoryPulldown->GetString(i_counter ));
+
+
 }
 
 void Dlg::down()
@@ -639,8 +644,11 @@ void Dlg::down()
     i_counter++;
     if (i_counter>this->HistoryPulldownitemIndex) i_counter=0;
     m_result->SetValue(this->m_HistoryPulldown->GetString(i_counter ));
-}
 
+
+
+
+}
 
 wxString Dlg::Report_Value(double in_Value, int in_mode){
     wxString Temp_String=wxT("");
