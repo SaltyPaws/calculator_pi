@@ -1,13 +1,53 @@
+optional vectors (once multiple return values have been implemented, include basic vector functions)
+optional multiple return values 
+remove capture hidden-this is confusing....
+split Dlg and FunDlg into different C++ files
+
+degree conversion (lift onconverttodegree from route, implement conversion menu)
+optional (link to windspeed, boatspeed)-->save for next version
+
+done
+update help function in the menu (just paste readme)
+add fetch equation (via Excel)
+Spreadsheet::ParseExcel, explain in readme, also how to install (hope works with CPAN)
+set ans variable as result of calculation.
+test what happens after entering more than 20 expressions. check if it is possible to to clear all results, consider removing first from dropdown
+check if trailing spaces in history box can be removed (does seem to have dissapeared with muparser and new history)
+all printf to debug mode
+function buton (on/off with the options)
+optimise keypress calculator history (use history dropdown!)
+reporting mode option ( thousands separator)
+Populate history pulldown
+history box only to recall expression, not answer
+no errors in history window
+Implement history pulldown in calculator box
+options in settings window
+function, output below result
+reporting mode option (mega, commas for 1000)
+settings: history box, reporting mode etc
+
+Changes to version 1.6
+=======================================
+Added Willson Fetch Equation
+Added wind speed to Beaufort equation
+Changed to MuParser math interface
+Added History pulldown box, improved history box behaviour
+Added reporting modes (1000 separator, SI prefixes, accuracy)
+Added function button in OpenCPN toolbar, with option to switch off from plugin settings
+Minor tweaks and fixes
+
 Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen
 =======================================
 
-This is a light weight yet powerful calculator plugin for OpenCPN.  Would you like to know your hull speed?
+This is a light weight yet powerful calculator plugin for OpenCPN. Would you like to know your hull speed? 
 
 Key features are:
 * Storing results in variables
 * Shows historic calculations
-* Full scientific functions
+* Full complement of nautical functions
 * Screen footprint can be optimised & minimised as required
+
+Adding formulas is easy. If your favorite nautical equation is missing, please let me know your equation via flyspray, and I will add it.
 
 Help
 =========
@@ -35,21 +75,67 @@ Distance to lighthouse
 	d1 = R*acos(R/(R + H1))	(Distance to horizon in m)
 	distance=d1+d		(visibility range of lighthouse in m)
 
-Operators:
-	+ - * / ^ (NB use ^(1/2) for square root)         
-	% & | << >> = <> < > <= >= ||
-	! (Factorial)
- 
-Functions:
-	Abs, Exp, Sign, Sqrt, Log, Log10
-	Sin, Cos, Tan, ASin, ACos, Atan (default entry is in radians use e.g. sin(dtr*90) to calculate in degree)
-	Factorial
+Built-in functions
+
+The following table gives an overview of the functions supported by the default implementation. It lists the function names, the number of arguments and a brief description.
+Name 	Argc. 	Explanation
+sin 	1 	sine function
+cos 	1 	cosine function
+tan 	1 	tangens function
+asin 	1 	arcus sine function
+acos 	1 	arcus cosine function
+atan 	1 	arcus tangens function
+sinh 	1 	hyperbolic sine function
+cosh 	1 	hyperbolic cosine
+tanh 	1 	hyperbolic tangens function
+asinh 	1 	hyperbolic arcus sine function
+acosh 	1 	hyperbolic arcus tangens function
+atanh 	1 	hyperbolic arcur tangens function
+log2 	1 	logarithm to the base 2
+log10 	1 	logarithm to the base 10
+log 	1 	logarithm to the base 10
+ln 	1 	logarithm to base e (2.71828...)
+exp 	1 	e raised to the power of x
+sqrt 	1 	square root of a value
+sign 	1 	sign function -1 if x<0; 1 if x>0
+rint 	1 	round to nearest integer
+abs 	1 	absolute value
+min 	var. 	min of all arguments
+max 	var. 	max of all arguments
+sum 	var. 	sum of all arguments
+avg 	var. 	mean value of all arguments
+
+
+Built-in binary operators
+
+The following table lists the default binary operators supported by the parser.
+Operator 	Meaning 	Priority
+= 		assignement 			-1
+&& 		logical and 			1
+|| 		logical or 			2
+<= 		less or equal 			4
+>= 		greater or equal 		4
+!= 		not equal 			4
+== 		equal 				4
+> 		greater than 			4
+< 		less than 			4
++ 		addition 			5
+- 		subtraction 			5
+* 		multiplication 			6
+/ 		division 			6
+^ 		raise x to the power of y 	7
+*The assignment operator is special since it changes one of its arguments and can only by applied to variables.
+Other operators
+
+muParser has built in support for the if then else operator. It uses lazy evaluation in order to make sure only the necessary branch of the expression is evaluated.
+Operator 	Meaning 	Remarks
+?: 	if then else operator 	C++ style syntax
  
 Variables:
-	Pi, e
-	Ans is the result of the previous calulation
+	pi, e
+	ans is the result of the previous calulation
 	dtr is the conversion factor from degrees to radians		
-	you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=Ans)
+	you can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=ans)
 	clear removes results in the history, but leaves your defined variables in tact
 
 User Interface - type these commands in the command window:
@@ -61,30 +147,31 @@ User Interface - type these commands in the command window:
 
 Settings/Plugins/Preferences:
 	Show/Hide Calculate, Help and History toggle buttons
-	History Settings: max Results - History will be cleared after this many results have been stored to save memory. Max 30000.
-	Show history window: Show/Hide default state
-	Capture when hidden: disable capturing of history when history panel is hidden - this will save some memory
+	History Settings: max Results -this is the number of results that will be stored in the history pulldown. The history pulldown will contain five times this value
 	Log to opencpn: Enable/Disable logging of results to opencpn logfile.
  
 Other:
-	Scientific notation supported
 	Error handling supported
-
+	MuParser has been compiled with C++ Double for internal precision.
 
 Compiling
 =========
 You have to be able to compile OpenCPN itself - Get the info at http://opencpn.org/ocpn/developers_manual
 
-* go to the plugin subdirectory in your OpenCPN source tree
-* git clone https://github.com/SaltyPaws/calculator_pi.git
+* git clone https://github.com/SaltyPaws/Calc_pi_muparser.git
 
-Build as normally:
+Build out of OpenCPN branch!
 
-* cd ..
+in folder calculator_pi
+
+* mkdir build
 * cd build
-* cmake ../
+* cmake ..
 * make
-* sudo make install
+* sudo make installf
+
+After using wxformbuilder to modify the interface, use degreefix.sh, to facillitate the windows build.
+When updating the Excel file with formulas and conversions, convert to cpp code by running the supplied perl script
 
 Executables
 =========
@@ -94,5 +181,5 @@ https://sourceforge.net/projects/opencpnplugins/
 License
 =======
 The plugin is licensed under the terms of GPL v2 or, at your will, later. 
-The expression_parser library is by Jos the Jong and under apache license: http://www.apache.org/licenses/LICENSE-2.0
+The MuParser files are by Ingo Berg and is open source. For full licence, please see the muparser source files.
 

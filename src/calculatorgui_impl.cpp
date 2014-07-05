@@ -97,17 +97,18 @@ void FunDlg::OnItemSelect( wxCommandEvent& event )
 
 void FunDlg::OnItemSelect(void)
     {
-    wxString Selected_Result=	this->m_Function_Dropdown->GetString( this->m_Function_Dropdown->GetCurrentSelection());
+    wxString Selected_Result=	this->m_Function_Dropdown->GetString( this->m_Function_Dropdown->GetCurrentSelection()); // Return selected formula
     unsigned int n;
     for ( n = 0; n < testf.m_Formula.GetCount() ; n++)
     {
-        if(Selected_Result==testf.m_ShortDesc[n]) break;
+        if(Selected_Result==testf.m_ShortDesc[n]) break;//find out number of formula
     }
     this->testf.Selected_Formula=n;
     this->m_Function->SetLabel(testf.m_Formula[testf.Selected_Formula]);
     this->m_Description->SetLabel(testf.m_LongDesc[testf.Selected_Formula]);
     this->m_Output_Parameter->SetLabel(testf.m_Formula[testf.Selected_Formula].BeforeFirst('='));
-    PopulatePuldown(testf.m_Result_Unit[testf.Selected_Formula],this->m_Output_Parameter_UnitC, m_panel9);
+    PopulatePuldown(testf.m_Result_Unit[testf.Selected_Formula],this->m_Output_Parameter_UnitC, m_panel9);//Populate output units. Needs to be expanded for multiple. note m_panel 9 needs to be updated.
+//Multiple return values update
 
     this->Parameter->SetLabel(testf.m_Input_parameter[testf.Selected_Formula]);
     PopulatePuldown(testf.m_Input_unit[testf.Selected_Formula],this->Units, m_panel9);
@@ -187,6 +188,7 @@ void FunDlg::OnItemSelect(void)
 
 wxString FunDlg::Unit_Conversion( wxString Output_Unit,wxString Input_Unit, wxString Var)
 {
+//This function returns the factor to convert from input to output unit
 #ifdef DEBUG
 printf("\n\n------------------------------------------------------\n");
 printf("Input_Unit: %s\n",(const char*) Input_Unit.mb_str() );
@@ -268,6 +270,17 @@ else
 
 void FunDlg::OnExtraCalculate( wxCommandEvent& event )
 {
+    //Calculate the result of the function
+    /*
+    To implement for multiple return values
+    1)find out if there are multiple return values, and if so, how many (e.g. via number of output units)
+    2)extract substring for each function
+    3)loop over routine below, with exeption, that result has to end up in the right result box
+
+
+    */
+
+
     wxString Result=testf.m_Formula[testf.Selected_Formula].BeforeFirst('=');
     wxString Formula=testf.m_Formula[testf.Selected_Formula].AfterFirst('=');
     /*
@@ -402,6 +415,7 @@ void Dlg::set_History(void)
     wxMilliSleep(50);
 }
 
+#ifdef DEBUG
 void Dlg::OnTest(wxCommandEvent& event){
    wxMessageBox(_("Test"));
 }
@@ -413,7 +427,7 @@ void Dlg::OnTest(wxMouseEvent& event){
 void Dlg::OnTest(wxListEvent& event){
    wxMessageBox(_("List"));
 }
-
+#endif // DEBUG
 void Dlg::OnItem(wxListEvent& event){
     long item = -1;
     wxString ItemText;
@@ -528,7 +542,8 @@ wxString Dlg::OnCalculate( void )
         try
         {
             Muparser_result = MuParser.Eval();//Get the result
-            mystring=wxT("ans=")+double2wxT(Muparser_result); //set ans string (borrow the mystring);
+            mystring=wxT("ans=")+double2wxT(Muparser_result);//set ans string (borrow the mystring);
+            mystring.Replace(wxT(","),wxT("."),TRUE);
             MuParser.SetExpr((mu::string_type) mystring.mb_str()); //Store the answer in ans
             mystring=Report_Value(Muparser_result,m_iCalc_Reporting);//Format result as per setting.
             Muparser_result = MuParser.Eval();//Evaluate for ans
@@ -557,7 +572,7 @@ wxString Dlg::OnCalculate( void )
 
         if (!error_check )
             {
-            if ((this->m_Help->GetValue()) || (m_bcapturehidden))
+            if ((this->m_Help->GetValue())) //if ((this->m_Help->GetValue()) || (m_bcapturehidden))
                 {
                 if ((int)(this->m_HistoryPulldown->GetCount())<(int)Max_Results){//Items in pulldown memory less than X
                     HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring); //Append

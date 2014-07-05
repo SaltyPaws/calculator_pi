@@ -47,7 +47,7 @@
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
 
-//#define DEBUG
+#define DEBUG
 
 class Dlg;
 
@@ -112,7 +112,7 @@ private:
       bool              m_bCalculateB;
       bool              m_bshowFunction;
       bool              m_bshowhistory;
-      bool              m_bcapturehidden;
+      //bool              m_bcapturehidden;
       bool              m_blogresults;
 
       int               m_iCalc_Reporting;

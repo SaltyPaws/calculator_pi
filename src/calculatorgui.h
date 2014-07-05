@@ -57,7 +57,7 @@ class DlgDef : public wxDialog
 		virtual void OnFunction( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggle( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnHelp( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnKey( wxKeyEvent& event ) { event.Skip(); }
+		virtual void OnHistoryPulldown( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnItem( wxListEvent& event ) { event.Skip(); }
 		
 	
@@ -95,7 +95,6 @@ class CfgDlgDef : public wxDialog
 		wxSpinCtrl* m_MaxResults;
 		wxSlider* m_sOpacity;
 		wxCheckBox* m_showhistory;
-		wxCheckBox* m_capturehidden;
 		wxCheckBox* m_logresults;
 		
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE ); 

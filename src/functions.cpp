@@ -117,7 +117,7 @@ this->m_LongDesc.Add(_("Maximum Wavelength = 1.5 x square root of fetch in nm"))
 this->m_Category.Add(_("Navigation"));
 this->m_Source.Add(_("http://www.bootkeyharbor.com/Formulas.htm"));
 this->m_Formula.Add(_("Maximum_Wavelength = 1.5 * sqrt(fetch)"));
-this->m_Result_Unit.Add(_("Unknown"));
+this->m_Result_Unit.Add(_("meter"));
 this->m_Input_parameter.Add(_("fetch"));
 this->m_Input_unit.Add(_("Nautical Miles"));
 this->m_Input_parameter1.Add(_(""));
@@ -193,6 +193,33 @@ this->m_Input_unit8.Add(_(""));
 this->m_Input_parameter9.Add(_(""));
 this->m_Input_unit9.Add(_(""));
 
+this->m_ShortDesc.Add(_("Fetch Modified Wilson"));
+this->m_LongDesc.Add(_("Calculate Fetch as function of windspeed at 10 meters height (u10) and Fetch. The equation is based on the wilson equation (1965), but modified by Naoto for increased accuracy."));
+this->m_Category.Add(_("Navigation"));
+this->m_Source.Add(_("Naoto Ebuchi, Journal of oceanography, vol 55, pp 575 to 584, 1999"));
+this->m_Formula.Add(_("Waveheight=0 ,CDU10=(0.879+0.075*U10)*10^-3,U10 < 8 ? alpha = 1 : alpha = 0.6 + 0.05 * U10 ,Cd=CDU10/alpha ,F_hat=(Fetch*9.80665)/U10^2 ,F_star=F_hat/Cd,F_tilde=CDU10*F_star ,H_tilde=0.3*alpha*(1-(1+0.004*sqrt(F_tilde/alpha))^-2) ,H_star=H_tilde/CDU10 ,H_hat=H_star*Cd ,Waveheight=H_hat*(U10^2)/9.80665"));
+this->m_Result_Unit.Add(_("meter"));
+this->m_Input_parameter.Add(_("U10"));
+this->m_Input_unit.Add(_("m/s"));
+this->m_Input_parameter1.Add(_("Fetch"));
+this->m_Input_unit1.Add(_("meter"));
+this->m_Input_parameter2.Add(_(""));
+this->m_Input_unit2.Add(_(""));
+this->m_Input_parameter3.Add(_(""));
+this->m_Input_unit3.Add(_(""));
+this->m_Input_parameter4.Add(_(""));
+this->m_Input_unit4.Add(_(""));
+this->m_Input_parameter5.Add(_(""));
+this->m_Input_unit5.Add(_(""));
+this->m_Input_parameter6.Add(_(""));
+this->m_Input_unit6.Add(_(""));
+this->m_Input_parameter7.Add(_(""));
+this->m_Input_unit7.Add(_(""));
+this->m_Input_parameter8.Add(_(""));
+this->m_Input_unit8.Add(_(""));
+this->m_Input_parameter9.Add(_(""));
+this->m_Input_unit9.Add(_(""));
+
 this->m_ShortDesc.Add(_("Flow rate of leak in boat"));
 this->m_LongDesc.Add(_("Flow rate of leak in boat:\tQ = 3,600 (A) (H)\n\tQ = gallons per minute of water coming in\n\tA = area of hole in square feet\n\tH = height of water over hole in feet, to bottom of the opening"));
 this->m_Category.Add(_("Safety"));
@@ -200,7 +227,7 @@ this->m_Source.Add(_("http://www.bootkeyharbor.com/Formulas.htm"));
 this->m_Formula.Add(_("Q = 3600 *(A)* (H)"));
 this->m_Result_Unit.Add(_("US gallons per minute"));
 this->m_Input_parameter.Add(_("A"));
-this->m_Input_unit.Add(_("square feet"));
+this->m_Input_unit.Add(_("Square feet"));
 this->m_Input_parameter1.Add(_("H"));
 this->m_Input_unit1.Add(_("feet"));
 this->m_Input_parameter2.Add(_(""));
@@ -409,14 +436,41 @@ this->m_Input_unit8.Add(_(""));
 this->m_Input_parameter9.Add(_(""));
 this->m_Input_unit9.Add(_(""));
 
-this->m_ShortDesc.Add(_("Beaufort to meter per second"));
-this->m_LongDesc.Add(_("Beaufort scale was created in 1805 by Sir Francis Beaufort, British admiral and hydrographer. It describes wind speed based mainly on observed sea conditions.\nWind speed on the Beaufort scale can be expressed by the formula:"));
+this->m_ShortDesc.Add(_("Beaufort to Wind Velocity"));
+this->m_LongDesc.Add(_("Beaufort scale was created in 1805 by Sir Francis Beaufort, British admiral and hydrographer. It describes wind speed based mainly on observed sea conditions."));
 this->m_Category.Add(_("Weather"));
 this->m_Source.Add(_("http://planetcalc.com/384/"));
 this->m_Formula.Add(_("Wind_Speed=0.837*Beaufort^(3/2)"));
 this->m_Result_Unit.Add(_("m/s"));
 this->m_Input_parameter.Add(_("Beaufort"));
 this->m_Input_unit.Add(_("Beaufort"));
+this->m_Input_parameter1.Add(_(""));
+this->m_Input_unit1.Add(_(""));
+this->m_Input_parameter2.Add(_(""));
+this->m_Input_unit2.Add(_(""));
+this->m_Input_parameter3.Add(_(""));
+this->m_Input_unit3.Add(_(""));
+this->m_Input_parameter4.Add(_(""));
+this->m_Input_unit4.Add(_(""));
+this->m_Input_parameter5.Add(_(""));
+this->m_Input_unit5.Add(_(""));
+this->m_Input_parameter6.Add(_(""));
+this->m_Input_unit6.Add(_(""));
+this->m_Input_parameter7.Add(_(""));
+this->m_Input_unit7.Add(_(""));
+this->m_Input_parameter8.Add(_(""));
+this->m_Input_unit8.Add(_(""));
+this->m_Input_parameter9.Add(_(""));
+this->m_Input_unit9.Add(_(""));
+
+this->m_ShortDesc.Add(_("Wind Velocity to Beaufort"));
+this->m_LongDesc.Add(_("Beaufort scale was created in 1805 by Sir Francis Beaufort, British admiral and hydrographer. It describes wind speed based mainly on observed sea conditions."));
+this->m_Category.Add(_("Weather"));
+this->m_Source.Add(_("http://planetcalc.com/384/"));
+this->m_Formula.Add(_("Beaufort=(Wind_Speed/0.837)^(2/3)"));
+this->m_Result_Unit.Add(_("Beaufort"));
+this->m_Input_parameter.Add(_("Wind_Speed"));
+this->m_Input_unit.Add(_("m/s"));
 this->m_Input_parameter1.Add(_(""));
 this->m_Input_unit1.Add(_(""));
 this->m_Input_parameter2.Add(_(""));
@@ -491,7 +545,7 @@ this->m_Input_parameter9.Add(_(""));
 this->m_Input_unit9.Add(_(""));
 
 this->m_ShortDesc.Add(_("Objects above horizon"));
-this->m_LongDesc.Add(_("To compute the greatest distance at which an observer can see the top of an object above the horizon, compute the distance to the horizon for a hypothetical observer on top of that object, and add it to the real observers distance to the horizon. For example, for an observer with a height of 1.70 m standing on the ground, the horizon is 4.65 km away. For a tower with a height of 100 m, the horizon distance is 35.7 km. Thus an observer on a beach can see the top of the tower as long as it is not more than 40.35 km away. Conversely, if an observer on a boat (h = 1.7 m) can just see the tops of trees on a nearby shore (h = 10 m), the trees are probably about 16 km away. This formula assumes earth diameter of 12 756.32 km."));
+this->m_LongDesc.Add(_("To compute the greatest distance at which an observer can see the top of an object above the horizon, compute the distance to the horizon for a hypothetical observer on top of that object, and add it to the real observers distance to the horizon. This formula assumes earth diameter of 12 756.32 km."));
 this->m_Category.Add(_("Navigation"));
 this->m_Source.Add(_("https://en.wikipedia.org/wiki/Horizon, Objects above horizon"));
 this->m_Formula.Add(_("distance_visible=sqrt(height_observer * (height_observer + 12756.32)) + sqrt(height_object * (height_object + 12756.32))"));
@@ -678,6 +732,10 @@ this->m_Input_parameter8.Add(_(""));
 this->m_Input_unit8.Add(_(""));
 this->m_Input_parameter9.Add(_(""));
 this->m_Input_unit9.Add(_(""));
+
+
+
+
 
  //End Class
 

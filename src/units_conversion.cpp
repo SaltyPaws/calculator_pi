@@ -160,9 +160,14 @@ this->m_Unit_category.Add(_("Area"));
 this->m_Conversion.Add(_("1"));
 this->m_Display.Add(_("TRUE"));
 
-this->m_Unit.Add(_("square feet"));
+this->m_Unit.Add(_("Square feet"));
 this->m_Unit_category.Add(_("Area"));
 this->m_Conversion.Add(_("0.092903"));
+this->m_Display.Add(_("TRUE"));
+
+this->m_Unit.Add(_("Square cm"));
+this->m_Unit_category.Add(_("Area"));
+this->m_Conversion.Add(_("0.0001"));
 this->m_Display.Add(_("TRUE"));
 
 this->m_Unit.Add(_("Centimeter"));

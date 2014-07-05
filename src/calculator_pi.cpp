@@ -200,7 +200,7 @@ void calculator_pi::OnToolbarToolCallback(int id)
         printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
         printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
         printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-        printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+        //printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
         printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
 
 
@@ -228,7 +228,6 @@ void calculator_pi::OnToolbarToolCallback(int id)
     #ifdef DEBUG
     printf("Toolbar ID: %i\n",id);
     printf("Toolbar ID (from init): %i and %i\n",m_Calculator_tool_id,m_CalculatorFX_tool_id);
-    printf("settings text:%t\n",m_bshowfunction_Open_CPN_BAR);
     #endif
 }
 
@@ -251,7 +250,7 @@ bool calculator_pi::LoadConfig(void)
             m_bCalculateB = pConf->Read ( _T ( "m_bCalculateB" ), 20L );
             m_bshowFunction = pConf->Read ( _T ( "m_bshowFunction" ), 20L );
             m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 20L );
-            m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
+            //m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
             m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 20L );
 
             m_iCalc_Reporting = pConf->Read ( _T ( "m_iCalc_Reporting" ), 20L );
@@ -263,7 +262,7 @@ bool calculator_pi::LoadConfig(void)
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+           // printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
 
             if((m_calculator_dialog_x < 0) || (m_calculator_dialog_x > m_display_width))
@@ -304,7 +303,7 @@ bool calculator_pi::SaveConfig(void)
 
 
             pConf->Write ( _T ( "m_bshowhistory" ),   m_bshowhistory );
-            pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
+           // pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
             pConf->Write ( _T ( "m_blogresults" ),   m_blogresults );
 
             pConf->Write ( _T ( "m_iCalc_Reporting" ),   m_iCalc_Reporting );
@@ -316,7 +315,7 @@ bool calculator_pi::SaveConfig(void)
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            //printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
             printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);
 
@@ -340,7 +339,7 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       dialog->m_CalculateB->SetValue(m_bCalculateB);
       dialog->m_showfunction->SetValue(m_bshowFunction);
       dialog->m_showhistory->SetValue(m_bshowhistory);
-      dialog->m_capturehidden->SetValue(m_bcapturehidden);
+      //dialog->m_capturehidden->SetValue(m_bcapturehidden);
       dialog->m_logresults->SetValue(m_blogresults);
 
       dialog->m_Calc_Reporting->SetSelection(m_iCalc_Reporting);
@@ -357,7 +356,7 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             m_bshowFunction= dialog->m_showfunction->GetValue();
 
             m_bshowhistory= dialog->m_showhistory->GetValue();
-            m_bcapturehidden= dialog->m_capturehidden->GetValue();
+            //m_bcapturehidden= dialog->m_capturehidden->GetValue();
             m_blogresults= dialog->m_logresults->GetValue();
 
 
@@ -374,7 +373,7 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            //printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
             printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);
             #endif
@@ -392,7 +391,7 @@ void calculator_pi::SettingsPropagate(void){
             m_pDialog->setm_bshowfunction(m_bshowFunction);
 
             m_pDialog->setm_bshowhistory(m_bshowhistory);
-            m_pDialog->setm_bcapturehidden(m_bcapturehidden);
+          //  m_pDialog->setm_bcapturehidden(m_bcapturehidden);
             m_pDialog->setm_blogresults(m_blogresults);
 
             m_pDialog->setm_iCalc_Reporting(m_iCalc_Reporting);
@@ -407,7 +406,7 @@ void calculator_pi::SettingsPropagate(void){
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+            //printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
 
             printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);

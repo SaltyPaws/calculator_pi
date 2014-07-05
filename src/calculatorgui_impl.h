@@ -100,9 +100,11 @@ public:
         wxString OnCalculate( void );
         void OnHelp( wxCommandEvent& event );
         void OnHelp( void );
+        #ifdef DEBUG
         void OnTest( wxMouseEvent& event );
         void OnTest(wxCommandEvent& event);
         void OnTest( wxListEvent& event );
+        #endif // DEBUG
         void OnFunction( wxCommandEvent& event );
         void OnFunction ( void );
         void OnFunctionCalc ( void );
@@ -122,7 +124,7 @@ public:
         void setm_bCalculateB       (bool x){m_bCalculateB = x;};
         void setm_bshowfunction     (bool x){m_bshowFunction = x;};
         void setm_bshowhistory      (bool x){m_bshowhistory = x;};
-        void setm_bcapturehidden    (bool x){m_bcapturehidden = x;};
+        //void setm_bcapturehidden    (bool x){m_bcapturehidden = x;};
         void setm_blogresults       (bool x){m_blogresults = x;};
 
         void setm_iCalc_Reporting   (int x){m_iCalc_Reporting = x;};
@@ -149,7 +151,7 @@ private:
         bool              m_bCalculateB;
         bool              m_bshowFunction;
         bool              m_bshowhistory;
-        bool              m_bcapturehidden;
+        //bool              m_bcapturehidden;
         bool              m_blogresults;
 
         int               m_iCalc_Reporting;
