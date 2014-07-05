@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------
 // Factory function for creating new parser variables
 // This could as well be a function performing database queries.
-double* AddVariable(const char *a_szName, void *pUserData)
+value_type* AddVariable(const char *a_szName, void *pUserData)
 {
   static double afValBuf[100];
   static int iVal = -1;

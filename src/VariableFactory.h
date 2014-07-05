@@ -3,6 +3,6 @@
 #include "muparser/muParser.h"
 
 using namespace mu;
-double* AddVariable(const char *a_szName, void *pUserData);
+value_type* AddVariable(const char *a_szName, void *pUserData);
 
 #endif
