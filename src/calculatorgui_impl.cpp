@@ -559,7 +559,7 @@ wxString Dlg::OnCalculate( void )
             {
             if ((this->m_Help->GetValue()) || (m_bcapturehidden))
                 {
-                if (this->m_HistoryPulldown->GetCount()<Max_Results){//Items in pulldown memory less than X
+                if ((int)(this->m_HistoryPulldown->GetCount())<(int)Max_Results){//Items in pulldown memory less than X
                     HistoryPulldownitemIndex=m_HistoryPulldown->Append(Text + wxT(" = ") + mystring); //Append
                 }
                 else
@@ -581,9 +581,9 @@ wxString Dlg::OnCalculate( void )
                 }
                 itemIndex = m_listCtrl->InsertItem(item_counter, Text + wxT(" = ") + mystring); //Here input+result are stored in the memory box
 
-    //printf("Total items in m_listctr %ld\n",m_listCtrl->GetItemCount());
+                //printf("Total items in m_listctr %ld\n",m_listCtrl->GetItemCount());
                 m_listCtrl->EnsureVisible(itemIndex); //make sure latest result is visible in history box
-                printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",HistoryPulldownitemIndex,Max_Results,itemIndex);
+                //printf("Item counter:%d, Max results: %d, ItemIndex: %ld\n",HistoryPulldownitemIndex,Max_Results,itemIndex);
                 }
             //event.Skip();
             }
