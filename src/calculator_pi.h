@@ -47,7 +47,7 @@
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
 
-#define DEBUG
+//#define DEBUG  //No debugging text in production plugin!
 
 class Dlg;
 
