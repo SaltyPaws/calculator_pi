@@ -1,0 +1,5 @@
+In order to install the perl dependancies use (linux):
+sudo cpan Spreadsheet::WriteExcel Digest::Perl:MD5 Unicode::Map IO::Scalar Crypt::RC4
+
+
+
