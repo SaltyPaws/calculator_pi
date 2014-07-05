@@ -328,7 +328,6 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     this->m_Overview->Fit();
     this->m_Overview->Layout();
     this->SetSize(wh);
-    i_buffer=0;
     i_counter=0;
     item_counter=0;
     MemoryFull=false;
@@ -454,11 +453,6 @@ wxString Dlg::OnCalculate( void )
     //char* test;
     wxString Text = m_result->GetValue();
 
-
-    buffer[i_buffer]=Text; //store input
-    i_plus(i_buffer);
-    i_counter=i_buffer;
-
     bool error_check=false;
     if ((Text.StartsWith(_("Error"))) ){
         error_check=true;
@@ -544,10 +538,6 @@ wxString Dlg::OnCalculate( void )
         }
         if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring); //log into OpenCPN
 
-        buffer[i_buffer]=mystring; //store input
-        i_plus(i_buffer);
-        i_counter=i_buffer;
-
         if((!this->m_Help->GetValue()) || (error_check)) //print result in messagebox if not history box or error
             m_result->SetValue(mystring.c_str());
         else
@@ -558,7 +548,7 @@ wxString Dlg::OnCalculate( void )
         //mhelp  capture hidden
         //false  false  --dont capture
         /*printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-        printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
+        //printf("this->m_Help->GetValue(): %s\n",(this->m_Help->GetValue())?"true":"false");*/
 
         if (!error_check )
             {
@@ -631,39 +621,18 @@ void Dlg::key_shortcut(wxKeyEvent& event) {
 
 void Dlg::up()
 {
-    i_plus(i_counter);
-    if (buffer[i_counter].Len()>1) {
-        m_result->SetValue(buffer[i_counter].c_str());
-                        //wxMessageBox(_("Not Empty") );
-    }
-    else{
-        i_min(i_counter);
-        //wxMessageBox(_("Empty") );
-    }
+    i_counter--;
+    if (i_counter<0) i_counter=this->HistoryPulldownitemIndex;
+    m_result->SetValue(this->m_HistoryPulldown->GetString(i_counter ));
 }
 
 void Dlg::down()
 {
-    i_min(i_counter);
-    if (buffer[i_counter].Len()>1) {
-        m_result->SetValue(buffer[i_counter].c_str());
-                        //wxMessageBox(_("Not Empty") );
-    }
-    else{
-        i_plus(i_counter);
-       // wxMessageBox(_("Empty") );
-    }
+    i_counter++;
+    if (i_counter>this->HistoryPulldownitemIndex) i_counter=0;
+    m_result->SetValue(this->m_HistoryPulldown->GetString(i_counter ));
 }
 
-void Dlg::i_plus(int &counter_test){
-    counter_test++;
-    if (counter_test>40) counter_test=0;
-}
-
-void Dlg::i_min(int &counter_test){
-    counter_test--;
-    if (counter_test<0) counter_test=40;
-}
 
 wxString Dlg::Report_Value(double in_Value, int in_mode){
     /*
@@ -678,32 +647,29 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
     double result=0;
     switch(in_mode) {
         case 0:
-            printf("Precise (Default)\n");
+            //printf("Precise (Default)\n");
             return wxString::Format(wxT("%15.15g"), in_Value);
             break;
         case 1:
-            printf("Precise, thousands separator\n");
-            Temp_String=wxString::Format(wxT("%15.15g"), in_Value);
-            human_magnitude=Temp_String.find(wxT("."));
-            printf("Search result: %i\n", human_magnitude);
-
-            return wxT("Precise, thousands separator(not yet implemented)");
+            //printf("Precise, thousands separator\n");
+            setlocale(LC_ALL,"");
+            return wxString::Format(wxT("%'.15g"), in_Value);
+            return Temp_String;
             break;
         case 2:
-            printf("Succinct\n");
+            //printf("Succinct\n");
             return wxString::Format(wxT("%15.7g"), in_Value);
             break;
         case 3:
-            printf("Succinct, thousands separator\n");
-            return wxT("Succinct, thousands separator(not yet implemented)");
+            //printf("Succinct, thousands separator\n");
+            return wxString::Format(wxT("%15.7g"), in_Value);
             break;
         case 4:
-            printf("Scientific\n");
+            //printf("Scientific\n");
             return wxString::Format(wxT("%.15le"), in_Value);
             break;
         case 5:
-            printf("Humanise\n");
-            //Getsign
+            //printf("Humanise\n");
             try{
                 Temp_String=wxT("log10(abs(")+double2wxT(in_Value)+wxT("))/3");
                 MuParser.SetExpr((mu::string_type) Temp_String.mb_str());
@@ -714,12 +680,26 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
                 result=MuParser.Eval();
                 if (in_Value==0) {human_magnitude=0;}
                 switch(human_magnitude){
-                    case -1:Temp_String=wxT("mili");break;
+                    case 8:Temp_String=wxT("yotta");break;
+                    case 7:Temp_String=wxT("zetta");break;
+                    case 6:Temp_String=wxT("exa");break;
+                    case 5:Temp_String=wxT("peta");break;
+                    case 4:Temp_String=wxT("tera");break;
+                    case 3:Temp_String=wxT("giga");break;
+                    case 2:Temp_String=wxT("mega");break;
+                    case 1:Temp_String=wxT("kilo");break;
                     case 0:Temp_String=wxT("");break;
-                    case 1:Temp_String=wxT("Kilo");break;
-                    case 2:Temp_String=wxT("Mega");break;
+                    case -1:Temp_String=wxT("milli");break;
+                    case -2:Temp_String=wxT("micro");break;
+                    case -3:Temp_String=wxT("nano");break;
+                    case -4:Temp_String=wxT("pico");break;
+                    case -5:Temp_String=wxT("femto");break;
+                    case -6:Temp_String=wxT("atto");break;
+                    case -7:Temp_String=wxT("zepto");break;
+                    case -8:Temp_String=wxT("yocto");break;
+
                     default: // do nothing
-                    Temp_String=wxT("result out of humanizing range");
+                    Temp_String=wxT("result out of SI prefixes range");
                     result=in_Value;
                     break;
                     }

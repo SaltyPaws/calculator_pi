@@ -32,6 +32,7 @@
 #include "muparser/muParser.h" //Muparser needs to be included before wxidgets, otherwhise a linker conflict will occur.
 
 
+#include <locale.h>
 
 #include "wx/wxprec.h"
 
@@ -39,7 +40,7 @@
   #include "wx/wx.h"
 #endif //precompiled headers
 
-
+//#include<locale.h> //required for thousands separator funcion
 #if defined (_WIN32) || defined (_WIN64) || defined (__WIN32__) || defined (__TOS_WIN__) || defined (__WINDOWS__) || defined (_WIN64)
     #include "calculatorgui.h"
 #else
@@ -114,9 +115,6 @@ public:
         void OnHistoryPulldown ( wxCommandEvent& event );
         void down(void);
         void up (void);
-        void i_plus(int &counter_test);
-        void i_min(int &counter_test);
-
 
         calculator_pi *plugin;
 
@@ -138,13 +136,10 @@ public:
 
         wxString Report_Value(double in_Value, int in_mode);
         wxString double2wxT(double in_Value);
-        //void set_Parentwindow(wxwindow *x){*m_parent_windowref = *x;};
 
 private:
         wxPoint xy;
         wxSize  wh;
-        wxString buffer[41];
-        int i_buffer;
         int i_counter;
         int item_counter;
         long itemIndex;
