@@ -127,6 +127,11 @@ double* addVariable(const char *a_szName, void *pUserVariableFactory);
         void setm_bshowhistory      (bool x){m_bshowhistory = x;};
         void setm_bcapturehidden    (bool x){m_bcapturehidden = x;};
         void setm_blogresults       (bool x){m_blogresults = x;};
+
+        void setm_iCalc_Reporting   (bool x){m_iCalc_Reporting = x;};
+        void setm_bshowhistoryP     (bool x){m_bshowhistoryP = x;};
+        void setm_bshowfunction_Open_CPN_BAR (bool x){m_bshowfunction_Open_CPN_BAR = x;};
+
         void set_Buttons (void);
         void set_History(void);
         //void set_Parentwindow(wxwindow *x){*m_parent_windowref = *x;};
@@ -148,6 +153,11 @@ private:
         bool              m_bshowhistory;
         bool              m_bcapturehidden;
         bool              m_blogresults;
+
+        int               m_iCalc_Reporting;
+        bool              m_bshowhistoryP;
+        bool              m_bshowfunction_Open_CPN_BAR;
+
         HlpDlg            *m_pHelpdialog;
         FunDlg            *m_pFunctiondialog;
 

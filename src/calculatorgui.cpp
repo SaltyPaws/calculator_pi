@@ -52,6 +52,13 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* HelpPanel;
 	HelpPanel = new wxBoxSizer( wxVERTICAL );
 	
+	wxArrayString m_HistoryPulldownChoices;
+	m_HistoryPulldown = new wxChoice( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_HistoryPulldownChoices, 0 );
+	m_HistoryPulldown->SetSelection( 0 );
+	m_HistoryPulldown->Hide();
+	
+	HelpPanel->Add( m_HistoryPulldown, 0, wxALL, 5 );
+	
 	m_listCtrl = new wxListCtrl( m_Overview, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLC_AUTOARRANGE|wxLC_LIST );
 	m_listCtrl->Hide();
 	
@@ -107,6 +114,18 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxVERTICAL );
 	
+	wxStaticBoxSizer* sbSizer12;
+	sbSizer12 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Calculator Reporting") ), wxVERTICAL );
+	
+	wxString m_Calc_ReportingChoices[] = { _("Precise (Default)"), _("Precise"), _("Succinct"), _("Scientific"), _("Humanised"), _("Succinct, thousands separator"), _("Succinct"), _("Precise, thousands separator") };
+	int m_Calc_ReportingNChoices = sizeof( m_Calc_ReportingChoices ) / sizeof( wxString );
+	m_Calc_Reporting = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Calc_ReportingNChoices, m_Calc_ReportingChoices, 0 );
+	m_Calc_Reporting->SetSelection( 0 );
+	sbSizer12->Add( m_Calc_Reporting, 0, wxALL|wxEXPAND, 5 );
+	
+	
+	bSizer2->Add( sbSizer12, 0, wxEXPAND, 5 );
+	
 	wxStaticBoxSizer* sbSizer3;
 	sbSizer3 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Show/Hide Buttons") ), wxVERTICAL );
 	
@@ -122,15 +141,25 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	sbSizer3->Add( m_showhistoryB, 0, wxALL, 5 );
 	
+	m_showhistoryP = new wxCheckBox( this, wxID_ANY, _("History Pulldown"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showhistoryP->SetValue(true); 
+	m_showhistoryP->SetToolTip( _("Show/Hide history toggle (you can always type \"history\" from input window).") );
+	
+	sbSizer3->Add( m_showhistoryP, 0, wxALL, 5 );
+	
 	m_CalculateB = new wxCheckBox( this, wxID_ANY, _("Calculate Button"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_CalculateB->SetValue(true); 
 	m_CalculateB->SetToolTip( _("Show/Hide Calculate button (you can always press enter at the end of input).") );
 	
 	sbSizer3->Add( m_CalculateB, 0, wxALL, 5 );
 	
-	m_showfunction = new wxCheckBox( this, wxID_ANY, _("Function button"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showfunction = new wxCheckBox( this, wxID_ANY, _("Function Button"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_showfunction->SetValue(true); 
 	sbSizer3->Add( m_showfunction, 0, wxALL, 5 );
+	
+	m_showfunction_Open_CPN_BAR = new wxCheckBox( this, wxID_ANY, _("Function Button in OpenCPN"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_showfunction_Open_CPN_BAR->SetValue(true); 
+	sbSizer3->Add( m_showfunction_Open_CPN_BAR, 0, wxALL, 5 );
 	
 	
 	bSizer2->Add( sbSizer3, 1, wxEXPAND, 5 );
@@ -636,36 +665,6 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	bSizer26->Add( sbSizer14, 0, wxEXPAND, 5 );
 	
-	wxStaticBoxSizer* sbSizer15;
-	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Result Select Units") ), wxVERTICAL );
-	
-	m_panel100 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer64;
-	bSizer64 = new wxBoxSizer( wxHORIZONTAL );
-	
-	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
-	m_Function_Result->SetBackgroundColour( wxColour( 240, 240, 240 ) );
-	
-	bSizer64->Add( m_Function_Result, 1, wxALL|wxEXPAND, 5 );
-	
-	m_Output_Parameter = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_Output_Parameter->Wrap( -1 );
-	bSizer64->Add( m_Output_Parameter, 0, wxALL, 5 );
-	
-	wxArrayString m_Output_Parameter_UnitCChoices;
-	m_Output_Parameter_UnitC = new wxChoice( m_panel100, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Output_Parameter_UnitCChoices, 0 );
-	m_Output_Parameter_UnitC->SetSelection( 0 );
-	bSizer64->Add( m_Output_Parameter_UnitC, 0, wxALL, 5 );
-	
-	
-	m_panel100->SetSizer( bSizer64 );
-	m_panel100->Layout();
-	bSizer64->Fit( m_panel100 );
-	sbSizer15->Add( m_panel100, 0, wxALL|wxEXPAND, 5 );
-	
-	
-	bSizer26->Add( sbSizer15, 0, wxEXPAND, 5 );
-	
 	wxStaticBoxSizer* sbSizer13;
 	sbSizer13 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Input Parameters") ), wxVERTICAL );
 	
@@ -881,6 +880,36 @@ FunDlgDef::FunDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	
 	
 	bSizer26->Add( sbSizer13, 1, wxEXPAND, 5 );
+	
+	wxStaticBoxSizer* sbSizer15;
+	sbSizer15 = new wxStaticBoxSizer( new wxStaticBox( m_panel152, wxID_ANY, _("Function Result Select Units") ), wxVERTICAL );
+	
+	m_panel100 = new wxPanel( m_panel152, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer64;
+	bSizer64 = new wxBoxSizer( wxHORIZONTAL );
+	
+	m_Function_Result = new wxTextCtrl( m_panel100, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY );
+	m_Function_Result->SetBackgroundColour( wxColour( 240, 240, 240 ) );
+	
+	bSizer64->Add( m_Function_Result, 1, wxALL|wxEXPAND, 5 );
+	
+	m_Output_Parameter = new wxStaticText( m_panel100, wxID_ANY, _("MyLabel"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Output_Parameter->Wrap( -1 );
+	bSizer64->Add( m_Output_Parameter, 0, wxALL, 5 );
+	
+	wxArrayString m_Output_Parameter_UnitCChoices;
+	m_Output_Parameter_UnitC = new wxChoice( m_panel100, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_Output_Parameter_UnitCChoices, 0 );
+	m_Output_Parameter_UnitC->SetSelection( 0 );
+	bSizer64->Add( m_Output_Parameter_UnitC, 0, wxALL, 5 );
+	
+	
+	m_panel100->SetSizer( bSizer64 );
+	m_panel100->Layout();
+	bSizer64->Fit( m_panel100 );
+	sbSizer15->Add( m_panel100, 0, wxALL|wxEXPAND, 5 );
+	
+	
+	bSizer26->Add( sbSizer15, 0, wxEXPAND, 5 );
 	
 	wxBoxSizer* bSizer39;
 	bSizer39 = new wxBoxSizer( wxHORIZONTAL );

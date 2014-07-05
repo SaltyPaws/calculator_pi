@@ -20,6 +20,7 @@
 #include <wx/button.h>
 #include <wx/checkbox.h>
 #include <wx/sizer.h>
+#include <wx/choice.h>
 #include <wx/listctrl.h>
 #include <wx/panel.h>
 #include <wx/dialog.h>
@@ -30,7 +31,6 @@
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/choice.h>
 #include <wx/notebook.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -49,6 +49,7 @@ class DlgDef : public wxDialog
 		wxButton* m_Function;
 		wxCheckBox* m_Help;
 		wxButton* m_HelpButton;
+		wxChoice* m_HistoryPulldown;
 		
 		// Virtual event handlers, overide them in your derived class
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
@@ -84,10 +85,13 @@ class CfgDlgDef : public wxDialog
 		wxButton* m_sdbSizer1Cancel;
 	
 	public:
+		wxChoice* m_Calc_Reporting;
 		wxCheckBox* m_showhelpB;
 		wxCheckBox* m_showhistoryB;
+		wxCheckBox* m_showhistoryP;
 		wxCheckBox* m_CalculateB;
 		wxCheckBox* m_showfunction;
+		wxCheckBox* m_showfunction_Open_CPN_BAR;
 		wxSpinCtrl* m_MaxResults;
 		wxSlider* m_sOpacity;
 		wxCheckBox* m_showhistory;
@@ -216,7 +220,6 @@ class FunDlgDef : public wxDialog
 	public:
 		wxChoice* m_Function_Dropdown;
 		wxStaticText* m_Description;
-		wxStaticText* m_Output_Parameter;
 		wxPanel* m_panel;
 		wxBoxSizer* bSizer;
 		wxTextCtrl* Value;
@@ -267,6 +270,7 @@ class FunDlgDef : public wxDialog
 		wxTextCtrl* Value9;
 		wxStaticText* Parameter9;
 		wxChoice* Units9;
+		wxStaticText* m_Output_Parameter;
 		
 		FunDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER ); 
 		~FunDlgDef();
