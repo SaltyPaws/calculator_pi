@@ -28,13 +28,17 @@
 #ifndef _CALCULATORGUI_IMPL_H_
 #define _CALCULATORGUI_IMPL_H_
 
+#include "VariableFactory.h"
+#include "muparser/muParser.h" //Muparser needs to be included before wxidgets, otherwhise a linker conflict will occur.
+
+
+
 #include "wx/wxprec.h"
 
 #ifndef  WX_PRECOMP
   #include "wx/wx.h"
 #endif //precompiled headers
 
-#include "parser.h"
 
 #if defined (_WIN32) || defined (_WIN64) || defined (__WIN32__) || defined (__TOS_WIN__) || defined (__WINDOWS__) || defined (_WIN64)
     #include "calculatorgui.h"
@@ -47,6 +51,7 @@
 #include "units_conversion.h"
 
 using namespace std;
+using namespace mu;
 
 class calculator_pi;
 class Dlg;
@@ -90,7 +95,8 @@ class Dlg : public DlgDef
 {
 public:
         Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator by SaltyPaws"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
-        Parser prs; //The calculator class. Here all the functions and variables are stored.
+        mu::Parser MuParser; //MuParser class.  Here all the functions and variables are stored.
+
         void OnCalculate( wxCommandEvent& event );
         wxString OnCalculate( void );
         void OnHelp( wxCommandEvent& event );
@@ -109,6 +115,8 @@ public:
         void up (void);
         void i_plus(int &counter_test);
         void i_min(int &counter_test);
+double* addVariable(const char *a_szName, void *pUserVariableFactory);
+
         calculator_pi *plugin;
 
         void SetMaxResults          (int x){Max_Results = x;};

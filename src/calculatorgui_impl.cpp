@@ -27,6 +27,9 @@
 
 #include "calculatorgui_impl.h"
 
+
+
+
 CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : CfgDlgDef( parent, id, title, pos, size, style )
 {
 }
@@ -306,7 +309,15 @@ void FunDlg::OnToggle( wxCommandEvent& event ){
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
-    prs.parse("dtr=0.0174532925"); //define degree to radians conversion factor
+    MuParser.ClearConst();
+    MuParser.DefineConst("pi", 3.141592653589793238462643);
+    MuParser.DefineConst("e", 2.718281828459045235360287);
+    MuParser.DefineConst("dtr",0.0174532925199433) ;
+    MuParser.SetVarFactory(AddVariable,&MuParser);
+
+//MuParser.SetVarFactory(AddVariable);
+
+
 
     /*
     ("This is what the Dialog got\n");
@@ -445,7 +456,7 @@ void Dlg::OnCalculate( wxCommandEvent& event )
 
 wxString Dlg::OnCalculate( void )
 {
-    char* test;
+    //char* test;
     wxString Text = m_result->GetValue();
 
 
@@ -510,9 +521,85 @@ wxString Dlg::OnCalculate( void )
         }
     else
         {
-        test = prs.parse((const char*)Text.mb_str());
-        //printf("\t%s\n", test);
-        wxString mystring = wxString::FromUTF8(test);
+        wxString mystring;
+        printf("Input: %s\n",(const char*) Text.mb_str() );
+        /*Muparser*/
+
+
+        MuParser.SetExpr((mu::string_type) Text.mb_str()); //Typecast to mu::stringtype
+        //
+        //Muparser_result=MuParser.Eval();
+
+        double Muparser_result;
+        try
+        {
+          Muparser_result = MuParser.Eval();
+          //mystring = wxString::Format(wxT("%i"),Muparser_result);
+
+
+          // mystring << Muparser_result; works
+          wxString s=wxString::Format(wxT("%15.15g"), Muparser_result);
+          //wxString mystring = wxString::Format(wxT("%f"), myfloat);
+          mystring=s;
+         //mystring<<ss;
+          printf("muparser result reported %s\n",(const char*) mystring.mb_str() );
+          printf("muparser result reported full precision: %.15le\n",Muparser_result ); //scientific
+          printf("muparser result reported full precision (alt): %15.15g \n",Muparser_result ); //shortest with high precision
+
+//Make output mode scientific, standard, human readable, fraction
+
+
+        }
+        //catch(...)
+        catch(mu::Parser::exception_type &e)
+        {
+            {
+            mu::string_type sLine;
+            sLine=e.GetMsg();
+            wxString tempstring(sLine.c_str(), wxConvUTF8);
+            mystring=tempstring;
+            }
+            printf("Message: %s\n",(const char*) mystring.mb_str() );
+/*
+            {
+            mu::string_type sLine;
+            sLine=e.GetExpr();
+            wxString mystring(sLine.c_str(), wxConvUTF8);
+            Text=mystring;
+            }
+            printf("Expression: %t\n",(const char*) Text.mb_str() );
+
+            {
+            mu::string_type sLine;
+            sLine=e.GetToken() ;
+            wxString mystring(sLine.c_str(), wxConvUTF8);
+            Text=mystring;
+            }
+            printf("Token: %t\n",(const char*) Text.mb_str() );
+
+            {
+            int sLine;
+            sLine=(int) e.GetPos() ;
+            wxString mystring = wxString::Format(wxT("%i"),sLine);
+            Text=mystring;
+            }
+            printf("Position: %t\n",(const char*) Text.mb_str() );
+
+            {
+            mu::string_type sLine;
+            sLine=e.GetCode() ;
+            wxString mystring(sLine.c_str(), wxConvUTF8);
+            Text=mystring;
+            }
+            printf("Errc: %t\n",(const char*) Text.mb_str() );
+
+*/
+
+        }
+
+        printf("MuParser Output: %G\n", Muparser_result);
+
+
         if (m_blogresults) wxLogMessage(_("Calculator INPUT:") + Text + _(" Calculator output:") + mystring);
 
         buffer[i_buffer]=mystring; //store input
@@ -632,4 +719,30 @@ void Dlg::i_plus(int &counter_test){
 void Dlg::i_min(int &counter_test){
     counter_test--;
     if (counter_test<0) counter_test=40;
+}
+
+
+
+double* Dlg::addVariable(const char *a_szName, void *pUserVariableFactory)
+{
+    //std::cout << "Generating new variable \""
+    //    << a_szName << "\"" << std::endl;
+
+  static double afValBuf[100];
+  static int iVal = 0;
+
+  std::cout << "Generating new variable \""
+            << a_szName << "\" (slots left: "
+            << 99-iVal << ")" << endl;
+
+  // you could also do:
+  // MyFactory *pFactory = (MyFactory*)pUserData;
+  // pFactory->CreateNewVariable(a_szName);
+
+  afValBuf[iVal++] = 0;
+  if (iVal>=99)
+    throw mu::Parser::exception_type("Variable buffer overflow.");
+
+  return &afValBuf[iVal];
+
 }
