@@ -40,11 +40,13 @@
 #include "OpenCPN/ocpn_plugin.h"
 #include "calculatorgui_impl.h"
 
+
 #define     PLUGIN_VERSION_MAJOR    1
-#define     PLUGIN_VERSION_MINOR    5
+#define     PLUGIN_VERSION_MINOR    6
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
+
 
 class Dlg;
 
@@ -87,10 +89,7 @@ public:
       void SetCalculatorDialogY         (int x){ m_calculator_dialog_y = x;};
       void SetCalculatorDialogWidth     (int x){ m_calculator_dialog_width = x;};
       void SetCalculatorDialogHeight    (int x){ m_calculator_dialog_height = x;};
-      //void GetMaxResults                (int x){ m_iMaxResults = x;};
-
-
-     // void OnSurveyDialogClose();
+      //void GetMaxResults                (int x){ m_iMaxResults = x;}
 
 
 private:
@@ -105,8 +104,8 @@ private:
       int               m_display_width, m_display_height;
       int               m_iOpacity;
       int               m_iMaxResults;
-      int               m_leftclick_tool_id;
-      //bool              m_ShowHelp;
+      int               m_Calculator_tool_id;
+      int               m_CalculatorFX_tool_id;
       bool              m_bshowhelpB;
       bool              m_bshowhistoryB;
       bool              m_bCalculateB;
@@ -114,6 +113,10 @@ private:
       bool              m_bshowhistory;
       bool              m_bcapturehidden;
       bool              m_blogresults;
+
+      int               m_iCalc_Reporting;
+      bool              m_bshowhistoryP;
+      bool              m_bshowfunction_Open_CPN_BAR;
 ;
 };
 

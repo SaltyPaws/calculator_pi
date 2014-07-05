@@ -87,10 +87,14 @@ int calculator_pi::Init(void)
       //    And load the configuration items
       LoadConfig();
 
-      //    This PlugIn needs a toolbar icon, so request its insertion
-      m_leftclick_tool_id  = InsertPlugInTool(_T(""), _img_calc, _img_calc, wxITEM_NORMAL,
+      //    This PlugIn needs a 2 toolbar icons, so request their insertion
+      m_Calculator_tool_id  = InsertPlugInTool(_T(""), _img_calc, _img_calc, wxITEM_NORMAL,
             _("Calculator"), _T(""), NULL,
              CALCULATOR_TOOL_POSITION, 0, this);
+     if((bool)m_bshowfunction_Open_CPN_BAR) {
+      m_CalculatorFX_tool_id  = InsertPlugInTool(_T(""), _img_calc_fx, _img_calc_fx, wxITEM_NORMAL,
+            _("Functions"), _T(""), NULL,
+             CALCULATOR_TOOL_POSITION, 0, this);}
 
       m_pDialog = NULL;
 
@@ -160,12 +164,16 @@ wxString calculator_pi::GetShortDescription()
 
 wxString calculator_pi::GetLongDescription()
 {
-      return _("This is a light weight yet powerful calculator plugin for OpenCPN.  Would you like to know your hull speed?");
+      return _("This is a light weight yet powerful calculator plugin for OpenCPN.\n  Would you like to know your hull speed?");
 }
 
 int calculator_pi::GetToolbarToolCount(void)
 {
-      return 1;
+      //return 2;
+      if((bool)m_bshowfunction_Open_CPN_BAR)
+        {return 2;}
+    else
+      {return 1;}
 }
 
 void calculator_pi::SetColorScheme(PI_ColorScheme cs)
@@ -178,42 +186,53 @@ void calculator_pi::SetColorScheme(PI_ColorScheme cs)
 
 void calculator_pi::OnToolbarToolCallback(int id)
 {
-      if(NULL == m_pDialog)
-      {
-            m_pDialog = new Dlg(m_parent_window);
-            //m_pDialog->set_Parentwindow(*m_parent_window);
-            this->SettingsPropagate();
-            m_pDialog->set_Buttons();
-            m_pDialog->set_History();
 
-            /*printf("This is what we are sending to the window\n");
-            printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
-            printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
-            printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
-            printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
-            printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
+    if(NULL == m_pDialog)
+    {
+        m_pDialog = new Dlg(m_parent_window);
+        //m_pDialog->set_Parentwindow(*m_parent_window);
+        this->SettingsPropagate();
+        m_pDialog->set_Buttons();
+        m_pDialog->set_History();
+
+        /*printf("This is what we are sending to the window\n");
+        printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
+        printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
+        printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
+        printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
+        printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
+        printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
 
 
-            m_pDialog->plugin = this;
-            m_pDialog->Move(wxPoint(m_calculator_dialog_x, m_calculator_dialog_y));
+        m_pDialog->plugin = this;
+        m_pDialog->Move(wxPoint(m_calculator_dialog_x, m_calculator_dialog_y));
 
-            //printf("Moving window to: %d %d\n", m_calculator_dialog_x,m_calculator_dialog_y);
+        //printf("Moving window to: %d %d\n", m_calculator_dialog_x,m_calculator_dialog_y);
 
-            if ((m_calculator_dialog_width>60)&&(m_calculator_dialog_height>25))
-            {
-                if(m_bshowhistory)  //only set size if history is shown, otherwise we will get a gray panel
-                    m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
-               //printf("setting size to: %d %d\n", m_calculator_dialog_width,m_calculator_dialog_height);
+        if ((m_calculator_dialog_width>60)&&(m_calculator_dialog_height>25))
+        {
+            if(m_bshowhistory)  //only set size if history is shown, otherwise we will get a gray panel
+                m_pDialog->SetSize(wxSize(m_calculator_dialog_width, m_calculator_dialog_height));
+           //printf("setting size to: %d %d\n", m_calculator_dialog_width,m_calculator_dialog_height);
+        }
+
+        else{
+            m_pDialog->Fit();
+            //printf("Just fitting window");
             }
+}
+    if (id == m_Calculator_tool_id)
+    {
+        m_pDialog->Show(!m_pDialog->IsShown());
+    }
+    if (id==m_CalculatorFX_tool_id)
+    {
+        m_pDialog->OnFunction();
+    }
 
-            else{
-                m_pDialog->Fit();
-                //printf("Just fitting window");
-                }
-      }
-
-      m_pDialog->Show(!m_pDialog->IsShown());
+    //printf("Toolbar ID: %i\n",id);
+    //printf("Toolbar ID (from init): %i and %i\n",m_Calculator_tool_id,m_CalculatorFX_tool_id);
+    //printf("settings text:%t\n",m_bshowfunction_Open_CPN_BAR);
 }
 
 bool calculator_pi::LoadConfig(void)
@@ -237,6 +256,12 @@ bool calculator_pi::LoadConfig(void)
             m_bshowhistory = pConf->Read ( _T ( "m_bshowhistory" ), 20L );
             m_bcapturehidden = pConf->Read ( _T ( "m_bcapturehidden" ), 20L );
             m_blogresults = pConf->Read ( _T ( "m_blogresults" ), 20L );
+
+            m_iCalc_Reporting = pConf->Read ( _T ( "m_iCalc_Reporting" ), 20L );
+            m_bshowhistoryP = pConf->Read ( _T ( "m_bshowhistoryP" ), 20L );
+            m_bshowfunction_Open_CPN_BAR = pConf->Read ( _T ( "m_bshowfunction_Open_CPN_BAR" ), 20L );
+
+
 /*
             printf("Just got some results to the config file\n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
@@ -245,6 +270,7 @@ bool calculator_pi::LoadConfig(void)
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
             printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
+
 
 
             if((m_calculator_dialog_x < 0) || (m_calculator_dialog_x > m_display_width))
@@ -290,14 +316,20 @@ bool calculator_pi::SaveConfig(void)
             pConf->Write ( _T ( "m_bcapturehidden" ),   m_bcapturehidden );
             pConf->Write ( _T ( "m_blogresults" ),   m_blogresults );
 
-/*
+            pConf->Write ( _T ( "m_iCalc_Reporting" ),   m_iCalc_Reporting );
+            pConf->Write ( _T ( "m_bshowhistoryP" ),   m_bshowhistoryP );
+            pConf->Write ( _T ( "m_bshowfunction_Open_CPN_BAR" ),   m_bshowfunction_Open_CPN_BAR );
+
+
+
             printf("Just wrote some results to the config file\n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
             printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+            printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);
 
             return true;
       }
@@ -322,6 +354,10 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
       dialog->m_capturehidden->SetValue(m_bcapturehidden);
       dialog->m_logresults->SetValue(m_blogresults);
 
+      dialog->m_Calc_Reporting->SetSelection(m_iCalc_Reporting);
+      dialog->m_showhistoryP->SetValue(m_bshowhistoryP);
+      dialog->m_showfunction_Open_CPN_BAR->SetValue(m_bshowfunction_Open_CPN_BAR);
+
       //printf("Setting dialog value MaxResults %i \n",m_iMaxResults);
 
       if(dialog->ShowModal() == wxID_OK)
@@ -336,10 +372,16 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             m_bshowhistory= dialog->m_showhistory->GetValue();
             m_bcapturehidden= dialog->m_capturehidden->GetValue();
             m_blogresults= dialog->m_logresults->GetValue();
+
+
+            m_iCalc_Reporting= dialog->m_Calc_Reporting->GetCurrentSelection();
+            m_bshowhistoryP= dialog->m_showhistoryP->GetValue();
+            m_bshowfunction_Open_CPN_BAR= dialog->m_showfunction_Open_CPN_BAR->GetValue();
+
+
             if (m_pDialog != NULL )
                 this->SettingsPropagate(); //this will make a segfault if the plugin wasnt opened because the class doesn't exist yet.
 
-/*
             printf("Just got Results from config window\n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
@@ -347,9 +389,7 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
             printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
             printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
-*/
-
-
+            printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);
             //printf("Just got MaxResults %i \n",m_MaxResults);
             SaveConfig();
       }
@@ -358,7 +398,6 @@ void calculator_pi::ShowPreferencesDialog( wxWindow* parent )
 
 void calculator_pi::SettingsPropagate(void){
             m_pDialog->SetMaxResults(m_iMaxResults);
-
             m_pDialog->setm_bshowhelpB(m_bshowhelpB);
             m_pDialog->setm_bshowhistoryB(m_bshowhistoryB);
             m_pDialog->setm_bCalculateB(m_bCalculateB);
@@ -367,16 +406,25 @@ void calculator_pi::SettingsPropagate(void){
             m_pDialog->setm_bshowhistory(m_bshowhistory);
             m_pDialog->setm_bcapturehidden(m_bcapturehidden);
             m_pDialog->setm_blogresults(m_blogresults);
+
+            m_pDialog->setm_iCalc_Reporting(m_iCalc_Reporting);
+            m_pDialog->setm_bshowhistoryP(m_bshowhistoryP);
+
+            //m_pDialog->setm_bshowfunction_Open_CPN_BAR(m_bshowfunction_Open_CPN_BAR);
+
             m_pDialog->set_Buttons();
             m_pDialog->set_History();
-/*
-            printf("Just got Results from config window\n");
+
+            printf("Just propagated \n");
             printf("m_bshowhelpB: %s\n",(m_bshowhelpB)?"true":"false");
             printf("m_bshowhistoryB: %s\n",(m_bshowhistoryB)?"true":"false");
             printf("m_bCalculateB: %s\n",(m_bCalculateB)?"true":"false");
             printf("m_bshowhistory: %s\n",(m_bshowhistory)?"true":"false");
             printf("m_bcapturehidden: %s\n",(m_bcapturehidden)?"true":"false");
-            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");*/
+            printf("m_blogresults: %s\n",(m_blogresults)?"true":"false");
+
+            printf("m_iCalc_Reporting: %i\n",m_iCalc_Reporting);
+            printf("m_bshowfunction_Open_CPN_BAR: %i\n",m_bshowfunction_Open_CPN_BAR);
 
 }
 

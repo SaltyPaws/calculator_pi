@@ -44,6 +44,7 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
     this->LoadCategories();
     this->LoadFunctions(wxT("All"),wxT("All"));
     this->dbg=true;
+
 }
 
 void FunDlg::LoadFunctions(wxString Category, wxString Unit)
@@ -306,6 +307,7 @@ void FunDlg::OnToggle( wxCommandEvent& event ){
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
 {
+
     MuParser.ClearConst();
     MuParser.DefineConst("pi", 3.141592653589793238462643);
     MuParser.DefineConst("e", 2.718281828459045235360287);
@@ -332,7 +334,7 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
     item_counter=0;
     MemoryFull=false;
     m_pHelpdialog=NULL;
-
+    m_pFunctiondialog=NULL; //So we can check that the Function Function dialog has been opened.
 }
 
 void Dlg::OnFunctionCalc( void )
@@ -346,10 +348,16 @@ void Dlg::OnHelp( wxCommandEvent& event ){
 
 void Dlg::OnHelp( void )
 {
-        HlpDlg *m_pHelpdialog = new HlpDlg(this);m_pHelpdialog->Show(true);
+    if (NULL==m_pHelpdialog)
+    {
+        //HlpDlg *m_pHelpdialog = new HlpDlg(this);m_pHelpdialog->Show(true);
+        m_pHelpdialog = new HlpDlg(this);
         m_pHelpdialog->HelpPanel->Fit();
         m_pHelpdialog->m_textCtrl3->Fit();
         m_pHelpdialog->m_textCtrl3->Layout();
+    }
+    m_pHelpdialog->Show(!m_pHelpdialog->IsShown());
+
 }
 
 void Dlg::OnFunction( wxCommandEvent& event )
@@ -359,8 +367,12 @@ void Dlg::OnFunction( wxCommandEvent& event )
 
 void Dlg::OnFunction( void )
 {
-        FunDlg *m_pFunctiondialog = new FunDlg(this);m_pFunctiondialog->Show(true);
-        m_pFunctiondialog->Plugin_Dialog = this;
+        if(NULL == m_pFunctiondialog){
+            //FunDlg *m_pFunctiondialog = new FunDlg(this);
+            m_pFunctiondialog = new FunDlg(this);
+            m_pFunctiondialog->Plugin_Dialog = this;
+        }
+        m_pFunctiondialog->Show(!m_pFunctiondialog->IsShown());
 }
 
 void Dlg::set_History(void)

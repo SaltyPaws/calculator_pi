@@ -6,6 +6,7 @@ path=$(dirname $0)
 # Require convert from package ImageMagick
 # Require inkscape
 # Require optipng
+#sudo apt-get install optipng imagemagic inkscape
 
 for pic in $path/*.svg
 do
