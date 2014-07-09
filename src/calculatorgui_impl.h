@@ -32,7 +32,7 @@
 #include "muparser/muParser.h" //Muparser needs to be included before wxidgets, otherwhise a linker conflict will occur.
 
 
-#include <locale.h>
+//#include <locale.h> Dont touch locale, causes serious errors in OpenCPN.
 
 #include "wx/wxprec.h"
 
@@ -136,6 +136,7 @@ public:
 
         wxString Report_Value(double in_Value, int in_mode);
         wxString double2wxT(double in_Value);
+        wxString ThousandSeparator(wxString Number_in);
 
 private:
         wxPoint xy;

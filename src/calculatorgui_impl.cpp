@@ -681,17 +681,20 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
             break;
         case 1:
             //printf("Precise, thousands separator\n");
-            setlocale(LC_ALL,"");
-            return wxString::Format(wxT("%'.15g"), in_Value);
-            return Temp_String;
+            //setlocale(LC_ALL,""); //Causes Serious errors in OPENCPN, rounding all tracks waypoints and incoming data.
+            return ThousandSeparator(wxString::Format(wxT("%'.15g"), in_Value));
+            //return Temp_String;
             break;
+
+
+
         case 2:
             //printf("Succinct\n");
             return wxString::Format(wxT("%15.7g"), in_Value);
             break;
         case 3:
             //printf("Succinct, thousands separator\n");
-            return wxString::Format(wxT("%15.7g"), in_Value);
+            return ThousandSeparator(wxString::Format(wxT("%15.7g"), in_Value));
             break;
         case 4:
             //printf("Scientific\n");
@@ -749,6 +752,24 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
 wxString Dlg::double2wxT(double in_Value){
     return wxString::Format(wxT("%15.15g"), in_Value);
 }
+
+wxString Dlg::ThousandSeparator(wxString Number_in){
+    wxString Decimal_part=wxT("");
+    //int i = Number_in.find(wxT("."));
+    if((int)Number_in.find(wxT("."))<0) {Decimal_part=wxT("");} else {Decimal_part=wxT(".")+Number_in.AfterFirst('.');}
+    Number_in=Number_in+wxT("."); //Add decimal point at the end
+    wxString Temp_String=Number_in.BeforeFirst('.'); //Extract part before decimal point
+    wxString Temp_String2=wxT("");
+
+    while (Temp_String.length()>3) {
+        Temp_String2=wxT(" ")+Temp_String.Right(3)+Temp_String2;
+        printf("Temp String2:%s\n",(const char*)Temp_String2.mb_str());
+        Temp_String=Temp_String.Left(Temp_String.length()-3);
+        printf("Temp String:%s\n",(const char*)Temp_String.mb_str());
+        }
+    return Temp_String+Temp_String2+Decimal_part;
+}
+
 
 void Dlg::OnHistoryPulldown ( wxCommandEvent& event ){
     wxString Selected_Result=	this->m_HistoryPulldown->GetString( this->m_HistoryPulldown->GetCurrentSelection());
