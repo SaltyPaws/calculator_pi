@@ -96,6 +96,8 @@ public:
         Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Calculator by SaltyPaws"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION|wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxRESIZE_BORDER );
         mu::Parser MuParser; //MuParser class.  Here all the functions and variables are stored.
 
+        ~Dlg();
+
         void OnCalculate( wxCommandEvent& event );
         wxString OnCalculate( void );
         void OnHelp( wxCommandEvent& event );

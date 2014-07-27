@@ -87,7 +87,8 @@ void FunDlg::OnCategorySelect( wxCommandEvent& event )
 
 void FunDlg::OnClose( wxCommandEvent& event )
 {
-    this->Destroy();
+    //this->Destroy();
+    this->Hide();
 }
 
 void FunDlg::OnItemSelect( wxCommandEvent& event )
@@ -320,6 +321,14 @@ void FunDlg::OnToggle( wxCommandEvent& event ){
     //wxMessageBox(_("toggle"));
     this->m_Description->Show(this->m_checkBox8->GetValue());
     this->Fit();
+}
+
+
+Dlg::~Dlg()
+{
+    if (m_pFunctiondialog)
+        m_pFunctiondialog->Destroy();
+    m_pFunctiondialog = NULL;
 }
 
 Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : DlgDef( parent, id, title, pos, size, style )
