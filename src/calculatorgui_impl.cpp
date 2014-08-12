@@ -537,15 +537,15 @@ wxString Dlg::OnCalculate( void )
         printf("Input: %s\n",(const char*) Text.mb_str() );
         #endif // DEBUG
 
-        MuParser.SetExpr(static_cast<const char*>(Text.mb_str())); //Typecast to mu::stringtype
+        MuParser.SetExpr(WxString2StdString(Text)); //Typecast to mu::stringtype
         double Muparser_result=0;
         try
         {
             Muparser_result = MuParser.Eval();//Get the result
             mystring=wxT("ans=")+double2wxT(Muparser_result);//set ans string (borrow the mystring);
-            mystring.Replace(wxT(","),wxT("."),TRUE);
+           // mystring.Replace(wxT(","),wxT("."),TRUE);//dont think this is required when not using locale --->test
            // MuParser.SetExpr((mu::string_type) mystring.mb_str()); //This works in linux, but causes compiler error in windows
-            MuParser.SetExpr(static_cast<const char*>(mystring.mb_str())); //Store the answer in ans
+             MuParser.SetExpr(WxString2StdString(mystring));//Store the answer in ans
             mystring=Report_Value(Muparser_result,m_iCalc_Reporting);//Format result as per setting.
             Muparser_result = MuParser.Eval();//Evaluate for ans
 
@@ -704,11 +704,13 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
             //printf("Humanise\n");
             try{
                 Temp_String=wxT("log10(abs(")+double2wxT(in_Value)+wxT("))/3");
-                MuParser.SetExpr(static_cast<const char*>(Temp_String.mb_str()));
+                 MuParser.SetExpr(WxString2StdString(Temp_String));
                 human_magnitude=(int) MuParser.Eval();
                 if (in_Value<1) {human_magnitude--;}
                 Temp_String=double2wxT(in_Value)+wxT("*10^(-3*")+double2wxT((double)human_magnitude)+wxT(")");
-                MuParser.SetExpr(static_cast<const char*>(Temp_String.mb_str()));
+
+             //   MuParser.SetExpr(static_cast<const char*>(Temp_String.mb_str()));
+             MuParser.SetExpr(WxString2StdString(Temp_String));
                 result=MuParser.Eval();
                 if (in_Value==0) {human_magnitude=0;}
                 switch(human_magnitude){
@@ -776,4 +778,8 @@ void Dlg::OnHistoryPulldown ( wxCommandEvent& event ){
     Selected_Result=Selected_Result.BeforeFirst('=');
     //ItemText=ItemText.BeforeFirst(' ');
     this->m_result->AppendText(Selected_Result);
+}
+
+std::string Dlg::WxString2StdString(wxString wxString_in){
+    return std::string(wxString_in.mb_str());
 }

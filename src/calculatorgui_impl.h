@@ -115,6 +115,7 @@ public:
         void OnHistoryPulldown ( wxCommandEvent& event );
         void down(void);
         void up (void);
+        std::string WxString2StdString(wxString wxString_in);
 
         calculator_pi *plugin;
 
