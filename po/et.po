@@ -6,21 +6,21 @@ msgstr ""
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
 "PO-Revision-Date: 2015-05-30 10:19-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
-"Language-Team: French\n"
-"Language: fr_FR\n"
+"Language-Team: Estonian\n"
+"Language: et_EE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
-"X-Crowdin-Language: fr\n"
+"X-Crowdin-Language: et\n"
 "X-Crowdin-File: /plugins/calculator_pi/po/calculator_pi.pot\n"
 
 #: src/calculator_pi.cpp:92 src/calculator_pi.cpp:157 src/calculatorgui.h:68
 #: src/calculatorgui.h:274
 msgid "Calculator"
-msgstr "Calculette"
+msgstr ""
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
@@ -37,11 +37,11 @@ msgstr ""
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
-msgstr "Préférences"
+msgstr ""
 
 #: src/calculatorgui_impl.h:63 src/calculatorgui.h:100
 msgid "Calculator preferences"
-msgstr "Préférences"
+msgstr ""
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
-msgstr "Calculette par SaltyPaws"
+msgstr ""
 
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
-msgstr "Erreur"
+msgstr ""
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:520 src/calculatorgui.cpp:46
 msgid "Help"
-msgstr "Aide"
+msgstr ""
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
@@ -230,7 +230,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
-msgstr "Calculer"
+msgstr ""
 
 #: src/calculatorgui.cpp:118
 msgid "Calculator Reporting"
@@ -318,7 +318,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:189
 msgid "Opacity"
-msgstr "Opacité"
+msgstr ""
 
 #: src/calculatorgui.cpp:200
 msgid "Show History Window"
