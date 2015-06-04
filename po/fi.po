@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2015-06-02 20:34-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Finnish\n"
 "Language: fi_FI\n"
@@ -24,16 +24,17 @@ msgstr "Laskin"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "Toiminnnot"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Laskin Plugin"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
 "  Would you like to know your hull speed?"
-msgstr ""
+msgstr "Tämä on kevyt mutta tehokas Laskin plugin OpenCPN:ään.\n"
+" Haluatko tietää rungon nopeuden?"
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
@@ -45,11 +46,11 @@ msgstr "Laskimen asetukset"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Apua!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Lisätoimintoja"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
@@ -58,19 +59,19 @@ msgstr "Laskin SaltyPaws'in tapaan"
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Kaikki"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Testi"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Hiiri"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Luettelo"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
@@ -78,111 +79,111 @@ msgstr "Virhe"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
-msgstr ""
+msgstr "tyhjennä"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "Clear"
-msgstr ""
+msgstr "Tyhjennä"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "CLEAR"
-msgstr ""
+msgstr "TYHJENNÄ"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HideHelp"
-msgstr ""
+msgstr "PiilotaApu"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "hidehelp"
-msgstr ""
+msgstr "piilota apu"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HIDEHELP"
-msgstr ""
+msgstr "PIILOTA APU"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "ShowHelp"
-msgstr ""
+msgstr "NäytäApu"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "showhelp"
-msgstr ""
+msgstr "näytä apu"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "SHOWHELP"
-msgstr ""
+msgstr "NÄYTÄ APU"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HideHistory"
-msgstr ""
+msgstr "PeitäHistoria"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "hidehistory"
-msgstr ""
+msgstr "peitä historia"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HIDEHISTORY"
-msgstr ""
+msgstr "PEITÄ HISTORIA"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "ShowHistory"
-msgstr ""
+msgstr "NäytäHistoria"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "showhistory"
-msgstr ""
+msgstr "näytä historia"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "SHOWHISTORY"
-msgstr ""
+msgstr "NÄYTÄ HISTORIA"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HideCalculate"
-msgstr ""
+msgstr "PeitäLaske"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "hidecalculate"
-msgstr ""
+msgstr "peitä laske"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HIDECALCULATE"
-msgstr ""
+msgstr "PEITÄ LASKE"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "ShowCalculate"
-msgstr ""
+msgstr "NäytäLaske"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "showcalculate"
-msgstr ""
+msgstr "näytä laske"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "SHOWCALCULATE"
-msgstr ""
+msgstr "NÄYTÄ LASKE"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HideFunction"
-msgstr ""
+msgstr "PeitäToiminto"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "hidefunction"
-msgstr ""
+msgstr "peitä toiminto"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HIDEFUNCTION"
-msgstr ""
+msgstr "PEITÄ TOIMINTO"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "showfunction"
-msgstr ""
+msgstr "näytä toiminto"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "ShowFunction"
-msgstr ""
+msgstr "NäytäToiminto"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "SHOWFUNCTION"
-msgstr ""
+msgstr "NÄYTÄ TOIMINTO"
 
 #: src/calculatorgui_impl.cpp:520 src/calculatorgui.cpp:46
 msgid "Help"
@@ -190,43 +191,43 @@ msgstr "Ohje"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
-msgstr ""
+msgstr "APU"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "help"
-msgstr ""
+msgstr "apu"
 
 #: src/calculatorgui_impl.cpp:525 src/calculatorgui.cpp:40
 msgid "Function"
-msgstr ""
+msgstr "Toiminto"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "function"
-msgstr ""
+msgstr "toiminto"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "FUNCTION"
-msgstr ""
+msgstr "TOIMINTO"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "history"
-msgstr ""
+msgstr "historia"
 
 #: src/calculatorgui_impl.cpp:530 src/calculatorgui.cpp:43
 msgid "History"
-msgstr ""
+msgstr "Historia"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "HISTORY"
-msgstr ""
+msgstr "HISTORIA"
 
 #: src/calculatorgui_impl.cpp:574
 msgid "Calculator INPUT:"
-msgstr ""
+msgstr "Laskin SYÖTTÖ:"
 
 #: src/calculatorgui_impl.cpp:574
 msgid " Calculator output:"
-msgstr ""
+msgstr " Laskin tuloste:"
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
@@ -234,87 +235,87 @@ msgstr "Laske"
 
 #: src/calculatorgui.cpp:118
 msgid "Calculator Reporting"
-msgstr ""
+msgstr "Laskin raportointi"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise (Default)"
-msgstr ""
+msgstr "Tarkka (oletus)"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise, thousands separator"
-msgstr ""
+msgstr "Tarkka, tuhaterotin"
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct"
-msgstr ""
+msgstr "Suppea"
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct, thousands separator"
-msgstr ""
+msgstr "Suppea, tuhaterotin"
 
 #: src/calculatorgui.cpp:120
 msgid "Scientific"
-msgstr ""
+msgstr "Tieteellinen"
 
 #: src/calculatorgui.cpp:120
 msgid "Humanised"
-msgstr ""
+msgstr "Inhimillistetty"
 
 #: src/calculatorgui.cpp:130
 msgid "Show/Hide Buttons"
-msgstr ""
+msgstr "Näytä/Peitä painikkeet"
 
 #: src/calculatorgui.cpp:132
 msgid "Help Button"
-msgstr ""
+msgstr "Ohje-painike"
 
 #: src/calculatorgui.cpp:134
 msgid "Show/Hide help button (you can always type \"help\" from input window)."
-msgstr ""
+msgstr "Näytä tai Peitä Ohje-painike (voit aina kirjoittaa \"help\" syöttö-ikkunassa)."
 
 #: src/calculatorgui.cpp:138
 msgid "History Toggle"
-msgstr ""
+msgstr "Historian vaihto"
 
 #: src/calculatorgui.cpp:140 src/calculatorgui.cpp:146
 msgid "Show/Hide history toggle (you can always type \"history\" from input window)."
-msgstr ""
+msgstr "Näytä tai Peitä historia vaihto (voit aina kirjoittaa \"history\" input-ikkunasta)."
 
 #: src/calculatorgui.cpp:144
 msgid "History Pulldown"
-msgstr ""
+msgstr "Historia alasvetovalikko"
 
 #: src/calculatorgui.cpp:150
 msgid "Calculate Button"
-msgstr ""
+msgstr "Laske painike"
 
 #: src/calculatorgui.cpp:152
 msgid "Show/Hide Calculate button (you can always press enter at the end of input)."
-msgstr ""
+msgstr "Näytä tai Peitä laske painike (voit aina painaa enteriä syötön lopussa)."
 
 #: src/calculatorgui.cpp:156
 msgid "Function Button in Calculator window"
-msgstr ""
+msgstr "Toimintonäppäin laskin-ikkunassa"
 
 #: src/calculatorgui.cpp:160
 msgid "Function Button in OpenCPN (Requires OpenCPN restart)"
-msgstr ""
+msgstr "Funktio-painike OpenCPN:ssä (vaatii OpenCPN:n uudelleen käynnistyksen)"
 
 #: src/calculatorgui.cpp:168
 msgid "History Settings"
-msgstr ""
+msgstr "Historian asetukset"
 
 #: src/calculatorgui.cpp:175
 msgid "Max Results"
-msgstr ""
+msgstr "Tuloksia enintään"
 
 #: src/calculatorgui.cpp:177
 msgid "More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations)."
-msgstr ""
+msgstr "Lisää tuloksia käyttää enemmän muistia. Muistia varataan vain tarvittaessa (esim. jos luku on 30000, vastaavaa muistia käytetään ainoastaan näin useaan laskelmaan)."
 
 #: src/calculatorgui.cpp:182
 msgid "More results use more memory. Memory will be cleared if Max Results is reached. NB variables are kept"
-msgstr ""
+msgstr "Lisää tuloksia käyttää enemmän muistia. Muisti tyhjennetään, kun Max tuloksiin päästään. NB muuttujat pidetään"
 
 #: src/calculatorgui.cpp:189
 msgid "Opacity"
@@ -322,23 +323,23 @@ msgstr "Läpinäkyvyys"
 
 #: src/calculatorgui.cpp:200
 msgid "Show History Window"
-msgstr ""
+msgstr "Näytä historiaikkuna"
 
 #: src/calculatorgui.cpp:202
 msgid "Show/Hide history"
-msgstr ""
+msgstr "Näytä tai Peitä historia"
 
 #: src/calculatorgui.cpp:210
 msgid "Other"
-msgstr ""
+msgstr "Muut"
 
 #: src/calculatorgui.cpp:212
 msgid "Log results to opencpn"
-msgstr ""
+msgstr "Loki tulokset opencpn:ään"
 
 #: src/calculatorgui.cpp:213
 msgid "Log calculator results in OpenCPN log file"
-msgstr ""
+msgstr "Lokin Laskimen tulokset OpenCPN lokitiedostossa"
 
 #: src/calculatorgui.cpp:258
 msgid "Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen\n"
@@ -442,99 +443,99 @@ msgstr ""
 
 #: src/calculatorgui.cpp:314 src/calculatorgui.cpp:374
 msgid "DD.dddddd° (no limit to decimals)"
-msgstr ""
+msgstr "DD.dddddd° (ei rajaa desimaaleille)"
 
 #: src/calculatorgui.cpp:322
 msgid "Lattitude  "
-msgstr ""
+msgstr "Leveysaste  "
 
 #: src/calculatorgui.cpp:330 src/calculatorgui.cpp:348
 #: src/calculatorgui.cpp:390 src/calculatorgui.cpp:422
 #: src/calculatorgui.cpp:484 src/calculatorgui.cpp:524
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/calculatorgui.cpp:340
 msgid "Longitude"
-msgstr ""
+msgstr "Pituuspiiri"
 
 #: src/calculatorgui.cpp:361 src/calculatorgui.cpp:452
 #: src/calculatorgui.cpp:562
 msgid "Convert"
-msgstr ""
+msgstr "Muunna"
 
 #: src/calculatorgui.cpp:368
 msgid "Degrees"
-msgstr ""
+msgstr "Asteet"
 
 #: src/calculatorgui.cpp:382 src/calculatorgui.cpp:476
 msgid "Lat "
-msgstr ""
+msgstr "Lat "
 
 #: src/calculatorgui.cpp:398 src/calculatorgui.cpp:430
 #: src/calculatorgui.cpp:492 src/calculatorgui.cpp:532
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "N"
-msgstr ""
+msgstr "P"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "S"
-msgstr ""
+msgstr "E"
 
 #: src/calculatorgui.cpp:414 src/calculatorgui.cpp:516
 msgid "Lon"
-msgstr ""
+msgstr "Lon"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "E"
-msgstr ""
+msgstr "I"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "W"
-msgstr ""
+msgstr "L"
 
 #: src/calculatorgui.cpp:462
 msgid "Degree, Minute"
-msgstr ""
+msgstr "Aste, minuutti"
 
 #: src/calculatorgui.cpp:468
 msgid "DD°MM'SS.s (no limit to digits)"
-msgstr ""
+msgstr "DD°MM'SS.s (ei rajaa numeroille)"
 
 #: src/calculatorgui.cpp:500 src/calculatorgui.cpp:540
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #: src/calculatorgui.cpp:572
 msgid "° ' \""
-msgstr ""
+msgstr "° ' \""
 
 #: src/calculatorgui.cpp:616
 msgid "Select Function Category"
-msgstr ""
+msgstr "Valitse toiminto-luokka"
 
 #: src/calculatorgui.cpp:628
 msgid "Select Function"
-msgstr ""
+msgstr "Valitse toiminto"
 
 #: src/calculatorgui.cpp:640
 msgid "Function And Description"
-msgstr ""
+msgstr "Toiminto ja kuvaus"
 
 #: src/calculatorgui.cpp:646
 msgid "ere"
-msgstr ""
+msgstr "ere"
 
 #: src/calculatorgui.cpp:650 src/calculatorgui.cpp:918
 msgid "Description"
-msgstr ""
+msgstr "Kuvaus"
 
 #: src/calculatorgui.cpp:664
 msgid "Input Parameters"
-msgstr ""
+msgstr "Syöteparametrit"
 
 #: src/calculatorgui.cpp:672 src/calculatorgui.cpp:693
 #: src/calculatorgui.cpp:714 src/calculatorgui.cpp:735
@@ -542,17 +543,17 @@ msgstr ""
 #: src/calculatorgui.cpp:798 src/calculatorgui.cpp:819
 #: src/calculatorgui.cpp:840 src/calculatorgui.cpp:861
 msgid "Parameter"
-msgstr ""
+msgstr "Parametri"
 
 #: src/calculatorgui.cpp:880
 msgid "Function Result Select Units"
-msgstr ""
+msgstr "Funktion tulos valituissa yksiköissä"
 
 #: src/calculatorgui.cpp:891
 msgid "MyLabel"
-msgstr ""
+msgstr "OmaOtsake"
 
 #: src/calculatorgui.cpp:915
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 

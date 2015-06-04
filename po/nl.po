@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2015-06-02 20:34-0400\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
@@ -24,16 +24,17 @@ msgstr "Rekenmachine"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "Functies"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Rekenmachine Plugin"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
 "  Would you like to know your hull speed?"
-msgstr ""
+msgstr "Dit is een kleine maar krachtige rekenmachine plugin voor OpenCPN.\n"
+" Zou u graag uw romp snelheid willen weten ?"
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
@@ -45,11 +46,11 @@ msgstr "Rekenmachinevoorkeuren"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Help!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Extra functies"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
@@ -58,19 +59,19 @@ msgstr "Rekenmachine PlugIn door SaltyPaws"
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Muis"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Lijst"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
@@ -78,63 +79,63 @@ msgstr "Fout"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
-msgstr ""
+msgstr "wissen"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "Clear"
-msgstr ""
+msgstr "Wissen"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "CLEAR"
-msgstr ""
+msgstr "WISSEN"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HideHelp"
-msgstr ""
+msgstr "Verberg Help"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "hidehelp"
-msgstr ""
+msgstr "verberg help"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HIDEHELP"
-msgstr ""
+msgstr "VERBERG HELP"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "ShowHelp"
-msgstr ""
+msgstr "ToonHelp"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "showhelp"
-msgstr ""
+msgstr "toonhelp"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "SHOWHELP"
-msgstr ""
+msgstr "TOONHELP"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HideHistory"
-msgstr ""
+msgstr "VerbergHistorie"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "hidehistory"
-msgstr ""
+msgstr "verberghistorie"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HIDEHISTORY"
-msgstr ""
+msgstr "VERBERGHISTORIE"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "ShowHistory"
-msgstr ""
+msgstr "ToonHistorie"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "showhistory"
-msgstr ""
+msgstr "toonhistorie"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "SHOWHISTORY"
-msgstr ""
+msgstr "TOONHISTORIE"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HideCalculate"
@@ -162,27 +163,27 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HideFunction"
-msgstr ""
+msgstr "VerbergFunktie"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "hidefunction"
-msgstr ""
+msgstr "verbergfunktie"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HIDEFUNCTION"
-msgstr ""
+msgstr "VERBERGFUNKTIE"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "showfunction"
-msgstr ""
+msgstr "toonfunktie"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "ShowFunction"
-msgstr ""
+msgstr "ToonFunktie"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "SHOWFUNCTION"
-msgstr ""
+msgstr "TOONFUNKTIE"
 
 #: src/calculatorgui_impl.cpp:520 src/calculatorgui.cpp:46
 msgid "Help"
@@ -190,43 +191,43 @@ msgstr "Help"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
-msgstr ""
+msgstr "HELP"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "help"
-msgstr ""
+msgstr "help"
 
 #: src/calculatorgui_impl.cpp:525 src/calculatorgui.cpp:40
 msgid "Function"
-msgstr ""
+msgstr "Functie"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "function"
-msgstr ""
+msgstr "functie"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "FUNCTION"
-msgstr ""
+msgstr "FUNCTIE"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "history"
-msgstr ""
+msgstr "historie"
 
 #: src/calculatorgui_impl.cpp:530 src/calculatorgui.cpp:43
 msgid "History"
-msgstr ""
+msgstr "Historie"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "HISTORY"
-msgstr ""
+msgstr "HISTORIE"
 
 #: src/calculatorgui_impl.cpp:574
 msgid "Calculator INPUT:"
-msgstr ""
+msgstr "Rekenmachine INPUT:"
 
 #: src/calculatorgui_impl.cpp:574
 msgid " Calculator output:"
-msgstr ""
+msgstr " Rekenresultaat:"
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
@@ -234,7 +235,7 @@ msgstr "Bereken"
 
 #: src/calculatorgui.cpp:118
 msgid "Calculator Reporting"
-msgstr ""
+msgstr "Rekenmachine rapportage"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise (Default)"
@@ -254,7 +255,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:120
 msgid "Scientific"
-msgstr ""
+msgstr "Wetenschappelijk"
 
 #: src/calculatorgui.cpp:120
 msgid "Humanised"
@@ -262,11 +263,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:130
 msgid "Show/Hide Buttons"
-msgstr ""
+msgstr "Toon/Verberg Knoppen"
 
 #: src/calculatorgui.cpp:132
 msgid "Help Button"
-msgstr ""
+msgstr "Help Knop"
 
 #: src/calculatorgui.cpp:134
 msgid "Show/Hide help button (you can always type \"help\" from input window)."
@@ -442,87 +443,87 @@ msgstr ""
 
 #: src/calculatorgui.cpp:314 src/calculatorgui.cpp:374
 msgid "DD.dddddd° (no limit to decimals)"
-msgstr ""
+msgstr "DD.dddddd° (geen limiet naar decimalen)"
 
 #: src/calculatorgui.cpp:322
 msgid "Lattitude  "
-msgstr ""
+msgstr "Breedtegraad  "
 
 #: src/calculatorgui.cpp:330 src/calculatorgui.cpp:348
 #: src/calculatorgui.cpp:390 src/calculatorgui.cpp:422
 #: src/calculatorgui.cpp:484 src/calculatorgui.cpp:524
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/calculatorgui.cpp:340
 msgid "Longitude"
-msgstr ""
+msgstr "Lengtegraad"
 
 #: src/calculatorgui.cpp:361 src/calculatorgui.cpp:452
 #: src/calculatorgui.cpp:562
 msgid "Convert"
-msgstr ""
+msgstr "Converteer"
 
 #: src/calculatorgui.cpp:368
 msgid "Degrees"
-msgstr ""
+msgstr "Graden"
 
 #: src/calculatorgui.cpp:382 src/calculatorgui.cpp:476
 msgid "Lat "
-msgstr ""
+msgstr "Breedtegraad "
 
 #: src/calculatorgui.cpp:398 src/calculatorgui.cpp:430
 #: src/calculatorgui.cpp:492 src/calculatorgui.cpp:532
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "S"
-msgstr ""
+msgstr "Z"
 
 #: src/calculatorgui.cpp:414 src/calculatorgui.cpp:516
 msgid "Lon"
-msgstr ""
+msgstr "Lengtegraad"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "E"
-msgstr ""
+msgstr "O"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: src/calculatorgui.cpp:462
 msgid "Degree, Minute"
-msgstr ""
+msgstr "Graden, minuten"
 
 #: src/calculatorgui.cpp:468
 msgid "DD°MM'SS.s (no limit to digits)"
-msgstr ""
+msgstr "DD°MM'SS.s (geen limiet aan cijfers)"
 
 #: src/calculatorgui.cpp:500 src/calculatorgui.cpp:540
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #: src/calculatorgui.cpp:572
 msgid "° ' \""
-msgstr ""
+msgstr "° ' \""
 
 #: src/calculatorgui.cpp:616
 msgid "Select Function Category"
-msgstr ""
+msgstr "Selecteer Functie Categorie"
 
 #: src/calculatorgui.cpp:628
 msgid "Select Function"
-msgstr ""
+msgstr "Selecteer Functie"
 
 #: src/calculatorgui.cpp:640
 msgid "Function And Description"
-msgstr ""
+msgstr "Functie en Beschrijving"
 
 #: src/calculatorgui.cpp:646
 msgid "ere"
@@ -530,11 +531,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:650 src/calculatorgui.cpp:918
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: src/calculatorgui.cpp:664
 msgid "Input Parameters"
-msgstr ""
+msgstr "Invoer Parameters"
 
 #: src/calculatorgui.cpp:672 src/calculatorgui.cpp:693
 #: src/calculatorgui.cpp:714 src/calculatorgui.cpp:735
@@ -542,7 +543,7 @@ msgstr ""
 #: src/calculatorgui.cpp:798 src/calculatorgui.cpp:819
 #: src/calculatorgui.cpp:840 src/calculatorgui.cpp:861
 msgid "Parameter"
-msgstr ""
+msgstr "Parameter"
 
 #: src/calculatorgui.cpp:880
 msgid "Function Result Select Units"
@@ -550,9 +551,9 @@ msgstr ""
 
 #: src/calculatorgui.cpp:891
 msgid "MyLabel"
-msgstr ""
+msgstr "MijnLabel"
 
 #: src/calculatorgui.cpp:915
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
