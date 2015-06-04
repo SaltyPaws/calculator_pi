@@ -12,7 +12,7 @@ SET(PACKAGE_NAME calculator_pi)
 SET(CPACK_PACKAGE_CONTACT "SaltyPaws ")
 
 SET(VERSION_MAJOR "1")
-SET(VERSION_MINOR "7")
+SET(VERSION_MINOR "8")
 
 INCLUDE("cmake/PluginConfigure.cmake")
 
