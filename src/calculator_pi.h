@@ -40,9 +40,7 @@
 #include "OpenCPN/ocpn_plugin.h"
 #include "calculatorgui_impl.h"
 
-
-#define     PLUGIN_VERSION_MAJOR    1
-#define     PLUGIN_VERSION_MINOR    6
+#include "version.h"
 
 #define     MY_API_VERSION_MAJOR    1
 #define     MY_API_VERSION_MINOR    8
