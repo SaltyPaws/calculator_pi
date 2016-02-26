@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2015-12-31 15:36-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Catalan\n"
 "Language: ca_ES\n"
@@ -24,16 +24,17 @@ msgstr "Calculadora"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "Funcions"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Plugin de la calculadora"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
 "  Would you like to know your hull speed?"
-msgstr ""
+msgstr "És un lleuger però potent plugin de calculadora per a OpenCPN.\n"
+" Vols conèixer la teva \"hull speed\"?"
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
@@ -45,11 +46,11 @@ msgstr "Preferències de la Calculadora"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Ajuda!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Funcions extres"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
@@ -58,19 +59,19 @@ msgstr "Calculadora (per SaltyPaws)"
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Provar"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Ratolí"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Llista"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
@@ -78,111 +79,111 @@ msgstr "Error"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
-msgstr ""
+msgstr "neteja"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "Clear"
-msgstr ""
+msgstr "Neteja"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "CLEAR"
-msgstr ""
+msgstr "NETEJA"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HideHelp"
-msgstr ""
+msgstr "AmagaAjuda"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "hidehelp"
-msgstr ""
+msgstr "amagaajuda"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HIDEHELP"
-msgstr ""
+msgstr "AMAGAAJUDA"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "ShowHelp"
-msgstr ""
+msgstr "MostraAjuda"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "showhelp"
-msgstr ""
+msgstr "mostraajuda"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "SHOWHELP"
-msgstr ""
+msgstr "MOSTRAAJUDA"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HideHistory"
-msgstr ""
+msgstr "AmagaHistorial"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "hidehistory"
-msgstr ""
+msgstr "amagahistorial"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HIDEHISTORY"
-msgstr ""
+msgstr "AMAGAHISTORIAL"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "ShowHistory"
-msgstr ""
+msgstr "MostraHistorial"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "showhistory"
-msgstr ""
+msgstr "mostrahistorial"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "SHOWHISTORY"
-msgstr ""
+msgstr "MOSTRAHISTORIAL"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HideCalculate"
-msgstr ""
+msgstr "AmagaCalcular"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "hidecalculate"
-msgstr ""
+msgstr "amagacalcular"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HIDECALCULATE"
-msgstr ""
+msgstr "AMAGACALCULAR"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "ShowCalculate"
-msgstr ""
+msgstr "MostraCalcular"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "showcalculate"
-msgstr ""
+msgstr "mostracalcular"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "SHOWCALCULATE"
-msgstr ""
+msgstr "MOSTRACALCULAR"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HideFunction"
-msgstr ""
+msgstr "AmagaFunció"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "hidefunction"
-msgstr ""
+msgstr "amagafunció"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "HIDEFUNCTION"
-msgstr ""
+msgstr "AMAGAFUNCIÓ"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "showfunction"
-msgstr ""
+msgstr "mostrafunció"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "ShowFunction"
-msgstr ""
+msgstr "MostraFunció"
 
 #: src/calculatorgui_impl.cpp:514
 msgid "SHOWFUNCTION"
-msgstr ""
+msgstr "MOSTRAFUNCIÓ"
 
 #: src/calculatorgui_impl.cpp:520 src/calculatorgui.cpp:46
 msgid "Help"
@@ -190,43 +191,43 @@ msgstr "Ajuda"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
-msgstr ""
+msgstr "AJUDA"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "help"
-msgstr ""
+msgstr "ajuda"
 
 #: src/calculatorgui_impl.cpp:525 src/calculatorgui.cpp:40
 msgid "Function"
-msgstr ""
+msgstr "Funció"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "function"
-msgstr ""
+msgstr "funció"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "FUNCTION"
-msgstr ""
+msgstr "FUNCIÓ"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "history"
-msgstr ""
+msgstr "historial"
 
 #: src/calculatorgui_impl.cpp:530 src/calculatorgui.cpp:43
 msgid "History"
-msgstr ""
+msgstr "Historial"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "HISTORY"
-msgstr ""
+msgstr "HISTORIAL"
 
 #: src/calculatorgui_impl.cpp:574
 msgid "Calculator INPUT:"
-msgstr ""
+msgstr "Entrada de calculadora:"
 
 #: src/calculatorgui_impl.cpp:574
 msgid " Calculator output:"
-msgstr ""
+msgstr " Sortida de calculadora:"
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
@@ -234,87 +235,87 @@ msgstr "Calcular"
 
 #: src/calculatorgui.cpp:118
 msgid "Calculator Reporting"
-msgstr ""
+msgstr "Informe de la calculadora"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise (Default)"
-msgstr ""
+msgstr "Precís (per defecte)"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise, thousands separator"
-msgstr ""
+msgstr "Precís, separador de milers"
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct"
-msgstr ""
+msgstr "Succinta"
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct, thousands separator"
-msgstr ""
+msgstr "Succint, separador de milers"
 
 #: src/calculatorgui.cpp:120
 msgid "Scientific"
-msgstr ""
+msgstr "Científic"
 
 #: src/calculatorgui.cpp:120
 msgid "Humanised"
-msgstr ""
+msgstr "Humanitzat"
 
 #: src/calculatorgui.cpp:130
 msgid "Show/Hide Buttons"
-msgstr ""
+msgstr "Mostra/amaga botons"
 
 #: src/calculatorgui.cpp:132
 msgid "Help Button"
-msgstr ""
+msgstr "Botó d'ajuda"
 
 #: src/calculatorgui.cpp:134
 msgid "Show/Hide help button (you can always type \"help\" from input window)."
-msgstr ""
+msgstr "Mostra o amaga el botó d'ajuda (sempre pots escriure \"ajuda\" des de la finestra d'entrada)."
 
 #: src/calculatorgui.cpp:138
 msgid "History Toggle"
-msgstr ""
+msgstr "Tancar Historial"
 
 #: src/calculatorgui.cpp:140 src/calculatorgui.cpp:146
 msgid "Show/Hide history toggle (you can always type \"history\" from input window)."
-msgstr ""
+msgstr "Mostra o amaga l'historial (sempre pots escriure \"historial\" des de la finestra d'entrada)."
 
 #: src/calculatorgui.cpp:144
 msgid "History Pulldown"
-msgstr ""
+msgstr "Historial desplegable"
 
 #: src/calculatorgui.cpp:150
 msgid "Calculate Button"
-msgstr ""
+msgstr "Botó de Calcular"
 
 #: src/calculatorgui.cpp:152
 msgid "Show/Hide Calculate button (you can always press enter at the end of input)."
-msgstr ""
+msgstr "Mostrar/Amagar el botó Calculadora (sempre podeu prémer \"Enter\" al final de l'entrada)."
 
 #: src/calculatorgui.cpp:156
 msgid "Function Button in Calculator window"
-msgstr ""
+msgstr "Botó de funció a la finestra Calculadora"
 
 #: src/calculatorgui.cpp:160
 msgid "Function Button in OpenCPN (Requires OpenCPN restart)"
-msgstr ""
+msgstr "Botó de Funció en OpenCPN ( requereix reiniciar OpenCPN)"
 
 #: src/calculatorgui.cpp:168
 msgid "History Settings"
-msgstr ""
+msgstr "Configuració de l'historial"
 
 #: src/calculatorgui.cpp:175
 msgid "Max Results"
-msgstr ""
+msgstr "Resultats màxims"
 
 #: src/calculatorgui.cpp:177
 msgid "More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations)."
-msgstr ""
+msgstr "Més resultats gasta més memòria. La memòria està assignada només si és necessari (per exemple si la memòria és 30000, la memòria corresponent només serà utilitzada després d'aquesta quantitat de càlculs)."
 
 #: src/calculatorgui.cpp:182
 msgid "More results use more memory. Memory will be cleared if Max Results is reached. NB variables are kept"
-msgstr ""
+msgstr "Més resultats consumiran més memòria. La memòria es netejarà si s'arriba al màxim de resultats. Les variables NB es guardaran"
 
 #: src/calculatorgui.cpp:189
 msgid "Opacity"
@@ -322,23 +323,23 @@ msgstr "Opacitat"
 
 #: src/calculatorgui.cpp:200
 msgid "Show History Window"
-msgstr ""
+msgstr "Mostra la finestra Historial"
 
 #: src/calculatorgui.cpp:202
 msgid "Show/Hide history"
-msgstr ""
+msgstr "Mostra/Amaga Historial"
 
 #: src/calculatorgui.cpp:210
 msgid "Other"
-msgstr ""
+msgstr "Altres"
 
 #: src/calculatorgui.cpp:212
 msgid "Log results to opencpn"
-msgstr ""
+msgstr "Exporta resultats a opencpn"
 
 #: src/calculatorgui.cpp:213
 msgid "Log calculator results in OpenCPN log file"
-msgstr ""
+msgstr "Exporta els resultats de la calculadora a un fitxer OpenCPN"
 
 #: src/calculatorgui.cpp:258
 msgid "Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen\n"
@@ -438,103 +439,199 @@ msgid "Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen\n"
 "\tShow/Hide Calculate, Help and History toggle buttons\n"
 "\tHistory Settings: max Results -this is the number of results that will be stored in the history pulldown. The history pulldown will contain five times this value\n"
 "\tLog to opencpn: Enable/Disable logging of results to opencpn logfile."
-msgstr ""
+msgstr "Plugin de calculadora per a OpenCPN per SaltyPaws àlies \"Walbert Schulpen·\n"
+"=======================================\n\n"
+"És una calculadora lleugera però potent per a OpenCPN. T'agradaria saber la velocitat del casc? \n\n"
+"Característiques: \n"
+"* Desar resultats a variables\n"
+"* Mostrar historial de càlculs\n"
+"* Funcions nàutiques\n"
+"* Ocupació de pantalla pot ser modificada o minimitzada\n\n"
+"Afegir fòrmules és fàcil. Si falta la seva equació nàutica favorita, afegeix-la mitjançant flyspray, i l'afegiré.\n\n"
+"Ajuda\n"
+"=========\n"
+"Escriu ajuda a la calculadora per obtenir instruccions.\n\n"
+"Exemples d'expressions que funcionen a la calculadora: (comentaris són entre parèntesis, alguns resultats depenen d'altres càlculs):\n"
+"=========\n"
+"Hull speed:\n"
+"\tLWL=48\t\t\t(water line lenght in feet)\n"
+"\tvhull=1.34*LWL^(1/2)\t(hull speed in knots)\n\n"
+"Conversions:\n"
+"\tftm=0.3048\t\t\t(feet to meters)\n"
+"\tkm_to_nm=0.539957\t\t(Kilometers to nautical Mile)\n"
+"\tftm*LWL\t\t\t(waterline length in meters)\n\n"
+"Distance to horizon\n"
+"\tR=6378.1*1000\t\t(Radius of the earth in m)\n"
+"\tH=2.5\t\t\t(Height of the eye above sea-level in m)\n"
+"\td = R * acos(R/(R + h))\t(Distance to horizon in m)   \n"
+"\tans*km_to_nm\t\t(Distance to horizon in nm)\n\n"
+"Distance to lighthouse\n"
+"\tH1=200\t\t\t(height of lighthouse in m)\n"
+"\td1 = R*acos(R/(R + H1))\t(Distance to horizon in m)\n"
+"\tdistance=d1+d\t\t(visibility range of lighthouse in m)\n\n"
+"Built-in functions\n\n"
+"The following table gives an overview of the functions supported by the default implementation. It lists the function names, the number of arguments and a brief description.\n"
+"Name \tArgc. \tExplanation\n"
+"sin \t1 \tsine function\n"
+"cos \t1 \tcosine function\n"
+"tan \t1 \ttangens function\n"
+"asin \t1 \tarcus sine function\n"
+"acos \t1 \tarcus cosine function\n"
+"atan \t1 \tarcus tangens function\n"
+"sinh \t1 \thyperbolic sine function\n"
+"cosh \t1 \thyperbolic cosine\n"
+"tanh \t1 \thyperbolic tangens function\n"
+"asinh \t1 \thyperbolic arcus sine function\n"
+"acosh \t1 \thyperbolic arcus tangens function\n"
+"atanh \t1 \thyperbolic arcur tangens function\n"
+"log2 \t1 \tlogarithm to the base 2\n"
+"log10 \t1 \tlogarithm to the base 10\n"
+"log \t1 \tlogarithm to the base 10\n"
+"ln \t\t1 \tlogarithm to base e (2.71828...)\n"
+"exp \t1 \te raised to the power of x\n"
+"sqrt \t1 \tsquare root of a value\n"
+"sign \t1 \tsign function -1 if x<0; 1 if x>0\n"
+"rint \t1 \tround to nearest integer\n"
+"abs \t1 \tabsolute value\n"
+"min \tvar. \tmin of all arguments\n"
+"max \tvar. \tmax of all arguments\n"
+"sum \tvar. \tsum of all arguments\n"
+"avg \tvar. \tmean value of all arguments\n\n\n"
+"Built-in binary operators\n\n"
+"The following table lists the default binary operators supported by the parser.\n"
+"Operator \tMeaning \tPriority\n"
+"= \t\tassignement \t\t\t-1\n"
+"&& \tlogical and \t\t\t1\n"
+"|| \t\tlogical or\t \t\t\t2\n"
+"<= \t\tless or equal \t\t\t4\n"
+">= \t\tgreater or equal \t\t4\n"
+"!= \t\tnot equal \t\t\t\t4\n"
+"== \t\tequal \t\t\t\t\t4\n"
+"> \t\tgreater than \t\t\t4\n"
+"< \t\tless than \t\t\t\t4\n"
+"+ \t\taddition \t\t\t\t5\n"
+"- \t\tsubtraction \t\t\t5\n"
+"* \t\tmultiplication \t\t6\n"
+"/ \t\tdivision \t\t\t\t6\n"
+"^ \t\traise x to the power of y \t7\n"
+"*The assignment operator is special since it changes one of its arguments and can only by applied to variables.\n"
+"Other operators\n\n"
+"muParser has built in support for the if then else operator. It uses lazy evaluation in order to make sure only the necessary branch of the expression is evaluated.\n"
+"Operator \tMeaning \tRemarks\n"
+"?: \tif then else operator \tC++ style syntax\n"
+" \n"
+"Variables:\n"
+"\tpi, e\n"
+"\tans is the result of the previous calulation\n"
+"\tdtr is the conversion factor from degrees to radians\t\t\n"
+"\tyou can define your own variables (e.g. myvariable=10/8*cos(dtr*90) or yourvariable=ans)\n"
+"\tclear removes results in the history, but leaves your defined variables in tact\n\n"
+"User Interface - type these commands in the command window:\n"
+"\thistory - Toggle the history panel\n"
+"\tshowhelp - Show/Hide the Help button\n"
+"\tshowcalculate - Show/Hide the Calculate button\n"
+"\tshowhistory - Show/Hide the history toggle\n"
+"\thelp - show the help menu\n\n"
+"Settings/Plugins/Preferences:\n"
+"\tShow/Hide Calculate, Help and History toggle buttons\n"
+"\tHistory Settings: max Results -this is the number of results that will be stored in the history pulldown. The history pulldown will contain five times this value\n"
+"\tLog to opencpn: Enable/Disable logging of results to opencpn logfile."
 
 #: src/calculatorgui.cpp:314 src/calculatorgui.cpp:374
 msgid "DD.dddddd° (no limit to decimals)"
-msgstr ""
+msgstr "DD.dddddd° (sense límit pels decimals)"
 
 #: src/calculatorgui.cpp:322
 msgid "Lattitude  "
-msgstr ""
+msgstr "Latitud  "
 
 #: src/calculatorgui.cpp:330 src/calculatorgui.cpp:348
 #: src/calculatorgui.cpp:390 src/calculatorgui.cpp:422
 #: src/calculatorgui.cpp:484 src/calculatorgui.cpp:524
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/calculatorgui.cpp:340
 msgid "Longitude"
-msgstr ""
+msgstr "Longitud"
 
 #: src/calculatorgui.cpp:361 src/calculatorgui.cpp:452
 #: src/calculatorgui.cpp:562
 msgid "Convert"
-msgstr ""
+msgstr "Convertir"
 
 #: src/calculatorgui.cpp:368
 msgid "Degrees"
-msgstr ""
+msgstr "Graus"
 
 #: src/calculatorgui.cpp:382 src/calculatorgui.cpp:476
 msgid "Lat "
-msgstr ""
+msgstr "Lat "
 
 #: src/calculatorgui.cpp:398 src/calculatorgui.cpp:430
 #: src/calculatorgui.cpp:492 src/calculatorgui.cpp:532
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #: src/calculatorgui.cpp:402 src/calculatorgui.cpp:504
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src/calculatorgui.cpp:414 src/calculatorgui.cpp:516
 msgid "Lon"
-msgstr ""
+msgstr "Lon"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/calculatorgui.cpp:434 src/calculatorgui.cpp:544
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: src/calculatorgui.cpp:462
 msgid "Degree, Minute"
-msgstr ""
+msgstr "Grau, minut"
 
 #: src/calculatorgui.cpp:468
 msgid "DD°MM'SS.s (no limit to digits)"
-msgstr ""
+msgstr "DD°MM'SS.s (sense límit de dígits)"
 
 #: src/calculatorgui.cpp:500 src/calculatorgui.cpp:540
 msgid "\""
-msgstr ""
+msgstr "\""
 
 #: src/calculatorgui.cpp:572
 msgid "° ' \""
-msgstr ""
+msgstr "° ' \""
 
 #: src/calculatorgui.cpp:616
 msgid "Select Function Category"
-msgstr ""
+msgstr "Seleccioneu la categoria de funcions"
 
 #: src/calculatorgui.cpp:628
 msgid "Select Function"
-msgstr ""
+msgstr "Seleccioneu la funció"
 
 #: src/calculatorgui.cpp:640
 msgid "Function And Description"
-msgstr ""
+msgstr "Funció i Descripció"
 
 #: src/calculatorgui.cpp:646
 msgid "ere"
-msgstr ""
+msgstr "ere"
 
 #: src/calculatorgui.cpp:650 src/calculatorgui.cpp:918
 msgid "Description"
-msgstr ""
+msgstr "Descripció"
 
 #: src/calculatorgui.cpp:664
 msgid "Input Parameters"
-msgstr ""
+msgstr "Paràmetres d'entrada"
 
 #: src/calculatorgui.cpp:672 src/calculatorgui.cpp:693
 #: src/calculatorgui.cpp:714 src/calculatorgui.cpp:735
@@ -542,17 +639,17 @@ msgstr ""
 #: src/calculatorgui.cpp:798 src/calculatorgui.cpp:819
 #: src/calculatorgui.cpp:840 src/calculatorgui.cpp:861
 msgid "Parameter"
-msgstr ""
+msgstr "Paràmetre"
 
 #: src/calculatorgui.cpp:880
 msgid "Function Result Select Units"
-msgstr ""
+msgstr "Unitats dels resultats de la funció"
 
 #: src/calculatorgui.cpp:891
 msgid "MyLabel"
-msgstr ""
+msgstr "Etiqueta"
 
 #: src/calculatorgui.cpp:915
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 

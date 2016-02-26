@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2016-02-18 16:08-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -24,16 +24,17 @@ msgstr "Αριθμομηχανή"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "Λειτουργίες"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Πρόσθετο Αριθμομηχανής"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
 "  Would you like to know your hull speed?"
-msgstr ""
+msgstr "Πρόκειται για έναν ελαφρύ αλλά ισχυρό υπολογιστή για το OpenCPN.\n"
+" Θέλετε να ξέρετε την ταχύτητα γάστρας σας;"
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
@@ -45,11 +46,11 @@ msgstr "Προτιμήσεις αριθμομηχανής"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Βοήθεια!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Επιπλέον λειτουργίες"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
@@ -58,19 +59,19 @@ msgstr "Αριθμομηχανή από τη SaltyPaws"
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Όλα"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Δοκιμή"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Ποντίκι"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Λίστα"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
@@ -78,63 +79,63 @@ msgstr "Σφάλμα"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
-msgstr ""
+msgstr "καθαρισμός"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "Clear"
-msgstr ""
+msgstr "Καθαρισμός"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "CLEAR"
-msgstr ""
+msgstr "ΚΑΘΑΡΙΣΜΟΣ"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HideHelp"
-msgstr ""
+msgstr "ΌχιΒοήθεια"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "hidehelp"
-msgstr ""
+msgstr "όχιβοήθεια"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HIDEHELP"
-msgstr ""
+msgstr "ΟΧΙΒΟΗΘΕΙΑ"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "ShowHelp"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "showhelp"
-msgstr ""
+msgstr "βοήθεια"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "SHOWHELP"
-msgstr ""
+msgstr "ΒΟΗΘΕΙΑ"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HideHistory"
-msgstr ""
+msgstr "ΌχιΙστορικό"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "hidehistory"
-msgstr ""
+msgstr "όχιιστορικό"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HIDEHISTORY"
-msgstr ""
+msgstr "ΟΧΙΙΣΤΟΡΙΚΟ"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "ShowHistory"
-msgstr ""
+msgstr "Ιστορικό"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "showhistory"
-msgstr ""
+msgstr "ιστορικό"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "SHOWHISTORY"
-msgstr ""
+msgstr "ΙΣΤΟΡΙΚΟ"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HideCalculate"
@@ -190,35 +191,35 @@ msgstr "Βοήθεια"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
-msgstr ""
+msgstr "Βοήθεια"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "help"
-msgstr ""
+msgstr "βοήθεια"
 
 #: src/calculatorgui_impl.cpp:525 src/calculatorgui.cpp:40
 msgid "Function"
-msgstr ""
+msgstr "Λειτουργία"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "function"
-msgstr ""
+msgstr "λειτουργία"
 
 #: src/calculatorgui_impl.cpp:525
 msgid "FUNCTION"
-msgstr ""
+msgstr "ΛΕΙΤΟΥΡΓΙΑ"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "history"
-msgstr ""
+msgstr "ιστορικο"
 
 #: src/calculatorgui_impl.cpp:530 src/calculatorgui.cpp:43
 msgid "History"
-msgstr ""
+msgstr "Ιστορικό"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "HISTORY"
-msgstr ""
+msgstr "ΙΣΤΟΡΙΚΟ"
 
 #: src/calculatorgui_impl.cpp:574
 msgid "Calculator INPUT:"
@@ -226,7 +227,7 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:574
 msgid " Calculator output:"
-msgstr ""
+msgstr " Αποτέλεσμα υπολογισμού:"
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
@@ -246,7 +247,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct"
-msgstr ""
+msgstr "Συνοπτικά"
 
 #: src/calculatorgui.cpp:120
 msgid "Succinct, thousands separator"
@@ -254,19 +255,19 @@ msgstr ""
 
 #: src/calculatorgui.cpp:120
 msgid "Scientific"
-msgstr ""
+msgstr "Επιστημονικό"
 
 #: src/calculatorgui.cpp:120
 msgid "Humanised"
-msgstr ""
+msgstr "Ανθρωποποιημένα"
 
 #: src/calculatorgui.cpp:130
 msgid "Show/Hide Buttons"
-msgstr ""
+msgstr "Εμφάνιση/απόκρυψη κουμπιών"
 
 #: src/calculatorgui.cpp:132
 msgid "Help Button"
-msgstr ""
+msgstr "Κουμπί ' βοήθεια '"
 
 #: src/calculatorgui.cpp:134
 msgid "Show/Hide help button (you can always type \"help\" from input window)."
@@ -330,7 +331,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:210
 msgid "Other"
-msgstr ""
+msgstr "Άλλο"
 
 #: src/calculatorgui.cpp:212
 msgid "Log results to opencpn"
@@ -438,7 +439,102 @@ msgid "Calculator Plugin for OpenCPN by SaltyPaws aka Walbert Schulpen\n"
 "\tShow/Hide Calculate, Help and History toggle buttons\n"
 "\tHistory Settings: max Results -this is the number of results that will be stored in the history pulldown. The history pulldown will contain five times this value\n"
 "\tLog to opencpn: Enable/Disable logging of results to opencpn logfile."
-msgstr ""
+msgstr "Πρόσθετο Υπολογιστή (calculator) για το OpenCPN από τον SaltyPaws αλλιώς Walbert Schulpen\n"
+"\n"
+"=======================================\n\n"
+"Ένα απλό αλλά δυναμικό πρόσθετο υπολογιστή. Θέλετε να υπολογίσετε την ταχύτητα γάστρας; \n\n"
+"Σημαντικές λειτουργίες είναι:\n"
+"* Αποθήκευση αποτελεσμάτων σε μεταβλητές\n"
+"* Ιστορικοί υπολογισμοί\n"
+"* Ναυτικές λειτουργίες\n"
+"* Το μέγεθος της οθόνης μπορεί να βελτιστοποιηθεί ή ελαχιστοποιηθεί όταν χρειάζεται\n\n"
+"Η προσθήκη εξισώσεων είναι εύκολη. Αν λείπει η αγαπημένη σας ναυτική εξίσωση, παρακαλώ στείλτε μου την εξίσωσή σας μέσω του flyspray, και θα την προσθέσω.\n"
+"Βοήθεια;\n"
+"=========\n"
+"Πληκτρολογήστε help στον υπολογιστή για να δείτε αυτές τις οδηγίες.\n\n"
+"Παραδείγματα εκφράσεων που δουλεύουν στον υπολογιστή είναι: (comments είναι σε τετράγωνες αγκύλες, μερικά αποτελέσματα εξαρτώνται από υπολογισμούς άλλων παραδειγμάτων):\n"
+"=========\n"
+"Ταχύτητα γάστρας:\n"
+"\tLWL=48\t\t\t(μήκος ισάλων σε πόδια)\n"
+"\tvhull=1.34*LWL^(1/2)\t(ταχύτητα γάστρας σε κόμβους)\n\n"
+"Μετατροπές:\n"
+"\tftm=0.3048\t\t\t(πόδια σε μέτρα)\n"
+"\tkm_to_nm=0.539957\t\t(Χιλιόμετρα σε ναυτικά μίλια)\n"
+"\tftm*LWL\t\t\t(μήκος ισάλων σε μέτρα)\n\n"
+"Απόσταση μέχρι τον ορίζοντα\n"
+"\tR=6378.1*1000\t\t(Ακτίνα της γης σε m)\n"
+"\tH=2.5\t\t\t(Ύψος του ματιού πάνω από την επιφάνεια της θάλασσας σε m)\n"
+"\td = R * acos(R/(R + h))\t(Απόσταση μέχρι τον ορίζοντα σε m)   \n"
+"\tans*km_to_nm\t\t(Απόσταση μέχρι τον ορίζοντα σε ν. μίλια)\n\n"
+"Απόσταση μέχρι τον φάρο\n"
+"\tH1=200\t\t\t(ύψος φάρου σε m)\n"
+"\td1 = R*acos(R/(R + H1))\t(Απόσταση μέχρι τον ορίζοντα σε m)\n"
+"\tdistance=d1+d\t\t(εύρος ορατότητας του φάρου σε m)\n\n"
+"Built-in functions\n\n"
+"Ο ακόλουθος πίνακας δίνει μια περίληψη των λειτουργιών που υποστηρίζονται στην στάνταρ εφαρμογή. Δίνει τα ονόματα των συναρτήσεων, τον αριθμό των μεταβλητών και μια σύντομη περιγραφή.\n"
+"Όνομα \tArgc. \tΕξήγηση\n"
+"sin \t1 \t ημίτονο\n"
+"cos \t1 \tσυνημίτονο \n"
+"tan \t1 \tεφαπτομένη \n"
+"asin \t1 \tτόξο ημιτόνου\n"
+"acos \t1 \t τόξο συνημιτόνου\n"
+"atan \t1 \tτόξο εφαπτομένης\n"
+"sinh \t1 \tυπερβολικό ημίτονο\n"
+"cosh \t1 \tυπερβολικό συνημίτονο\n"
+"tanh \t1 \tυπερβολική εφαπτομένη\n"
+"asinh \t1 \tτόξο υπερβολικού ημιτόνου\n"
+"acosh \t1 \tτόξο υπερβολικού συνημιτόνου\n"
+"atanh \t1 \tτόξο υπερβολικής εφαπτομένης\n"
+"log2 \t1 \tλογάριθμος με βάση το 2\n"
+"log10 \t1 \tλογάριθμος με βάση το 10\n"
+"log \t1 \tλογάριθμος με βάση το 10\n"
+"ln \t\t1 \tλογάριθμος με βάση το e (2.71828...)\n"
+"exp \t1 \tεκθετική συνάρτηση\n"
+"sqrt \t1 \tτετραγωνική ρίζα\n"
+"sign \t1 \tπρόσημο -1 αν x<0· 1 αν x>0\n"
+"rint \t1 \tο κοντινότερος ακέραιος\n"
+"abs \t1 \tαπόλυτη τιμή\n"
+"min \tδιάφ. \tελάχιστο\n"
+"max \tδιάφ. \tμέγιστο\n"
+"sum \tδιάφ. \tάθροισμα\n"
+"avg \tδιάφ. \tμέση τιμή\n\n\n"
+"Δυαδικοί τελεστές\n\n"
+"Ο επόμενος πίνακας παραθέτει τις προεπιλεγμένους δυαδικού τελεστές.\\Τελεστής \\Σημασία \tΠροτεραιότητα\n"
+"= \t\tαποστολή \t\t\t-1\n"
+"&& \tλογικό και\t\t\t1\n"
+"|| \t\tλογικό ή\t \t\t\t2\n"
+"<= \t\tμικρότερο ή ίσο \t\t\t4\n"
+">= \t\tμεγαλύτερο ή ίσο \t\t4\n"
+"!= \t\tμη ίσο \t\t\t\t4\n"
+"== \t\tίσο \t\t\t\t\t4\n"
+"> \t\tμεγαλύτερο από \t\t\t4\n"
+"< \t\tμικρότερο από \t\t\t\t4\n"
+"+ \t\tπρόσθεση \t\t\t\t5\n"
+"- \t\tαφαίρεση \t\t\t5\n"
+"* \t\tπολλαπλασιασμός \t\t6\n"
+"/ \t\tδιαίρεση \t\t\t\t6\n"
+"^ \t\tύψωση σε δύναμη \t7\n"
+"* Ο τελεστής ανάθεσης είναι ειδικός καθώς αλλάζει μία από τις μεταβλητές του και μπορεί να εφαρμοσθεί μόνο σε μεταβλητές.\n"
+"Άλλοι τελεστές\n\n"
+"Ο μParser υποστηρίζει το if then else τελεστή. Χρησιμοποιεί lazy εκτίμηση για να βεβαιωθεί ότι μόνο ο απαραίτητος κλάδος της έκφρασης υπολογίζεται.\\τελετής \tΣημασία \tΠαρατηρήσεις\n"
+"?: \tif then else \tσύνταξη όπως C++\n"
+" \n"
+"Μεταβλητές:\n"
+"\tπ, e\n"
+"\tans είναι το αποτέλεσμα του προηγούμενου υπολογισμού\n"
+"\tdtr είναι ο συντελεστής μετατροπής από μοίρες σε radian\t\t\n"
+"\tΜπορείτε να ορίσετε τις δικές σας μεταβλητές (π.χ. myvariable=10/8*cos(dtr*90) ή yourvariable=ans)\n"
+"\tclear σβήνει παλιά αποτελέσματα, αλλά αφήνει τις μεταβλητές που ορίσατε\n\n"
+"Διεπιφάνεια χρήστη - γράψτε τις εντολές στο command window:\n"
+"\thistory -Ανοίξτε το παράθυρο του ιστορικού\n"
+"\tshowhelp - Δείξτε/Κρύψτε το κουμπί βοήθειας\n"
+"\tshowcalculate - Δείξτε/Κρύψτε το κουμπί υπολογισμού\n"
+"\tshowhistory - Δείξτε/Κρύψτε το ιστορικό\n"
+"\thelp - δείξε το μενού βοήθειας\n\n"
+"SΡυθμίσεις/Πρόσθετα/Προτιμήσεις:\n"
+"\tΔείξε/Κρύψε τα κουμπιά Υπολογισμό, Βοήθεια και Ιστορικό\n"
+"\tΡυθμίσεις ιστορικού: max Results -Αυτός είναι ο αριθμός των αποτελεσμάτων που θα αποθηκευτούν στο ιστορικό. Το ιστορικό θα κρατήσει τα πενταπλάσια\n"
+"\tLog to opencpn: Επίτρεψε καταγραφή των αποτελεσμάτων στον log του  opencpn."
 
 #: src/calculatorgui.cpp:314 src/calculatorgui.cpp:374
 msgid "DD.dddddd° (no limit to decimals)"
@@ -456,20 +552,20 @@ msgstr ""
 
 #: src/calculatorgui.cpp:340
 msgid "Longitude"
-msgstr ""
+msgstr "Γεωγραφικό μήκος"
 
 #: src/calculatorgui.cpp:361 src/calculatorgui.cpp:452
 #: src/calculatorgui.cpp:562
 msgid "Convert"
-msgstr ""
+msgstr "Μετατροπή"
 
 #: src/calculatorgui.cpp:368
 msgid "Degrees"
-msgstr ""
+msgstr "Μοίρες"
 
 #: src/calculatorgui.cpp:382 src/calculatorgui.cpp:476
 msgid "Lat "
-msgstr ""
+msgstr "Πλάτος "
 
 #: src/calculatorgui.cpp:398 src/calculatorgui.cpp:430
 #: src/calculatorgui.cpp:492 src/calculatorgui.cpp:532
@@ -498,11 +594,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:462
 msgid "Degree, Minute"
-msgstr ""
+msgstr "Μοίρα, λεπτό"
 
 #: src/calculatorgui.cpp:468
 msgid "DD°MM'SS.s (no limit to digits)"
-msgstr ""
+msgstr "DD°MM'SS.s (δεν υπάρχει όριο σε ψηφία)"
 
 #: src/calculatorgui.cpp:500 src/calculatorgui.cpp:540
 msgid "\""
@@ -518,11 +614,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:628
 msgid "Select Function"
-msgstr ""
+msgstr "Επιλέξτε λειτουργία"
 
 #: src/calculatorgui.cpp:640
 msgid "Function And Description"
-msgstr ""
+msgstr "Λειτουργία και περιγραφή"
 
 #: src/calculatorgui.cpp:646
 msgid "ere"
@@ -530,7 +626,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:650 src/calculatorgui.cpp:918
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 #: src/calculatorgui.cpp:664
 msgid "Input Parameters"
@@ -542,7 +638,7 @@ msgstr ""
 #: src/calculatorgui.cpp:798 src/calculatorgui.cpp:819
 #: src/calculatorgui.cpp:840 src/calculatorgui.cpp:861
 msgid "Parameter"
-msgstr ""
+msgstr "Παράμετρος"
 
 #: src/calculatorgui.cpp:880
 msgid "Function Result Select Units"
@@ -554,5 +650,5 @@ msgstr ""
 
 #: src/calculatorgui.cpp:915
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 

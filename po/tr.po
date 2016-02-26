@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2015-12-31 15:38-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -20,15 +20,15 @@ msgstr ""
 #: src/calculator_pi.cpp:92 src/calculator_pi.cpp:157 src/calculatorgui.h:68
 #: src/calculatorgui.h:274
 msgid "Calculator"
-msgstr ""
+msgstr "Hesap Makinesi"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "İşlevler"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Hesap makinesi eklentisi"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
@@ -37,104 +37,104 @@ msgstr ""
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
-msgstr ""
+msgstr "Hesap makinesi tercihleri"
 
 #: src/calculatorgui_impl.h:63 src/calculatorgui.h:100
 msgid "Calculator preferences"
-msgstr ""
+msgstr "Hesap makinesi tercihleri"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Yardım!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Ekstra Fonksiyonlar"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
-msgstr ""
+msgstr "SaltyPaws tarafından Hesap Makinesi"
 
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Hepsi"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Test Et"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Fare"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Liste Görünümü"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
-msgstr ""
+msgstr "temizle"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "Clear"
-msgstr ""
+msgstr "Temizle"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "CLEAR"
-msgstr ""
+msgstr "TEMİZLE"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HideHelp"
-msgstr ""
+msgstr "YardımıGizle"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "hidehelp"
-msgstr ""
+msgstr "yardımıgizle"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "HIDEHELP"
-msgstr ""
+msgstr "YARDIMIGİZLE"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "ShowHelp"
-msgstr ""
+msgstr "YardımıGöster"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "showhelp"
-msgstr ""
+msgstr "yardımıgöster"
 
 #: src/calculatorgui_impl.cpp:496
 msgid "SHOWHELP"
-msgstr ""
+msgstr "YARDIMIGÖSTER"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HideHistory"
-msgstr ""
+msgstr "GeçmişiGizle"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "hidehistory"
-msgstr ""
+msgstr "geçmişigizle"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "HIDEHISTORY"
-msgstr ""
+msgstr "GEÇMİŞİGİZLE"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "ShowHistory"
-msgstr ""
+msgstr "GeçmişiGöster"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "showhistory"
-msgstr ""
+msgstr "geçmişigöster"
 
 #: src/calculatorgui_impl.cpp:502
 msgid "SHOWHISTORY"
-msgstr ""
+msgstr "GEÇMİŞİGÖSTER"
 
 #: src/calculatorgui_impl.cpp:508
 msgid "HideCalculate"
@@ -186,15 +186,15 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:520 src/calculatorgui.cpp:46
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "HELP"
-msgstr ""
+msgstr "YARDIM"
 
 #: src/calculatorgui_impl.cpp:520
 msgid "help"
-msgstr ""
+msgstr "yardım"
 
 #: src/calculatorgui_impl.cpp:525 src/calculatorgui.cpp:40
 msgid "Function"
@@ -210,15 +210,15 @@ msgstr ""
 
 #: src/calculatorgui_impl.cpp:530
 msgid "history"
-msgstr ""
+msgstr "tarih"
 
 #: src/calculatorgui_impl.cpp:530 src/calculatorgui.cpp:43
 msgid "History"
-msgstr ""
+msgstr "Tarih"
 
 #: src/calculatorgui_impl.cpp:530
 msgid "HISTORY"
-msgstr ""
+msgstr "TARİH"
 
 #: src/calculatorgui_impl.cpp:574
 msgid "Calculator INPUT:"
@@ -230,11 +230,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:34 src/calculatorgui.cpp:912
 msgid "Calculate"
-msgstr ""
+msgstr "Hesapla"
 
 #: src/calculatorgui.cpp:118
 msgid "Calculator Reporting"
-msgstr ""
+msgstr "Hesap Makinesini Raporla"
 
 #: src/calculatorgui.cpp:120
 msgid "Precise (Default)"
@@ -254,7 +254,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:120
 msgid "Scientific"
-msgstr ""
+msgstr "Bilimsel"
 
 #: src/calculatorgui.cpp:120
 msgid "Humanised"
@@ -262,11 +262,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:130
 msgid "Show/Hide Buttons"
-msgstr ""
+msgstr "Göster/gizli Tuşları"
 
 #: src/calculatorgui.cpp:132
 msgid "Help Button"
-msgstr ""
+msgstr "Yardım Tuşu"
 
 #: src/calculatorgui.cpp:134
 msgid "Show/Hide help button (you can always type \"help\" from input window)."
@@ -274,7 +274,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:138
 msgid "History Toggle"
-msgstr ""
+msgstr "Tarihi Değiştir"
 
 #: src/calculatorgui.cpp:140 src/calculatorgui.cpp:146
 msgid "Show/Hide history toggle (you can always type \"history\" from input window)."
@@ -302,11 +302,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:168
 msgid "History Settings"
-msgstr ""
+msgstr "Tarih Ayarları"
 
 #: src/calculatorgui.cpp:175
 msgid "Max Results"
-msgstr ""
+msgstr "Maksimum Sonuç"
 
 #: src/calculatorgui.cpp:177
 msgid "More results use up more memory. Memory is only allocated if required (e.g. if number is 30000, corresponding memory will only be used after this many calculations)."
@@ -318,7 +318,7 @@ msgstr ""
 
 #: src/calculatorgui.cpp:189
 msgid "Opacity"
-msgstr ""
+msgstr "Görünürlük"
 
 #: src/calculatorgui.cpp:200
 msgid "Show History Window"
@@ -326,11 +326,11 @@ msgstr ""
 
 #: src/calculatorgui.cpp:202
 msgid "Show/Hide history"
-msgstr ""
+msgstr "Geçmişi Göster/Gizle"
 
 #: src/calculatorgui.cpp:210
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 #: src/calculatorgui.cpp:212
 msgid "Log results to opencpn"
@@ -554,5 +554,5 @@ msgstr ""
 
 #: src/calculatorgui.cpp:915
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 

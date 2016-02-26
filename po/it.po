@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-30 09:11-0500\n"
-"PO-Revision-Date: 2015-05-30 10:19-0400\n"
+"PO-Revision-Date: 2016-02-24 14:27-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
@@ -20,61 +20,62 @@ msgstr ""
 #: src/calculator_pi.cpp:92 src/calculator_pi.cpp:157 src/calculatorgui.h:68
 #: src/calculatorgui.h:274
 msgid "Calculator"
-msgstr ""
+msgstr "Calcolatrice"
 
 #: src/calculator_pi.cpp:96
 msgid "Functions"
-msgstr ""
+msgstr "Funzioni"
 
 #: src/calculator_pi.cpp:162
 msgid "Calculator Plugin"
-msgstr ""
+msgstr "Plugin calcolatrice"
 
 #: src/calculator_pi.cpp:167
 msgid "This is a light weight yet powerful calculator plugin for OpenCPN.\n"
 "  Would you like to know your hull speed?"
-msgstr ""
+msgstr "Questo è un plugin di calcolo leggero ma potente creato per OpenCPN.\n"
+" Vuoi conoscere la tua Velocità Critica?"
 
 #: src/calculator_pi.cpp:330
 msgid "Calculator Preferences"
-msgstr ""
+msgstr "Preferenze Calcolatrice"
 
 #: src/calculatorgui_impl.h:63 src/calculatorgui.h:100
 msgid "Calculator preferences"
-msgstr ""
+msgstr "Preferenze calcolatrice"
 
 #: src/calculatorgui_impl.h:69
 msgid "Help!!!!"
-msgstr ""
+msgstr "Aiuto!!!!"
 
 #: src/calculatorgui_impl.h:75
 msgid "Extra Functions"
-msgstr ""
+msgstr "Funzioni extra"
 
 #: src/calculatorgui_impl.h:96
 msgid "Calculator by SaltyPaws"
-msgstr ""
+msgstr "Calcolatrice by SaltyPaws"
 
 #: src/calculatorgui_impl.cpp:67 src/calculatorgui.cpp:618
 #: src/calculatorgui.cpp:630
 msgid "All"
-msgstr ""
+msgstr "Tutto"
 
 #: src/calculatorgui_impl.cpp:429
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src/calculatorgui_impl.cpp:433
 msgid "Mouse"
-msgstr ""
+msgstr "Mouse"
 
 #: src/calculatorgui_impl.cpp:437
 msgid "List"
-msgstr ""
+msgstr "Elenco"
 
 #: src/calculatorgui_impl.cpp:488
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: src/calculatorgui_impl.cpp:492
 msgid "clear"
