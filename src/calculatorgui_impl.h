@@ -30,6 +30,7 @@
 
 #include "VariableFactory.h"
 #include "muparser/muParser.h" //Muparser needs to be included before wxidgets, otherwhise a linker conflict will occur.
+#include "muparser/muParserError.h"
 
 
 //#include <locale.h> Dont touch locale, causes serious errors in OpenCPN.
@@ -115,7 +116,7 @@ public:
         void OnHistoryPulldown ( wxCommandEvent& event );
         void down(void);
         void up (void);
-        std::string WxString2StdString(wxString wxString_in);
+        mu::string_type WxString2StdString(wxString wxString_in);
 
         calculator_pi *plugin;
 
