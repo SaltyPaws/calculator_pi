@@ -560,7 +560,7 @@ wxString Dlg::OnCalculate( void )
            // mystring.Replace(wxT(","),wxT("."),TRUE);//dont think this is required when not using locale --->test
            // MuParser.SetExpr((mu::string_type) mystring.mb_str()); //This works in linux, but causes compiler error in windows
              MuParser.SetExpr(WxString2StdString(mystring));//Store the answer in ans
-			 mystring = Report_Value(Muparser_result, 2); // m_iCalc_Reporting);//Format result as per setting.
+			 mystring = Report_Value(Muparser_result, m_iCalc_Reporting); // m_iCalc_Reporting);//Format result as per setting.
             Muparser_result = MuParser.Eval();//Evaluate for ans
 
         }
@@ -696,7 +696,7 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
         case 1:
             //printf("Precise, thousands separator\n");
             //setlocale(LC_ALL,""); //Causes Serious errors in OPENCPN, rounding all tracks waypoints and incoming data.
-            return ThousandSeparator(wxString::Format(wxT("%'.15g"), in_Value));
+            return ThousandSeparator(wxString::Format(wxT("%.15g"), in_Value));
             //return Temp_String;
             break;
 
@@ -712,7 +712,7 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
             break;
         case 4:
             //printf("Scientific\n");
-            return wxString::Format(wxT("%.15le"), in_Value);
+            return wxString::Format(wxT("%.15e"), in_Value);
             break;
         case 5:
             //printf("Humanise\n");
