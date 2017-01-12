@@ -101,7 +101,7 @@ void FunDlg::OnCategorySelect( wxCommandEvent& event )
 
 void FunDlg::OnClose( wxCommandEvent& event )
 {
-    this->Destroy();
+    this->Close();
 }
 
 void FunDlg::OnItemSelect( wxCommandEvent& event )
