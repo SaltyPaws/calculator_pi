@@ -27,20 +27,7 @@
 
 #include "calculatorgui_impl.h"
 
-bool UTF82WC(const std::string  source, std::wstring & outstr)
-{
-	wxMBConvUTF8 conv;
 
-	size_t nRealSize;
-	wxWCharBuffer theBuffer = conv.cMB2WC(source.c_str(), source.size(), &nRealSize);
-	if (nRealSize) {
-		outstr.assign(theBuffer.data(), nRealSize);
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
 
 CfgDlg::CfgDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : CfgDlgDef( parent, id, title, pos, size, style )
@@ -60,8 +47,7 @@ FunDlg::FunDlg( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 void FunDlg::LoadFunctions(wxString Category, wxString Unit)
 {
-    
-	//Clear Pulldown
+    //Clear Pulldown
     this->m_Function_Dropdown->Clear();
     //Load functions into pulldown
     for ( unsigned int count = 0; count < testf.m_Formula.GetCount() ; count++)
@@ -101,7 +87,7 @@ void FunDlg::OnCategorySelect( wxCommandEvent& event )
 
 void FunDlg::OnClose( wxCommandEvent& event )
 {
-    this->Close();
+    this->Destroy();
 }
 
 void FunDlg::OnItemSelect( wxCommandEvent& event )
@@ -340,10 +326,10 @@ Dlg::Dlg( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint&
 {
 
     MuParser.ClearConst();
-	MuParser.DefineConst(WxString2StdString(_T("pi")), 3.141592653589793238462643);
-	MuParser.DefineConst(WxString2StdString(_T("e")), 2.718281828459045235360287);
-	MuParser.DefineConst(WxString2StdString(_T("dtr")), 0.0174532925199433);
-    MuParser.SetVarFactory(facfun_type(AddVariable),&MuParser);
+    MuParser.DefineConst("pi", 3.141592653589793238462643);
+    MuParser.DefineConst("e", 2.718281828459045235360287);
+    MuParser.DefineConst("dtr",0.0174532925199433) ;
+    MuParser.SetVarFactory(AddVariable,&MuParser);
 
     this->m_listCtrl->Show(false);
 
@@ -560,7 +546,7 @@ wxString Dlg::OnCalculate( void )
            // mystring.Replace(wxT(","),wxT("."),TRUE);//dont think this is required when not using locale --->test
            // MuParser.SetExpr((mu::string_type) mystring.mb_str()); //This works in linux, but causes compiler error in windows
              MuParser.SetExpr(WxString2StdString(mystring));//Store the answer in ans
-			 mystring = Report_Value(Muparser_result, m_iCalc_Reporting); // m_iCalc_Reporting);//Format result as per setting.
+            mystring=Report_Value(Muparser_result,m_iCalc_Reporting);//Format result as per setting.
             Muparser_result = MuParser.Eval();//Evaluate for ans
 
         }
@@ -696,7 +682,7 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
         case 1:
             //printf("Precise, thousands separator\n");
             //setlocale(LC_ALL,""); //Causes Serious errors in OPENCPN, rounding all tracks waypoints and incoming data.
-            return ThousandSeparator(wxString::Format(wxT("%.15g"), in_Value));
+            return ThousandSeparator(wxString::Format(wxT("%'.15g"), in_Value));
             //return Temp_String;
             break;
 
@@ -712,7 +698,7 @@ wxString Dlg::Report_Value(double in_Value, int in_mode){
             break;
         case 4:
             //printf("Scientific\n");
-            return wxString::Format(wxT("%.15e"), in_Value);
+            return wxString::Format(wxT("%.15le"), in_Value);
             break;
         case 5:
             //printf("Humanise\n");
@@ -793,15 +779,7 @@ void Dlg::OnHistoryPulldown ( wxCommandEvent& event ){
     //ItemText=ItemText.BeforeFirst(' ');
     this->m_result->AppendText(Selected_Result);
 }
-/*
+
 std::string Dlg::WxString2StdString(wxString wxString_in){
     return std::string(wxString_in.mb_str());
-}
-*/
-mu::string_type Dlg::WxString2StdString(wxString wxString_in){
-	std::string s = wxString_in.mb_str();
-	std::wstring ws;
-	UTF82WC(s, ws);
-
-	return mu::string_type(ws);
 }

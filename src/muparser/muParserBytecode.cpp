@@ -30,7 +30,6 @@
 #include <stack>
 #include <vector>
 #include <iostream>
-#include <algorithm>
 
 #include "muParserDef.h"
 #include "muParserError.h"
