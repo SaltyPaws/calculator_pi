@@ -1,9 +1,3 @@
-Version 1.7
-===========
-This version compiles using VS2013. Formatting using thousands is bypassed. Simple formatting of answers only.
-Compiles standalone, copy opencpn.lib and maybe muparser32.lib and link these in.
-
-
 Changes to version 1.6
 =======================================
 Added Willson Fetch Equation
