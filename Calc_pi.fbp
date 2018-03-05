@@ -4782,7 +4782,7 @@
                                                     <property name="proportion">0</property>
                                                     <object class="wxStaticBoxSizer" expanded="0">
                                                         <property name="id">wxID_ANY</property>
-                                                        <property name="label">DD°MM’SS.s (no limit to digits)</property>
+                                                        <property name="label">DD°MM'SS.s (no limit to digits)</property>
                                                         <property name="minimum_size"></property>
                                                         <property name="name">sbSizer72</property>
                                                         <property name="orient">wxVERTICAL</property>
